@@ -29,8 +29,6 @@ local PetBat_CPWin = false;
 function CensusButton_OnLoad(self)	-- referenced by CensusButton.xml
 
 self:RegisterEvent("ADDON_LOADED")
-self:RegisterEvent("PET_BATTLE_OPENING_START")
-self:RegisterEvent("PET_BATTLE_CLOSE")
 
 end
 
@@ -63,25 +61,6 @@ if(((CensusPlus_PerCharInfo["CensusButtonShown"] == nil)and (CensusPlus_Database
 			end
 		init = true;
       self:UnregisterEvent("ADDON_LOADED")
-	end
-
-    if ( event =="PET_BATTLE_OPENING_START") then
-		if(CensusPlus_Database["Info"]["CensusButtonShown"] == true ) then
-			CensusButtonFrame:Hide()
-		end
-		if ( CensusPlus:IsVisible()) then
-		    PetBat_CPWin = True;
-			CensusPlus_Toggle();
-		end
-	end
-	if ( event =="PET_BATTLE_CLOSE") then
-		if(CensusPlus_Database["Info"]["CensusButtonShown"] == true ) then
-			CensusButtonFrame:Show()
-		end
-		if (PetBat_CPWin == True) then
-		    PetBat_CPWin = False;
-			CensusPlus_Toggle();
-		end
 	end
 	
 end
