@@ -67,7 +67,7 @@
     </Button>
     <Button name="CensusPlusLevelBarTemplate" virtual="true">
         <Size>
-            <AbsDimension x="6" y="128" />
+            <AbsDimension x="15" y="128" />
         </Size>
         <NormalTexture file="Interface\AddOns\CensusPlus\Skin\CENSUSPLUS_LEVELBar" />
         <Scripts>
@@ -81,7 +81,7 @@
     </Button>
     <Button name="CensusPlusLevelBarEmptyTemplate" virtual="true">
         <Size>
-            <AbsDimension x="6" y="128" />
+            <AbsDimension x="15" y="128" />
         </Size>
         <Scripts>
     		<OnClick function="CensusPlus_OnClickLevel" />
@@ -1731,11 +1731,8 @@
                     </Anchor>
                 </Anchors>
             </Button>
-<!-- the following buttons level 1 through level 3 are set to ZERO Dimension so they don't display in window -->
+
             <Button name="CensusPlusLevelBar1" inherits="CensusPlusLevelBarTemplate" id="1">
-				<Size>
-					<AbsDimension x="0" y="0" />
-				</Size>  
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlus" relativePoint="TOPLEFT">
                         <Offset>
@@ -1745,246 +1742,174 @@
                 </Anchors>
             </Button>
             <Button name="CensusPlusLevelBar2" inherits="CensusPlusLevelBarTemplate" id="2">
-				<Size>
-					<AbsDimension x="0" y="0" />
-				</Size>  
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar1" relativePoint="BOTTOMRIGHT">
                        <Offset>
-                            <AbsDimension x="20" y="-452" />
-<!--                            <AbsDimension x="4" y="0" />  -->
+                           <AbsDimension x="4" y="0" />
                         </Offset> 
                     </Anchor>
                 </Anchors>
             </Button>
             <Button name="CensusPlusLevelBar3" inherits="CensusPlusLevelBarTemplate" id="3">
-				<Size>
-					<AbsDimension x="0" y="0" />
-				</Size>  
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar2" relativePoint="BOTTOMRIGHT">
                        <Offset>
-                            <AbsDimension x="0" y="0" />
-<!--                            <AbsDimension x="4" y="0" />  -->
+                            <AbsDimension x="4" y="0" />
                         </Offset> 
                     </Anchor>
                 </Anchors>
             </Button>
-<!--  end of omitted level buttons from display -->
             <Button name="CensusPlusLevelBar4" inherits="CensusPlusLevelBarTemplate" id="4">
-        				<Size>
-            				<AbsDimension x="0" y="0" />
-        				</Size> 
                 <Anchors>
- <!--                   <Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT">  -->
 					<Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar3" relativePoint="BOTTOMRIGHT">
                        <Offset>
-                            <AbsDimension x="0" y="0" />
-<!--                            <AbsDimension x="4" y="0" />  -->
+                            <AbsDimension x="4" y="0" />
                         </Offset> 
                     </Anchor>
                 </Anchors>
             </Button>
             <Button name="CensusPlusLevelBar5" inherits="CensusPlusLevelBarTemplate" id="5">
-       				<Size>
-          				  <AbsDimension x="0" y="0" />
-        				</Size>  
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar4" relativePoint="BOTTOMRIGHT">
                        <Offset>
-                            <AbsDimension x="0" y="0" />
-<!--                            <AbsDimension x="4" y="0" />  -->
+                           <AbsDimension x="4" y="0" />
                         </Offset> 
                     </Anchor>
                 </Anchors>
             </Button>
             <Button name="CensusPlusLevelBar6" inherits="CensusPlusLevelBarTemplate" id="6">
-       				<Size>
-          				  <AbsDimension x="0" y="0" />
-        				</Size>  
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar5" relativePoint="BOTTOMRIGHT">
- <!--                   <Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT">  -->
                        <Offset>
-                            <AbsDimension x="0" y="0" />
-<!--                            <AbsDimension x="4" y="0" />  -->
+                           <AbsDimension x="4" y="0" />
                         </Offset> 
                     </Anchor>
                 </Anchors>
             </Button>
             <Button name="CensusPlusLevelBar7" inherits="CensusPlusLevelBarTemplate" id="7">
-       				<Size>
-          				  <AbsDimension x="0" y="0" />
-        				</Size>  
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar6" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="" y="0" />
+                            <AbsDimension x="4" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
             </Button>
             <Button name="CensusPlusLevelBar8" inherits="CensusPlusLevelBarTemplate" id="8">
-       				<Size>
-          				  <AbsDimension x="0" y="0" />
-        				</Size>  
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar7" relativePoint="BOTTOMRIGHT">
                        <Offset>
-                            <AbsDimension x="0" y="0" />
-<!--                            <AbsDimension x="4" y="0" />  -->
+                            <AbsDimension x="4" y="0" />
                         </Offset> 
                     </Anchor>
                 </Anchors>
             </Button>
             <Button name="CensusPlusLevelBar9" inherits="CensusPlusLevelBarTemplate" id="9">
-       				<Size>
-          				  <AbsDimension x="0" y="0" />
-        				</Size>  
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar8" relativePoint="BOTTOMRIGHT">
                        <Offset>
-                            <AbsDimension x="0" y="0" />
-<!--                            <AbsDimension x="4" y="0" />  -->
+                            <AbsDimension x="4" y="0" /> 
                         </Offset> 
                     </Anchor>
                 </Anchors>
             </Button>
             <Button name="CensusPlusLevelBar10" inherits="CensusPlusLevelBarTemplate" id="10">
-       				<Size>
-          				  <AbsDimension x="0" y="0" />
-        				</Size>  
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar9" relativePoint="BOTTOMRIGHT">
                        <Offset>
-                            <AbsDimension x="0" y="0" />
-<!--                            <AbsDimension x="4" y="0" />  -->
+                            <AbsDimension x="4" y="0" />
                         </Offset> 
                     </Anchor>
                 </Anchors>
             </Button>
             <Button name="CensusPlusLevelBar11" inherits="CensusPlusLevelBarTemplate" id="11">
-       				<Size>
-          				  <AbsDimension x="0" y="0" />
-        				</Size>  
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar10" relativePoint="BOTTOMRIGHT">
                        <Offset>
-                            <AbsDimension x="0" y="0" />
-<!--                            <AbsDimension x="4" y="0" />  -->
+                           <AbsDimension x="4" y="0" />
                         </Offset> 
                     </Anchor>
                 </Anchors>
             </Button>
             <Button name="CensusPlusLevelBar12" inherits="CensusPlusLevelBarTemplate" id="12">
-       				<Size>
-          				  <AbsDimension x="0" y="0" />
-        				</Size>  
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar11" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="0" y="0" />
+                            <AbsDimension x="4" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
             </Button>
             <Button name="CensusPlusLevelBar13" inherits="CensusPlusLevelBarTemplate" id="13">
-       				<Size>
-          				  <AbsDimension x="0" y="0" />
-        				</Size>  
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar12" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="0" y="0" />
+                            <AbsDimension x="4" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
             </Button>
             <Button name="CensusPlusLevelBar14" inherits="CensusPlusLevelBarTemplate" id="14">
-       				<Size>
-          				  <AbsDimension x="0" y="0" />
-        				</Size>  
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar13" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="0" y="0" />
+                            <AbsDimension x="4" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
             </Button>
             <Button name="CensusPlusLevelBar15" inherits="CensusPlusLevelBarTemplate" id="15">
-       				<Size>
-          				  <AbsDimension x="0" y="0" />
-        				</Size>  
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar14" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="0" y="0" />
+                            <AbsDimension x="4" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
             </Button>
             <Button name="CensusPlusLevelBar16" inherits="CensusPlusLevelBarTemplate" id="16">
-       				<Size>
-          				  <AbsDimension x="0" y="0" />
-        				</Size>  
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar15" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="0" y="0" />
+                            <AbsDimension x="4" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
             </Button>
             <Button name="CensusPlusLevelBar17" inherits="CensusPlusLevelBarTemplate" id="17">
-       				<Size>
-          				  <AbsDimension x="0" y="0" />
-        				</Size>  
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar16" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="0" y="0" />
+                            <AbsDimension x="4" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
             </Button>
             <Button name="CensusPlusLevelBar18" inherits="CensusPlusLevelBarTemplate" id="18">
-       				<Size>
-          				  <AbsDimension x="0" y="0" />
-        				</Size>  
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar17" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="0" y="0" />
+                            <AbsDimension x="4" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
             </Button>
             <Button name="CensusPlusLevelBar19" inherits="CensusPlusLevelBarTemplate" id="19">
-       				<Size>
-          				  <AbsDimension x="0" y="0" />
-        				</Size>  
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar18" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="0" y="0" />
+                            <AbsDimension x="4" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
             </Button>
             <Button name="CensusPlusLevelBar20" inherits="CensusPlusLevelBarTemplate" id="20">
                 <Anchors>
- <!--                   <Anchor point="BOTTOMLEFT" relativeTo="CensusPlus" relativePoint="TOPLEFT"> -->
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlus" relativePoint="TOPLEFT">
-                        <Offset>
-                            <AbsDimension x="20" y="-452" />
-                        </Offset>
-                    </Anchor>
-<!--                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar19" relativePoint="BOTTOMRIGHT">
+                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar19" relativePoint="BOTTOMRIGHT">
                         <Offset>
                             <AbsDimension x="4" y="0" />
                         </Offset>
-                    </Anchor>  -->
+                    </Anchor>
                 </Anchors>
             </Button>
             <Button name="CensusPlusLevelBar21" inherits="CensusPlusLevelBarTemplate" id="21">
@@ -2346,554 +2271,8 @@
                         </Offset>
                     </Anchor>
                 </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar61" inherits="CensusPlusLevelBarTemplate" id="61">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar60" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar62" inherits="CensusPlusLevelBarTemplate" id="62">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar61" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar63" inherits="CensusPlusLevelBarTemplate" id="63">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar62" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar64" inherits="CensusPlusLevelBarTemplate" id="64">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar63" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar65" inherits="CensusPlusLevelBarTemplate" id="65">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar64" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar66" inherits="CensusPlusLevelBarTemplate" id="66">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar65" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar67" inherits="CensusPlusLevelBarTemplate" id="67">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar66" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar68" inherits="CensusPlusLevelBarTemplate" id="68">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar67" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar69" inherits="CensusPlusLevelBarTemplate" id="69">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar68" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar70" inherits="CensusPlusLevelBarTemplate" id="70">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar69" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar71" inherits="CensusPlusLevelBarTemplate" id="71">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar70" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar72" inherits="CensusPlusLevelBarTemplate" id="72">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar71" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar73" inherits="CensusPlusLevelBarTemplate" id="73">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar72" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar74" inherits="CensusPlusLevelBarTemplate" id="74">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar73" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar75" inherits="CensusPlusLevelBarTemplate" id="75">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar74" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar76" inherits="CensusPlusLevelBarTemplate" id="76">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar75" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar77" inherits="CensusPlusLevelBarTemplate" id="77">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar76" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar78" inherits="CensusPlusLevelBarTemplate" id="78">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar77" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar79" inherits="CensusPlusLevelBarTemplate" id="79">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar78" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar80" inherits="CensusPlusLevelBarTemplate" id="80">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar79" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar81" inherits="CensusPlusLevelBarTemplate" id="81">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar80" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar82" inherits="CensusPlusLevelBarTemplate" id="82">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar81" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar83" inherits="CensusPlusLevelBarTemplate" id="83">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar82" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar84" inherits="CensusPlusLevelBarTemplate" id="84">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar83" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar85" inherits="CensusPlusLevelBarTemplate" id="85">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar84" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar86" inherits="CensusPlusLevelBarTemplate" id="86">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar85" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar87" inherits="CensusPlusLevelBarTemplate" id="87">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar86" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar88" inherits="CensusPlusLevelBarTemplate" id="88">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar87" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar89" inherits="CensusPlusLevelBarTemplate" id="89">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar88" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar90" inherits="CensusPlusLevelBarTemplate" id="90">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar89" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar91" inherits="CensusPlusLevelBarTemplate" id="91">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar90" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar92" inherits="CensusPlusLevelBarTemplate" id="92">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar91" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar93" inherits="CensusPlusLevelBarTemplate" id="93">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar92" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar94" inherits="CensusPlusLevelBarTemplate" id="94">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar93" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar95" inherits="CensusPlusLevelBarTemplate" id="95">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar94" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar96" inherits="CensusPlusLevelBarTemplate" id="96">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar95" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar97" inherits="CensusPlusLevelBarTemplate" id="97">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar96" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar98" inherits="CensusPlusLevelBarTemplate" id="98">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar97" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar99" inherits="CensusPlusLevelBarTemplate" id="99">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar98" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar100" inherits="CensusPlusLevelBarTemplate" id="100">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar99" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar101" inherits="CensusPlusLevelBarTemplate" id="101">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar100" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar102" inherits="CensusPlusLevelBarTemplate" id="102">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar101" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar103" inherits="CensusPlusLevelBarTemplate" id="103">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar102" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar104" inherits="CensusPlusLevelBarTemplate" id="104">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar103" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar105" inherits="CensusPlusLevelBarTemplate" id="105">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar104" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar106" inherits="CensusPlusLevelBarTemplate" id="106">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar105" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar107" inherits="CensusPlusLevelBarTemplate" id="107">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar106" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar108" inherits="CensusPlusLevelBarTemplate" id="108">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar107" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar109" inherits="CensusPlusLevelBarTemplate" id="109">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar108" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar110" inherits="CensusPlusLevelBarTemplate" id="110">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar109" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-<!-- the following buttons level 111 through level 120 are set to don't display in window
-            <Button name="CensusPlusLevelBar111" inherits="CensusPlusLevelBarTemplate" id="111">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar110" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="0" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar112" inherits="CensusPlusLevelBarTemplate" id="112">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar111" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="0" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar113" inherits="CensusPlusLevelBarTemplate" id="113">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar112" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="0" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar114" inherits="CensusPlusLevelBarTemplate" id="114">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar113" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="0" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar115" inherits="CensusPlusLevelBarTemplate" id="115">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar114" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="0" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar116" inherits="CensusPlusLevelBarTemplate" id="116">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar115" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="0" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar117" inherits="CensusPlusLevelBarTemplate" id="117">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar116" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="0" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar118" inherits="CensusPlusLevelBarTemplate" id="118">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar117" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="0" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar119" inherits="CensusPlusLevelBarTemplate" id="119">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar118" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="0" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBar120" inherits="CensusPlusLevelBarTemplate" id="120">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar119" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="0" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
- -->			
-<!-- the following buttons level 1 through level 19 are set to ZERO Dimension so they don't display in window -->
+            </Button>		
             <Button name="CensusPlusLevelBarEmpty1" inherits="CensusPlusLevelBarEmptyTemplate" id="1">
- 				<Size>
-					<AbsDimension x="0" y="0" />
-				</Size> 
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlus" relativePoint="TOPLEFT">
                         <Offset>
@@ -2903,235 +2282,174 @@
                 </Anchors>
             </Button>
             <Button name="CensusPlusLevelBarEmpty2" inherits="CensusPlusLevelBarEmptyTemplate" id="2">
- 				<Size>
-					<AbsDimension x="0" y="0" />
-				</Size> 
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty1" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="0" y="0" />
+                            <AbsDimension x="4" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
             </Button>
             <Button name="CensusPlusLevelBarEmpty3" inherits="CensusPlusLevelBarEmptyTemplate" id="3">
- 				<Size>
-					<AbsDimension x="0" y="0" />
-				</Size> 
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty2" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="0" y="0" />
+                            <AbsDimension x="4" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
             </Button>
-<!--  end of omitted level buttons from display -->
             <Button name="CensusPlusLevelBarEmpty4" inherits="CensusPlusLevelBarEmptyTemplate" id="4">
- 				<Size>
-					<AbsDimension x="0" y="0" />
-				</Size> 
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty3" relativePoint="BOTTOMRIGHT">
                         <Offset>
-    <!--                        <AbsDimension x="13" y="-452" />  -->
-                           <AbsDimension x="0" y="0" />
+                           <AbsDimension x="4" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
             </Button>
             <Button name="CensusPlusLevelBarEmpty5" inherits="CensusPlusLevelBarEmptyTemplate" id="5">
- 				<Size>
-					<AbsDimension x="0" y="0" />
-				</Size> 
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty4" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="0" y="0" />
+                            <AbsDimension x="4" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
             </Button>
             <Button name="CensusPlusLevelBarEmpty6" inherits="CensusPlusLevelBarEmptyTemplate" id="6">
- 				<Size>
-					<AbsDimension x="0" y="0" />
-				</Size> 
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty5" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="0" y="0" />
+                            <AbsDimension x="4" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
             </Button>
             <Button name="CensusPlusLevelBarEmpty7" inherits="CensusPlusLevelBarEmptyTemplate" id="7">
- 				<Size>
-					<AbsDimension x="0" y="0" />
-				</Size> 
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty6" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="0" y="0" />
+                            <AbsDimension x="4" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
             </Button>
             <Button name="CensusPlusLevelBarEmpty8" inherits="CensusPlusLevelBarEmptyTemplate" id="8">
- 				<Size>
-					<AbsDimension x="0" y="0" />
-				</Size> 
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty7" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="0" y="0" />
+                            <AbsDimension x="4" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
             </Button>
             <Button name="CensusPlusLevelBarEmpty9" inherits="CensusPlusLevelBarEmptyTemplate" id="9">
- 				<Size>
-					<AbsDimension x="0" y="0" />
-				</Size> 
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty8" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="0" y="0" />
+                            <AbsDimension x="4" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
             </Button>
             <Button name="CensusPlusLevelBarEmpty10" inherits="CensusPlusLevelBarEmptyTemplate" id="10">
- 				<Size>
-					<AbsDimension x="0" y="0" />
-				</Size> 
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty9" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="0" y="0" />
+                            <AbsDimension x="4" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
             </Button>
             <Button name="CensusPlusLevelBarEmpty11" inherits="CensusPlusLevelBarEmptyTemplate" id="11">
- 				<Size>
-					<AbsDimension x="0" y="0" />
-				</Size> 
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty10" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="0" y="0" />
+                            <AbsDimension x="4" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
             </Button>
             <Button name="CensusPlusLevelBarEmpty12" inherits="CensusPlusLevelBarEmptyTemplate" id="12">
- 				<Size>
-					<AbsDimension x="0" y="0" />
-				</Size> 
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty11" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="0" y="0" />
+                            <AbsDimension x="4" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
             </Button>
             <Button name="CensusPlusLevelBarEmpty13" inherits="CensusPlusLevelBarEmptyTemplate" id="13">
- 				<Size>
-					<AbsDimension x="0" y="0" />
-				</Size> 
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty12" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="0" y="0" />
+                            <AbsDimension x="4" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
             </Button>
             <Button name="CensusPlusLevelBarEmpty14" inherits="CensusPlusLevelBarEmptyTemplate" id="14">
- 				<Size>
-					<AbsDimension x="0" y="0" />
-				</Size> 
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty13" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="0" y="0" />
+                            <AbsDimension x="4" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
             </Button>
             <Button name="CensusPlusLevelBarEmpty15" inherits="CensusPlusLevelBarEmptyTemplate" id="15">
- 				<Size>
-					<AbsDimension x="0" y="0" />
-				</Size> 
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty14" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="0" y="0" />
+                            <AbsDimension x="4" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
             </Button>
             <Button name="CensusPlusLevelBarEmpty16" inherits="CensusPlusLevelBarEmptyTemplate" id="16">
- 				<Size>
-					<AbsDimension x="0" y="0" />
-				</Size> 
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty15" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="0" y="0" />
+                            <AbsDimension x="4" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
             </Button>
             <Button name="CensusPlusLevelBarEmpty17" inherits="CensusPlusLevelBarEmptyTemplate" id="17">
- 				<Size>
-					<AbsDimension x="0" y="0" />
-				</Size> 
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty16" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="0" y="0" />
+                            <AbsDimension x="4" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
             </Button>
             <Button name="CensusPlusLevelBarEmpty18" inherits="CensusPlusLevelBarEmptyTemplate" id="18">
- 				<Size>
-					<AbsDimension x="0" y="0" />
-				</Size> 
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty17" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="0" y="0" />
+                            <AbsDimension x="4" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
             </Button>
             <Button name="CensusPlusLevelBarEmpty19" inherits="CensusPlusLevelBarEmptyTemplate" id="19">
- 				<Size>
-					<AbsDimension x="0" y="0" />
-				</Size> 
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty18" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="0" y="0" />
+                            <AbsDimension x="4" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
             </Button>
             <Button name="CensusPlusLevelBarEmpty20" inherits="CensusPlusLevelBarEmptyTemplate" id="20">
                 <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlus" relativePoint="TOPLEFT">
-                        <Offset>
-                            <AbsDimension x="20" y="-450" />
-                        </Offset>
-                    </Anchor>
-<!--                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty19" relativePoint="BOTTOMRIGHT">
+                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty19" relativePoint="BOTTOMRIGHT">
                         <Offset>
                             <AbsDimension x="4" y="0" />
                         </Offset>
-                    </Anchor> -->
+                    </Anchor>
                 </Anchors>
             </Button>
             <Button name="CensusPlusLevelBarEmpty21" inherits="CensusPlusLevelBarEmptyTemplate" id="21">
@@ -3494,549 +2812,6 @@
                     </Anchor>
                 </Anchors>
             </Button>
-            <Button name="CensusPlusLevelBarEmpty61" inherits="CensusPlusLevelBarEmptyTemplate" id="61">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty60" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty62" inherits="CensusPlusLevelBarEmptyTemplate" id="62">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty61" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty63" inherits="CensusPlusLevelBarEmptyTemplate" id="63">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty62" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty64" inherits="CensusPlusLevelBarEmptyTemplate" id="64">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty63" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty65" inherits="CensusPlusLevelBarEmptyTemplate" id="65">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty64" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty66" inherits="CensusPlusLevelBarEmptyTemplate" id="66">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty65" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty67" inherits="CensusPlusLevelBarEmptyTemplate" id="67">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty66" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty68" inherits="CensusPlusLevelBarEmptyTemplate" id="68">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty67" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty69" inherits="CensusPlusLevelBarEmptyTemplate" id="69">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty68" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty70" inherits="CensusPlusLevelBarEmptyTemplate" id="70">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty69" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty71" inherits="CensusPlusLevelBarEmptyTemplate" id="71">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty70" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty72" inherits="CensusPlusLevelBarEmptyTemplate" id="72">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty71" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty73" inherits="CensusPlusLevelBarEmptyTemplate" id="73">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty72" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty74" inherits="CensusPlusLevelBarEmptyTemplate" id="74">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty73" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty75" inherits="CensusPlusLevelBarEmptyTemplate" id="75">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty74" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty76" inherits="CensusPlusLevelBarEmptyTemplate" id="76">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty75" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty77" inherits="CensusPlusLevelBarEmptyTemplate" id="77">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty76" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty78" inherits="CensusPlusLevelBarEmptyTemplate" id="78">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty77" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty79" inherits="CensusPlusLevelBarEmptyTemplate" id="79">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty78" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty80" inherits="CensusPlusLevelBarEmptyTemplate" id="80">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty79" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty81" inherits="CensusPlusLevelBarEmptyTemplate" id="81">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty80" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty82" inherits="CensusPlusLevelBarEmptyTemplate" id="82">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty81" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty83" inherits="CensusPlusLevelBarEmptyTemplate" id="83">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty82" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty84" inherits="CensusPlusLevelBarEmptyTemplate" id="84">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty83" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty85" inherits="CensusPlusLevelBarEmptyTemplate" id="85">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty84" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty86" inherits="CensusPlusLevelBarEmptyTemplate" id="86">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty85" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty87" inherits="CensusPlusLevelBarEmptyTemplate" id="87">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty86" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty88" inherits="CensusPlusLevelBarEmptyTemplate" id="88">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty87" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty89" inherits="CensusPlusLevelBarEmptyTemplate" id="89">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty88" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty90" inherits="CensusPlusLevelBarEmptyTemplate" id="90">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty89" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-			<Button name="CensusPlusLevelBarEmpty91" inherits="CensusPlusLevelBarEmptyTemplate" id="91">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty90" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty92" inherits="CensusPlusLevelBarEmptyTemplate" id="92">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty91" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty93" inherits="CensusPlusLevelBarEmptyTemplate" id="93">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty92" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty94" inherits="CensusPlusLevelBarEmptyTemplate" id="94">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty93" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty95" inherits="CensusPlusLevelBarEmptyTemplate" id="95">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty94" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty96" inherits="CensusPlusLevelBarEmptyTemplate" id="96">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty95" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty97" inherits="CensusPlusLevelBarEmptyTemplate" id="97">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty96" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty98" inherits="CensusPlusLevelBarEmptyTemplate" id="98">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty97" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty99" inherits="CensusPlusLevelBarEmptyTemplate" id="99">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty98" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty100" inherits="CensusPlusLevelBarEmptyTemplate" id="100">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty99" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty101" inherits="CensusPlusLevelBarEmptyTemplate" id="101">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty100" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-             <Button name="CensusPlusLevelBarEmpty102" inherits="CensusPlusLevelBarEmptyTemplate" id="102">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty101" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty103" inherits="CensusPlusLevelBarEmptyTemplate" id="103">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty102" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty104" inherits="CensusPlusLevelBarEmptyTemplate" id="104">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty103" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty105" inherits="CensusPlusLevelBarEmptyTemplate" id="105">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty104" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty106" inherits="CensusPlusLevelBarEmptyTemplate" id="106">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty105" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty107" inherits="CensusPlusLevelBarEmptyTemplate" id="107">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty106" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-             <Button name="CensusPlusLevelBarEmpty108" inherits="CensusPlusLevelBarEmptyTemplate" id="108">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty107" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty109" inherits="CensusPlusLevelBarEmptyTemplate" id="109">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty108" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty110" inherits="CensusPlusLevelBarEmptyTemplate" id="110">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty109" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-<!-- the following buttons level 111 through level 120 are set  don't display in window 
-             <Button name="CensusPlusLevelBarEmpty111" inherits="CensusPlusLevelBarEmptyTemplate" id="111">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty110" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-             <Button name="CensusPlusLevelBarEmpty112" inherits="CensusPlusLevelBarEmptyTemplate" id="112">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty111" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty113" inherits="CensusPlusLevelBarEmptyTemplate" id="113">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty112" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty114" inherits="CensusPlusLevelBarEmptyTemplate" id="114">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty113" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty115" inherits="CensusPlusLevelBarEmptyTemplate" id="115">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty114" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty116" inherits="CensusPlusLevelBarEmptyTemplate" id="116">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty115" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty117" inherits="CensusPlusLevelBarEmptyTemplate" id="117">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty116" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-             <Button name="CensusPlusLevelBarEmpty118" inherits="CensusPlusLevelBarEmptyTemplate" id="118">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty117" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty119" inherits="CensusPlusLevelBarEmptyTemplate" id="119">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty118" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusLevelBarEmpty120" inherits="CensusPlusLevelBarEmptyTemplate" id="120">
-                <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty119" relativePoint="BOTTOMRIGHT">
-                        <Offset>
-                            <AbsDimension x="4" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
--->
-
      </Frames>
         <Scripts>
     				<OnLoad function="CensusPlus_OnLoad" />   

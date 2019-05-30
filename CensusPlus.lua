@@ -4106,22 +4106,6 @@ print("realm change "..current_realm)
 		end
 	end
 	
-
---[[  temp fix for 5.0.4 this fix was needed to block display of non-existant levels until the XP came out. ( and will be needed again on the next XP
-	 and for pre WoD
---]]
-	if(MAX_CHARACTER_LEVEL < LATEST_XPAC_LIMIT) then
-		for i = MAX_CHARACTER_LEVEL+1, LATEST_XPAC_LIMIT, 1 do
-		  local height = 1
-			local buttonName = "CensusPlusLevelBar"..i;
-			local buttonEmptyName = "CensusPlusLevelBarEmpty"..i;
-			local button = _G[buttonName];
-			local emptyButton = _G[buttonEmptyName];
-				emptyButton:Hide();
-			button:Hide();
-		end
-	end
-	
 	if( CPp.EnableProfiling ) then
 		CP_profiling_timerdiff = debugprofilestop() - CP_profiling_timerstart
 		CensusPlus_Msg( "PROFILE: Update Levels " .. CP_profiling_timerdiff / 1000000000 );
