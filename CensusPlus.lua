@@ -79,8 +79,8 @@ until MAX_CHARACTER_LEVEL ~= nil
 --print(MAX_CHARACTER_LEVEL)
 --local MAX_CHARACTER_LEVEL = 120;					-- Maximum level a PC can attain  testing only comment out for live
 
-local MIN_CHARACTER_LEVEL = 20;					-- Minimum observed level returned by /who command (undocumented and barely acknowledged.)
-local MAX_WHO_RESULTS = 49;						-- Maximum number of who results the server will return
+local MIN_CHARACTER_LEVEL = 1;					-- Minimum observed level returned by /who command (undocumented and barely acknowledged.)
+local MAX_WHO_RESULTS = 50;						-- Maximum number of who results the server will return
 CensusPlus_GUILDBUTTONSIZEY = 16;				-- pixil height of guild name lines
 local CensusPlus_UPDATEDELAY = 5;				-- Delay time between /who messages
 local CensusPlus_UPDATEDELAY2 = 10			-- Delay time from who request to database updated
@@ -714,7 +714,7 @@ function CP_ProcessWhoEvent(query, result, complete)
 			numWhoResults = MAX_WHO_RESULTS
 		end
 	else
-		numWhoResults = GetNumWhoResults()
+		numWhoResults = C_FriendList.GetNumWhoResults()
 	end
 	
 	if( g_Verbose == true ) then
@@ -2962,7 +2962,7 @@ new process no assumption. process realm, then faction, level, race,class
 	if (CensusPlus_WHOPROCESSOR == CP_libwho) then
 		local numWhoResults = numWhoResults
 	else
-		local numWhoResults =  GetNumWhoResults()
+		local numWhoResults =  C_FriendList.GetNumWhoResults()
 	end
 	
 	if( g_Verbose == true ) then
@@ -3060,7 +3060,14 @@ print(guild)
 				end
 			zone = result[i].Zone
 		else
-			name, guild, level, race, class, zone, group = GetWhoInfo(i);
+			local p = C_FriendList.GetWhoInfo(i);
+			name = p.fullName;
+			guild = p.fullGuildName;
+			level = p.level;
+			race = p.raceStr;
+			class = p.classStr;
+			zone = p.area;
+			group = p.gender;
 				if (CENSUSPlusFemale[race] ~= nil) then
 					race = CENSUSPlusFemale[race];
 				end
@@ -4772,12 +4779,8 @@ end
   ]]
 
 function CensusPlus_DetermineServerDate()
-	local strDate;
-	local weekday, month, day,year;
-	
-	weekday, month, day, year = CalendarGetDate();
-	strDate = string.format("%4d-%02d-%02d", year, month, day);
-	return strDate;
+	local curDate = date("*t", GetServerTime());
+	return string.format("%4d-%02d-%02d", curDate.year, curDate.month, curDate.day);
 end
 
 --

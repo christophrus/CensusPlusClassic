@@ -467,17 +467,18 @@ function lib:AskWhoNext()
 			self.Quiet = false
 	
 			if args.whotoui then
-    			self.hooked.SetWhoToUI(args.whotoui)
+    			C_FriendList.SetWhoToUi(args.whotoui)
     		else
-    			self.hooked.SetWhoToUI(args.gui and true or false)
+    			C_FriendList.SetWhoToUi(args.gui and true or false)
 			end
 		else
-			self.hooked.SetWhoToUI(true)
+			
+			C_FriendList.SetWhoToUi(true)
 			self.Quiet = true		
 		end
 
 		dbg("QUERY: "..args.query)
-		self.hooked.SendWho(args.query)
+		C_FriendList.SendWho(args.query)
 	else
 		self.Args = nil
 		self.WhoInProgress = false
@@ -785,10 +786,10 @@ SLASH_WHOLIB_DEBUG1 = '/wholibdebug'
 
 -- functions to hook
 local hooks = {
-	'SendWho',
+	'C_FriendList.SendWho',
 	'WhoFrameEditBox_OnEnterPressed',
 --	'FriendsFrame_OnEvent',
-	'SetWhoToUI',
+	'C_FriendList.SetWhoToUi',
 }
 
 -- hook all functions (which are not yet hooked)
@@ -913,9 +914,17 @@ function lib:ProcessWhoResults()
 	self.Result = self.Result and {}
 
 	local num
-	self.Total, num = GetNumWhoResults()
+	self.Total, num = C_FriendList.GetNumWhoResults()
 	for i=1, num do
-		local charname, guildname, level, race, class, zone, nonlocalclass, sex = GetWhoInfo(i)
+		local p = C_FriendList.GetWhoInfo(i);
+		local charname = p.fullName;
+		local guildname = p.fullGuildName;
+		local level = p.level;
+		local race = p.raceStr;
+		local class = p.classStr;
+		local zone = p.area;
+		local nonlocalclass = p.filename;
+		local sex = p.gender;
 		self.Result[i] = {Name=charname, Guild=guildname, Level=level, Race=race, Class=class, Zone=zone, NoLocaleClass=nonlocalclass, Sex=sex }
 	end
 	
