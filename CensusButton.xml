@@ -1,0 +1,104 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
+	<Script file="CensusButton.lua"/>
+		<Frame name="CensusButtonFrame" parent="UIParent" hidden="true" enableMouse="true" toplevel="true" movable="true" clampedToScreen="true">
+		<Size>
+			<AbsDimension x="32" y="32"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="Minimap" relativePoint="RIGHT">
+				<Offset>
+					<AbsDimension x="-10" y="0"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Frames>
+			<Button name="CensusButton" >
+				<Size>
+					<AbsDimension x="32" y="32"/>
+				</Size>
+			    <Layers>
+					<Layer level="ARTWORK">
+						<Texture name="$parentIcon">
+							<Size>
+								<AbsDimension x="21" y="21"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="7" y="-6"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</Texture>
+					</Layer>
+					<Layer level="OVERLAY">
+						<Texture file="Interface\Minimap\MiniMap-TrackingBorder">
+							<Size>
+								<AbsDimension x="54" y="54"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT" />
+							</Anchors>
+						</Texture>
+					</Layer>
+				</Layers>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Frames>
+					<Frame name="CP_ButtonDropDown" inherits="UIDropDownMenuTemplate" id="1" hidden="true">
+						<Anchors>
+							<Anchor point="TOPLEFT">
+								<Offset>
+									<AbsDimension x="-15" y="20"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+								<OnLoad>
+									UIDropDownMenu_Initialize(CP_ButtonDropDown, CensusPlus_ButtonDropDown_Initialize, "MENU" );
+								</OnLoad>
+						</Scripts>
+					</Frame>
+				</Frames>
+				<NormalTexture file="Interface\Minimap\UI-Minimap-Background"/>
+<!--				<NormalTexture file="Interface\AddOns\CensusPlus\Skin\CensusButton-Up"/> 
+				<PushedTexture file="Interface\AddOns\CensusPlus\Skin\CensusButton-Down"/> -->
+				<PushedTexture file="Interface\AddOns\CensusPlus\Skin\CensusButton-Up"/>
+				<HighlightTexture alphaMode="ADD" file="Interface\Minimap\UI-Minimap-ZoomButton-Highlight"/>
+		<ButtonText name="$parentText"/>
+		<NormalFont style="GameFontNormal"/>
+		<HighlightFont style="GameFontHighlight"/>
+		<DisabledFont style="GameFontDisable"/>
+				<Scripts>
+						<OnLoad>
+								self:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+						</OnLoad>
+		        <OnMouseDown function="CensusPlus_Button_OnMouseDown" />
+						<OnMouseUp>
+								if ( CensusButtonFrame.isMoving ) then
+		               CensusButtonFrame:StopMovingOrSizing();
+		               CensusButtonFrame.isMoving = false;
+               	end
+		        </OnMouseUp>
+						<OnClick function="CensusPlus_Button_OnClick" />
+						<OnEnter>
+								GameTooltip_SetDefaultAnchor(GameTooltip, UIParent);
+								GameTooltip:SetText(CENSUS_BUTTON_TOOLTIP);
+						</OnEnter>
+						<OnLeave>
+								GameTooltip:Hide();
+						</OnLeave>
+				</Scripts>
+			</Button>
+		</Frames>
+		<Scripts>
+			<OnLoad function="CensusButton_OnLoad" />
+			<OnEvent function="CensusButton_OnEvent" />
+		</Scripts>
+	</Frame>
+</Ui>

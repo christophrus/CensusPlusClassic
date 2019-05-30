@@ -1,0 +1,424 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
+	<Script file="CensusPlayerList.lua"/>
+    <Button name="CensusPlusPlayerButtonTemplate" virtual="true">
+        <Size>
+            <AbsDimension x="330" y="16" />
+        </Size>
+        <Layers>
+            <Layer level="BORDER">
+				<FontString name="$parentName" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="88" y="16"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="2" y="-1"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentLevel" inherits="GameFontHighlightSmall" justifyH="CENTER">
+					<Size>
+						<AbsDimension x="26" y="16"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentName" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="2" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentClass" inherits="GameFontHighlightSmall" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="130" y="16"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentLevel" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="22" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentSeen" inherits="GameFontHighlightSmall" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="130" y="16"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentClass" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="22" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+            </Layer>
+        </Layers>
+        <HighlightTexture file="Interface\QuestFrame\UI-QuestTitleHighlight" alphaMode="ADD">
+            <Size>
+                <AbsDimension x="310" y="16" />
+            </Size>
+            <Anchors>
+                <Anchor point="TOP">
+                    <Offset>
+                        <AbsDimension x="0" y="0" />
+                    </Offset>
+                </Anchor>
+            </Anchors>
+        </HighlightTexture>
+        <Scripts>
+						<OnLoad>
+								self:RegisterForClicks( "RightButtonUp");
+						</OnLoad>
+      			<OnClick>
+								CensusPlus_PlayerButton_OnClick(self, button, down);
+								PlaySound(856,"Master");
+						</OnClick>
+        </Scripts>
+    </Button>
+    <Frame name="CP_PlayerListWindow" toplevel="true" enableMouse="true" movable="true" parent="UIParent" hidden="true" frameStrata="DIALOG" >
+        <Size>
+            <AbsDimension x="520" y="400" />
+        </Size>
+        <Anchors>
+			<Anchor point="TOPRIGHT" relativeTo="CensusPlus">
+				<Offset>
+					<AbsDimension x="20" y="0"/>
+				</Offset>
+			</Anchor>
+        </Anchors>
+<!--        <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true"> -->
+        <Backdrop  edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+            <BackgroundInsets>
+                <AbsInset left="11" right="12" top="12" bottom="11" />
+            </BackgroundInsets>
+            <TileSize>
+                <AbsValue val="32" />
+            </TileSize>
+            <EdgeSize>
+                <AbsValue val="32" />
+            </EdgeSize>
+        </Backdrop>
+        <Layers>
+          <Layer level="BACKGROUND">
+				<Texture name="CensusPlayerListBackground" file="Interface\Dialogframe\UI-DialogBox-Background-Dark">
+					<Size>
+						<AbsDimension x="520" y="400" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+                            <Offset>
+                                <AbsDimension x="0" y="0" />
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+				</Texture>
+ 			</Layer>-->
+			<Layer level="ARTWORK">
+				<Texture name="CensusPlayerListFrameHeader" file="Interface\DialogFrame\UI-DialogBox-Header">
+					<Size>
+						<AbsDimension x="296" y="64"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="0" y="12"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<FontString inherits="GameFontNormal" text="CENSUSPLUS_CHARACTERS">
+					<Anchors>
+						<Anchor point="TOP" relativeTo="CensusPlayerListFrameHeader">
+							<Offset>
+								<AbsDimension x="0" y="-14"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+                 <FontString name="CensusPlayerListCol1" inherits="GameFontHighlight" text="NAME">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" relativeTo="CP_PlayerListWindow">
+                            <Offset>
+                                <AbsDimension x="25" y="-27" />
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+                 <FontString name="CensusPlayerListCol2" inherits="GameFontHighlight" text="LEVEL">
+                    <Anchors>
+                        <Anchor point="LEFT" relativeTo="CensusPlayerListCol1">
+                            <Offset>
+                                <AbsDimension x="84" y="0" />
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+                 <FontString name="CensusPlayerListCol3" inherits="GameFontHighlight" text="GuildRealm">
+                    <Anchors>
+                        <Anchor point="LEFT" relativeTo="CensusPlayerListCol2">
+                            <Offset>
+                                <AbsDimension x="50" y="0" />
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+                 <FontString name="CensusPlayerListCol4" inherits="GameFontHighlight" text="Last Seen">
+                    <Anchors>
+                        <Anchor point="LEFT" relativeTo="CensusPlayerListCol3">
+                            <Offset>
+                                <AbsDimension x="154" y="0" />
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+               <FontString name="CensusPlayerListCount" inherits="GameFontHighlight" text="TOTAL CHARS">
+                    <Anchors>
+                        <Anchor point="BOTTOMLEFT" relativeTo="CP_PlayerListWindow">
+                            <Offset>
+                                <AbsDimension x="22" y="20" />
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+			</Layer>            
+        </Layers>
+        <Frames>
+            <Button name="CP_PlayerListCloseButton" inherits="UIPanelCloseButton">
+                <Anchors>
+                    <Anchor point="TOPRIGHT">
+                        <Offset>
+                            <AbsDimension x="-5" y="-5" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+												PlaySound(856,"Master");
+												HideUIPanel(CP_PlayerListWindow);
+										</OnClick>
+                </Scripts>
+            </Button>
+
+            <Button name="CensusPlusPlayerButton1" inherits="CensusPlusPlayerButtonTemplate" id="1">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="CP_PlayerListWindow">
+                        <Offset>
+                            <AbsDimension x="20" y="-42" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="CensusPlusPlayerButton2" inherits="CensusPlusPlayerButtonTemplate" id="2">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="CensusPlusPlayerButton1" relativePoint="BOTTOMLEFT">
+                        <Offset>
+                            <AbsDimension x="0" y="0" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="CensusPlusPlayerButton3" inherits="CensusPlusPlayerButtonTemplate" id="3">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="CensusPlusPlayerButton2" relativePoint="BOTTOMLEFT">
+                        <Offset>
+                            <AbsDimension x="0" y="0" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="CensusPlusPlayerButton4" inherits="CensusPlusPlayerButtonTemplate" id="4">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="CensusPlusPlayerButton3" relativePoint="BOTTOMLEFT">
+                        <Offset>
+                            <AbsDimension x="0" y="0" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="CensusPlusPlayerButton5" inherits="CensusPlusPlayerButtonTemplate" id="5">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="CensusPlusPlayerButton4" relativePoint="BOTTOMLEFT">
+                        <Offset>
+                            <AbsDimension x="0" y="0" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="CensusPlusPlayerButton6" inherits="CensusPlusPlayerButtonTemplate" id="6">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="CensusPlusPlayerButton5" relativePoint="BOTTOMLEFT">
+                        <Offset>
+                            <AbsDimension x="0" y="0" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="CensusPlusPlayerButton7" inherits="CensusPlusPlayerButtonTemplate" id="7">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="CensusPlusPlayerButton6" relativePoint="BOTTOMLEFT">
+                        <Offset>
+                            <AbsDimension x="0" y="0" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="CensusPlusPlayerButton8" inherits="CensusPlusPlayerButtonTemplate" id="8">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="CensusPlusPlayerButton7" relativePoint="BOTTOMLEFT">
+                        <Offset>
+                            <AbsDimension x="0" y="0" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="CensusPlusPlayerButton9" inherits="CensusPlusPlayerButtonTemplate" id="9">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="CensusPlusPlayerButton8" relativePoint="BOTTOMLEFT">
+                        <Offset>
+                            <AbsDimension x="0" y="0" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="CensusPlusPlayerButton10" inherits="CensusPlusPlayerButtonTemplate" id="10">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="CensusPlusPlayerButton9" relativePoint="BOTTOMLEFT">
+                        <Offset>
+                            <AbsDimension x="0" y="0" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>        
+            <Button name="CensusPlusPlayerButton11" inherits="CensusPlusPlayerButtonTemplate" id="11">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="CensusPlusPlayerButton10" relativePoint="BOTTOMLEFT">
+                        <Offset>
+                            <AbsDimension x="0" y="0" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>        
+            <Button name="CensusPlusPlayerButton12" inherits="CensusPlusPlayerButtonTemplate" id="12">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="CensusPlusPlayerButton11" relativePoint="BOTTOMLEFT">
+                        <Offset>
+                            <AbsDimension x="0" y="0" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>        
+            <Button name="CensusPlusPlayerButton13" inherits="CensusPlusPlayerButtonTemplate" id="13">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="CensusPlusPlayerButton12" relativePoint="BOTTOMLEFT">
+                        <Offset>
+                            <AbsDimension x="0" y="0" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>        
+            <Button name="CensusPlusPlayerButton14" inherits="CensusPlusPlayerButtonTemplate" id="14">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="CensusPlusPlayerButton13" relativePoint="BOTTOMLEFT">
+                        <Offset>
+                            <AbsDimension x="0" y="0" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>        
+            <Button name="CensusPlusPlayerButton15" inherits="CensusPlusPlayerButtonTemplate" id="15">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="CensusPlusPlayerButton14" relativePoint="BOTTOMLEFT">
+                        <Offset>
+                            <AbsDimension x="0" y="0" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>        
+            <Button name="CensusPlusPlayerButton16" inherits="CensusPlusPlayerButtonTemplate" id="16">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="CensusPlusPlayerButton15" relativePoint="BOTTOMLEFT">
+                        <Offset>
+                            <AbsDimension x="0" y="0" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>        
+            <Button name="CensusPlusPlayerButton17" inherits="CensusPlusPlayerButtonTemplate" id="17">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="CensusPlusPlayerButton16" relativePoint="BOTTOMLEFT">
+                        <Offset>
+                            <AbsDimension x="0" y="0" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>        
+            <Button name="CensusPlusPlayerButton18" inherits="CensusPlusPlayerButtonTemplate" id="18">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="CensusPlusPlayerButton17" relativePoint="BOTTOMLEFT">
+                        <Offset>
+                            <AbsDimension x="0" y="0" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>        
+            <Button name="CensusPlusPlayerButton19" inherits="CensusPlusPlayerButtonTemplate" id="19">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="CensusPlusPlayerButton18" relativePoint="BOTTOMLEFT">
+                        <Offset>
+                            <AbsDimension x="0" y="0" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>        
+            <Button name="CensusPlusPlayerButton20" inherits="CensusPlusPlayerButtonTemplate" id="20">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="CensusPlusPlayerButton19" relativePoint="BOTTOMLEFT">
+                        <Offset>
+                            <AbsDimension x="0" y="0" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>        
+            <ScrollFrame name="CensusPlusPlayerListScrollFrame" inherits="FauxScrollFrameTemplate">
+                <Size>
+                    <AbsDimension x="476" y="348" />
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="CensusPlusPlayerButton1" relativePoint="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="-10" y="0" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnVerticalScroll>
+												FauxScrollFrame_OnVerticalScroll(self, offset, CensusPlus_GUILDBUTTONSIZEY, CensusPlus_UpdatePlayerListButtons);
+										</OnVerticalScroll>
+                </Scripts>
+            </ScrollFrame>
+        </Frames>
+        <Scripts>
+            <OnShow>
+								CensusPlus_PlayerListOnShow();
+						</OnShow>
+            <OnMouseUp>
+                if ( self.isMoving ) then
+                    self:StopMovingOrSizing();
+                    self.isMoving = false;
+                end
+            </OnMouseUp>
+            <OnMouseDown>
+            		CensusPlus_List_OnMouseDown(self, button)
+            </OnMouseDown>
+            <OnHide>
+                if ( self.isMoving ) then
+                    self:StopMovingOrSizing();
+                    self.isMoving = false;
+                end
+            </OnHide>
+        </Scripts>
+    </Frame>
+</Ui>
