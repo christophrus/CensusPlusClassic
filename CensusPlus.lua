@@ -251,9 +251,6 @@ g_RaceClassList[CENSUSPLUS_WARLOCK]	    = 15;
 g_RaceClassList[CENSUSPLUS_WARRIOR]	    = 16;
 g_RaceClassList[CENSUSPLUS_SHAMAN]		= 17;
 g_RaceClassList[CENSUSPLUS_PALADIN]	    = 18;
-g_RaceClassList[CENSUSPLUS_DEATHKNIGHT] = 30;
-g_RaceClassList[CENSUSPLUS_MONK] = 19;
-g_RaceClassList[CENSUSPLUS_DEMONHUNTER]		= 35;
 
 g_RaceClassList[CENSUSPLUS_DWARF]		= 20;
 g_RaceClassList[CENSUSPLUS_GNOME]		= 21;
@@ -263,18 +260,6 @@ g_RaceClassList[CENSUSPLUS_ORC]		    = 24;
 g_RaceClassList[CENSUSPLUS_TAUREN]		= 25;
 g_RaceClassList[CENSUSPLUS_TROLL]		= 26;
 g_RaceClassList[CENSUSPLUS_UNDEAD]		= 27;
-g_RaceClassList[CENSUSPLUS_DRAENEI]		= 28;
-g_RaceClassList[CENSUSPLUS_BLOODELF]	= 29;
-g_RaceClassList[CENSUSPLUS_WORGEN]		= 32;
-g_RaceClassList[CENSUSPLUS_GOBLIN]		= 31;
-g_RaceClassList[CENSUSPLUS_HPANDAREN]		= 33;  -- Male icon of Ji Firepaw (Houjin faction) Horde
-g_RaceClassList[CENSUSPLUS_APANDAREN]		= 34;  -- Female icon of Aysa Cloudsinger (Tushui faction) Alliance
-g_RaceClassList[CENSUSPLUS_HIGHMOUNTAIN]		= 36; --BfA
-g_RaceClassList[CENSUSPLUS_NIGHTBORNE]		= 37; --BfA
-g_RaceClassList[CENSUSPLUS_ZANDALARI]		= 38; --BfA
-g_RaceClassList[CENSUSPLUS_LIGHTFORGED]		= 39; --BfA
-g_RaceClassList[CENSUSPLUS_VOIDELF]		= 40; --BfA
-g_RaceClassList[CENSUSPLUS_DARKIRON]		= 41; --BfA
 
 CensusPlus_JobQueue.g_TimeDatabase = {};                      -- Time database
 local function CensusPlus_Zero_g_TimeDatabase()
@@ -289,9 +274,6 @@ local function CensusPlus_Zero_g_TimeDatabase()
 	CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_WARRIOR]	    = 0;
 	CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_SHAMAN]		= 0;
 	CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_PALADIN]	    = 0;
-	CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_DEATHKNIGHT]  = 0;
-	CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_MONK]  = 0;
-	CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_DEMONHUNTER]  = 0;
 end
 CensusPlus_Zero_g_TimeDatabase();
 
@@ -299,19 +281,12 @@ CensusPlus_Zero_g_TimeDatabase();
 --  These two DO NOT need to be localized
 local CENSUSPlus_HORDE            = "Horde";
 local CENSUSPlus_ALLIANCE         = "Alliance";
-local CENSUSPlus_NEUTRAL          = "Neutral";
 
 local g_FactionCheck = {};
 g_FactionCheck[CENSUSPLUS_ORC]		= CENSUSPlus_HORDE;
 g_FactionCheck[CENSUSPLUS_TAUREN]	= CENSUSPlus_HORDE;
 g_FactionCheck[CENSUSPLUS_TROLL]	= CENSUSPlus_HORDE;
 g_FactionCheck[CENSUSPLUS_UNDEAD]	= CENSUSPlus_HORDE;
-g_FactionCheck[CENSUSPLUS_BLOODELF]	= CENSUSPlus_HORDE;
-g_FactionCheck[CENSUSPLUS_GOBLIN]	= CENSUSPlus_HORDE;
-g_FactionCheck[CENSUSPLUS_HPANDAREN]	= CENSUSPlus_HORDE;
-g_FactionCheck[CENSUSPLUS_HIGHMOUNTAIN]	= CENSUSPlus_HORDE; --BFA
-g_FactionCheck[CENSUSPLUS_NIGHTBORNE]	= CENSUSPlus_HORDE;
-g_FactionCheck[CENSUSPLUS_ZANDALARI]	= CENSUSPlus_HORDE;
 
 --[[ Pandaren are the first race to be able to select after character creation their faction membership
     Using the assumption that the mysql database schema is based on Server/Name, Name/Faction and Name/Race
@@ -325,12 +300,6 @@ g_FactionCheck[CENSUSPLUS_DWARF]	= CENSUSPlus_ALLIANCE;
 g_FactionCheck[CENSUSPLUS_GNOME]	= CENSUSPlus_ALLIANCE;
 g_FactionCheck[CENSUSPLUS_HUMAN]	= CENSUSPlus_ALLIANCE;
 g_FactionCheck[CENSUSPLUS_NIGHTELF]	= CENSUSPlus_ALLIANCE;
-g_FactionCheck[CENSUSPLUS_DRAENEI]	= CENSUSPlus_ALLIANCE;
-g_FactionCheck[CENSUSPLUS_WORGEN]	= CENSUSPlus_ALLIANCE;
-g_FactionCheck[CENSUSPLUS_APANDAREN]	= CENSUSPlus_ALLIANCE;
-g_FactionCheck[CENSUSPLUS_LIGHTFORGED]	= CENSUSPlus_ALLIANCE; --BfA
-g_FactionCheck[CENSUSPLUS_VOIDELF]		= CENSUSPlus_ALLIANCE; --BfA
-g_FactionCheck[CENSUSPLUS_DARKIRON]		= CENSUSPlus_ALLIANCE; --BfA
 
 
 --[[
