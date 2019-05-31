@@ -2686,8 +2686,8 @@ function CensusPlus_DoTimeCounts()
 --				end
 				local hour, minute = GetGameTime();
 --					CensusPlus_Database["TimesPlus"][realmData][factionData]["" .. hour .. ""] = CensusPlus_JobQueue.g_TimeDatabase;
-				local TimeDataTime = CensusPlus_DetermineServerDate() .. "&" .. hour .. ":" .. minute .. ":00";
-
+				local TimeDataTime = date("!%Y-%m-%d&%H:%M:%S", GetServerTime());
+				
 				CensusPlus_Database["TimesPlus"][MemberRealm][factionGroup][TimeDataTime] =
 				CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_DRUID] .. "&" ..
 				CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_HUNTER] .. "&" ..
@@ -4696,8 +4696,7 @@ end
   ]]
 
 function CensusPlus_DetermineServerDate()
-	local curDate = date("*t", GetServerTime());
-	return string.format("%4d-%02d-%02d", curDate.year, curDate.month, curDate.day);
+	return date("!%Y-%m-%d", GetServerTime())
 end
 
 --
