@@ -67,20 +67,14 @@ local CensusPlus_VERSION_FULL = CensusPlus_VERSION.."."..CensusPlus_SubVersion ;
 local CensusPlus_PTR = GetCVar("portal") == "public-test" and "PTR";	-- enable true for PTR testing  enable false for live use
 local CensusPlus_MAXBARHEIGHT = 128;			-- Length of blue bars
 local CensusPlus_NUMGUILDBUTTONS = 10;			-- How many guild buttons are on the UI?
-local LATEST_XPAC_LIMIT = 110		--WoWL limit
+local LATEST_XPAC_LIMIT = 60		--WoWL limit
 --local LATEST_XPAC_LIMIT = 120		--BfA limit
 local expansions = 15								-- arbitrary number for max expansion packs for WoW
 													-- pulls from Blizzard global data.. maximum possible character level
-repeat 
-  expansions = expansions -1
-  MAX_CHARACTER_LEVEL = MAX_PLAYER_LEVEL_TABLE[expansions]
-until MAX_CHARACTER_LEVEL ~= nil
---print("Max Character Level")
---print(MAX_CHARACTER_LEVEL)
---local MAX_CHARACTER_LEVEL = 120;					-- Maximum level a PC can attain  testing only comment out for live
 
+local MAX_CHARACTER_LEVEL = 60;					-- Maximum level a PC can attain  testing only comment out for live
 local MIN_CHARACTER_LEVEL = 1;					-- Minimum observed level returned by /who command (undocumented and barely acknowledged.)
-local MAX_WHO_RESULTS = 50;						-- Maximum number of who results the server will return
+local MAX_WHO_RESULTS = 49;						-- Maximum number of who results the server will return
 CensusPlus_GUILDBUTTONSIZEY = 16;				-- pixil height of guild name lines
 local CensusPlus_UPDATEDELAY = 5;				-- Delay time between /who messages
 local CensusPlus_UPDATEDELAY2 = 10			-- Delay time from who request to database updated
@@ -2685,9 +2679,6 @@ function CensusPlus_DoTimeCounts()
 				CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_WARRIOR] .. "&" ..
 				CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_SHAMAN] .. "&" ..
 				CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_PALADIN] .. "&" ..
-				CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_DEATHKNIGHT] .. "&" ..
-				CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_MONK] .. "&" ..
-				CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_DEMONHUNTER] .. "&" ..
 				CensusPlus_WHOPROCESSOR .. ":" .. CensusPlus_JobQueue.g_NumNewCharacters .."," .. CensusPlus_JobQueue.g_NumUpdatedCharacters .."," .. total_time;
 			else		
 --				if (HortonBug == true) then
@@ -2706,10 +2697,7 @@ function CensusPlus_DoTimeCounts()
 				CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_WARLOCK] .. "&" ..
 				CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_WARRIOR] .. "&" ..
 				CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_SHAMAN] .. "&" ..
-				CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_PALADIN] .. "&" ..
-				CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_DEATHKNIGHT] .. "&" ..
-				CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_MONK] .. "&" ..
-				CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_DEMONHUNTER];
+				CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_PALADIN];
 			end
 		end							
 
