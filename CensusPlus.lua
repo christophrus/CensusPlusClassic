@@ -59,8 +59,8 @@ CPp.TZWarningSent = false;  -- not used?
 
 local CensusPlus_Version_Major = "7"; -- changing this number will force a saved data purge
 local CensusPlus_Version_Minor = "1"; -- changing this number will force a saved data purge
-local CensusPlus_Version_Maint = "2";
-local CensusPlus_SubVersion = " >=WoWL7.3.5";
+local CensusPlus_Version_Maint = "2-classic-0.1";
+local CensusPlus_SubVersion = " >=WoWC1.13.2";
 --local CensusPlus_VERSION = "WoD"
 local CensusPlus_VERSION = CensusPlus_Version_Major.."."..CensusPlus_Version_Minor .."."..CensusPlus_Version_Maint; 
 local CensusPlus_VERSION_FULL = CensusPlus_VERSION.."."..CensusPlus_SubVersion ;
@@ -413,8 +413,8 @@ StaticPopupDialogs["CP_CONTINUE_CENSUS"] = {
 --
 ]]
 
-local function InsertJobIntoQueue(job)
---CensusPlus_DumpJob( job );
+local function InsertJobIntoQueue(job) 
+---CensusPlus_DumpJob( job );
 	table.insert(CensusPlus_JobQueue, job);
 end
 
@@ -687,6 +687,7 @@ function CP_ProcessWhoEvent(query, result, complete)
 		local class = g_CurrentJob.m_Class;
 		local zoneLetter = g_CurrentJob.m_zoneLetter;
 		local letter = g_CurrentJob.m_Letter;
+		
 
 		if (minLevel ~= maxLevel) then
 		
@@ -1628,39 +1629,20 @@ function CensusPlus_Load_JobQueue( )
 	--		InsertJobIntoQueue(job)
          --  Modified job listing, let's go in 5 level increments
        --
-	if (MIN_CHARACTER_LEVEL % 10 == 0) then
-		local job = CensusPlus_CreateJob( MIN_CHARACTER_LEVEL, MIN_CHARACTER_LEVEL, nil, nil, nil );
-		InsertJobIntoQueue(job)
-	end
 	
 -- first load queue with jobs in increment of 10 from 1-10 thru max_character_level-19 - max_character_level-10
-			if (MAX_CHARACTER_LEVEL % 10 == 0) then
-			--
-			--
-		for counter = MIN_CHARACTER_LEVEL /10,floor(MAX_CHARACTER_LEVEL /10)-2, 1 do
-        	local job = CensusPlus_CreateJob( counter*10 + 1, counter*10+10, nil, nil, nil );
-        	InsertJobIntoQueue(job);
-      	end
-			else  -- or load queue with jobs in increment of 10 from 1-10 thru max_character_level-14 - max_character_level-5
-      	for counter = MIN_CHARACTER_LEVEL /10,floor(MAX_CHARACTER_LEVEL /10)-1, 1 do
-        	local job = CensusPlus_CreateJob( counter*10 + 1, counter*10+10, nil, nil, nil );
-        	InsertJobIntoQueue(job);
-      	end
-			end			 
+	for counter = MIN_CHARACTER_LEVEL /10,floor(MAX_CHARACTER_LEVEL /10)-1, 1 do
+		local job = CensusPlus_CreateJob( counter*10, counter*10+9, nil, nil, nil );
+		InsertJobIntoQueue(job);
+	end	 
 -- next to last job to load is Max_character_level-9 thrun Max_character_level-1  if Max_character_level modulo 10 = 0
-			if (MAX_CHARACTER_LEVEL % 10 == 0) then      
-      	local job = CensusPlus_CreateJob( MAX_CHARACTER_LEVEL - 9, MAX_CHARACTER_LEVEL - 1, nil, nil, nil );
-       	InsertJobIntoQueue(job);
-      else
--- next to last job to load is Max_character_level-4 thrun Max_character_level-1  if Max_character_level modulo 10 = 5
-      	local job = CensusPlus_CreateJob( MAX_CHARACTER_LEVEL - 4, MAX_CHARACTER_LEVEL - 1, nil, nil, nil );
-       	InsertJobIntoQueue(job);
-      end
+	local job = CensusPlus_CreateJob( MAX_CHARACTER_LEVEL - 9, MAX_CHARACTER_LEVEL - 1, nil, nil, nil );
+	InsertJobIntoQueue(job);
       
 -- last job to load in last in first out queus is MAX_CHARACTER_LEVEL to MAX_CHARACTER_LEVEL
 -- this is one job that will almost always en.d up having to be broken up and reloaded (depending on realm population)       
-			local job = CensusPlus_CreateJob( MAX_CHARACTER_LEVEL, MAX_CHARACTER_LEVEL, nil, nil, nil );
-			InsertJobIntoQueue(job);
+	local job = CensusPlus_CreateJob( MAX_CHARACTER_LEVEL, MAX_CHARACTER_LEVEL, nil, nil, nil );
+	InsertJobIntoQueue(job);
         
 --        for counter = 60, MAX_CHARACTER_LEVEL, 1  d.o
 --			local job = CensusPlus_CreateJob( counter, counter, nil, nil, nil );
@@ -1838,7 +1820,7 @@ function CensusPlus_DumpJob( job )
 	end
 
 	
---CensusPlus_Msg( "JOB DUMP: " .. whoText );	
+---CensusPlus_Msg( "JOB DUMP: " .. whoText );	
 end
 
 --[[	-- Called on events
