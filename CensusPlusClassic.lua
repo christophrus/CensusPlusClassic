@@ -2290,7 +2290,7 @@ function CensusPlus_InitializeVariables()
 
 
 	if( CensusPlus_Database["Info"]["AutoCensus"] == nil ) then
-		CensusPlus_Database["Info"]["AutoCensus"] = false;
+		CensusPlus_Database["Info"]["AutoCensus"] = true;
 	end
 	if( CensusPlus_Database["Info"]["Verbose"] == nil ) then
 		CensusPlus_Database["Info"]["Verbose"] = false;
@@ -6000,7 +6000,7 @@ end
 
 function CensusPlus_ResetConfig()  -- reset to defaults
 
-CensusPlus_Database["Info"]["AutoCensus"] = false
+CensusPlus_Database["Info"]["AutoCensus"] = true
 CensusPlus_PerCharInfo["AutoCensus"] = nil
 CensusPlus_Database["Info"]["Verbose"] = false
 CensusPlus_PerCharInfo["Verbose"] = nil
