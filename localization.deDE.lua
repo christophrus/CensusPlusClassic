@@ -1,5 +1,5 @@
 --[[
-	CensusPlus for World of Warcraft(tm).
+	CensusPlusClassic for World of Warcraft(tm).
 	
 	Copyright 2005 - 2016 Cooper Sellers and WarcraftRealms.com
 
@@ -23,7 +23,7 @@
 
 
 if ( GetLocale() == "deDE" ) then
-CENSUS_BUTTON_TOOLTIP = "CensusPlus öffnen"
+CENSUS_BUTTON_TOOLTIP = "CensusPlusClassic öffnen"
 
 CENSUS_OPTIONS_AUTOCENSUS = "Automatische Zählung"
 
@@ -81,7 +81,7 @@ CENSUSPLUS_BADLOCAL_1 = "Du scheinst eine US Census Version zu nutzen, obwohl de
 
 CENSUSPLUS_BADLOCAL_2 = "Bitte lade keine Daten auf WarcraftRealms bis dies behoben ist."
 
-CENSUSPLUS_BADLOCAL_3 = "Ist dies nicht korrekt, so schildere bitte Bringoutyourdead auf www.WarcraftRealms.com deine Situation, damit er eine Korrektur vornehmen kann."
+CENSUSPLUS_BADLOCAL_3 = "Ist dies nicht korrekt, so schildere bitte Bringoutyourdead auf WoWClassicPopulation.com.com deine Situation, damit er eine Korrektur vornehmen kann."
 
 CENSUSPLUS_BLOODELF = "Blutelf"
 
@@ -153,7 +153,7 @@ CENSUSPLUS_HELP_1 = "Schalte den ausführlichen Modus an/aus"
 
 CENSUSPLUS_HELP_10 = "_ Census+ aktualisiert den Spieler nach einer erfolgreichen Zählung. Dies erfolgt automatisch im Anschluß."
 
-CENSUSPLUS_HELP_11 = "_ Schalte Ruhemodus aus/an - Deaktiviert den ausführlichen Modus und alle CensusPlus Chat Nachrichten."
+CENSUSPLUS_HELP_11 = "_ Schalte Ruhemodus aus/an - Deaktiviert den ausführlichen Modus und alle CensusPlusClassic Chat Nachrichten."
 
 CENSUSPLUS_HELP_2 = "Öffnet das Optionen Fenster"
 
@@ -221,7 +221,7 @@ CENSUSPLUS_OBSOLETEDATAFORMATTEXT = "Altes Datenbankformat gefunden, Datenbank w
 
 CENSUSPLUS_OPTIONS_CHATTYCONFIRM = "Chatty Optionen Bestätigungen - Auswählen um diese zu aktivieren"
 
-CENSUSPLUS_OPTIONS_CHATTY_TOOLTIP = "Aktivieren um die aktuellen gesetzten Optionen im Chat zu sehen - Wird angezeigt wenn das Optionen Fenster geöffnet wird und bei vielen CensusPlus Optionen Änderungen."
+CENSUSPLUS_OPTIONS_CHATTY_TOOLTIP = "Aktivieren um die aktuellen gesetzten Optionen im Chat zu sehen - Wird angezeigt wenn das Optionen Fenster geöffnet wird und bei vielen CensusPlusClassic Optionen Änderungen."
 
 CENSUSPLUS_OPTIONS_HEADER = "Census+ Optionen"
 
@@ -333,13 +333,13 @@ CENSUSPLUS_UNGUILDED = "(Gildenlos)"
 
 CENSUSPLUS_UNKNOWNRACE = "Eine unbekannte Rasse wurde gefunden ( "
 
-CENSUSPLUS_UNKNOWNRACE_ACTION = " ), bitte informiere Bringoutyourdead auf WarcraftRealms.com darüber"
+CENSUSPLUS_UNKNOWNRACE_ACTION = " ), bitte informiere Bringoutyourdead auf WoWClassicPopulation.com darüber"
 
 CENSUSPLUS_UNPAUSE = "Zusammenfassung"
 
 CENSUSPLUS_UNPAUSECENSUS = "Fahre mit der aktuellen Zählung fort."
 
-CENSUSPLUS_UPLOAD = "Vergiss nicht deine Census+ Daten bei www.WarcraftRealms.com hochzuladen!"
+CENSUSPLUS_UPLOAD = "Vergiss nicht deine Census+ Daten bei www.WoWClassicPopulation.com hochzuladen!"
 
 CENSUSPLUS_USAGE = "Benutzung:"
 

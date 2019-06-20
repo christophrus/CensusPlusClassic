@@ -83,7 +83,7 @@
             <AbsDimension x="520" y="400" />
         </Size>
         <Anchors>
-			<Anchor point="TOPRIGHT" relativeTo="CensusPlus">
+			<Anchor point="TOPRIGHT" relativeTo="CensusPlusClassic">
 				<Offset>
 					<AbsDimension x="20" y="0"/>
 				</Offset>

@@ -1,5 +1,5 @@
 --[[
-	CensusPlus for World of Warcraft(tm).
+	CensusPlusClassic for World of Warcraft(tm).
 	
 	Copyright 2005 - 2016 Cooper Sellers and WarcraftRealms.com
 
@@ -24,7 +24,7 @@
 
 if ( GetLocale() == "frFR" ) then
 
-CENSUS_BUTTON_TOOLTIP = "Ouvrir CensusPlus"
+CENSUS_BUTTON_TOOLTIP = "Ouvrir CensusPlusClassic"
 
 CENSUS_OPTIONS_AUTOCENSUS = "Recensement automatique"
 
@@ -82,7 +82,7 @@ CENSUSPLUS_BADLOCAL_1 = "Vous semblez avoir une version US de Census, pourtant v
 
 CENSUSPLUS_BADLOCAL_2 = "Merci de ne pas téléverser de données sur WarcraftRealms jusqu'à ce que ce soit possible."
 
-CENSUSPLUS_BADLOCAL_3 = "Si c'est incorrect, merci d'informer Bringoutyourdead sur www.WarcraftRealms.com de votre problème afin qu'il puisse apporter des corrections."
+CENSUSPLUS_BADLOCAL_3 = "Si c'est incorrect, merci d'informer Bringoutyourdead sur WoWClassicPopulation.com de votre problème afin qu'il puisse apporter des corrections."
 
 CENSUSPLUS_BLOODELF = "Elfe de sang"
 
@@ -114,7 +114,7 @@ CENSUSPLUS_CONNECTED = "Connecté :"
 
 CENSUSPLUS_CONNECTED2 = "Connexions additionnelles :"
 
-CENSUSPLUS_CONNECTEDREALMSFOUND = "CensusPlus a trouvé les royaumes interconnectés suivants"
+CENSUSPLUS_CONNECTEDREALMSFOUND = "CensusPlusClassic a trouvé les royaumes interconnectés suivants"
 
 CENSUSPLUS_CONSECUTIVE = "Recensement consécutif :"
 
@@ -153,9 +153,9 @@ CENSUSPLUS_HELP_0 = "commande suivante comme indiquée ci-dessous"
 
 CENSUSPLUS_HELP_1 = "_ Activer/désactiver le mode verbeux "
 
-CENSUSPLUS_HELP_10 = "_ Fait une mise à jour du recensement du joueur uniquement. C'est fait automatiquement quand l'analyse /CensusPlus se termine."
+CENSUSPLUS_HELP_10 = "_ Fait une mise à jour du recensement du joueur uniquement. C'est fait automatiquement quand l'analyse /CensusPlusClassic se termine."
 
-CENSUSPLUS_HELP_11 = " _ Active/désactive le mode furtif - désactive le verbeux et tous les messages chat de CensusPlus"
+CENSUSPLUS_HELP_11 = " _ Active/désactive le mode furtif - désactive le verbeux et tous les messages chat de CensusPlusClassic"
 
 CENSUSPLUS_HELP_2 = "_ Affiche la fenêtre d'options"
 
@@ -223,7 +223,7 @@ CENSUSPLUS_OBSOLETEDATAFORMATTEXT = "Ancien format de base de données trouvé, 
 
 CENSUSPLUS_OPTIONS_CHATTYCONFIRM = "Confirmation d'option de bavardage - cocher pour activer"
 
-CENSUSPLUS_OPTIONS_CHATTY_TOOLTIP = "Activer le chat pour afficher les paramètres actuels des options - apparaît lors de l'ouverture de la fenêtre des options d'interface et des nombreux changements d'options CensusPlus"
+CENSUSPLUS_OPTIONS_CHATTY_TOOLTIP = "Activer le chat pour afficher les paramètres actuels des options - apparaît lors de l'ouverture de la fenêtre des options d'interface et des nombreux changements d'options CensusPlusClassic"
 
 CENSUSPLUS_OPTIONS_HEADER = "Options Census+"
 
@@ -295,7 +295,7 @@ CENSUSPLUS_STEALTHON = "Mode furtif : ACTIVÉ"
 
 CENSUSPLUS_STOP = "Arrêter"
 
-CENSUSPLUS_STOPCENSUS_TOOLTIP = "Arrêter le recensement CensusPlus en cours"
+CENSUSPLUS_STOPCENSUS_TOOLTIP = "Arrêter le recensement CensusPlusClassic en cours"
 
 CENSUSPLUS_TAKE = "Recenser"
 
@@ -339,7 +339,7 @@ CENSUSPLUS_UNPAUSE = "Reprendre"
 
 CENSUSPLUS_UNPAUSECENSUS = "Reprendre le recensement en cours"
 
-CENSUSPLUS_UPLOAD = "Assurez-vous de téléverser vos données CensusPlus sur www.WarcraftRealms.com !"
+CENSUSPLUS_UPLOAD = "Assurez-vous de téléverser vos données CensusPlusClassic sur WoWClassicPopulation.com !"
 
 CENSUSPLUS_USAGE = "Utilisation :"
 

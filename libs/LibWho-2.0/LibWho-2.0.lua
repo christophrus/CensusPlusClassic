@@ -911,6 +911,7 @@ function lib:WHO_LIST_UPDATE()
 end
 
 function lib:ProcessWhoResults()
+	if self.Result == nil then return end
 	self.Result = self.Result and {}
 
 	local num

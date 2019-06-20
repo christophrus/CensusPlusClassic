@@ -66,9 +66,9 @@
 					</Frame>
 				</Frames>
 				<NormalTexture file="Interface\Minimap\UI-Minimap-Background"/>
-<!--				<NormalTexture file="Interface\AddOns\CensusPlus\Skin\CensusButton-Up"/> 
-				<PushedTexture file="Interface\AddOns\CensusPlus\Skin\CensusButton-Down"/> -->
-				<PushedTexture file="Interface\AddOns\CensusPlus\Skin\CensusButton-Up"/>
+<!--				<NormalTexture file="Interface\AddOns\CensusPlusClassic\Skin\CensusButton-Up"/> 
+				<PushedTexture file="Interface\AddOns\CensusPlusClassic\Skin\CensusButton-Down"/> -->
+				<PushedTexture file="Interface\AddOns\CensusPlusClassic\Skin\CensusButton-Up"/>
 				<HighlightTexture alphaMode="ADD" file="Interface\Minimap\UI-Minimap-ZoomButton-Highlight"/>
 		<ButtonText name="$parentText"/>
 		<NormalFont style="GameFontNormal"/>

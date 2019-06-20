@@ -1,4 +1,4 @@
---[[ CensusPlus for World of Warcraft(tm).
+--[[ CensusPlusClassic for World of Warcraft(tm).
 	
 	Copyright 2005 - 2016 Cooper Sellers and WarcraftRealms.com
 
@@ -28,7 +28,7 @@
 --local regionKey = GetCVar("portal") == "public-test" and "PTR" or GetCVar("portal")
 --Note: file layout structured for use with NotePad++ as editor using Lua(WoW) language definition
 
---[[	-- CensusPlus
+--[[	-- CensusPlusClassic
 -- A WoW UI customization by Cooper Sellers
 --
 ]]
@@ -59,7 +59,7 @@ CPp.TZWarningSent = false;  -- not used?
 
 local CensusPlus_Version_Major = "7"; -- changing this number will force a saved data purge
 local CensusPlus_Version_Minor = "1"; -- changing this number will force a saved data purge
-local CensusPlus_Version_Maint = "2-classic-0.1";
+local CensusPlus_Version_Maint = "2-classic-0.2";
 local CensusPlus_SubVersion = " >=WoWC1.13.2";
 --local CensusPlus_VERSION = "WoD"
 local CensusPlus_VERSION = CensusPlus_Version_Major.."."..CensusPlus_Version_Minor .."."..CensusPlus_Version_Maint; 
@@ -100,7 +100,7 @@ local wholib
 --
 ]]
 
-CensusPlus_Database = {};							-- Database of all CensusPlus results
+CensusPlus_Database = {};							-- Database of all CensusPlusClassic results
 -- removed CensusPlus_BGInfo   = {};							--  Battleground info
 CensusPlus_PerCharInfo = {};						--  Per character settings
 CensusPlus_CRealms = {};							-- Connected realms for upload to web site.
@@ -133,15 +133,15 @@ local g_Options_Scope = "AW"		-- options are AW or CO
  CPp.AutoStartTrigger = 15		-- time limiter in minutes if Slider less then this value auto start enabled
 local g_FinishSoundNumber = 1		-- default finish sound.. 
 local g_PlayFinishSound = false		-- mode switch
-local g_CensusPlusInitialized = false;						-- Is CensusPlus initialized?
+local g_CensusPlusInitialized = false;						-- Is CensusPlusClassic initialized?
 local g_CurrentJob = {};						-- Current job being executed
-CPp.IsCensusPlusInProgress = false;			-- Is a CensusPlus in progress?
-local g_CensusPlusPaused = false;               -- Is CensusPlus in progress paused?
-CPp.CensusPlusManuallyPaused = false;       -- Is CensusPlus in progress manually paused?
+CPp.IsCensusPlusInProgress = false;			-- Is a CensusPlusClassic in progress?
+local g_CensusPlusPaused = false;               -- Is CensusPlusClassic in progress paused?
+CPp.CensusPlusManuallyPaused = false;       -- Is CensusPlusClassic in progress manually paused?
 local CensusPlayerOnly = false				-- true if player requests via /census me
 
-CensusPlus_JobQueue.g_NumNewCharacters = 0;					-- How many new characters found this CensusPlus
-CensusPlus_JobQueue.g_NumUpdatedCharacters = 0;				-- How many characters were updated during this CensusPlus
+CensusPlus_JobQueue.g_NumNewCharacters = 0;					-- How many new characters found this CensusPlusClassic
+CensusPlus_JobQueue.g_NumUpdatedCharacters = 0;				-- How many characters were updated during this CensusPlusClassic
 
 local g_MobXPByLevel = {};						-- XP earned for killing
 local g_CharacterXPByLevel = {};				-- XP required to advance through the given level
@@ -552,7 +552,7 @@ end
 --
 ]]
 
-function CensusPlus_OnShow()  -- referenced by CensusPlus.xml
+function CensusPlus_OnShow()  -- referenced by CensusPlusClassic.xml
 	-- Initialize if this is the first OnShow event
 	if g_CensusPlusInitialized and g_VariablesLoaded then
 	CensusPlus_UpdateView();
@@ -564,10 +564,10 @@ end
 ]]
 
 function CensusPlus_Toggle()
-	if ( CensusPlus:IsVisible() ) then
-		CensusPlus:Hide();
+	if ( CensusPlusClassic:IsVisible() ) then
+		CensusPlusClassic:Hide();
 	else
-		CensusPlus:Show();
+		CensusPlusClassic:Show();
 	end
 end
 
@@ -575,17 +575,17 @@ end
 --
 ]]
 
-function CensusPlus_ToggleOptions(self)  -- referenced by CensusPlus.xml
+function CensusPlus_ToggleOptions(self)  -- referenced by CensusPlusClassic.xml
 	PlaySound(856,"Master");
 
 	if ( not InterfaceOptionsFrame:IsShown() ) then
 		InterfaceOptionsFrame:Show();
 	end
-	InterfaceOptionsFrame_OpenToCategory("CensusPlus")
+	InterfaceOptionsFrame_OpenToCategory("CensusPlusClassic")
 --		CensusPlusSetCheckButtonState()
 end
 
-function CensusPlus_OnLoad(self)  -- referenced by CensusPlus.xml
+function CensusPlus_OnLoad(self)  -- referenced by CensusPlusClassic.xml
 	
 	--[[		-- Update the version number
 	--
@@ -618,7 +618,7 @@ function CensusPlus_OnLoad(self)  -- referenced by CensusPlus.xml
  -- SLASH_CensusPlusVerbose1 = "/censusverbose";
  -- SlashCmdList["CensusPlusVerbose"] = CensusPlus_Verbose_toggle("alter");
 
- 	SLASH_CensusPlusCMD1 = "/CensusPlus";
+ 	SLASH_CensusPlusCMD1 = "/CensusPlusClassic";
 	SLASH_CensusPlusCMD2 = "/Census+";
 	SLASH_CensusPlusCMD3 = "/Census";
 	SlashCmdList["CensusPlusCMD"] = CensusPlus_Command;
@@ -792,7 +792,7 @@ function CP_ProcessWhoEvent(query, result, complete)
 	end
 end
   
---[[	-- CensusPlus Friends Frame override to stop the window close sound
+--[[	-- CensusPlusClassic Friends Frame override to stop the window close sound
 --
   ]]
   
@@ -800,7 +800,7 @@ local function CensusPlus_FriendsFrame_OnHide()
 	g_Pre_FriendsFrameOnHideOverride();
 end
 
---[[	-- CensusPlus Friends Frame override to stop the window close sound
+--[[	-- CensusPlusClassic Friends Frame override to stop the window close sound
 --
   ]]
   
@@ -808,7 +808,7 @@ local function CensusPlus_FriendsFrame_OnShow()
 	g_Pre_FriendsFrameOnShowOverride();
 end
 
---[[	-- CensusPlus command
+--[[	-- CensusPlusClassic command
 --
   ]]
   
@@ -1150,7 +1150,7 @@ function CensusPlus_FinishSound_toggle(state)
 	end
 end
 
---[[	-- CensusPlus Auto Census set flag
+--[[	-- CensusPlusClassic Auto Census set flag
 --
   ]]
   
@@ -1198,28 +1198,28 @@ function CensusPlus_AutoCensus_toggle(state)
 	end
 end
 
---[[	-- CensusPlus Display Usage
+--[[	-- CensusPlusClassic Display Usage
 --
   ]]
   
 function CensusPlus_DisplayUsage()
 --    local text;
 
-		CensusPlus:Show();
+		CensusPlusClassic:Show();
 	local stealthUsage = g_stealth
 	g_stealth = false
-    CensusPlus_Msg( CENSUSPLUS_USAGE.."\n  /CensusPlus".. CENSUSPLUS_OR.. "/Census+ "..CENSUSPLUS_OR.. "/Census" ..CENSUSPLUS_AND..CENSUSPLUS_HELP_0);
-    CensusPlus_Msg("  /CensusPlus "..CENSUS_OPTIONS_VERBOSE..CENSUSPLUS_HELP_1);
-    CensusPlus_Msg("  /CensusPlus "..CENSUS_OPTIONS_STEALTH..CENSUSPLUS_HELP_11);
-    CensusPlus_Msg("  /CensusPlus "..CENSUSPLUS_BUTTON_OPTIONS..CENSUSPLUS_HELP_2);
-    CensusPlus_Msg("  /CensusPlus "..CENSUSPLUS_TAKE .. CENSUSPLUS_HELP_3);
-    CensusPlus_Msg("  /CensusPlus "..CENSUSPLUS_STOP .. CENSUSPLUS_HELP_4);
-    CensusPlus_Msg("  /CensusPlus "..CENSUSPLUS_PRUNE .. CENSUSPLUS_HELP_5);
-    CensusPlus_Msg("  /CensusPlus serverprune" .. CENSUSPLUS_HELP_6);
-    CensusPlus_Msg("  /CensusPlus who name"..CENSUSPLUS_HELP_7);
-    CensusPlus_Msg("  /CensusPlus who unguilded 70" .. CENSUSPLUS_HELP_8);
-    CensusPlus_Msg("  /CensusPlus timer X ".. CENSUSPLUS_HELP_9);
-    CensusPlus_Msg("  /CensusPlus me" .. CENSUSPLUS_HELP_10);
+    CensusPlus_Msg( CENSUSPLUS_USAGE.."\n  /CensusPlusClassic".. CENSUSPLUS_OR.. "/Census+ "..CENSUSPLUS_OR.. "/Census" ..CENSUSPLUS_AND..CENSUSPLUS_HELP_0);
+    CensusPlus_Msg("  /CensusPlusClassic "..CENSUS_OPTIONS_VERBOSE..CENSUSPLUS_HELP_1);
+    CensusPlus_Msg("  /CensusPlusClassic "..CENSUS_OPTIONS_STEALTH..CENSUSPLUS_HELP_11);
+    CensusPlus_Msg("  /CensusPlusClassic "..CENSUSPLUS_BUTTON_OPTIONS..CENSUSPLUS_HELP_2);
+    CensusPlus_Msg("  /CensusPlusClassic "..CENSUSPLUS_TAKE .. CENSUSPLUS_HELP_3);
+    CensusPlus_Msg("  /CensusPlusClassic "..CENSUSPLUS_STOP .. CENSUSPLUS_HELP_4);
+    CensusPlus_Msg("  /CensusPlusClassic "..CENSUSPLUS_PRUNE .. CENSUSPLUS_HELP_5);
+    CensusPlus_Msg("  /CensusPlusClassic serverprune" .. CENSUSPLUS_HELP_6);
+    CensusPlus_Msg("  /CensusPlusClassic who name"..CENSUSPLUS_HELP_7);
+    CensusPlus_Msg("  /CensusPlusClassic who unguilded 70" .. CENSUSPLUS_HELP_8);
+    CensusPlus_Msg("  /CensusPlusClassic timer X ".. CENSUSPLUS_HELP_9);
+    CensusPlus_Msg("  /CensusPlusClassic me" .. CENSUSPLUS_HELP_10);
 	g_stealth = stealthUsage
 end
 
@@ -1284,10 +1284,10 @@ end
 --
   ]]
   
-function CensusPlus_OnClickMinimize(self)  -- referenced by CensusPlus.xml
-    if( CensusPlus:IsVisible() ) then
+function CensusPlus_OnClickMinimize(self)  -- referenced by CensusPlusClassic.xml
+    if( CensusPlusClassic:IsVisible() ) then
 --        MiniCensusPlus:Show();
-        CensusPlus:Hide();
+        CensusPlusClassic:Hide();
     end
 end
 
@@ -1295,10 +1295,10 @@ end
 --
   ]]
   
-function CensusPlus_OnClickMaximize(self)  -- referenced by CensusPlus.xml
+function CensusPlus_OnClickMaximize(self)  -- referenced by CensusPlusClassic.xml
     if( MiniCensusPlus:IsVisible() ) then
         MiniCensusPlus:Hide();
-        CensusPlus:Show();
+        CensusPlusClassic:Show();
     end
 end
 
@@ -1306,7 +1306,7 @@ end
 --
   ]]
   
-function CENSUSPLUS_TAKE_OnClick(self)  -- referenced by CensusPlus.xml
+function CENSUSPLUS_TAKE_OnClick(self)  -- referenced by CensusPlusClassic.xml
 	if (CPp.IsCensusPlusInProgress) then
 --      CensusPlus_Msg(CENSUSPLUS_ISINPROGRESS);	
 	    CensusPlus_TogglePause();
@@ -1319,7 +1319,7 @@ end
 --
   ]]
   
-function CENSUSPLUS_TAKE_OnEnter( self, motion )  -- referenced by CensusPlus.xml
+function CENSUSPLUS_TAKE_OnEnter( self, motion )  -- referenced by CensusPlusClassic.xml
   if (motion == true) then
 		if (CPp.IsCensusPlusInProgress) then
 			if (CPp.CensusPlusManuallyPaused) then
@@ -1340,7 +1340,7 @@ function CENSUSPLUS_TAKE_OnEnter( self, motion )  -- referenced by CensusPlus.xm
 	end
 end
 
-function CENSUSPLUS_STOP_OnEnter( self, motion )  -- referenced by CensusPlus.xml
+function CENSUSPLUS_STOP_OnEnter( self, motion )  -- referenced by CensusPlusClassic.xml
   if (motion == true) then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
 			GameTooltip:SetText(CENSUSPLUS_STOPCENSUS_TOOLTIP, 1.0, 1.0, 1.0);
@@ -1393,7 +1393,7 @@ end
 --
   ]]
   
-function CENSUSPLUS_PURGE_OnClick()  -- referenced by CensusPlus.xml
+function CENSUSPLUS_PURGE_OnClick()  -- referenced by CensusPlusClassic.xml
 	StaticPopup_Show ("CP_PURGE_CONFIRM");
 end
 
@@ -1429,7 +1429,7 @@ function CensusPlus_DoPurge()
 	end
 end
 
---[[	-- Take a CensusPlus
+--[[	-- Take a CensusPlusClassic
 --
   ]]
   
@@ -1500,7 +1500,7 @@ if more then x time then dump queues and restart as new start else set below sta
 	  --      CPp.CensusPlusManuallyPaused = false;
 	  --      CensusPlusPauseButton:SetText( CENSUSPLUS_PAUSE );
 	  --  else
-		    -- D.o not initiate a new CensusPlus whi.le one is in progress
+		    -- D.o not initiate a new CensusPlusClassic whi.le one is in progress
 		    CensusPlus_Msg('Census in progress but this message should not have shown');
 	--	    return
 		--  end
@@ -1607,7 +1607,7 @@ if more then x time then dump queues and restart as new start else set below sta
 				CensusPlus_Msg( CENSUSPLUS_USING_WHOLIB );
 				CensusPlus_UPDATEDELAY = 60
 
-			--wholib.RegisterCallback("CensusPlus", "WHOLIB_QUERY_RESULT", CensusPlus_WhoLibEvent)
+			--wholib.RegisterCallback("CensusPlusClassic", "WHOLIB_QUERY_RESULT", CensusPlus_WhoLibEvent)
 			
 			end
 		end
@@ -1654,11 +1654,11 @@ function CensusPlus_Load_JobQueue( )
 --        InsertJobIntoQueue(job);
 end
 
---[[	-- Stop a CensusPlus
+--[[	-- Stop a CensusPlusClassic
 --
   ]]
   
-function CENSUSPLUS_STOPCENSUS( )  -- referenced by CensusPlus.xml
+function CENSUSPLUS_STOPCENSUS( )  -- referenced by CensusPlusClassic.xml
 	if (CPp.IsCensusPlusInProgress) then
         CensusPlusTakeButton:SetText( CENSUSPLUS_TAKE );
         CPp.CensusPlusManuallyPaused = false;
@@ -1827,7 +1827,7 @@ end
 --
   ]]
   
-function CensusPlus_OnEvent(self, event, ...)  -- referenced by CensusPlus.xml
+function CensusPlus_OnEvent(self, event, ...)  -- referenced by CensusPlusClassic.xml
 
   local arg1,arg2,arg3,arg4 = ...;
 	if( arg1 == nil ) then
@@ -1847,7 +1847,7 @@ function CensusPlus_OnEvent(self, event, ...)  -- referenced by CensusPlus.xml
 	-- If we have not been initialized,  nothing
 	--
 	if (g_CensusPlusInitialized == false) then
-		if (( event == "ADDON_LOADED") and (arg1 == "CensusPlus")) then
+		if (( event == "ADDON_LOADED") and (arg1 == "CensusPlusClassic")) then
 			self:UnregisterEvent("ADDON_LOADED")   -- need this or we get hit on all preceeding addon loaded.. including the LOD's
 	    --
 	    --  Initialize our variables
@@ -1897,7 +1897,7 @@ function CensusPlus_OnEvent(self, event, ...)  -- referenced by CensusPlus.xml
 		]]
 
 --[[
-	elseif (( event == "ADDON_LOADED") and (arg1 == "CensusPlus")) then
+	elseif (( event == "ADDON_LOADED") and (arg1 == "CensusPlusClassic")) then
 			self:UnregisterEvent("ADDON_LOADED")   -- need this or we get hit on all preceeding addon loaded.. including the LOD's
 	    --
 	    --  Initialize our variables
@@ -2147,7 +2147,7 @@ function CensusPlus_CollectSightingData(unit)
 	end
 end
 
---[[	-- Initialize our primary save variables --  called when CensusPlus ADDON_LOADED event is fired
+--[[	-- Initialize our primary save variables --  called when CensusPlusClassic ADDON_LOADED event is fired
 --
   ]]
   
@@ -2203,7 +2203,7 @@ function CensusPlus_InitializeVariables()
     CensusPlus_Database["Info"]["Version"] = CensusPlus_VERSION;
 		local g_templang = GetLocale()
 --	local  realmID, name, apiName, rules, locale, battlegroup, region, timezone, connected, latinName = LibStub("LibRealmInfo"):GetRealmInfoByUnit("Player")
-		local  realmID, _, _, _, LRlocal, _, regionKey, _, _, _ = LibStub("LibRealmID"):GetRealmInfoByUnit("Player")
+		-- local  realmID, _, _, _, LRlocal, _, regionKey, _, _, _ = LibStub("LibRealmID"):GetRealmInfoByUnit("Player")
 -- print("realmID = ")
 -- print(realmID)
 -- print("LRlocal =")
@@ -2373,6 +2373,7 @@ function CensusPlus_InitializeVariables()
 	CensusPlusBlizzardOptions()
 	CensusPlusSetCheckButtonState()
 	CPp.FirstLoad = false	-- main table initialized and options initialized
+	CENSUSPLUS_TAKE_OnClick()
 
 --	print("CensusTrigger ".. CPp.AutoStartTrigger)
 --	print("AutoStartTimer "..CPp.AutoStartTimer)
@@ -2381,7 +2382,7 @@ function CensusPlus_InitializeVariables()
 end
 
   
-function CensusPlus_OnUpdate()  -- referenced by CensusPlus.xml
+function CensusPlus_OnUpdate()  -- referenced by CensusPlusClassic.xml
 	if (g_FirstRun) then
 		if(CPp.AutoStartTrigger > CPp.AutoStartTimer) then  
 			if( g_VariablesLoaded  and
@@ -2467,10 +2468,10 @@ function CensusPlus_OnUpdate()  -- referenced by CensusPlus.xml
 					else
 						g_FinishSoundNumber = CensusPlus_PerCharInfo["SoundFile"]
 					end
-					local CPSoundFile = "Interface\\AddOns\\CensusPlus\\Sounds\\CensusComplete"..g_FinishSoundNumber..".ogg"
+					local CPSoundFile = "Interface\\AddOns\\CensusPlusClassic\\Sounds\\CensusComplete"..g_FinishSoundNumber..".ogg"
 					local willplay = PlaySoundFile(CPSoundFile, "Master")
 					if(not willplay) then 
-						local CPSoundFile = "Interface\\AddOns\\CensusPlus\\Sounds\\CensusComplete"..g_FinishSoundNumber..".mp3"
+						local CPSoundFile = "Interface\\AddOns\\CensusPlusClassic\\Sounds\\CensusComplete"..g_FinishSoundNumber..".mp3"
 						PlaySoundFile(CPSoundFile, "Master")
 					end
 					
@@ -2480,10 +2481,10 @@ function CensusPlus_OnUpdate()  -- referenced by CensusPlus.xml
 					else
 						g_FinishSoundNumber = CensusPlus_Database["Info"]["SoundFile"]
 					end
-					local CPSoundFile = "Interface\\AddOns\\CensusPlus\\Sounds\\CensusComplete"..g_FinishSoundNumber..".ogg"
+					local CPSoundFile = "Interface\\AddOns\\CensusPlusClassic\\Sounds\\CensusComplete"..g_FinishSoundNumber..".ogg"
 					local willplay = PlaySoundFile(CPSoundFile, "Master")
 					if(not willplay) then 
-						local CPSoundFile = "Interface\\AddOns\\CensusPlus\\Sounds\\CensusComplete"..g_FinishSoundNumber..".mp3"
+						local CPSoundFile = "Interface\\AddOns\\CensusPlusClassic\\Sounds\\CensusComplete"..g_FinishSoundNumber..".mp3"
 						PlaySoundFile(CPSoundFile, "Master")
 					end
 				end
@@ -3414,7 +3415,7 @@ function CensusPlus_UpdateView()
 	--
 	--  No need to d..o anything if the window is not open
 	--
-	if( not CensusPlus:IsVisible() ) then
+	if( not CensusPlusClassic:IsVisible() ) then
 		return;
 	end
 	
@@ -3791,7 +3792,7 @@ print("realm change "..current_realm)
 			g_RaceClassList[race] = 34
 		end
 		-- ugly but gets the job done.. now figure out why and get rid of this
-		local normalTextureName="Interface\\AddOns\\CensusPlus\\Skin\\CensusPlus_"..g_RaceClassList[race];
+		local normalTextureName="Interface\\AddOns\\CensusPlusClassic\\Skin\\CensusPlus_"..g_RaceClassList[race];
 		
 		
 		local legendName = "CensusPlusRaceLegend"..i;
@@ -3913,7 +3914,7 @@ print("realm change "..current_realm)
 			button:Hide();
 		end
 
-		local normalTextureName="Interface\\AddOns\\CensusPlus\\Skin\\CensusPlus_"..g_RaceClassList[class];
+		local normalTextureName="Interface\\AddOns\\CensusPlusClassic\\Skin\\CensusPlus_"..g_RaceClassList[class];
 		local legendName = "CensusPlusClassLegend"..i;
 		local legend = _G[legendName];
 		legend:SetNormalTexture(normalTextureName);
@@ -4081,7 +4082,7 @@ end
 --
   ]]
   
-function CensusPlus_OnClickRace( self)  -- referenced by CensusPlus.xml
+function CensusPlus_OnClickRace( self)  -- referenced by CensusPlusClassic.xml
 --  default click is "LeftButton" and up .. no RegisterForClicks used
 	local id = self:GetID();
 	if (id == CPp.RaceSelected) then
@@ -4096,7 +4097,7 @@ end
 --
   ]]
   
-function CensusPlus_OnClickClass( self )  -- referenced by CensusPlus.xml
+function CensusPlus_OnClickClass( self )  -- referenced by CensusPlusClassic.xml
 --  default click is "LeftButton" and up .. no RegisterForClicks used
 	local id = self:GetID();
 	if (id == CPp.ClassSelected) then
@@ -4112,7 +4113,7 @@ end
 --
   ]]
   
-function CensusPlus_OnLoadLevel(self)  -- referenced by CensusPlus.xml
+function CensusPlus_OnLoadLevel(self)  -- referenced by CensusPlusClassic.xml
 	self:RegisterForClicks("LeftButtonUp","RightButtonUp");
 end
 
@@ -4120,7 +4121,7 @@ end
 --
   ]]
   
-function CensusPlus_OnClickLevel(self, CP_button)  -- referenced by CensusPlus.xml
+function CensusPlus_OnClickLevel(self, CP_button)  -- referenced by CensusPlusClassic.xml
 -- both right and left buttons up registered.
 	local id = self:GetID();
 	if (((CP_button == "LeftButton") and (id == CPp.LevelSelected)) or ((CP_button == "RightButton") and (id + CPp.LevelSelected == 0))) then
@@ -4137,7 +4138,7 @@ end
 --
   ]]
   
-function CensusPlus_OnEnterRace( self, motion)     -- referenced by CensusPlus.xml
+function CensusPlus_OnEnterRace( self, motion)     -- referenced by CensusPlusClassic.xml
   if motion then
 		local factionGroup = UnitFactionGroup("player");
 		local thisFactionRaces = CensusPlus_GetFactionRaces(factionGroup);
@@ -4162,7 +4163,7 @@ end
 --
   ]]
   
-function CensusPlus_OnEnterClass( self, motion )  -- referenced by CensusPlus.xml
+function CensusPlus_OnEnterClass( self, motion )  -- referenced by CensusPlusClassic.xml
   if motion then  
 		local factionGroup = UnitFactionGroup("player");
 		local thisFactionClasses = CensusPlus_GetFactionClasses(factionGroup);
@@ -4187,7 +4188,7 @@ end
 --
   ]]
   
-function CensusPlus_OnEnterLevel( self, motion )  -- referenced by CensusPlus.xml
+function CensusPlus_OnEnterLevel( self, motion )  -- referenced by CensusPlusClassic.xml
   if motion then
 		local id = self:GetID();
 		local count = g_LevelCount[id];
@@ -4208,11 +4209,11 @@ end
 --[[	-- Clicked a Connected Realm button
 --
   ]]
-function CENSUSPLUS_CONNECTEDRealmsButton_OnLoad(self)  -- referenced by CensusPlus.xml
+function CENSUSPLUS_CONNECTEDRealmsButton_OnLoad(self)  -- referenced by CensusPlusClassic.xml
 --	self:RegisterForClicks("LeftButtonUp","RightButtonUp");
 end
   
-function CENSUSPLUS_CONNECTEDRealmsButton_OnClick( self, CP_button)  -- referenced by CensusPlus.xml
+function CENSUSPLUS_CONNECTEDRealmsButton_OnClick( self, CP_button)  -- referenced by CensusPlusClassic.xml
 	local id = self:GetID();
 	if ((CP_button == "LeftButton") and (id == CPp.ConnectedRealmsButton)) then
 		CPp.ConnectedRealmsButton = 0;
@@ -4226,7 +4227,7 @@ end
 --
   ]]
   
-function CensusPlus_GuildButton_OnClick( self)  -- referenced by CensusPlus.xml
+function CensusPlus_GuildButton_OnClick( self)  -- referenced by CensusPlusClassic.xml
 --  default click is "LeftButton" and up .. no RegisterForClicks used
 	local id = self:GetID();
 	local offset = FauxScrollFrame_GetOffset(CensusPlusGuildScrollFrame);
@@ -4328,7 +4329,7 @@ end
 --
   ]]
   
-function CensusPlus_SelectLocale( locale, auto )  -- referenced by CensusPlus.xml
+function CensusPlus_SelectLocale( locale, auto )  -- referenced by CensusPlusClassic.xml
 
 	if( not auto ) then
 		CensusPlus_Msg( LOCALE_INFORMATION..CENSUSPLUS_WAS..CPp.CensusPlusLocale..CENSUSPLUS_NOW..locale );
@@ -4368,7 +4369,7 @@ end
 --
   ]]
   
-function CENSUSPLUS_PRUNEData( nDays, sServer )  -- referenced by CensusPlus.xml
+function CENSUSPLUS_PRUNEData( nDays, sServer )  -- referenced by CensusPlusClassic.xml
 	local conmemcount = #CPp.VRealms
 	local superset = nil
 
@@ -4868,7 +4869,7 @@ end
 
 --[[ this function not correctly setup.. in fact the mini window isn't setup {acutally is is but hidden and off screen}
   ]]
-function CensusPlus_Mini_OnMouseDown( self, mCP_button )  -- referenced by CensusPlus.xml
+function CensusPlus_Mini_OnMouseDown( self, mCP_button )  -- referenced by CensusPlusClassic.xml
                 if ( ( ( not self.isLocked ) or ( self.isLocked == 0 ) ) and ( mCP_button == "LeftButton" ) ) then
                     self:StartMoving();
                     self.isMoving = true;
@@ -4879,7 +4880,7 @@ end
 --                if ( ( ( not self.isLocked ) or ( self.isLocked == 0 ) ) and ( CP_button == "LeftButton" ) ) then
 -- function CensusPlus_Census_OnMouseDown( self )
 
-function CensusPlus_Census_OnMouseDown( self, CP_button )  -- referenced by CensusPlus.xml
+function CensusPlus_Census_OnMouseDown( self, CP_button )  -- referenced by CensusPlusClassic.xml
                 if (  ( not self.isLocked ) or ( self.isLocked == 0 )  ) then
                     self:StartMoving();
                     self.isMoving = true;
@@ -4890,7 +4891,7 @@ function CensusPlusBlizzardOptions()
 
 -- Create main frame for information text
 	CensusPlusOptions = CreateFrame("FRAME", "CensusPlusOptions")
-	CensusPlusOptions.name = GetAddOnMetadata("CensusPlus", "Title")
+	CensusPlusOptions.name = GetAddOnMetadata("CensusPlusClassic", "Title")
 	CensusPlusOptions.default = function (self) CensusPlus_ResetConfig() end
 	CensusPlusOptions.refresh = function (self) CensusPlusSetCheckButtonState() end
 	CensusPlusOptions.cancel = function (self) CensusPlusRestoreSettings() end
@@ -5217,7 +5218,7 @@ CensusPlusOptionsRadioButton_C2c.tooltipText = CENSUS_OPTIONS_CCO_REMOVE_OVERRID
 	CensusPlusCheckButton3Text:SetText(CENSUS_OPTIONS_BUTSHOW)
 	CensusPlusCheckButton3.tooltipText = CENSUS_OPTIONS_BUTSHOW
 
---Create Frame tri-selector button (CO - CensusPlus Button - enable)
+--Create Frame tri-selector button (CO - CensusPlusClassic Button - enable)
 	CensusPlusOptionsRadioButton_C3a = CreateFrame("CheckButton", "CensusPlusOptionsRadioButton_C3a", CensusPlusOptions, "UIRadioButtonTemplate")
 	CensusPlusOptionsRadioButton_C3a:SetHeight(20)
 	CensusPlusOptionsRadioButton_C3a:SetWidth(20)
@@ -5256,7 +5257,7 @@ CensusPlusOptionsRadioButton_C2c.tooltipText = CENSUS_OPTIONS_CCO_REMOVE_OVERRID
 	end)
 	CensusPlusOptionsRadioButton_C3a.tooltipText = ENABLE
 
---Create Frame tri-selector button (CO - CensusPlus Button - disable)
+--Create Frame tri-selector button (CO - CensusPlusClassic Button - disable)
 	CensusPlusOptionsRadioButton_C3b = CreateFrame("CheckButton", "CensusPlusOptionsRadioButton_C3b", CensusPlusOptions, "UIRadioButtonTemplate")
 	CensusPlusOptionsRadioButton_C3b:SetHeight(20)
 	CensusPlusOptionsRadioButton_C3b:SetWidth(20)
@@ -5296,7 +5297,7 @@ CensusPlusOptionsRadioButton_C2c.tooltipText = CENSUS_OPTIONS_CCO_REMOVE_OVERRID
 	end)
 	CensusPlusOptionsRadioButton_C3b.tooltipText = DISABLE
 
---Create Frame tri-selector button (CO - CensusPlus Button - remove)
+--Create Frame tri-selector button (CO - CensusPlusClassic Button - remove)
 	CensusPlusOptionsRadioButton_C3c = CreateFrame("CheckButton", "CensusPlusOptionsRadioButton_C3c", CensusPlusOptions, "UIRadioButtonTemplate")
 	CensusPlusOptionsRadioButton_C3c:SetHeight(20)
 	CensusPlusOptionsRadioButton_C3c:SetWidth(20)
@@ -5842,9 +5843,9 @@ CensusPlusOptionsRadioButton_C2c.tooltipText = CENSUS_OPTIONS_CCO_REMOVE_OVERRID
 	CensusPlusSoundFile1Button:Enable()
 	CensusPlusSoundFile1Button:SetText("1")
 	CensusPlusSoundFile1Button:SetScript("OnClick", function(self)
-		local willplay = PlaySoundFile("Interface\\AddOns\\CensusPlus\\Sounds\\CensusComplete1.ogg", "Master")
+		local willplay = PlaySoundFile("Interface\\AddOns\\CensusPlusClassic\\Sounds\\CensusComplete1.ogg", "Master")
 		if(not willplay) then 
-			PlaySoundFile("Interface\\AddOns\\CensusPlus\\Sounds\\CensusComplete1.mp3", "Master") 
+			PlaySoundFile("Interface\\AddOns\\CensusPlusClassic\\Sounds\\CensusComplete1.mp3", "Master") 
 		end
 		g_FinishSoundNumber = 1
 		if (CensusPlusOptionsRadioButton_C6a:GetChecked()) then 
@@ -5854,7 +5855,7 @@ CensusPlusOptionsRadioButton_C2c.tooltipText = CENSUS_OPTIONS_CCO_REMOVE_OVERRID
 		end
 	end)
 --	CensusPlusSoundFile1Button:SetScript("OnMouseUp", function(self)
---		PlaySoundFile("Interface\\AddOns\\CensusPlus\\Sounds\\CensusComplete1.ogg")
+--		PlaySoundFile("Interface\\AddOns\\CensusPlusClassic\\Sounds\\CensusComplete1.ogg")
 --	end)
 	CensusPlusSoundFile1Button.tooltipText = CENSUS_OPTIONS_SOUNDFILEDEFAULT .."1"
 
@@ -5866,9 +5867,9 @@ CensusPlusOptionsRadioButton_C2c.tooltipText = CENSUS_OPTIONS_CCO_REMOVE_OVERRID
 	CensusPlusSoundFile2Button:Enable()
 	CensusPlusSoundFile2Button:SetText("2")
 	CensusPlusSoundFile2Button:SetScript("OnClick", function(self)
-		local willplay = PlaySoundFile("Interface\\AddOns\\CensusPlus\\Sounds\\CensusComplete2.ogg", "Master")
+		local willplay = PlaySoundFile("Interface\\AddOns\\CensusPlusClassic\\Sounds\\CensusComplete2.ogg", "Master")
 		if(not willplay) then 
-			PlaySoundFile("Interface\\AddOns\\CensusPlus\\Sounds\\CensusComplete2.mp3", "Master") 
+			PlaySoundFile("Interface\\AddOns\\CensusPlusClassic\\Sounds\\CensusComplete2.mp3", "Master") 
 		end
 		g_FinishSoundNumber = 2
 		if (CensusPlusOptionsRadioButton_C6a:GetChecked()) then 
@@ -5878,7 +5879,7 @@ CensusPlusOptionsRadioButton_C2c.tooltipText = CENSUS_OPTIONS_CCO_REMOVE_OVERRID
 		end
 	end)
 --	CensusPlusSoundFile2Button:SetScript("OnMouseUp", function(self)
---		PlaySoundFile("Interface\\AddOns\\CensusPlus\\Sounds\\CensusComplete2.ogg")
+--		PlaySoundFile("Interface\\AddOns\\CensusPlusClassic\\Sounds\\CensusComplete2.ogg")
 --	end)
 	CensusPlusSoundFile2Button.tooltipText = CENSUS_OPTIONS_SOUNDFILEDEFAULT.."2"
 
@@ -5890,9 +5891,9 @@ CensusPlusOptionsRadioButton_C2c.tooltipText = CENSUS_OPTIONS_CCO_REMOVE_OVERRID
 	CensusPlusSoundFile3Button:Enable()
 	CensusPlusSoundFile3Button:SetText("3")
 	CensusPlusSoundFile3Button:SetScript("OnClick", function(self)
-		local willplay = PlaySoundFile("Interface\\AddOns\\CensusPlus\\Sounds\\CensusComplete3.ogg", "Master")
+		local willplay = PlaySoundFile("Interface\\AddOns\\CensusPlusClassic\\Sounds\\CensusComplete3.ogg", "Master")
 		if(not willplay) then 
-			PlaySoundFile("Interface\\AddOns\\CensusPlus\\Sounds\\CensusComplete3.mp3", "Master") 
+			PlaySoundFile("Interface\\AddOns\\CensusPlusClassic\\Sounds\\CensusComplete3.mp3", "Master") 
 		end
 		g_FinishSoundNumber = 3
 		if (CensusPlusOptionsRadioButton_C6a:GetChecked()) then 
@@ -5902,7 +5903,7 @@ CensusPlusOptionsRadioButton_C2c.tooltipText = CENSUS_OPTIONS_CCO_REMOVE_OVERRID
 		end
 	end)
 --	CensusPlusSoundFile3Button:SetScript("OnMouseUp", function(self)
---		PlaySoundFile("Interface\\AddOns\\CensusPlus\\Sounds\\CensusComplete3.ogg")
+--		PlaySoundFile("Interface\\AddOns\\CensusPlusClassic\\Sounds\\CensusComplete3.ogg")
 --	end)
 	CensusPlusSoundFile3Button.tooltipText = CENSUS_OPTIONS_SOUNDFILEDEFAULT.."3"
 
@@ -5931,7 +5932,7 @@ CensusPlusOptionsRadioButton_C2c.tooltipText = CENSUS_OPTIONS_CCO_REMOVE_OVERRID
 	CensusPlusCheckButton7Text:SetText(CENSUS_OPTIONS_LOG_BARS) --
 	CensusPlusCheckButton7.tooltipText = CENSUS_OPTIONS_LOG_BARSTEXT
 
---Create CensusPlus.Background:alpha Slider
+--Create CensusPlusClassic.Background:alpha Slider
 local g_CPWin_background_alpha = 0.5
 	CensusPlusSlider2 = CreateFrame("Slider","CensusPlusSlider2", CensusPlusOptions, "OptionsSliderTemplate")
 	CensusPlusSlider2:SetWidth(100)

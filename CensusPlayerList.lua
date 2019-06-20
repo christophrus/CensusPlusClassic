@@ -1,5 +1,5 @@
 --[[
-	CensusPlus for World of Warcraft(tm).
+	CensusPlusClassic for World of Warcraft(tm).
 	
 	Copyright 2005 - 2006 Cooper Sellers and WarcraftRealms.com
 
@@ -22,7 +22,7 @@
 
 ------------------------------------------------------------------------------------
 --
--- CensusPlus
+-- CensusPlusClassic
 -- A WoW UI customization by Cooper Sellers
 --
 --

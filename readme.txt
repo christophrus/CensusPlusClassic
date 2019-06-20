@@ -1,11 +1,11 @@
-CensusPlus - by Rollie of Bloodscalp aka Cooper Sellers
+CensusPlusClassic - by Rollie of Bloodscalp aka Cooper Sellers
     authorized modifications by Bringoutyourdead at www.warcraftrealms.com
 	
 	
 
   WEBSITE
 
-   http://www.warcraftrealms.com/
+   http://WoWClassicPopulation.com/
 
   VERSION
    7.1.2 - 04/17/2018 - Maintenance release - Localization fixes for various non-English languages concerning new race names.
@@ -28,25 +28,25 @@ CensusPlus - by Rollie of Bloodscalp aka Cooper Sellers
    7.0.5 - 09/18/2017 - Maintenance release - more API change fixes
 	- This version is set for WoW version 7.3
 	- at this time all version 7.0.x Censusplus uploads will be accepted at www.WarcraftRealms.com
-	- ImprovedOptionsFrames addon has not yet been updated (only needs TOC change) .. I have done this update on the copy included with CensusPlus
+	- ImprovedOptionsFrames addon has not yet been updated (only needs TOC change) .. I have done this update on the copy included with CensusPlusClassic
  
   7.0.4 - 08/30/2017 - Recommended Maintenance release - API change fix & TOC change
 	- This version is set for WoW version 7.3
 	- Localization update - German translation for ORC dropped, now using client standard.
 	- at this time all version 7.0.x Censusplus uploads will be accepted at www.WarcraftRealms.com
-	- ImprovedOptionsFrames addon has not yet been updated (only needs TOC change) .. I have done this update on the copy included with CensusPlus
+	- ImprovedOptionsFrames addon has not yet been updated (only needs TOC change) .. I have done this update on the copy included with CensusPlusClassic
 	
   7.0.3 - 03/28/2017 - Maintenance release - TOC change
 	- This version is set for WoW version 7.2
 	- Localization updates for Russian & German.
 	- at this time all version 7.0.x Censusplus uploads will be accepted at www.WarcraftRealms.com
-	- ImprovedOptionsFrames addon has not yet been updated (only needs TOC change) .. I have done this update on the copy included with CensusPlus
+	- ImprovedOptionsFrames addon has not yet been updated (only needs TOC change) .. I have done this update on the copy included with CensusPlusClassic
 	
   7.0.2 - 10/28/2016 - Maintenance release - TOC change
 	- This version is set for WoW version 7.1
 	- Localization updates for Chinese (zhCN), French & German.
 	- at this time all version 7.0.x Censusplus uploads will be accepted at www.WarcraftRealms.com
-	- ImprovedOptionsFrames addon has not yet been updated (only needs TOC change) .. I have done this update on the copy included with CensusPlus
+	- ImprovedOptionsFrames addon has not yet been updated (only needs TOC change) .. I have done this update on the copy included with CensusPlusClassic
 	
   7.0.1 - 08/10/2016 - Maintenance release - update if new changes are important to you.
 	- Fixed Class display order.. both Race and Class process in order from right to left.
@@ -68,7 +68,7 @@ CensusPlus - by Rollie of Bloodscalp aka Cooper Sellers
 	- This probably lead to under counts of Pandaren Shamans on high population realms.
 	- Realms that did not require requeuing on result overflow of /who -r Pandaren would not under count.
 	-
-	- CensusPlus main window Race and Class icon order changed to match current in game character creation screen order.
+	- CensusPlusClassic main window Race and Class icon order changed to match current in game character creation screen order.
 	- Note the correct way to view the race/class icons is from Right to Left, as that is the order they must be processed.
 	- 
 	- This release will purge the main CensusPlus_Database table.
@@ -108,7 +108,7 @@ CensusPlus - by Rollie of Bloodscalp aka Cooper Sellers
    - reidentified new Oceanic realm servers.. moving between US and Oceanic no longer purges local database
    - fixed tooltip problem for the STOP button
   
-  6.2.0 - 10/20/2014  - valid for players using Blizzard's US, EU and TW data centers... Korea and China realms are not currently identified well enough to allow CensusPlus to run.
+  6.2.0 - 10/20/2014  - valid for players using Blizzard's US, EU and TW data centers... Korea and China realms are not currently identified well enough to allow CensusPlusClassic to run.
   
 	- addon graphics completely overhauled.. now allows variable transparency of the addon panels in game.
 	- addon options integrated into standard Blizzard options panel.. with major changes in options
@@ -137,13 +137,13 @@ CensusPlus - by Rollie of Bloodscalp aka Cooper Sellers
   
   6.1.0e - 10/23/2013
   - reworked in game display to handle 'Connected realms'
-     upon character login opening the CensusPlus window will provide minimal information, start a census run with:
+     upon character login opening the CensusPlusClassic window will provide minimal information, start a census run with:
 	   chat line entry -   /census take,
-	   CensusPlus button - right click and selecting Take,
-	   or pressing the Take button in the main CensusPlus window
+	   CensusPlusClassic button - right click and selecting Take,
+	   or pressing the Take button in the main CensusPlusClassic window
 	   
-	 Close, if open, the main CensusPlus window and open it back up again..
-	 by the time you have done this CensusPlus will have learned any connected member realms and will be able to display valid data.
+	 Close, if open, the main CensusPlusClassic window and open it back up again..
+	 by the time you have done this CensusPlusClassic will have learned any connected member realms and will be able to display valid data.
 	 
 	 By default the data displayed is for the superset connected realm. No Guild data will be displayed as this is member realm specific,
 	 all other view limiter options continue to work as normal.
@@ -157,7 +157,7 @@ CensusPlus - by Rollie of Bloodscalp aka Cooper Sellers
 	 You will need to click the new realm selection to cycle back to superset which resets system and then click the realm to reactivate the guild info for the new member realm.
 	 
 	 Bug Fix:
-	 The Pause button in the main CensusPlus window again correctly pauses Census run in progress. Pressing the button again a second time restarts processing.
+	 The Pause button in the main CensusPlusClassic window again correctly pauses Census run in progress. Pressing the button again a second time restarts processing.
 	 
 	 Known Caveats:
 	 Character display does not work at this time.. more work is needed to keep separate characters who have the same name but log in on different realms.
@@ -168,7 +168,7 @@ CensusPlus - by Rollie of Bloodscalp aka Cooper Sellers
 	-- reworked much of the code to be able to handle 'Connected realms' .. and when Blizzard flips the switch to effectively census multiple old realms in a single run
 	-- We now must track the realm information for Guilds (home/creation realm) instead of assuming it is the local realm, this is what triggered the mandatory update.
 	-- Blizzard hasn't been explicitly clear on how they are handling Connected realms... so some coding  for in game display hasn't been completed.. no way to test ..
-	    an update of CensusPlus is in the works for release when Blizzard flips the switch and gives us some data to work against.
+	    an update of CensusPlusClassic is in the works for release when Blizzard flips the switch and gives us some data to work against.
 	
 	-- Modified /Census serverprune  to /Census serverprune X  making it somewhat the inverse of existing /census Prune X
 	--     Prune X  where X is the number of days you want to keep for the current realms data.
@@ -198,7 +198,7 @@ CensusPlus - by Rollie of Bloodscalp aka Cooper Sellers
 
   INTRODUCTION
 
-    CensusPlus came about due to requested changes and desired options
+    CensusPlusClassic came about due to requested changes and desired options
     not present in the original Census UI Mod by Ian Pieragostini.
     
     I spoke with Ian and he has lost interest in World of Warcraft modding
@@ -209,7 +209,7 @@ CensusPlus - by Rollie of Bloodscalp aka Cooper Sellers
     realm and faction.  You could keep this data and combine it with 
     other snapshots to provide greater statistical analysis.
     
-    CensusPlus offers many features above and beyond what the original Census
+    CensusPlusClassic offers many features above and beyond what the original Census
     UI mod provided.  Here follows a list of added features:
     
         -  Abilty to minimize the main census window
@@ -230,13 +230,13 @@ CensusPlus - by Rollie of Bloodscalp aka Cooper Sellers
   USAGE
   
   As of V6.2.0 - 
-	CensusPlus zip now contains two addon directories that need to be copied into your /Interface/addons folder
+	CensusPlusClassic zip now contains two addon directories that need to be copied into your /Interface/addons folder
 	Be sure to delete first any pre-existing folder and files  as new and renamed files are being used.
-		[CensusPlus] is the main folder for CensusPlus
+		[CensusPlusClassic] is the main folder for CensusPlusClassic
 		[ImprovedOptionsFrame] is an optional but highly recommended as it allows you to resize and move the Blizzard Options panel.
   
     Unzip the files into your %World of Warcraft/Interface/AddOns directory.  It
-    should create a CensusPlus directory with the installed files.
+    should create a CensusPlusClassic directory with the installed files.
     
     
     By selecting the Take button from the main census panel, you will initiate a

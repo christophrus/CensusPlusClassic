@@ -1,5 +1,5 @@
 --[[
-	CensusPlus for World of Warcraft(tm).
+	CensusPlusClassic for World of Warcraft(tm).
 	
 	Copyright 2005 - 2012 Cooper Sellers and WarcraftRealms.com
 
@@ -23,7 +23,7 @@
 -- WARNING: Phrase keys "CensusPlus_Found", "CensusPlus_FOUND" evaluate to the same lua identifier "CENSUSPLUS_FOUND". Only the value of "CensusPlus_FOUND" will be used. To fix this, rename one or more of the phrase keys.
 -- translations provided by AxellSlade@CurseForge  marked reviewed by AxellSlade@CurseForge
 if ( GetLocale() == "ptBR" ) then
-CENSUS_BUTTON_TOOLTIP = "Abrir CensusPlus"
+CENSUS_BUTTON_TOOLTIP = "Abrir CensusPlusClassic"
 
 CENSUS_OPTIONS_AUTOCENSUS = "Auto-Census"
 
@@ -79,7 +79,7 @@ CENSUSPLUS_BADLOCAL_1 = "Você parece ter uma versão Census EUA, mas a seu idio
 
 CENSUSPLUS_BADLOCAL_2 = "Por favor, não enviar dados para WarcraftRealms até que o problema tenha sido resolvido."
 
-CENSUSPLUS_BADLOCAL_3 = "Se não estiver correto, por favor deixe Bringoutyourdead saber em www.WarcraftRealms.com sobre a sua situação para que ele possa fazer as correções."
+CENSUSPLUS_BADLOCAL_3 = "Se não estiver correto, por favor deixe Bringoutyourdead saber em WoWClassicPopulation.com sobre a sua situação para que ele possa fazer as correções."
 
 CENSUSPLUS_BLOODELF = "Elfo Sangrento"
 
@@ -111,7 +111,7 @@ CENSUSPLUS_CONNECTED = "Conectado:"
 
 CENSUSPLUS_CONNECTED2 = "Conectado adicional:"
 
-CENSUSPLUS_CONNECTEDREALMSFOUND = "CensusPlus encontrou os seguintes Reinos Conectados"
+CENSUSPLUS_CONNECTEDREALMSFOUND = "CensusPlusClassic encontrou os seguintes Reinos Conectados"
 
 CENSUSPLUS_DEATHKNIGHT = "Cavaleiro da Morte"
 
@@ -147,9 +147,9 @@ CENSUSPLUS_HELP_0 = "seguintes comandos como mostrados abaixo"
 
 CENSUSPLUS_HELP_1 = "_ Alterna modo Verbose ligado/desligado"
 
-CENSUSPLUS_HELP_10 = "_ Atualiza dados Censo do jogador somente... Isto é feito automaticamente quando /CensusPlus take termina."
+CENSUSPLUS_HELP_10 = "_ Atualiza dados Censo do jogador somente... Isto é feito automaticamente quando /CensusPlusClassic take termina."
 
-CENSUSPLUS_HELP_11 = "_ Alterna modo furgivo desligado/ligado - desativa Verbose e todos as mensagens de bate-papo CensusPlus"
+CENSUSPLUS_HELP_11 = "_ Alterna modo furgivo desligado/ligado - desativa Verbose e todos as mensagens de bate-papo CensusPlusClassic"
 
 CENSUSPLUS_HELP_2 = "_ Mostra a tela de Opções"
 
@@ -217,7 +217,7 @@ CENSUSPLUS_OBSOLETEDATAFORMATTEXT = "Formato de Base de Dados antigo encontrado,
 
 CENSUSPLUS_OPTIONS_CHATTYCONFIRM = "Confirmação Opção Tagarela - marque para habilitar"
 
-CENSUSPLUS_OPTIONS_CHATTY_TOOLTIP = "Ativar bate-papo para mostrar configurações de opções atuais - exibido na abertura da janela opções de interface e muitas mudanças de opção CensusPlus"
+CENSUSPLUS_OPTIONS_CHATTY_TOOLTIP = "Ativar bate-papo para mostrar configurações de opções atuais - exibido na abertura da janela opções de interface e muitas mudanças de opção CensusPlusClassic"
 
 CENSUSPLUS_OPTIONS_HEADER = "Opções Census+"
 
@@ -289,7 +289,7 @@ CENSUSPLUS_STEALTHON = "Modo Furtivo : LIGADO"
 
 CENSUSPLUS_STOP = "Parar"
 
-CENSUSPLUS_STOPCENSUS_TOOLTIP = "Parar o CensusPlus ativo atualmente"
+CENSUSPLUS_STOPCENSUS_TOOLTIP = "Parar o CensusPlusClassic ativo atualmente"
 
 CENSUSPLUS_TAKE = "Tomar"
 
@@ -333,7 +333,7 @@ CENSUSPLUS_UNPAUSE = "Continuar"
 
 CENSUSPLUS_UNPAUSECENSUS = "Continuar o censo atual"
 
-CENSUSPLUS_UPLOAD = "Certifique-se de enviar seus dados para CensusPlus em www.WarcraftRealms.com!"
+CENSUSPLUS_UPLOAD = "Certifique-se de enviar seus dados para CensusPlusClassic em WoWClassicPopulation.com!"
 
 CENSUSPLUS_USAGE = "Uso"
 

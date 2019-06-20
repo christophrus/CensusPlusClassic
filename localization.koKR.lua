@@ -1,5 +1,5 @@
 --[[
-	CensusPlus for World of Warcraft(tm).
+	CensusPlusClassic for World of Warcraft(tm).
 	
 	Copyright 2005 - 2012 Cooper Sellers and WarcraftRealms.com
 
@@ -102,7 +102,7 @@ CENSUSPLUS_AUTOCLOSEWHO = "누구 창 자동으로 닫기"
 -- CENSUSPLUS_BADLOCAL_2 = "Please do not upload data to WarcraftRealms until this has been resolved."
 
 -- Missing translation
--- CENSUSPLUS_BADLOCAL_3 = "If this is incorrect, please let Bringoutyourdead know at www.WarcraftRealms.com about your situation so he can make corrections."
+-- CENSUSPLUS_BADLOCAL_3 = "If this is incorrect, please let Bringoutyourdead know at WoWClassicPopulation.com about your situation so he can make corrections."
 
 CENSUSPLUS_BLOODELF = "블러드 엘프"
 
@@ -145,7 +145,7 @@ CENSUSPLUS_CLASS = "직업"
 -- CENSUSPLUS_CONNECTED2 = "Additional Connected:"
 
 -- Missing translation
--- CENSUSPLUS_CONNECTEDREALMSFOUND = "CensusPlus found the following Connected Realms"
+-- CENSUSPLUS_CONNECTEDREALMSFOUND = "CensusPlusClassic found the following Connected Realms"
 
 CENSUSPLUS_DEATHKNIGHT = "죽음의 기사"
 
@@ -185,10 +185,10 @@ CENSUSPLUS_GOBLIN = "고블린"
 -- CENSUSPLUS_HELP_1 = " _ Toggle verbose mode off/on"
 
 -- Missing translation
--- CENSUSPLUS_HELP_10 = " _ Does Census update of player only.. this is done automatically when /CensusPlus take finishes."
+-- CENSUSPLUS_HELP_10 = " _ Does Census update of player only.. this is done automatically when /CensusPlusClassic take finishes."
 
 -- Missing translation
--- CENSUSPLUS_HELP_11 = " _ Toggles stealth mode off/on - disables Verbose and all CensusPlus chat messages."
+-- CENSUSPLUS_HELP_11 = " _ Toggles stealth mode off/on - disables Verbose and all CensusPlusClassic chat messages."
 
 -- Missing translation
 -- CENSUSPLUS_HELP_2 = " _ Brings up the Option window"
@@ -265,7 +265,7 @@ CENSUSPLUS_NOTINFACTION = "중립 진영 -  캐릭터가 없습니다."
 -- CENSUSPLUS_OPTIONS_CHATTYCONFIRM = "Chatty Option confirmation - check to enable"
 
 -- Missing translation
--- CENSUSPLUS_OPTIONS_CHATTY_TOOLTIP = "Enable chat to show current options settings - displays on interface options window opening and many CensusPlus option changes"
+-- CENSUSPLUS_OPTIONS_CHATTY_TOOLTIP = "Enable chat to show current options settings - displays on interface options window opening and many CensusPlusClassic option changes"
 
 CENSUSPLUS_OPTIONS_HEADER = "센서스+ 설정"
 
@@ -396,7 +396,7 @@ CENSUSPLUS_UNPAUSE = "계속"
 
 CENSUSPLUS_UNPAUSECENSUS = "일시중지된 센서스를 계속 진행합니다."
 
-CENSUSPLUS_UPLOAD = " " -- sorry WarcraftRealms.com can not handle multi-byte Korean character set at this time.  "www.WarcraftRealms.com 에서 센서스+ 업데이트를 확인하세요!"
+CENSUSPLUS_UPLOAD = " " -- sorry WarcraftRealms.com can not handle multi-byte Korean character set at this time.  "WoWClassicPopulation.com 에서 센서스+ 업데이트를 확인하세요!"
 
 -- Missing translation
 -- CENSUSPLUS_USAGE = "Usage:"

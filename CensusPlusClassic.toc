@@ -1,7 +1,7 @@
-## Interface: 70300
-## Version: 7.0.
+## Interface: 11302
+## Version: 1.13.2
 ## X-SubVersion: >=WoWL7.3.5
-## Title: CensusPlus
+## Title: CensusPlusClassic
 ## Notes: This AddOn is licenced under the GNU GPL, see GPL.txt for details.
 ## Notes: Collects and displays census information. 
 ## Original Author: Ian Pieragostini
@@ -12,7 +12,7 @@
 ## OptionalDeps: LibWho-2.0, LibStub, CallbackHandler-1.0
 ## SavedVariables: CensusPlus_Database, CensusPlus_CRealms, CensusPlus_Guilds, CensusPlus_JobQueue
 ## SavedVariablesPerCharacter: CensusPlus_PerCharInfo
-## X-Website: http://www.warcraftrealms.com
+## X-Website: http://wowclassicpopulation.com
 
 #@no-lib-strip@
 libs\LibStub\LibStub.lua
@@ -21,6 +21,6 @@ libs\LibWho-2.0\LibWho-2.0.lua
 libs\LibRealmID\LibRealmID.lua
 #@end-no-lib-strip@
 
-CensusPlus.xml
+CensusPlusClassic.xml
 CensusButton.xml
 CensusPlayerList.xml

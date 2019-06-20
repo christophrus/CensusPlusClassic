@@ -8,12 +8,12 @@
 	<Script file="localization.ruRU.lua" />
    <Script file="realmlist_US.lua" />
     <Script file="realmlist_EU.lua" />
-    <Script file="CensusPlus.lua" />
+    <Script file="CensusPlusClassic.lua" />
     <Button name="CensusPlusLegendTemplate" virtual="true">
         <Size>
             <AbsDimension x="32" y="32" />
         </Size>
-        <NormalTexture file="Interface\AddOns\CensusPlus\Skin\CensusPlus_Unknown" />
+        <NormalTexture file="Interface\AddOns\CensusPlusClassic\Skin\CensusPlus_Unknown" />
         <HighlightTexture file="Interface\QuestFrame\UI-QuestTitleHighlight" alphaMode="ADD">
             <Size>
                 <AbsDimension x="32" y="32" />
@@ -48,7 +48,7 @@
         <Size>
             <AbsDimension x="32" y="128" />
         </Size>
-        <NormalTexture file="Interface\AddOns\CensusPlus\Skin\CensusPlus_Bar" />
+        <NormalTexture file="Interface\AddOns\CensusPlusClassic\Skin\CensusPlus_Bar" />
         <Scripts>
             <OnLeave>
 				 				GameTooltip:Hide();
@@ -69,7 +69,7 @@
         <Size>
             <AbsDimension x="15" y="128" />
         </Size>
-        <NormalTexture file="Interface\AddOns\CensusPlus\Skin\CENSUSPLUS_LEVELBar" />
+        <NormalTexture file="Interface\AddOns\CensusPlusClassic\Skin\CENSUSPLUS_LEVELBar" />
         <Scripts>
     		<OnClick function="CensusPlus_OnClickLevel" />
     		<OnLoad function="CensusPlus_OnLoadLevel"/>    
@@ -223,7 +223,7 @@
         </Scripts>
     </Frame>
     
-    <Frame name="CensusPlus" parent="UIParent" hidden="true" enableMouse="true" toplevel="true" movable="true">
+    <Frame name="CensusPlusClassic" parent="UIParent" hidden="true" enableMouse="true" toplevel="true" movable="true">
         <Size>
             <AbsDimension x="1176" y="512" />
         </Size>
@@ -307,7 +307,7 @@
                     </Anchors>
                 </Texture>
 				<Texture file = "Interface\Dialogframe\Dialogframe-Left">  <!-- Left Outer Border -->
-<!--                <Texture file="Interface\AddOns\CensusPlus\Skin\CensusPlus_Window_UltraLeft" alphaMode="ADD"> -->
+<!--                <Texture file="Interface\AddOns\CensusPlusClassic\Skin\CensusPlus_Window_UltraLeft" alphaMode="ADD"> -->
                     <Size>
                         <AbsDimension x="16" y="488" />
                     </Size>
@@ -346,7 +346,7 @@
                     </Anchors>
                 </Texture>
 				<Texture file = "Interface\Dialogframe\Dialogframe-Bot">  <!-- Bottom Outer Border -->
-<!--                <Texture file="Interface\AddOns\CensusPlus\Skin\CensusPlus_Window_UltraLeft" alphaMode="ADD"> -->
+<!--                <Texture file="Interface\AddOns\CensusPlusClassic\Skin\CensusPlus_Window_UltraLeft" alphaMode="ADD"> -->
                     <Size>
 <!--                        <AbsDimension x="1028" y="16" /> -->
                         <AbsDimension x="1148" y="16" />
@@ -359,7 +359,7 @@
                         </Anchor>
                     </Anchors>
                 </Texture>
-				<Texture file = "Interface\AddOns\CensusPlus\Skin\CensusPlus_Window_Top_Shader" >  <!-- Top Shader -->
+				<Texture file = "Interface\AddOns\CensusPlusClassic\Skin\CensusPlus_Window_Top_Shader" >  <!-- Top Shader -->
                     <Size>
 <!--                        <AbsDimension x="1044" y="64" /> -->
                         <AbsDimension x="1144" y="64" />
@@ -799,7 +799,7 @@
             <Layer level="ARTWORK">
                 <FontString name="CensusPlusText" inherits="GameFontHighlight" text="CENSUSPLUS_TEXT">
                     <Anchors>
-                        <Anchor point="TOPLEFT" relativeTo="CensusPlus">
+                        <Anchor point="TOPLEFT" relativeTo="CensusPlusClassic">
                             <Offset>
                                 <AbsDimension x="16" y="-12" />
                             </Offset>
@@ -809,7 +809,7 @@
                 <FontString name="CensusPlusText2" inherits="GameFontHighlight" text="WarcraftRealms.com">
                     <Color r="0.4" g="0.8" b="1.0" />
                     <Anchors>
-                        <Anchor point="TOPLEFT" relativeTo="CensusPlus">
+                        <Anchor point="TOPLEFT" relativeTo="CensusPlusClassic">
                             <Offset>
                                 <AbsDimension x="280" y="-12" />
                             </Offset>
@@ -818,7 +818,7 @@
                 </FontString>
                 <FontString name="CensusPlusRealmName" inherits="GameFontHighlight" text="CENSUSPlus_BUTTON_REALMUNKNOWN">
                     <Anchors>
-                        <Anchor point="TOPLEFT" relativeTo="CensusPlus">
+                        <Anchor point="TOPLEFT" relativeTo="CensusPlusClassic">
                             <Offset>
                                 <AbsDimension x="16" y="-32" />
                             </Offset>
@@ -827,7 +827,7 @@
                 </FontString>
                 <FontString name="CensusPlusConnected" inherits="GameFontHighlight" text="CENSUSPlus_BUTTON_REALMUNKNOWN">
                     <Anchors>
-                        <Anchor point="TOPLEFT" relativeTo="CensusPlus">
+                        <Anchor point="TOPLEFT" relativeTo="CensusPlusClassic">
                             <Offset>
                                 <AbsDimension x="240" y="-32" />
                             </Offset>
@@ -836,7 +836,7 @@
                 </FontString>
                 <FontString name="CensusPlusConnected2" inherits="GameFontHighlight" text="CENSUSPlus_BUTTON_REALMUNKNOWN">
                     <Anchors>
-                        <Anchor point="TOPLEFT" relativeTo="CensusPlus">
+                        <Anchor point="TOPLEFT" relativeTo="CensusPlusClassic">
                             <Offset>
                                 <AbsDimension x="16" y="-460" />
                             </Offset>
@@ -845,7 +845,7 @@
                 </FontString>
                 <FontString name="CensusPlusConnected3" inherits="GameFontHighlight" text="CENSUSPlus_BUTTON_REALMUNKNOWN">
                     <Anchors>
-                        <Anchor point="TOPLEFT" relativeTo="CensusPlus">
+                        <Anchor point="TOPLEFT" relativeTo="CensusPlusClassic">
                             <Offset>
                                 <AbsDimension x="16" y="-480" />
                             </Offset>
@@ -854,7 +854,7 @@
                 </FontString>
 				<FontString name="CensusPlusFactionName" inherits="GameFontHighlight" text="CENSUSPLUS_FACTIONUNKNOWN">
                     <Anchors>
-                        <Anchor point="TOPLEFT" relativeTo="CensusPlus">
+                        <Anchor point="TOPLEFT" relativeTo="CensusPlusClassic">
                             <Offset>
                                 <AbsDimension x="16" y="-48" />
                             </Offset>
@@ -863,7 +863,7 @@
                 </FontString>
                 <FontString name="CensusPlusLocaleName" inherits="GameFontHighlight" text="CENSUSPLUS_LOCALEUNKNOWN">
                     <Anchors>
-                        <Anchor point="TOPLEFT" relativeTo="CensusPlus">
+                        <Anchor point="TOPLEFT" relativeTo="CensusPlusClassic">
                             <Offset>
                                 <AbsDimension x="16" y="-64" />
                             </Offset>
@@ -872,7 +872,7 @@
                 </FontString>
                 <FontString name="CensusPlusTotalCharacters" inherits="GameFontHighlight" text="CENSUSPLUS_TOTALCHAR_0">
                     <Anchors>
-                        <Anchor point="TOPLEFT" relativeTo="CensusPlus">
+                        <Anchor point="TOPLEFT" relativeTo="CensusPlusClassic">
                             <Offset>
                                 <AbsDimension x="240" y="-64" />
                             </Offset>
@@ -881,7 +881,7 @@
                 </FontString>
                 <FontString name="CensusPlusScanProgress" inherits="GameFontHighlight" text="CENSUSPLUS_SCAN_PROGRESS_0">
                     <Anchors>
-                        <Anchor point="TOPLEFT" relativeTo="CensusPlus">
+                        <Anchor point="TOPLEFT" relativeTo="CensusPlusClassic">
                             <Offset>
                                 <AbsDimension x="240" y="-48" />
                             </Offset>
@@ -890,7 +890,7 @@
                 </FontString>
                 <FontString name="CensusPlusConsecutive" inherits="GameFontHighlight" text="CENSUSPLUS_CONSECUTIVE_0">
                     <Anchors>
-                        <Anchor point="TOPLEFT" relativeTo="CensusPlus">
+                        <Anchor point="TOPLEFT" relativeTo="CensusPlusClassic">
                             <Offset>
                                 <AbsDimension x="540" y="-64" />
                             </Offset>
@@ -899,7 +899,7 @@
                 </FontString>
                 <FontString name="CensusPlusTopGuildsTitle" inherits="GameFontHighlight" text="CENSUSPLUS_TOPGUILD">
                     <Anchors>
-                        <Anchor point="TOPLEFT" relativeTo="CensusPlus">
+                        <Anchor point="TOPLEFT" relativeTo="CensusPlusClassic">
                             <Offset>
                                 <AbsDimension x="910" y="-90" />
                             </Offset>
@@ -908,7 +908,7 @@
                 </FontString>
                 <FontString name="CensusPlusRacesTitle" inherits="GameFontHighlight" text="CENSUSPLUS_RACE">
                     <Anchors>
-                        <Anchor point="TOPLEFT" relativeTo="CensusPlus">
+                        <Anchor point="TOPLEFT" relativeTo="CensusPlusClassic">
                             <Offset>
                                 <AbsDimension x="76" y="-90" />
                             </Offset>
@@ -917,7 +917,7 @@
                 </FontString>
                 <FontString name="CensusPlusClassesTitle" inherits="GameFontHighlight" text="CENSUSPLUS_CLASS">
                     <Anchors>
-                        <Anchor point="TOPLEFT" relativeTo="CensusPlus">
+                        <Anchor point="TOPLEFT" relativeTo="CensusPlusClassic">
                             <Offset>
                                 <AbsDimension x="604" y="-90" />
                             </Offset>
@@ -926,7 +926,7 @@
                 </FontString>
                 <FontString name="CensusPlusLevelsTitle" inherits="GameFontHighlight" text="CENSUSPLUS_LEVEL">
                     <Anchors>
-                        <Anchor point="TOPLEFT" relativeTo="CensusPlus">
+                        <Anchor point="TOPLEFT" relativeTo="CensusPlusClassic">
                             <Offset>
                                 <AbsDimension x="500" y="-300" />
                             </Offset>
@@ -938,7 +938,7 @@
         <Frames>
             <Button name="CensusPlusConnectedRealmButton1" inherits="CensusPlusConnectedRealmsTemplate" id="1">
                 <Anchors>
-                    <Anchor point="TOPLEFT" relativeTo="CensusPlus">
+                    <Anchor point="TOPLEFT" relativeTo="CensusPlusClassic">
                         <Offset>
                             <AbsDimension x="68" y="-32" />
                         </Offset>
@@ -947,7 +947,7 @@
             </Button>
             <Button name="CensusPlusConnectedRealmButton2" inherits="CensusPlusConnectedRealmsTemplate" id="2">
                 <Anchors>
-                    <Anchor point="TOPLEFT" relativeTo="CensusPlus">
+                    <Anchor point="TOPLEFT" relativeTo="CensusPlusClassic">
                         <Offset>
                             <AbsDimension x="314" y="-32" />
                         </Offset>
@@ -983,7 +983,7 @@
             </Button>
             <Button name="CensusPlusConnectedRealmButton6" inherits="CensusPlusConnectedRealmsTemplate" id="6">
                 <Anchors>
-                    <Anchor point="TOPLEFT" relativeTo="CensusPlus">
+                    <Anchor point="TOPLEFT" relativeTo="CensusPlusClassic">
                         <Offset>
                             <AbsDimension x="156" y="-460" />
                         </Offset>
@@ -1028,7 +1028,7 @@
             </Button>
              <Button name="CensusPlusConnectedRealmButton11" inherits="CensusPlusConnectedRealmsTemplate" id="11">
                 <Anchors>
-                    <Anchor point="TOPLEFT" relativeTo="CensusPlus">
+                    <Anchor point="TOPLEFT" relativeTo="CensusPlusClassic">
                         <Offset>
                             <AbsDimension x="156" y="-480" />
                         </Offset>
@@ -1076,7 +1076,7 @@
                     <AbsDimension x="128" y="21" />
                 </Size>
                 <Anchors>
-                    <Anchor point="TOPRIGHT" relativeTo="CensusPlus" relativePoint="TOPRIGHT">
+                    <Anchor point="TOPRIGHT" relativeTo="CensusPlusClassic" relativePoint="TOPRIGHT">
                         <Offset>
                             <AbsDimension x="-20" y="-60" />
                         </Offset>
@@ -1088,7 +1088,7 @@
             </Button>
             <Button name="CensusPlusCloseButton" inherits="UIPanelCloseButton">
                 <Anchors>
-                    <Anchor point="TOPRIGHT" relativeTo="CensusPlus" relativePoint="TOPRIGHT">
+                    <Anchor point="TOPRIGHT" relativeTo="CensusPlusClassic" relativePoint="TOPRIGHT">
                         <Offset>
                             <AbsDimension x="0" y="0" />
                         </Offset>
@@ -1100,7 +1100,7 @@
                     <AbsDimension x="128" y="21" />
                 </Size>
                 <Anchors>
-                    <Anchor point="TOPRIGHT" relativeTo="CensusPlus" relativePoint="TOPLEFT">
+                    <Anchor point="TOPRIGHT" relativeTo="CensusPlusClassic" relativePoint="TOPLEFT">
                         <Offset>
                             <AbsDimension x="600" y="-8" />
                         </Offset>
@@ -1206,7 +1206,7 @@
             </Button>
             <Button name="CensusPlusGuildButton1" inherits="CensusPlusGuildButtonTemplate" id="1">
                 <Anchors>
-                    <Anchor point="TOPLEFT" relativeTo="CensusPlus">
+                    <Anchor point="TOPLEFT" relativeTo="CensusPlusClassic">
                         <Offset>
                             <AbsDimension x="892" y="-120" />
                         </Offset>
@@ -1554,7 +1554,7 @@
 
             <Button name="CensusPlusLevelBar1" inherits="CensusPlusLevelBarTemplate" id="1">
                 <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlus" relativePoint="TOPLEFT">
+                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusClassic" relativePoint="TOPLEFT">
                         <Offset>
                             <AbsDimension x="20" y="-452" />
                         </Offset>
@@ -2094,7 +2094,7 @@
             </Button>		
             <Button name="CensusPlusLevelBarEmpty1" inherits="CensusPlusLevelBarEmptyTemplate" id="1">
                 <Anchors>
-                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlus" relativePoint="TOPLEFT">
+                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusClassic" relativePoint="TOPLEFT">
                         <Offset>
                             <AbsDimension x="20" y="-450" />
                         </Offset>

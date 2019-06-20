@@ -1,5 +1,5 @@
 --[[
-	CensusPlus for World of Warcraft(tm).
+	CensusPlusClassic for World of Warcraft(tm).
 	
 	Copyright 2005 - 2012 Cooper Sellers and WarcraftRealms.com
 
@@ -23,7 +23,7 @@
 
 if ( GetLocale() == "ruRU" ) then
 -- Needs review
-CENSUS_BUTTON_TOOLTIP = "Открыть CensusPlus"
+CENSUS_BUTTON_TOOLTIP = "Открыть CensusPlusClassic"
 
 -- Needs review
 CENSUS_OPTIONS_AUTOCENSUS = "Автоперепись"
@@ -113,7 +113,7 @@ CENSUSPLUS_BADLOCAL_1 = "Скорее всего, вы используете а
 CENSUSPLUS_BADLOCAL_2 = "Пожалуйста, не загружайте данные на WarcraftRealms, пока эта проблема не будет решена."
 
 -- Needs review
-CENSUSPLUS_BADLOCAL_3 = "Если это не так, пожалуйста сообщите об этой ситуации Bringoutyourdead на www.WarcraftRealms.com, чтобы он мог внести изменения."
+CENSUSPLUS_BADLOCAL_3 = "Если это не так, пожалуйста сообщите об этой ситуации Bringoutyourdead на WoWClassicPopulation.com, чтобы он мог внести изменения."
 
 -- Needs review
 CENSUSPLUS_BLOODELF = "Эльф крови"
@@ -161,7 +161,7 @@ CENSUSPLUS_CONNECTED = "Объединенные:"
 CENSUSPLUS_CONNECTED2 = "Дополнительные объединенные:"
 
 -- Needs review
-CENSUSPLUS_CONNECTEDREALMSFOUND = "CensusPlus обнаружил следующие объединенные миры"
+CENSUSPLUS_CONNECTEDREALMSFOUND = "CensusPlusClassic обнаружил следующие объединенные миры"
 
 -- Needs review
 CENSUSPLUS_CONSECUTIVE = "Последовательная перепись"
@@ -217,7 +217,7 @@ CENSUSPLUS_HELP_0 = " следующая команда, как показано
 CENSUSPLUS_HELP_1 = " _ Вкл/выкл подробный режим"
 
 -- Needs review
-CENSUSPLUS_HELP_10 = " _ Обновляет данные Census только об игроке.. это происходит автоматически при завершении работы /CensusPlus."
+CENSUSPLUS_HELP_10 = " _ Обновляет данные Census только об игроке.. это происходит автоматически при завершении работы /CensusPlusClassic."
 
 -- Needs review
 CENSUSPLUS_HELP_11 = " _ ВКЛ/ВЫКЛ скрытый режим - отключает подробный режим и все сообщения Census в чате."
@@ -259,7 +259,7 @@ CENSUSPLUS_HUNTER = "Охотник"
 CENSUSPLUS_ISINBG = "Вы находитесь на поле боя, невозможно произвести перепись"
 
 -- Needs review
-CENSUSPLUS_ISINPROGRESS = "CensusPlus работает, попробуйте позже"
+CENSUSPLUS_ISINPROGRESS = "CensusPlusClassic работает, попробуйте позже"
 
 -- Needs review
 CENSUSPLUS_LANGUAGECHANGED = "Язык клиента изменен, база данных удалена."
@@ -313,7 +313,7 @@ CENSUSPLUS_OBSOLETEDATAFORMATTEXT = "Обнаружен старый форма�
 CENSUSPLUS_OPTIONS_CHATTYCONFIRM = "Опция болтливости - выделите, чтобы включить"
 
 -- Needs review
-CENSUSPLUS_OPTIONS_CHATTY_TOOLTIP = "Разрешить показывать в чате текущие настройки - показывается при открытии окна настроек и изменении многих параметров CensusPlus"
+CENSUSPLUS_OPTIONS_CHATTY_TOOLTIP = "Разрешить показывать в чате текущие настройки - показывается при открытии окна настроек и изменении многих параметров CensusPlusClassic"
 
 -- Needs review
 CENSUSPLUS_OPTIONS_HEADER = "Настройки Cencus+"
@@ -421,7 +421,7 @@ CENSUSPLUS_STEALTHON = "Скрытый режим : ВКЛ"
 CENSUSPLUS_STOP = "Остановить"
 
 -- Needs review
-CENSUSPLUS_STOPCENSUS_TOOLTIP = "Остановить текущий процесс CensusPlus"
+CENSUSPLUS_STOPCENSUS_TOOLTIP = "Остановить текущий процесс CensusPlusClassic"
 
 -- Needs review
 CENSUSPLUS_TAKE = "Произвести"
@@ -486,7 +486,7 @@ CENSUSPLUS_UNPAUSE = "Продолжить"
 CENSUSPLUS_UNPAUSECENSUS = "Продолжить текущую перепись"
 
 -- Needs review
-CENSUSPLUS_UPLOAD = " " --- sorry www.WarcraftRealms.com can not handle Cyrillic alphabet. "Загрузите свои данные CensusPlus на www.WarcraftRealms.com!"
+CENSUSPLUS_UPLOAD = " " --- sorry WoWClassicPopulation.com can not handle Cyrillic alphabet. "Загрузите свои данные CensusPlusClassic на WoWClassicPopulation.com!"
 
 -- Needs review
 CENSUSPLUS_USAGE = "Использование:"

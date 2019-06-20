@@ -1,5 +1,5 @@
 --[[
-	CensusPlus for World of Warcraft(tm).
+	CensusPlusClassic for World of Warcraft(tm).
 	
 	Copyright 2005 - 2016 Cooper Sellers and WarcraftRealms.com
 
@@ -82,7 +82,7 @@ CENSUSPLUS_BADLOCAL_1 = "你似乎安装了英文版本的CensusPlus，但你的
 
 CENSUSPLUS_BADLOCAL_2 = "在问题解决之前请不要将数据上传到WarcraftRealms。"
 
-CENSUSPLUS_BADLOCAL_3 = "如果这不正确，请将你的情况反馈给www.WarcraftRealms.com的Bringoutyourdead，他能修正这些错误。"
+CENSUSPLUS_BADLOCAL_3 = "如果这不正确，请将你的情况反馈给WoWClassicPopulation.com的Bringoutyourdead，他能修正这些错误。"
 
 CENSUSPLUS_BLOODELF = "血精灵"
 
@@ -116,7 +116,7 @@ CENSUSPLUS_CONNECTED = "已连接:"
 
 CENSUSPLUS_CONNECTED2 = "额外连接:"
 
-CENSUSPLUS_CONNECTEDREALMSFOUND = "CensusPlus 已发现以下连接的服务器"
+CENSUSPLUS_CONNECTEDREALMSFOUND = "CensusPlusClassic 已发现以下连接的服务器"
 
 CENSUSPLUS_CONSECUTIVE = "连续统计:"
 
@@ -157,7 +157,7 @@ CENSUSPLUS_HELP_1 = " _ 启用/禁用冗余模式"
 -- Missing translation
 -- CENSUSPLUS_HELP_10 = ""
 
-CENSUSPLUS_HELP_11 = " _ 启用/禁用隐身模式，启用会关闭冗余模式并不显示 CensusPlus 所有的聊天信息。"
+CENSUSPLUS_HELP_11 = " _ 启用/禁用隐身模式，启用会关闭冗余模式并不显示 CensusPlusClassic 所有的聊天信息。"
 
 CENSUSPLUS_HELP_2 = " _ 打开选项窗口"
 
@@ -335,7 +335,7 @@ CENSUSPLUS_UNPAUSE = "继续"
 
 CENSUSPLUS_UNPAUSECENSUS = "继续当前的人口统计"
 
-CENSUSPLUS_UPLOAD = "确保将你的人口统计数据上传到www.WarcraftRealms.com!"
+CENSUSPLUS_UPLOAD = "确保将你的人口统计数据上传到WoWClassicPopulation.com!"
 
 CENSUSPLUS_USAGE = "用法:"
 

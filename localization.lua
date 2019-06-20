@@ -1,5 +1,5 @@
 --[[
-	CensusPlus for World of Warcraft(tm).
+	CensusPlusClassic for World of Warcraft(tm).
 	
 	Copyright 2005 - 2016 Cooper Sellers and WarcraftRealms.com
 
@@ -19,7 +19,7 @@
 		Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 ]]
 --print("English localization loading")
-CENSUS_OPTIONS_SOUNDFILEDEFAULT = "CensusPlus\\Sounds\\CensusComplete" -- "Select default SoundFile number "; - DO NOT LOCALIZE
+CENSUS_OPTIONS_SOUNDFILEDEFAULT = "CensusPlusClassic\\Sounds\\CensusComplete" -- "Select default SoundFile number "; - DO NOT LOCALIZE
 CENSUSPlusFemale = { };
 
 	-- Translations start below
@@ -27,7 +27,7 @@ CENSUSPlusFemale = { };
 CENSUSPLUS_TEXT     			 = "Census+";
 
 CENSUSPLUS_MSG1             = " Loaded - type /censusplus or /census+  or /census for valid commands";
-CENSUSPLUS_UPLOAD           = "Be sure to upload your CensusPlus data to www.WarcraftRealms.com!";
+CENSUSPLUS_UPLOAD           = "Be sure to upload your CensusPlusClassic data to WoWClassicPopulation.com!";
 CENSUSPLUS_PAUSE            = "Pause";
 CENSUSPLUS_UNPAUSE          = "Resume";
 CENSUSPLUS_STOP             = "Stop";
@@ -43,8 +43,8 @@ CENSUSPLUS_PURGE_LOCAL_CONFIRM = "Are you sure you wish to PURGE your local data
 CENSUSPLUS_TAKECENSUS       = "Take a census of players \ncurrently online on this server \nand in this faction";
 CENSUSPLUS_PAUSECENSUS      = "Pause the current census";
 CENSUSPLUS_UNPAUSECENSUS    = "Resume the current census";
-CENSUSPLUS_STOPCENSUS_TOOLTIP       = "Stop the currently active CensusPlus";
-CENSUSPLUS_ISINPROGRESS     = "A CensusPlus is in progress, try again later";
+CENSUSPLUS_STOPCENSUS_TOOLTIP       = "Stop the currently active CensusPlusClassic";
+CENSUSPLUS_ISINPROGRESS     = "A CensusPlusClassic is in progress, try again later";
 CENSUSPLUS_TAKINGONLINE     = "Taking census of characters online...";
 CENSUSPLUS_NOCENSUS         = "A Census is not currently in progress";
 CENSUSPLUS_NOTINFACTION     = "Neutral faction - census not allowed"; 
@@ -443,19 +443,19 @@ CENSUS_OPTIONS_BACKGROUND_TRANSPARENCY_TOOLTIP = "Background transparency - ten 
 CENSUSPLUS_VERBOSE_TOOLTIP  = "Deselect to stop the spam!";
 CENSUSPlus_AUTOCENSUS_TOOLTIP = "Enable Census+ to run automatically while playing";
 CENSUSPLUS_OPTIONS_CHATTYCONFIRM = "Chatty Option confirmation - check to enable"
-CENSUSPLUS_OPTIONS_CHATTY_TOOLTIP = "Enable chat to show current options settings - displays on interface options window opening and many CensusPlus option changes"
+CENSUSPLUS_OPTIONS_CHATTY_TOOLTIP = "Enable chat to show current options settings - displays on interface options window opening and many CensusPlusClassic option changes"
 
 CENSUSPLUS_BUTTON_CHARACTERS = "Show Chars";
 CENSUSPLUS_CHARACTERS		= "Characters";
 
-CENSUS_BUTTON_TOOLTIP		= "Open CensusPlus";
+CENSUS_BUTTON_TOOLTIP		= "Open CensusPlusClassic";
 -- >6.1.2
 -- CensusPlus_
 CENSUSPLUS_PROBLEMNAME  = "This name is problematic => ";
 CENSUSPLUS_PROBLEMNAME_ACTION	= ", name skipped.  This message will only be shown once.";
 CENSUSPLUS_BADLOCAL_1	= "You appear to have a US Census version, yet your localization is set to French or German or Italian.";
 CENSUSPLUS_BADLOCAL_2	= "Please do not upload data to WarcraftRealms until this has been resolved.";
-CENSUSPLUS_BADLOCAL_3	= "If this is incorrect, please let Bringoutyourdead know at www.WarcraftRealms.com about your situation so he can make corrections.";
+CENSUSPLUS_BADLOCAL_3	= "If this is incorrect, please let Bringoutyourdead know at WoWClassicPopulation.com about your situation so he can make corrections.";
 CENSUSPLUS_WRONGLOCAL_PURGE	= "Locale differs from previous setting, purging database.";
 CENSUSPLUS_WAS	= " was ";
 CENSUSPLUS_NOW	= " now ";
@@ -488,7 +488,7 @@ CENSUSPLUS_UNKNOWNRACE	= "Found an unknown race ( ";
 CENSUSPLUS_UNKNOWNRACE_ACTION	= " ), please tell Bringoutyourdead at WarcraftRealms.com";
 CENSUSPLUS_TOOSLOW	= "Update too slow! Computer overloaded?Connection problems?";
 CENSUSPLUS_LANGUAGECHANGED	= "Client Language changed, Database purged.";
-CENSUSPLUS_CONNECTEDREALMSFOUND	= "CensusPlus found the following Connected Realms";
+CENSUSPLUS_CONNECTEDREALMSFOUND	= "CensusPlusClassic found the following Connected Realms";
 CENSUSPLUS_OBSOLETEDATAFORMATTEXT	= "Old Database format found, Database purged."
 CENSUSPLUS_TRANSPARENCY = "Census window transparency"
 CENSUSPLUS_PURGEDALL	= "All Census Data Purged";
@@ -502,8 +502,8 @@ CENSUSPLUS_HELP_6	= " X _ Prune the database by removing all characters not seen
 CENSUSPLUS_HELP_7	= " _  Will display info that matches names.";
 CENSUSPLUS_HELP_8	= " _  Will list unguilded characters of that level.";
 CENSUSPLUS_HELP_9	= " _  Will set the autocensus timer (to X minutes).";
-CENSUSPLUS_HELP_10	= " _ Does Census update of player only.. this is done automatically when /CensusPlus take finishes.";
-CENSUSPLUS_HELP_11	= " _ Toggles stealth mode off/on - disables Verbose and all CensusPlus chat messages.";
+CENSUSPLUS_HELP_10	= " _ Does Census update of player only.. this is done automatically when /CensusPlusClassic take finishes.";
+CENSUSPLUS_HELP_11	= " _ Toggles stealth mode off/on - disables Verbose and all CensusPlusClassic chat messages.";
 CENSUSPLUS_CMDERR_WHO2NUM	= "Who commands can be: who name  _ no numbers in name";
 CENSUSPLUS_CMDERR_WHO2	= "Who commands should be:  who name level  _ no name found, level is optional";
 -- CensusPlus_
@@ -520,7 +520,7 @@ if ( GetLocale() == "esES" ) then
 	CENSUSPLUS_TEXT      = "Census+";
 
 	CENSUSPLUS_MSG1             = " operativo - Escribe /censusplus o /census+ para abrir la ventana principal";
-	CENSUSPLUS_UPLOAD           = "¡Asegúrate de enviar tus datos a www.WarcraftRealms.com!";
+	CENSUSPLUS_UPLOAD           = "¡Asegúrate de enviar tus datos a WoWClassicPopulation.com!";
 	CENSUSPLUS_PAUSE            = "Pausa";
 	CENSUSPLUS_UNPAUSE          = "Continuar";
 	CENSUSPLUS_STOP             = "Detener";
@@ -626,7 +626,7 @@ CensusPlus_FOUND					= "found"
 	CENSUSPLUS_BUTTON_CHARACTERS = "Mostrar personajes";
 	CENSUSPLUS_CHARACTERS      = "Personajes";
 
-	CENSUS_BUTTON_TOOLTIP      = "Abrir CensusPlus";
+	CENSUS_BUTTON_TOOLTIP      = "Abrir CensusPlusClassic";
 
 
 
@@ -712,7 +712,7 @@ CENSUSPlus_AUTOCENSUS_TOOLTIP = "Enable Census+ to run automatically while playi
 CENSUSPLUS_BUTTON_CHARACTERS = "Mostrar personagens";
 CENSUSPLUS_CHARACTERS = "Personagens";
 
-CENSUS_BUTTON_TOOLTIP = "Abrir CensusPlus";
+CENSUS_BUTTON_TOOLTIP = "Abrir CensusPlusClassic";
 
 -- -- -- Não utilizado
 
@@ -720,8 +720,8 @@ CENSUS_BUTTON_TOOLTIP = "Abrir CensusPlus";
 -- CENSUSPlus_BUTTON_TIP = "Clique aqui para mostrar ou ocultar o Census+.";
 -- CENSUSPLUS_HELP = " Usar /censusplus para abrir e fechar a interface do Census+.";
 -- CENSUSPlus_SHOWMINI = "Iniciar Minimizado";
--- CENSUSPlus_MAXIMIZE = "Maximizar a janela do CensusPlus";
--- CENSUSPlus_MINIMIZE = "Minimizar a janela do CensusPlus";
+-- CENSUSPlus_MAXIMIZE = "Maximizar a janela do CensusPlusClassic";
+-- CENSUSPlus_MINIMIZE = "Minimizar a janela do CensusPlusClassic";
 -- CENSUSPlus_BUTTON_MINIMIZE = "Minimizar";
 -- CENSUS_OPTIONS_BUTPOS = "Posição do botão";
 -- CENSUS_LEVEL_NO_GUILD = "(.+): Nível (%d+) (.+) (.+) - (.+)";
@@ -733,7 +733,7 @@ if ( GetLocale() == "itIT" ) then
 CENSUSPLUS_TEXT      = "Census+";
 
 CENSUSPLUS_MSG1             = " Loaded - - tipo /censusplus o /census+ o /census per aprire la finestra principale";
-CENSUSPLUS_UPLOAD           = "Assicurarsi di caricare i dati CensusPlus a www.WarcraftRealms.com!";
+CENSUSPLUS_UPLOAD           = "Assicurarsi di caricare i dati CensusPlusClassic a WoWClassicPopulation.com!";
 CENSUSPLUS_PAUSE            = "Sospendi";
 CENSUSPLUS_UNPAUSE          = "Riattiva";
 CENSUSPLUS_STOP             = "Arresto";
@@ -749,8 +749,8 @@ CENSUSPLUS_PURGE_LOCAL_CONFIRM = "Are you sure you wish to PURGE your local data
 CENSUSPLUS_TAKECENSUS       = "Prendete un censimento dei giocatori \nattualmente online su questo server \ne in questa fazione";
 CENSUSPLUS_PAUSECENSUS      = "Sospendi il censimento in corso";
 CENSUSPLUS_UNPAUSECENSUS    = "Riattiva il censimento in corso";
-CENSUSPLUS_STOPCENSUS       = "Stop the currently active CensusPlus";
-CENSUSPLUS_ISINPROGRESS     = "A CensusPlus is in progress, try again later";
+CENSUSPLUS_STOPCENSUS       = "Stop the currently active CensusPlusClassic";
+CENSUSPLUS_ISINPROGRESS     = "A CensusPlusClassic is in progress, try again later";
 CENSUSPLUS_TAKINGONLINE     = "Taking census of characters online...";
 CENSUSPLUS_NOCENSUS         = "A Census is not currently in progress";
 CENSUSPLUS_NOTINFACTION     = "Fazione neutrale - non consentito censimento"; 
@@ -850,7 +850,7 @@ CENSUSPlus_AUTOCENSUS_TOOLTIP = "Enable Census+ to run automatically while playi
 CENSUSPLUS_BUTTON_CHARACTERS = "Show Chars";
 CENSUSPLUS_CHARACTERS		= "Characters";
 
-CENSUS_BUTTON_TOOLTIP		= "Open CensusPlus";
+CENSUS_BUTTON_TOOLTIP		= "Open CensusPlusClassic";
 
 
 
@@ -871,7 +871,7 @@ CENSUSPLUS_TEXT      = "센서스+";
 CENSUSPLUS_MSG1             = "센서스+ 로드됨 - /censusplus 나 /census+ 를 입력해 메인 창을 띄울 수 있습니다.";
 -- CENSUSPlus_MSG2             = "/censusdate 를 사용해 오늘의 날짜를 설정하세요.(형식: MM-DD-YYYY, 예. 12-25-2004)";
 
-CENSUSPLUS_UPLOAD           = "www.WarcraftRealms.com 에서 센서스+ 업데이트를 확인하세요!";
+CENSUSPLUS_UPLOAD           = "WoWClassicPopulation.com 에서 센서스+ 업데이트를 확인하세요!";
 CENSUSPlus_SETTINGDATE      = "날짜 변경 => ";
 CENSUSPLUS_PAUSE            = "일시중지";
 CENSUSPLUS_UNPAUSE          = "계속";

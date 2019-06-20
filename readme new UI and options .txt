@@ -1,7 +1,7 @@
-Here is a heads up on the next major release of CensusPlus which will go live with the release of World of Warcraft V6.0 
+Here is a heads up on the next major release of CensusPlusClassic which will go live with the release of World of Warcraft V6.0 
 
 The major changes are:
-* CensusPlus UI elements all updated to include variable transparency
+* CensusPlusClassic UI elements all updated to include variable transparency
 <a href="http://photobucket.com/" target="_blank"><img src="http://i1296.photobucket.com/albums/ag4/Bringoutyourdead1s/WoWScrnShot_090214_083013_zps8ebfc6cd.jpg" border="0" alt=" photo WoWScrnShot_090214_083013_zps8ebfc6cd.jpg"/></a>
 <a href="http://photobucket.com/" target="_blank"><img src="http://i1296.photobucket.com/albums/ag4/Bringoutyourdead1s/WoWScrnShot_090214_083124_zpsca041fd9.jpg" border="0" alt=" photo WoWScrnShot_090214_083124_zpsca041fd9.jpg"/></a>
 
