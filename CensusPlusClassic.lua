@@ -59,7 +59,7 @@ CPp.TZWarningSent = false;  -- not used?
 
 local CensusPlus_Version_Major = "7"; -- changing this number will force a saved data purge
 local CensusPlus_Version_Minor = "1"; -- changing this number will force a saved data purge
-local CensusPlus_Version_Maint = "2-classic-0.2";
+local CensusPlus_Version_Maint = "2-classic-0.3";
 local CensusPlus_SubVersion = " >=WoWC1.13.2";
 --local CensusPlus_VERSION = "WoD"
 local CensusPlus_VERSION = CensusPlus_Version_Major.."."..CensusPlus_Version_Minor .."."..CensusPlus_Version_Maint; 
@@ -689,7 +689,7 @@ function CP_ProcessWhoEvent(query, result, complete)
 		local letter = g_CurrentJob.m_Letter;
 		
 
-		if (minLevel ~= maxLevel) then
+		if (minLevel ~= maxLevel and minLevel ~= 0) then
 		
 			--[[
 			-- The level range is greater than a single level, so split it in half and submit the two jobs
