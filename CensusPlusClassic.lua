@@ -1934,6 +1934,7 @@ function CensusPlus_InitializeVariables()
 		CensusPlus_PerCharInfo["Version"] = {}
 	end
 
+	local purged = false
 
 	-- V 6.0.1 to 6.1.0 database purge
 	if (CensusPlus_Database["Info"]["Version"] ~= nil) then
@@ -1954,6 +1955,7 @@ function CensusPlus_InitializeVariables()
 			CensusPlus_PerCharInfo = {}
 			CensusPlus_PerCharInfo["Version"] = CensusPlus_VERSION
 			CensusPlus_DoPurge()
+			purged = true
 			CensusPlus_Msg(CENSUSPLUS_OBSOLETEDATAFORMATTEXT)
 		end
 	end
@@ -1971,6 +1973,7 @@ function CensusPlus_InitializeVariables()
 	if (CensusPlus_Database["Info"]["ClientLocale"] ~= g_templang) then
 		-- Client language has been changed must purge
 		CensusPlus_DoPurge()
+		purged = true
 		if not (CPp.FirstLoad == true) then
 			CensusPlus_Msg(CENSUSPLUS_LANGUAGECHANGED)
 		end
@@ -1988,6 +1991,7 @@ function CensusPlus_InitializeVariables()
 		if (CensusPlus_Database["Info"]["LoginServer"] ~= regionKey) then
 			--	We have to nuke the data in the case that someone is playing on both US and EU servers
 			CensusPlus_DoPurge()
+			purged = true
 		end
 	end
 	CensusPlus_Database["Info"]["LoginServer"] = regionKey
@@ -1996,6 +2000,7 @@ function CensusPlus_InitializeVariables()
 	if (localeSetting == "??") then
 		--  We had problems previously.. we must purge =(
 		CensusPlus_DoPurge()
+		purged = true
 		localeSetting = nil
 	end
 
@@ -2103,20 +2108,20 @@ function CensusPlus_InitializeVariables()
 	CensusPlusSetCheckButtonState()
 	CPp.FirstLoad = false -- main table initialized and options initialized
 
-	CensusPlus_AutoStart()
+	CensusPlus_AutoStart(purged)
 	
 end
 
 
-function CensusPlus_AutoStart()
+function CensusPlus_AutoStart(purged)
 	
 	local currentRealm = getUniqueRealmName()
 	local currentFaction = UnitFactionGroup("player")
 	local lastRealm = CensusPlus_JobQueue["CensusPlus_LoginRealm_last"]
 	local lastFaction = CensusPlus_JobQueue["CensusPlus_LoginFaction_last"]
 	local lastRun = CensusPlus_JobQueue["CensusPlus_last_time"]
-
-	if (currentRealm ~= lastRealm or currentFaction ~= lastFaction or (lastRun < time() - (CPp.AutoStartTimer * 60))) then
+	
+	if (purged or currentRealm ~= lastRealm or currentFaction ~= lastFaction or (lastRun < time() - (CPp.AutoStartTimer * 60))) then
 		CensusPlus_StartCensus()
 	end
 
