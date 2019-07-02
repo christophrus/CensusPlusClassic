@@ -16,7 +16,7 @@ assert(LibStub, "LibWho-2.0 requires LibStub")
 
 
 local major_version = 'LibWho-2.0'
-local minor_version = tonumber("154") or 99999
+local minor_version = tonumber("171") or 99999
 
 local lib = LibStub:NewLibrary(major_version, minor_version)
 
@@ -467,18 +467,17 @@ function lib:AskWhoNext()
 			self.Quiet = false
 	
 			if args.whotoui then
-    			C_FriendList.SetWhoToUi(args.whotoui)
+    			self.hooked.SetWhoToUi(args.whotoui)
     		else
-    			C_FriendList.SetWhoToUi(args.gui and true or false)
+    			self.hooked.SetWhoToUi(args.gui and true or false)
 			end
 		else
-			
-			C_FriendList.SetWhoToUi(true)
+			self.hooked.SetWhoToUi(true)
 			self.Quiet = true		
 		end
 
 		dbg("QUERY: "..args.query)
-		C_FriendList.SendWho(args.query)
+		self.hooked.SendWho(args.query)
 	else
 		self.Args = nil
 		self.WhoInProgress = false
@@ -786,10 +785,8 @@ SLASH_WHOLIB_DEBUG1 = '/wholibdebug'
 
 -- functions to hook
 local hooks = {
-	'C_FriendList.SendWho',
 	'WhoFrameEditBox_OnEnterPressed',
 --	'FriendsFrame_OnEvent',
-	'C_FriendList.SetWhoToUi',
 }
 
 -- hook all functions (which are not yet hooked)
@@ -801,6 +798,24 @@ for _, name in pairs(hooks) do
 		end -- function
 	end -- if
 end -- for
+
+
+-- C_FriendList functions to hook
+local CFL_hooks = {
+	'SendWho',
+	'SetWhoToUi',
+}
+
+-- hook all C_FriendList functions (which are not yet hooked)
+for _, name in pairs(CFL_hooks) do
+	if not lib['hooked'][name] then
+		lib['hooked'][name] = _G["C_FriendList"][name]
+		_G["C_FriendList"][name] = function(...)
+			lib.hook[name](lib, ...)
+		end -- function
+	end -- if
+end -- for
+
 
 -- fake 'WhoFrame:Hide' as hooked
 table.insert(hooks, 'WhoFrame_Hide')
@@ -875,7 +890,7 @@ hooksecurefunc(FriendsFrame, 'RegisterEvent', function(self, event)
 	end);
 
 
-function lib.hook.SetWhoToUI(self, state)
+function lib.hook.SetWhoToUi(self, state)
 	lib.SetWhoToUIState = state
 end
 
@@ -911,22 +926,24 @@ function lib:WHO_LIST_UPDATE()
 end
 
 function lib:ProcessWhoResults()
-	if self.Result == nil then return end
-	self.Result = self.Result and {}
+	self.Result = self.Result or {}
 
 	local num
 	self.Total, num = C_FriendList.GetNumWhoResults()
 	for i=1, num do
-		local p = C_FriendList.GetWhoInfo(i);
-		local charname = p.fullName;
-		local guildname = p.fullGuildName;
-		local level = p.level;
-		local race = p.raceStr;
-		local class = p.classStr;
-		local zone = p.area;
-		local nonlocalclass = p.filename;
-		local sex = p.gender;
-		self.Result[i] = {Name=charname, Guild=guildname, Level=level, Race=race, Class=class, Zone=zone, NoLocaleClass=nonlocalclass, Sex=sex }
+	--	self.Result[i] = C_FriendList.GetWhoInfo(i)
+		local info = C_FriendList.GetWhoInfo(i)
+		--backwards compatibility START
+		info.Name=info.fullName
+		info.Guild=info.fullGuildName
+		info.Level=info.level
+		info.Race=info.raceStr
+		info.Class=info.classStr
+		info.Zone=info.area
+		info.NoLocaleClass=info.filename
+		info.Sex=info.gender
+		--backwards compatibility END
+		self.Result[i] = info
 	end
 	
 	self:ReturnWho()
@@ -959,3 +976,142 @@ for target,_ in pairs(lib['embeds']) do
 		lib:Embed(target)
 	end -- if
 end -- for
+
+
+---
+--- Old deprecated functions as of 8.1/1.13
+---
+
+local version, build, date, tocversion = GetBuildInfo()
+local isWoWClassic = tocversion >= 11302 and tocversion < 20000
+
+if isWoWClassic then
+
+-- Friend list API update
+
+  -- Use C_FriendList.GetNumFriends and C_FriendList.GetNumOnlineFriends instead
+  function GetNumFriends()
+    return C_FriendList.GetNumFriends(),
+      C_FriendList.GetNumOnlineFriends();
+  end
+ 
+  -- Use C_FriendList.GetFriendInfo or C_FriendList.GetFriendInfoByIndex instead
+  function GetFriendInfo(friend)
+    local info;
+    if type(friend) == "number" then
+      info = C_FriendList.GetFriendInfoByIndex(friend);
+    elseif type(friend) == "string" then
+      info = C_FriendList.GetFriendInfo(friend);
+    end
+ 
+    if info then
+      local chatFlag = "";
+      if info.dnd then
+        chatFlag = CHAT_FLAG_DND;
+      elseif info.afk then
+        chatFlag = CHAT_FLAG_AFK;
+      end
+      return info.name,
+        info.level,
+        info.className,
+        info.area,
+        info.connected,
+        chatFlag,
+        info.notes,
+        info.referAFriend,
+        info.guid;
+    end
+  end
+ 
+  -- Use C_FriendList.SetSelectedFriend instead
+  SetSelectedFriend = C_FriendList.SetSelectedFriend;
+ 
+  -- Use C_FriendList.GetSelectedFriend instead
+  GetSelectedFriend = C_FriendList.GetSelectedFriend;
+ 
+  -- Use C_FriendList.AddOrRemoveFriend instead
+  AddOrRemoveFriend = C_FriendList.AddOrRemoveFriend;
+ 
+  -- Use C_FriendList.AddFriend instead
+  AddFriend = C_FriendList.AddFriend;
+ 
+  -- Use C_FriendList.RemoveFriend or C_FriendList.RemoveFriendByIndex instead
+  function RemoveFriend(friend)
+    if type(friend) == "number" then
+      C_FriendList.RemoveFriendByIndex(friend);
+    elseif type(friend) == "string" then
+      C_FriendList.RemoveFriend(friend);
+    end
+  end
+ 
+  -- Use C_FriendList.ShowFriends instead
+  ShowFriends = C_FriendList.ShowFriends;
+ 
+  -- Use C_FriendList.SetFriendNotes or C_FriendList.SetFriendNotesByIndex instead
+  function SetFriendNotes(friend, notes)
+    if type(friend) == "number" then
+      C_FriendList.SetFriendNotesByIndex(friend, notes);
+    elseif type(friend) == "string" then
+      C_FriendList.SetFriendNotes(friend, notes);
+    end
+  end
+ 
+  -- Use C_FriendList.IsFriend instead. No longer accepts unit tokens.
+  IsCharacterFriend = C_FriendList.IsFriend;
+ 
+  -- Use C_FriendList.GetNumIgnores instead
+  GetNumIgnores = C_FriendList.GetNumIgnores;
+  GetNumIngores = C_FriendList.GetNumIgnores;
+ 
+  -- Use C_FriendList.GetIgnoreName instead
+  GetIgnoreName = C_FriendList.GetIgnoreName;
+ 
+  -- Use C_FriendList.SetSelectedIgnore instead
+  SetSelectedIgnore = C_FriendList.SetSelectedIgnore;
+ 
+  -- Use C_FriendList.GetSelectedIgnore instead
+  GetSelectedIgnore = C_FriendList.GetSelectedIgnore;
+ 
+  -- Use C_FriendList.AddOrDelIgnore instead
+  AddOrDelIgnore = C_FriendList.AddOrDelIgnore;
+ 
+  -- Use C_FriendList.AddIgnore instead
+  AddIgnore = C_FriendList.AddIgnore;
+ 
+  -- Use C_FriendList.DelIgnore or C_FriendList.DelIgnoreByIndex instead
+  function DelIgnore(friend)
+    if type(friend) == "number" then
+      C_FriendList.DelIgnoreByIndex(friend);
+    elseif type(friend) == "string" then
+      C_FriendList.DelIgnore(friend);
+    end
+  end
+ 
+  -- Use C_FriendList.IsIgnored or the new C_FriendList.IsIgnoredByGuid instead.
+  IsIgnored = C_FriendList.IsIgnored;
+ 
+  -- Use C_FriendList.SendWho instead
+  SendWho = C_FriendList.SendWho;
+ 
+  -- Use C_FriendList.GetNumWhoResults instead
+  GetNumWhoResults = C_FriendList.GetNumWhoResults;
+ 
+  -- Use C_FriendList.GetWhoInfo instead
+  function GetWhoInfo(index)
+    local info = C_FriendList.GetWhoInfo(index);
+    return info.fullName,
+      info.fullGuildName,
+      info.level,
+      info.raceStr,
+      info.classStr,
+      info.area,
+      info.filename,
+      info.gender;
+  end
+ 
+  -- Use C_FriendList.SetWhoToUi instead
+  SetWhoToUI = C_FriendList.SetWhoToUi;
+ 
+  -- Use C_FriendList.SortWho instead
+  SortWho = C_FriendList.SortWho;
+end
