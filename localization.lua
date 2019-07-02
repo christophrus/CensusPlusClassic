@@ -57,7 +57,7 @@ CENSUSPLUS_FOUND					= "found"
 
 CENSUSPLUS_PROCESSING       = "Processing %s characters.";
 CENSUSPLUS_REALM			= "Realm";
-CENSUSPLUS_REALMNAME        = "Realm: ";
+CENSUSPLUS_REALMNAME        = "Realm: %s";
 CENSUSPLUS_CONNECTED		= "Connected:";
 CENSUSPLUS_CONNECTED2		= "Additional Connected:";
 CENSUSPLUS_CONSECUTIVE		= "Consecutive Census: %d";

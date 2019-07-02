@@ -67,7 +67,7 @@
     </Button>
     <Button name="CensusPlusLevelBarTemplate" virtual="true">
         <Size>
-            <AbsDimension x="15" y="128" />
+            <AbsDimension x="10" y="128" />
         </Size>
         <NormalTexture file="Interface\AddOns\CensusPlusClassic\Skin\CENSUSPLUS_LEVELBar" />
         <Scripts>
@@ -81,7 +81,7 @@
     </Button>
     <Button name="CensusPlusLevelBarEmptyTemplate" virtual="true">
         <Size>
-            <AbsDimension x="15" y="128" />
+            <AbsDimension x="10" y="128" />
         </Size>
         <Scripts>
     		<OnClick function="CensusPlus_OnClickLevel" />
@@ -90,13 +90,13 @@
     </Button>
     <Button name="CensusPlusGuildButtonTemplate" virtual="true">
         <Size>
-            <AbsDimension x="250" y="16" />
+            <AbsDimension x="196" y="16" />
         </Size>
         <Layers>
             <Layer level="BORDER">
                 <FontString name="$parentText" inherits="GameFontNormalSmall" justifyH="LEFT">
                     <Size>
-                        <AbsDimension x="250" y="14" />
+                        <AbsDimension x="176" y="14" />
                     </Size>
                     <Anchors>
                         <Anchor point="TOPLEFT">
@@ -110,7 +110,7 @@
         </Layers>
         <HighlightTexture file="Interface\QuestFrame\UI-QuestTitleHighlight" alphaMode="ADD">
             <Size>
-                <AbsDimension x="250" y="16" />
+                <AbsDimension x="196" y="16" />
             </Size>
             <Anchors>
                 <Anchor point="TOP">
@@ -225,12 +225,12 @@
     
     <Frame name="CensusPlusClassic" parent="UIParent" hidden="true" enableMouse="true" toplevel="true" movable="true">
         <Size>
-            <AbsDimension x="1176" y="512" />
+            <AbsDimension x="759" y="512" />
         </Size>
         <Anchors>
-            <Anchor point="TOPLEFT">
+			<Anchor point="CENTER">
                 <Offset>
-                    <AbsDimension x="16" y="-44" />
+                    <AbsDimension x="0" y="0" />
                 </Offset>
             </Anchor>
         </Anchors>
@@ -240,7 +240,7 @@
 				<Texture name="CensusPlusBackground" file="Interface\Dialogframe\UI-DialogBox-Background-Dark">
 					<Size>
 <!--						<AbsDimension x="1056" y="512" />  -->
-						<AbsDimension x="1176" y="512" />
+						<AbsDimension x="759" y="512" />
 					</Size>
 					<Anchors>
 						<Anchor point="TOPLEFT">
@@ -274,7 +274,7 @@
 						<Anchor point = "TOPLEFT">
 							<Offset>
 <!--                                <AbsDimension x="1030" y="7" /> -->
-                                <AbsDimension x="1150" y="7" />
+                                <AbsDimension x="733" y="7" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -301,7 +301,7 @@
 						<Anchor point = "TOPLEFT">
 							<Offset>
 <!--                                <AbsDimension x="1030" y="-488" /> -->
-                                <AbsDimension x="1150" y="-488" />
+                                <AbsDimension x="733" y="-488" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -327,7 +327,7 @@
                         <Anchor point="TOPLEFT">
                             <Offset>
 <!--                                <AbsDimension x="1046" y="-18" /> -->
-                                <AbsDimension x="1166" y="-18" />
+                                <AbsDimension x="749" y="-18" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -335,7 +335,7 @@
 				<Texture file = "Interface\Dialogframe\Dialogframe-Top">  <!-- Top Outer Border -->
                     <Size>
 <!--                        <AbsDimension x="1028" y="16" /> -->
-                        <AbsDimension x="1148" y="16" />
+                        <AbsDimension x="731" y="16" />
                     </Size>
                     <Anchors>
                         <Anchor point="TOPLEFT">
@@ -349,7 +349,7 @@
 <!--                <Texture file="Interface\AddOns\CensusPlusClassic\Skin\CensusPlus_Window_UltraLeft" alphaMode="ADD"> -->
                     <Size>
 <!--                        <AbsDimension x="1028" y="16" /> -->
-                        <AbsDimension x="1148" y="16" />
+                        <AbsDimension x="731" y="16" />
                     </Size>
                     <Anchors>
                         <Anchor point="TOPLEFT">
@@ -362,7 +362,7 @@
 				<Texture file = "Interface\AddOns\CensusPlusClassic\Skin\CensusPlus_Window_Top_Shader" >  <!-- Top Shader -->
                     <Size>
 <!--                        <AbsDimension x="1044" y="64" /> -->
-                        <AbsDimension x="1144" y="64" />
+                        <AbsDimension x="727" y="64" />
                     </Size>
                     <Anchors>
                         <Anchor point="TOPLEFT">
@@ -396,7 +396,7 @@
 						<Anchor point = "TOPLEFT">
 							<Offset>
 <!--                                <AbsDimension x="1018" y="-309" /> -->
-                                <AbsDimension x="1138" y="-309" />
+                                <AbsDimension x="721" y="-309" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -423,7 +423,7 @@
 						<Anchor point = "TOPLEFT">
 							<Offset>
 <!--                                <AbsDimension x="1018" y="-432" /> -->
-                                <AbsDimension x="1138" y="-432" />
+                                <AbsDimension x="721" y="-432" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -448,7 +448,7 @@
                         <Anchor point="TOPLEFT">
                             <Offset>
 <!--                                <AbsDimension x="1034" y="-322" /> -->
-                                <AbsDimension x="1154" y="-322" />
+                                <AbsDimension x="737" y="-322" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -456,7 +456,7 @@
 				<Texture file = "Interface\Dialogframe\Dialogframe-Top">  <!-- Top Levels Box -->
                     <Size>
 <!--                        <AbsDimension x="1020" y="16" /> -->
-                        <AbsDimension x="1120" y="16" />
+                        <AbsDimension x="703" y="16" />
                     </Size>
                     <Anchors>
                         <Anchor point="TOPLEFT">
@@ -469,7 +469,7 @@
 				<Texture file = "Interface\Dialogframe\Dialogframe-Bot">  <!-- Bottom Levels Box -->
                     <Size>
 <!--                        <AbsDimension x="1020" y="16" /> -->
-                        <AbsDimension x="1120" y="16" />
+                        <AbsDimension x="703" y="16" />
                     </Size>
                     <Anchors>
                         <Anchor point="TOPLEFT">
@@ -502,7 +502,7 @@
 						<Anchor point = "TOPLEFT">
 							<Offset>
 <!--                                <AbsDimension x="258" y="-107" /> -->
-                                <AbsDimension x="376" y="-107" />
+                                <AbsDimension x="150" y="-107" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -529,7 +529,7 @@
 						<Anchor point = "TOPLEFT">
 							<Offset>
 <!--                                <AbsDimension x="258" y="-228" /> -->
-                                <AbsDimension x="376" y="-228" />
+                                <AbsDimension x="150" y="-228" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -554,7 +554,7 @@
                         <Anchor point="TOPLEFT">
                             <Offset>
 <!--                                <AbsDimension x="274" y="-122" /> -->
-                                <AbsDimension x="392" y="-122" />
+                                <AbsDimension x="166" y="-122" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -562,7 +562,7 @@
 				<Texture file = "Interface\Dialogframe\Dialogframe-Top">  <!-- Top Race Box -->
                     <Size>
 <!--                        <AbsDimension x="258" y="16" /> -->
-                        <AbsDimension x="358" y="16" />
+                        <AbsDimension x="132" y="16" />
                     </Size>
                     <Anchors>
                         <Anchor point="TOPLEFT">
@@ -575,7 +575,7 @@
 				<Texture file = "Interface\Dialogframe\Dialogframe-Bot">  <!-- Bottom Race Box -->
                     <Size>
 <!--                        <AbsDimension x="258" y="16" /> -->
-                        <AbsDimension x="358" y="16" />
+                        <AbsDimension x="132" y="16" />
                     </Size>
                     <Anchors>
                         <Anchor point="TOPLEFT">
@@ -595,7 +595,7 @@
 						<Anchor point = "TOPLEFT">
 							<Offset>
 <!--                                <AbsDimension x="292" y="-107" /> -->
-                                <AbsDimension x="410" y="-107" />
+                                <AbsDimension x="184" y="-107" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -609,7 +609,7 @@
 						<Anchor point = "TOPLEFT">
 							<Offset>
 <!--                                <AbsDimension x="732" y="-107" /> -->
-                                <AbsDimension x="850" y="-107" />
+                                <AbsDimension x="479" y="-107" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -623,7 +623,7 @@
 						<Anchor point = "TOPLEFT">
 							<Offset>
 <!--                                <AbsDimension x="292" y="-228" /> -->
-                                <AbsDimension x="410" y="-228" />
+                                <AbsDimension x="184" y="-228" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -637,7 +637,7 @@
 						<Anchor point = "TOPLEFT">
 							<Offset>
 <!--                                <AbsDimension x="732" y="-228" /> -->
-                                <AbsDimension x="850" y="-228" />
+                                <AbsDimension x="479" y="-228" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -650,7 +650,7 @@
                         <Anchor point="TOPLEFT">
                             <Offset>
 <!--                                <AbsDimension x="293" y="-122" /> -->
-                                <AbsDimension x="411" y="-122" />
+                                <AbsDimension x="185" y="-122" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -663,7 +663,7 @@
                         <Anchor point="TOPLEFT">
                             <Offset>
 <!--                                <AbsDimension x="748" y="-122" /> -->
-                                <AbsDimension x="866" y="-122" />
+                                <AbsDimension x="495" y="-122" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -671,25 +671,25 @@
 				<Texture file = "Interface\Dialogframe\Dialogframe-Top">  <!-- Top Class Box -->
                     <Size>
 <!--                        <AbsDimension x="442" y="16" /> -->
-                        <AbsDimension x="442" y="16" />
+                        <AbsDimension x="297" y="16" />
                     </Size>
                     <Anchors>
                         <Anchor point="TOPLEFT">
                             <Offset>
 <!--                                <AbsDimension x="306" y="-108" /> -->
-                                <AbsDimension x="416" y="-108" />
+                                <AbsDimension x="190" y="-108" />
                             </Offset>
                         </Anchor>
                     </Anchors>
                 </Texture>
 				<Texture file = "Interface\Dialogframe\Dialogframe-Bot">  <!-- Bottom Class Box -->
                     <Size>
-                        <AbsDimension x="442" y="16" />
+                        <AbsDimension x="297" y="16" />
                     </Size>
                     <Anchors>
                         <Anchor point="TOPLEFT">
                             <Offset>
-                                <AbsDimension x="416" y="-244" />
+                                <AbsDimension x="190" y="-244" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -703,7 +703,7 @@
 					<Anchors>
 						<Anchor point = "TOPLEFT">
 							<Offset>
-                                <AbsDimension x="879" y="-107" />
+                                <AbsDimension x="516" y="-107" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -716,7 +716,7 @@
 					<Anchors>
 						<Anchor point = "TOPLEFT">
 							<Offset>
-                                <AbsDimension x="1138" y="-107" />
+                                <AbsDimension x="721" y="-107" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -729,7 +729,7 @@
 					<Anchors>
 						<Anchor point = "TOPLEFT">
 							<Offset>
-                                <AbsDimension x="879" y="-260" />
+                                <AbsDimension x="516" y="-260" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -742,7 +742,7 @@
 					<Anchors>
 						<Anchor point = "TOPLEFT">
 							<Offset>
-                                <AbsDimension x="1138" y="-260" />
+                                <AbsDimension x="721" y="-260" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -754,7 +754,7 @@
                     <Anchors>
                         <Anchor point="TOPLEFT">
                             <Offset>
-                                <AbsDimension x="880" y="-122" />
+                                <AbsDimension x="517" y="-122" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -766,31 +766,31 @@
                     <Anchors>
                         <Anchor point="TOPLEFT">
                             <Offset>
-                                <AbsDimension x="1154" y="-122" />
+                                <AbsDimension x="737" y="-122" />
                             </Offset>
                         </Anchor>
                     </Anchors>
                 </Texture>
 				<Texture file = "Interface\Dialogframe\Dialogframe-Top">  <!-- Top GuildData Box -->
                     <Size>
-                        <AbsDimension x="258" y="16" />
+                        <AbsDimension x="212" y="16" />
                     </Size>
                     <Anchors>
                         <Anchor point="TOPLEFT">
                             <Offset>
-                                <AbsDimension x="896" y="-108" />
+                                <AbsDimension x="535" y="-108" />
                             </Offset>
                         </Anchor>
                     </Anchors>
                 </Texture>
 				<Texture file = "Interface\Dialogframe\Dialogframe-Bot">  <!-- Bottom GuildData Box -->
                     <Size>
-                        <AbsDimension x="258" y="16" />
+                        <AbsDimension x="212" y="16" />
                     </Size>
                     <Anchors>
                         <Anchor point="TOPLEFT">
                             <Offset>
-                                <AbsDimension x="896" y="-276" />
+                                <AbsDimension x="525" y="-276" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -811,7 +811,7 @@
                     <Anchors>
                         <Anchor point="TOPLEFT" relativeTo="CensusPlusClassic">
                             <Offset>
-                                <AbsDimension x="280" y="-12" />
+                                <AbsDimension x="220" y="-12" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -821,33 +821,6 @@
                         <Anchor point="TOPLEFT" relativeTo="CensusPlusClassic">
                             <Offset>
                                 <AbsDimension x="16" y="-32" />
-                            </Offset>
-                        </Anchor>
-                    </Anchors>
-                </FontString>
-                <FontString name="CensusPlusConnected" inherits="GameFontHighlight" text="CENSUSPlus_BUTTON_REALMUNKNOWN">
-                    <Anchors>
-                        <Anchor point="TOPLEFT" relativeTo="CensusPlusClassic">
-                            <Offset>
-                                <AbsDimension x="240" y="-32" />
-                            </Offset>
-                        </Anchor>
-                    </Anchors>
-                </FontString>
-                <FontString name="CensusPlusConnected2" inherits="GameFontHighlight" text="CENSUSPlus_BUTTON_REALMUNKNOWN">
-                    <Anchors>
-                        <Anchor point="TOPLEFT" relativeTo="CensusPlusClassic">
-                            <Offset>
-                                <AbsDimension x="16" y="-460" />
-                            </Offset>
-                        </Anchor>
-                    </Anchors>
-                </FontString>
-                <FontString name="CensusPlusConnected3" inherits="GameFontHighlight" text="CENSUSPlus_BUTTON_REALMUNKNOWN">
-                    <Anchors>
-                        <Anchor point="TOPLEFT" relativeTo="CensusPlusClassic">
-                            <Offset>
-                                <AbsDimension x="16" y="-480" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -874,7 +847,7 @@
                     <Anchors>
                         <Anchor point="TOPLEFT" relativeTo="CensusPlusClassic">
                             <Offset>
-                                <AbsDimension x="240" y="-64" />
+                                <AbsDimension x="240" y="-48" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -883,7 +856,7 @@
                     <Anchors>
                         <Anchor point="TOPLEFT" relativeTo="CensusPlusClassic">
                             <Offset>
-                                <AbsDimension x="240" y="-48" />
+                                <AbsDimension x="240" y="-32" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -892,7 +865,7 @@
                     <Anchors>
                         <Anchor point="TOPLEFT" relativeTo="CensusPlusClassic">
                             <Offset>
-                                <AbsDimension x="540" y="-64" />
+                                <AbsDimension x="240" y="-64" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -901,7 +874,7 @@
                     <Anchors>
                         <Anchor point="TOPLEFT" relativeTo="CensusPlusClassic">
                             <Offset>
-                                <AbsDimension x="910" y="-90" />
+                                <AbsDimension x="583" y="-90" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -919,7 +892,7 @@
                     <Anchors>
                         <Anchor point="TOPLEFT" relativeTo="CensusPlusClassic">
                             <Offset>
-                                <AbsDimension x="604" y="-90" />
+                                <AbsDimension x="335" y="-90" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -928,7 +901,7 @@
                     <Anchors>
                         <Anchor point="TOPLEFT" relativeTo="CensusPlusClassic">
                             <Offset>
-                                <AbsDimension x="500" y="-300" />
+                                <AbsDimension x="340" y="-300" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -936,141 +909,6 @@
             </Layer>
         </Layers>
         <Frames>
-            <Button name="CensusPlusConnectedRealmButton1" inherits="CensusPlusConnectedRealmsTemplate" id="1">
-                <Anchors>
-                    <Anchor point="TOPLEFT" relativeTo="CensusPlusClassic">
-                        <Offset>
-                            <AbsDimension x="68" y="-32" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusConnectedRealmButton2" inherits="CensusPlusConnectedRealmsTemplate" id="2">
-                <Anchors>
-                    <Anchor point="TOPLEFT" relativeTo="CensusPlusClassic">
-                        <Offset>
-                            <AbsDimension x="314" y="-32" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusConnectedRealmButton3" inherits="CensusPlusConnectedRealmsTemplate" id="3">
-                <Anchors>
-                    <Anchor point="LEFT" relativeTo="CensusPlusConnectedRealmButton2" relativePoint="RIGHT">
-                        <Offset>
-                            <AbsDimension x="0" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusConnectedRealmButton4" inherits="CensusPlusConnectedRealmsTemplate" id="4">
-                <Anchors>
-                    <Anchor point="LEFT" relativeTo="CensusPlusConnectedRealmButton3" relativePoint="RIGHT">
-                        <Offset>
-                            <AbsDimension x="0" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusConnectedRealmButton5" inherits="CensusPlusConnectedRealmsTemplate" id="5">
-                <Anchors>
-                    <Anchor point="LEFT" relativeTo="CensusPlusConnectedRealmButton4" relativePoint="RIGHT">
-                        <Offset>
-                            <AbsDimension x="0" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusConnectedRealmButton6" inherits="CensusPlusConnectedRealmsTemplate" id="6">
-                <Anchors>
-                    <Anchor point="TOPLEFT" relativeTo="CensusPlusClassic">
-                        <Offset>
-                            <AbsDimension x="156" y="-460" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusConnectedRealmButton7" inherits="CensusPlusConnectedRealmsTemplate" id="7">
-                <Anchors>
-                    <Anchor point="LEFT" relativeTo="CensusPlusConnectedRealmButton6" relativePoint="RIGHT">
-                        <Offset>
-                            <AbsDimension x="0" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusConnectedRealmButton8" inherits="CensusPlusConnectedRealmsTemplate" id="8">
-                <Anchors>
-                    <Anchor point="LEFT" relativeTo="CensusPlusConnectedRealmButton7" relativePoint="RIGHT">
-                        <Offset>
-                            <AbsDimension x="0" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-            <Button name="CensusPlusConnectedRealmButton9" inherits="CensusPlusConnectedRealmsTemplate" id="9">
-                <Anchors>
-                    <Anchor point="LEFT" relativeTo="CensusPlusConnectedRealmButton8" relativePoint="RIGHT">
-                        <Offset>
-                            <AbsDimension x="0" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-             <Button name="CensusPlusConnectedRealmButton10" inherits="CensusPlusConnectedRealmsTemplate" id="10">
-                <Anchors>
-                    <Anchor point="LEFT" relativeTo="CensusPlusConnectedRealmButton9" relativePoint="RIGHT">
-                        <Offset>
-                            <AbsDimension x="0" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-             <Button name="CensusPlusConnectedRealmButton11" inherits="CensusPlusConnectedRealmsTemplate" id="11">
-                <Anchors>
-                    <Anchor point="TOPLEFT" relativeTo="CensusPlusClassic">
-                        <Offset>
-                            <AbsDimension x="156" y="-480" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-              <Button name="CensusPlusConnectedRealmButton12" inherits="CensusPlusConnectedRealmsTemplate" id="12">
-                <Anchors>
-                    <Anchor point="LEFT" relativeTo="CensusPlusConnectedRealmButton11" relativePoint="RIGHT">
-                        <Offset>
-                            <AbsDimension x="0" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-              <Button name="CensusPlusConnectedRealmButton13" inherits="CensusPlusConnectedRealmsTemplate" id="13">
-                <Anchors>
-                    <Anchor point="LEFT" relativeTo="CensusPlusConnectedRealmButton12" relativePoint="RIGHT">
-                        <Offset>
-                            <AbsDimension x="0" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-             <Button name="CensusPlusConnectedRealmButton14" inherits="CensusPlusConnectedRealmsTemplate" id="14">
-                <Anchors>
-                    <Anchor point="LEFT" relativeTo="CensusPlusConnectedRealmButton13" relativePoint="RIGHT">
-                        <Offset>
-                            <AbsDimension x="0" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
-             <Button name="CensusPlusConnectedRealmButton15" inherits="CensusPlusConnectedRealmsTemplate" id="15">
-                <Anchors>
-                    <Anchor point="LEFT" relativeTo="CensusPlusConnectedRealmButton14" relativePoint="RIGHT">
-                        <Offset>
-                            <AbsDimension x="0" y="0" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </Button>
 			<Button name="CP_DisplayOptionsButton" inherits="UIPanelButtonTemplate" text="CENSUSPLUS_BUTTON_OPTIONS">
                 <Size>
                     <AbsDimension x="128" y="21" />
@@ -1123,9 +961,9 @@
                     <AbsDimension x="128" y="21" />
                 </Size>
                 <Anchors>
-                    <Anchor point="TOPLEFT">
+                    <Anchor point="BOTTOMLEFT">
                         <Offset>
-                            <AbsDimension x="20" y="-292" />
+                            <AbsDimension x="20" y="10" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1163,7 +1001,7 @@
                 <Anchors>
                     <Anchor point="TOPLEFT" relativeTo="CensusPlusStopButton">
                         <Offset>
-                            <AbsDimension x="400" y="0" />
+                            <AbsDimension x="320" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1208,7 +1046,7 @@
                 <Anchors>
                     <Anchor point="TOPLEFT" relativeTo="CensusPlusClassic">
                         <Offset>
-                            <AbsDimension x="892" y="-120" />
+                            <AbsDimension x="529" y="-120" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1296,7 +1134,7 @@
             </Button>
             <ScrollFrame name="CensusPlusGuildScrollFrame" inherits="FauxScrollFrameTemplate">
                 <Size>
-                    <AbsDimension x="244" y="160" />
+                    <AbsDimension x="190" y="160" />
                 </Size>
                 <Anchors>
                     <Anchor point="TOPLEFT" relativeTo="CensusPlusGuildButton1" relativePoint="TOPLEFT">
@@ -1317,10 +1155,10 @@
                 </Size>
                 <Anchors>
  <!--                   <Anchor point="TOPLEFT" relativeTo="CensusPlusGuildButton10" relativePoint="BOTTOMLEFT">  -->
-                     <Anchor point="TOPLEFT" relativeTo="CensusPlusPurgeButton" relativePoint="BOTTOMLEFT">
+                     <Anchor point="TOPLEFT" relativeTo="CensusPlusGuildButton10" relativePoint="BOTTOMLEFT">
                        <Offset>
 <!--                            <AbsDimension x="44" y="-12" />  -->
-                            <AbsDimension x="244" y="22" />
+                            <AbsDimension x="40" y="-10" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1411,7 +1249,7 @@
                 <Anchors>
                     <Anchor point="LEFT" relativeTo="CensusPlusRaceLegend4" relativePoint="RIGHT">
                         <Offset>
-                            <AbsDimension x="258" y="0" />
+                            <AbsDimension x="32" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1565,7 +1403,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar1" relativePoint="BOTTOMRIGHT">
                        <Offset>
-                           <AbsDimension x="4" y="0" />
+                           <AbsDimension x="2" y="0" />
                         </Offset> 
                     </Anchor>
                 </Anchors>
@@ -1574,7 +1412,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar2" relativePoint="BOTTOMRIGHT">
                        <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset> 
                     </Anchor>
                 </Anchors>
@@ -1583,7 +1421,7 @@
                 <Anchors>
 					<Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar3" relativePoint="BOTTOMRIGHT">
                        <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset> 
                     </Anchor>
                 </Anchors>
@@ -1592,7 +1430,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar4" relativePoint="BOTTOMRIGHT">
                        <Offset>
-                           <AbsDimension x="4" y="0" />
+                           <AbsDimension x="2" y="0" />
                         </Offset> 
                     </Anchor>
                 </Anchors>
@@ -1601,7 +1439,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar5" relativePoint="BOTTOMRIGHT">
                        <Offset>
-                           <AbsDimension x="4" y="0" />
+                           <AbsDimension x="2" y="0" />
                         </Offset> 
                     </Anchor>
                 </Anchors>
@@ -1610,7 +1448,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar6" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1619,7 +1457,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar7" relativePoint="BOTTOMRIGHT">
                        <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset> 
                     </Anchor>
                 </Anchors>
@@ -1628,7 +1466,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar8" relativePoint="BOTTOMRIGHT">
                        <Offset>
-                            <AbsDimension x="4" y="0" /> 
+                            <AbsDimension x="2" y="0" /> 
                         </Offset> 
                     </Anchor>
                 </Anchors>
@@ -1637,7 +1475,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar9" relativePoint="BOTTOMRIGHT">
                        <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset> 
                     </Anchor>
                 </Anchors>
@@ -1646,7 +1484,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar10" relativePoint="BOTTOMRIGHT">
                        <Offset>
-                           <AbsDimension x="4" y="0" />
+                           <AbsDimension x="2" y="0" />
                         </Offset> 
                     </Anchor>
                 </Anchors>
@@ -1655,7 +1493,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar11" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1664,7 +1502,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar12" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1673,7 +1511,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar13" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1682,7 +1520,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar14" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1691,7 +1529,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar15" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1700,7 +1538,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar16" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1709,7 +1547,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar17" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1718,7 +1556,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar18" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1727,7 +1565,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar19" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1736,7 +1574,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar20" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1745,7 +1583,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar21" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1754,7 +1592,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar22" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1763,7 +1601,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar23" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1772,7 +1610,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar24" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1781,7 +1619,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar25" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1790,7 +1628,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar26" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1799,7 +1637,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar27" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1808,7 +1646,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar28" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1817,7 +1655,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar29" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1826,7 +1664,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar30" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1835,7 +1673,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar31" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1844,7 +1682,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar32" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1853,7 +1691,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar33" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1862,7 +1700,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar34" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1871,7 +1709,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar35" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1880,7 +1718,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar36" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1889,7 +1727,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar37" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1898,7 +1736,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar38" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1907,7 +1745,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar39" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1916,7 +1754,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar40" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1925,7 +1763,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar41" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1934,7 +1772,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar42" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1943,7 +1781,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar43" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1952,7 +1790,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar44" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1961,7 +1799,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar45" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1970,7 +1808,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar46" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1979,7 +1817,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar47" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1988,7 +1826,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar48" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1997,7 +1835,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar49" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2006,7 +1844,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar50" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2015,7 +1853,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar51" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2024,7 +1862,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar52" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2033,7 +1871,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar53" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2042,7 +1880,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar54" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2051,7 +1889,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar55" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2060,7 +1898,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar56" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2069,7 +1907,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar57" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2078,7 +1916,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar58" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2087,7 +1925,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar59" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2105,7 +1943,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty1" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2114,7 +1952,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty2" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2123,7 +1961,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty3" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                           <AbsDimension x="4" y="0" />
+                           <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2132,7 +1970,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty4" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2141,7 +1979,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty5" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2150,7 +1988,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty6" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2159,7 +1997,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty7" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2168,7 +2006,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty8" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2177,7 +2015,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty9" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2186,7 +2024,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty10" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2195,7 +2033,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty11" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2204,7 +2042,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty12" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2213,7 +2051,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty13" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2222,7 +2060,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty14" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2231,7 +2069,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty15" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2240,7 +2078,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty16" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2249,7 +2087,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty17" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2258,7 +2096,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty18" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2267,7 +2105,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty19" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2276,7 +2114,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty20" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2285,7 +2123,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty21" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2294,7 +2132,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty22" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2303,7 +2141,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty23" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2312,7 +2150,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty24" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2321,7 +2159,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty25" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2330,7 +2168,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty26" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2339,7 +2177,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty27" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2348,7 +2186,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty28" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2357,7 +2195,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty29" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2366,7 +2204,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty30" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2375,7 +2213,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty31" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2384,7 +2222,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty32" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2393,7 +2231,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty33" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2402,7 +2240,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty34" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2411,7 +2249,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty35" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2420,7 +2258,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty36" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2429,7 +2267,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty37" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2438,7 +2276,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty38" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2447,7 +2285,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty39" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2456,7 +2294,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty40" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2465,7 +2303,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty41" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2474,7 +2312,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty42" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2483,7 +2321,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty43" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2492,7 +2330,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty44" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2501,7 +2339,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty45" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2510,7 +2348,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty46" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2519,7 +2357,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty47" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2528,7 +2366,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty48" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2537,7 +2375,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty49" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2546,7 +2384,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty50" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2555,7 +2393,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty51" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2564,7 +2402,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty52" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2573,7 +2411,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty53" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2582,7 +2420,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty54" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2591,7 +2429,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty55" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2600,7 +2438,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty56" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2609,7 +2447,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty57" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2618,7 +2456,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty58" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -2627,7 +2465,7 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBarEmpty59" relativePoint="BOTTOMRIGHT">
                         <Offset>
-                            <AbsDimension x="4" y="0" />
+                            <AbsDimension x="2" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>

@@ -391,7 +391,7 @@ CENSUSPLUS_RACE = "Расы"
 CENSUSPLUS_REALM = "Мир"
 
 -- Needs review
-CENSUSPLUS_REALMNAME = "Мир:"
+CENSUSPLUS_REALMNAME = "Мир: %s"
 
 -- Needs review
 CENSUSPLUS_REALMUNKNOWN = "Мир: неизвестно"

@@ -275,7 +275,7 @@ CENSUSPLUS_RACE = "Races"
 
 CENSUSPLUS_REALM = "Royaume"
 
-CENSUSPLUS_REALMNAME = "Royaume : "
+CENSUSPLUS_REALMNAME = "Royaume : %s"
 
 CENSUSPLUS_REALMUNKNOWN = "Royaume : Inconnu"
 

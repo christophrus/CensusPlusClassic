@@ -494,7 +494,7 @@ end
 function CensusPlus_OnLoad(self)
 	-- Update the version number
 	CensusPlusText:SetText(
-		"Census+ v" .. CensusPlus_VERSION .. "bpgus" .. CensusPlus_SubVersion .. " " .. CPp.CensusPlusLocale
+		"CensusPlusClassic v" .. CensusPlus_VERSION .. "bpgus" .. CensusPlus_SubVersion .. " " .. CPp.CensusPlusLocale
 	)
 	CensusPlusText2:SetText(CENSUSPLUS_UPLOAD)
 
@@ -2078,7 +2078,7 @@ function CensusPlus_InitializeVariables()
 	end
 
 	--CensusPlusSetCheckButtonState()
-	CensusPlus_Msg(" V" .. CensusPlus_VERSION .. CENSUSPLUS_MSG1)
+	CensusPlus_Msg(" v" .. CensusPlus_VERSION .. CENSUSPLUS_MSG1)
 
 	g_VariablesLoaded = true
 
@@ -3005,49 +3005,16 @@ function CensusPlus_UpdateView()
 		table.insert(CPp.VRealms, realmName)
 	end
 
-	CensusPlusRealmName:SetText(CENSUSPLUS_REALMNAME)
-
-	if (CPp.ConnectedRealmsButton == 0) then
-		CensusPlusTopGuildsTitle:SetText(CENSUSPLUS_GETGUILD)
-		--realmName = CPp.CensusPlusLocale .. GetRealmName(); -- valid but already handled
-		g_AccumulateGuildTotals = nil
-		--print(realmName)
-	else
-		CensusPlusTopGuildsTitle:SetText(CENSUSPLUS_TOPGUILD)
-		realmName = CPp.VRealms[CPp.ConnectedRealmsButton]
-		g_AccumulateGuildTotals = true
-	end
+	CensusPlusTopGuildsTitle:SetText(CENSUSPLUS_TOPGUILD)
+	g_AccumulateGuildTotals = true
 
 	if (realmName == nil) then return end
 
 	if (CensusPlus_PTR ~= false) then
 		realmName = PTR_Color_ProblemRealmGuilds_check(realmName)
 	end -- not PTR must be live
-	local stsrt, _, _ = string.find(realmName, "%(") -- strip off problem codes from Blizzards Portuguese realm if that has slipped through to this point
-	if stsrt ~= nil then
-		realmName = string.sub(realmName, 1, stsrt - 2)
-	end
 
-	-- connected realm memberships
-	local conmemcount = #CPp.VRealms
-	local connected_members = ""
-	CensusPlusConnected:SetText(CENSUSPLUS_CONNECTED)
-	CensusPlusConnected2:SetText(CENSUSPLUS_CONNECTED2)
-	CensusPlusConnected3:SetText(CENSUSPLUS_CONNECTED2)
-	for i = 1, conmemcount, 1 do
-		local button = _G["CensusPlusConnectedRealmButton" .. i]
-		local textField = "CensusPlusConnectedRealmButton" .. i .. "Text"
-		if ((CPp.VRealms[i] == nil) or (CPp.VRealms[i] == "")) then
-			_G[textField]:SetText(CENSUSPlus_BUTTON_REALMUNKNOWN)
-		else
-			if (i == CPp.ConnectedRealmsButton) then
-				_G[textField]:SetText("|cffffd200" .. string.match(CPp.VRealms[i], "_(.*)") .. "|r")
-			else
-				_G[textField]:SetText(string.match(CPp.VRealms[i], "_(.*)"))
-			end
-		end
-		--connected_members = connected_members.."    "..CPp.VRealms[i]
-	end
+	CensusPlusRealmName:SetText(format(CENSUSPLUS_REALMNAME, string.match(realmName, "_(.*)")))
 
 	local factionGroup, factionGName = UnitFactionGroup("player")
 	if (factionGroup == nil or factionGroup == "Neutral") then
@@ -3056,7 +3023,8 @@ function CensusPlus_UpdateView()
 
 	CensusPlusFactionName:SetText(format(CENSUSPLUS_FACTION, factionGName))
 
-	if not g_VariablesLoaded then return -- if variables aren't loaded show partial window data and escape
+	if not g_VariablesLoaded then
+		return -- if variables aren't loaded show partial window data and escape
 	end
 
 	if (CensusPlus_Database["Info"]["Locale"] ~= nil) then
@@ -3075,27 +3043,15 @@ function CensusPlus_UpdateView()
 	g_TotalCharacterXP = 0
 	g_TotalCount = 0
 
-	-- Has user selected a realm
-	if (CPp.ConnectedRealmsButton ~= 0) then
-		realmKey = CPp.VRealms[CPp.ConnectedRealmsButton]
-		--		print("realmKey = "..realmKey)
-	end
+	realmKey = realmName
+
 
 	-- Has the user selected a guild?
-	if (CPp.ConnectedRealmsButton ~= 0) then
-		if (CPp.GuildSelected ~= nil) then
-			guildRealmKey = CPp.VRealms[CPp.ConnectedRealmsButton]
-			guildKey = CPp.GuildSelected
-		else
-			guildKey = nil
-		end --force reset of guildKey if realm is deselected -- force reset of guildRealmKey if realm deselected
-		--current_realm = 0
+	if (CPp.GuildSelected ~= nil) then
+		guildRealmKey = realmName
+		guildKey = CPp.GuildSelected
 	else
-		if (CPp.GuildSelected ~= nil) then
-			CPp.GuildSelected = nil
-			guildKey = nil
-			guildRealmKey = nil
-		end
+		guildKey = nil
 	end
 
 	-- Has the user added any search criteria?
@@ -3114,106 +3070,57 @@ function CensusPlus_UpdateView()
 
 
 	-- Get totals for this criteria
-	if (CPp.ConnectedRealmsButton ~= 0) then
-		if (current_realm ~= CPp.ConnectedRealmsButton) then
-			CensusPlus_Guilds = {}
-			g_AccumulateGuildTotals = true
-			CPp.GuildSelected = nil
-			CensusPlus_ForAllCharacters(
-				realmKey,
-				factionGroup,
-				raceKey,
-				classKey,
-				nil,
-				levelKey,
-				realmKey,
-				TotalsAccumulator
-			)
-			current_realm = CPp.ConnectedRealmsButton
-			--CPp.GuildSelected = nil
-		else
-			if (CPp.GuildSelected ~= nil) then
-				CensusPlus_Guilds = {}
-				g_AccumulateGuildTotals = true
-				local conmemcount = #CPp.VRealms
-				for i = 1, conmemcount, 1 do
-					if ((CPp.VRealms[i] ~= nil) and (CPp.VRealms[i] ~= "")) then
-						realmName = CPp.VRealms[i]
-						CensusPlus_ForAllCharacters(
-							realmName,
-							factionGroup,
-							raceKey,
-							classKey,
-							guildKey,
-							levelKey,
-							guildRealmKey,
-							TotalsAccumulator
-						)
-					end
-				end
-			else
-				CensusPlus_Guilds = {}
-				g_AccumulateGuildTotals = true
-				CensusPlus_ForAllCharacters(
-					realmKey,
-					factionGroup,
-					raceKey,
-					classKey,
-					nil,
-					levelKey,
-					realmKey,
-					TotalsAccumulator
-				)
-			end
-		end
-		if CPp.EnableProfiling then
-			CP_profiling_timerdiff =
-				debugprofilestop() - CP_profiling_timerstart
-			CensusPlus_Msg(
-				"PROFILE: Time to do calcs 1 " .. CP_profiling_timerdiff / 1000000000
-			)
-			--CP_profiling_timerstart =	debugprofilestop();
-		end
-
-		if ((guildKey == nil) and (guildRealmKey == nil) and (raceKey == nil) and (classKey == nil) and (levelKey == nil)) then
-			--if ((guildKey == nil) and (guildRealmKey == nil)) then
-			local size = #CensusPlus_Guilds
-			if size then
-				table.sort(CensusPlus_Guilds, GuildPredicate)
-			end
-		end
-
-		if CPp.EnableProfiling then
-			CP_profiling_timerdiff =
-				debugprofilestop() - CP_profiling_timerstart
-			CensusPlus_Msg(
-				"PROFILE: Time to sort guilds " .. CP_profiling_timerdiff() / 1000000000
-			)
-			--CP_profiling_timerstart =	debugprofilestop();
-		end
-
-		--	end
-		-- doing superset .. no guild process
-	else
-		current_realm = 0
+	if (CPp.GuildSelected ~= nil) then
 		CensusPlus_Guilds = {}
-		g_AccumulateGuildTotals = nil
-		local conmemcount = #CPp.VRealms
-		for i = 1, conmemcount, 1 do
-			if ((CPp.VRealms[i] ~= nil) and (CPp.VRealms[i] ~= "")) then
-				realmName = CPp.VRealms[i]
-				CensusPlus_ForAllCharacters(
-					realmName,
-					factionGroup,
-					raceKey,
-					classKey,
-					nil,
-					levelKey,
-					nil,
-					TotalsAccumulator
-				)
-			end
+		g_AccumulateGuildTotals = true
+		CensusPlus_ForAllCharacters(
+			realmName,
+			factionGroup,
+			raceKey,
+			classKey,
+			guildKey,
+			levelKey,
+			guildRealmKey,
+			TotalsAccumulator
+		)
+	else
+		CensusPlus_Guilds = {}
+		g_AccumulateGuildTotals = true
+		CensusPlus_ForAllCharacters(
+			realmKey,
+			factionGroup,
+			raceKey,
+			classKey,
+			nil,
+			levelKey,
+			realmKey,
+			TotalsAccumulator
+		)
+	end
+	if CPp.EnableProfiling then
+		CP_profiling_timerdiff =
+			debugprofilestop() - CP_profiling_timerstart
+		CensusPlus_Msg(
+			"PROFILE: Time to do calcs 1 " .. CP_profiling_timerdiff / 1000000000
+		)
+		--CP_profiling_timerstart =	debugprofilestop();
+	end
+
+	if ((guildKey == nil) and (guildRealmKey == nil) and (raceKey == nil) and (classKey == nil) and (levelKey == nil)) then
+		--if ((guildKey == nil) and (guildRealmKey == nil)) then
+		local size = #CensusPlus_Guilds
+		if size then
+			table.sort(CensusPlus_Guilds, GuildPredicate)
 		end
+	end
+
+	if CPp.EnableProfiling then
+		CP_profiling_timerdiff =
+			debugprofilestop() - CP_profiling_timerstart
+		CensusPlus_Msg(
+			"PROFILE: Time to sort guilds " .. CP_profiling_timerdiff() / 1000000000
+		)
+		--CP_profiling_timerstart =	debugprofilestop();
 	end
 
 	local levelSearch = nil
@@ -3256,67 +3163,36 @@ function CensusPlus_UpdateView()
 		g_RaceCount[i] = 0
 		CensusPlus_ResetAccumulator()
 		if ((raceKey == nil) or (raceKey == race)) then
-			if (CPp.ConnectedRealmsButton == 0) then
-				for j = 1, conmemcount, 1 do
-					if ((CPp.VRealms[j] ~= nil) and (CPp.VRealms[j] ~= "")) then
-						realmName = CPp.VRealms[j]
-					else
-						break
-					end
-					CensusPlus_ForAllCharacters(
-						realmName,
-						factionGroup,
-						race,
-						classKey,
-						nil,
-						levelKey,
-						nil,
-						CensusPlus_Accumulator
-					)
-				end
+			if (CPp.GuildSelected ~= nil) then
+				CensusPlus_ForAllCharacters(
+					realmName,
+					factionGroup,
+					race,
+					classKey,
+					guildKey,
+					levelKey,
+					guildRealmKey,
+					CensusPlus_Accumulator
+				)
 				if (g_AccumulatorCount > maxCount) then
 					maxCount = g_AccumulatorCount
 				end
 				g_RaceCount[i] = g_AccumulatorCount
 			else
-				if (CPp.GuildSelected ~= nil) then
-					for j = 1, conmemcount, 1 do
-						if ((CPp.VRealms[j] ~= nil) and (CPp.VRealms[j] ~= "")) then
-							realmName = CPp.VRealms[j]
-						else
-							break
-						end
-						CensusPlus_ForAllCharacters(
-							realmName,
-							factionGroup,
-							race,
-							classKey,
-							guildKey,
-							levelKey,
-							guildRealmKey,
-							CensusPlus_Accumulator
-						)
-					end
-					if (g_AccumulatorCount > maxCount) then
-						maxCount = g_AccumulatorCount
-					end
-					g_RaceCount[i] = g_AccumulatorCount
-				else
-					CensusPlus_ForAllCharacters(
-						realmKey,
-						factionGroup,
-						race,
-						classKey,
-						nil,
-						levelKey,
-						nil,
-						CensusPlus_Accumulator
-					)
-					if (g_AccumulatorCount > maxCount) then
-						maxCount = g_AccumulatorCount
-					end
-					g_RaceCount[i] = g_AccumulatorCount
+				CensusPlus_ForAllCharacters(
+					realmKey,
+					factionGroup,
+					race,
+					classKey,
+					nil,
+					levelKey,
+					nil,
+					CensusPlus_Accumulator
+				)
+				if (g_AccumulatorCount > maxCount) then
+					maxCount = g_AccumulatorCount
 				end
+				g_RaceCount[i] = g_AccumulatorCount
 			end
 		end
 	end
@@ -3379,68 +3255,36 @@ function CensusPlus_UpdateView()
 		g_ClassCount[i] = 0
 		CensusPlus_ResetAccumulator()
 		if ((classKey == nil) or (classKey == class)) then
-			if (CPp.ConnectedRealmsButton == 0) then
-				for j = 1, conmemcount, 1 do
-					if ((CPp.VRealms[j] ~= nil) and (CPp.VRealms[j] ~= "")) then
-						realmName = CPp.VRealms[j]
-					else
-						break
-					end
-					CensusPlus_ForAllCharacters(
-						realmName,
-						factionGroup,
-						raceKey,
-						class,
-						nil,
-						levelKey,
-						nil,
-						CensusPlus_Accumulator
-					)
-				end
+			if (CPp.GuildSelected ~= nil) then
+				CensusPlus_ForAllCharacters(
+					realmName,
+					factionGroup,
+					raceKey,
+					class,
+					guildKey,
+					levelKey,
+					guildRealmKey,
+					CensusPlus_Accumulator
+				)
 				if (g_AccumulatorCount > maxCount) then
 					maxCount = g_AccumulatorCount
 				end
-				g_ClassCount[i] = g_AccumulatorCount
 			else
-				if (CPp.GuildSelected ~= nil) then
-					local conmemcount = #CPp.VRealms
-					for j = 1, conmemcount, 1 do
-						if ((CPp.VRealms[j] ~= nil) and (CPp.VRealms[j] ~= "")) then
-							realmName = CPp.VRealms[j]
-						else
-							break
-						end
-						CensusPlus_ForAllCharacters(
-							realmName,
-							factionGroup,
-							raceKey,
-							class,
-							guildKey,
-							levelKey,
-							guildRealmKey,
-							CensusPlus_Accumulator
-						)
-						if (g_AccumulatorCount > maxCount) then
-							maxCount = g_AccumulatorCount
-						end
-					end
-				else
-					CensusPlus_ForAllCharacters(
-						realmKey,
-						factionGroup,
-						raceKey,
-						class,
-						nil,
-						levelKey,
-						nil,
-						CensusPlus_Accumulator
-					)
-				end
-				if (g_AccumulatorCount > maxCount) then
-					maxCount = g_AccumulatorCount
-				end
-				g_ClassCount[i] = g_AccumulatorCount
+				CensusPlus_ForAllCharacters(
+					realmKey,
+					factionGroup,
+					raceKey,
+					class,
+					nil,
+					levelKey,
+					nil,
+					CensusPlus_Accumulator
+				)
 			end
+			if (g_AccumulatorCount > maxCount) then
+				maxCount = g_AccumulatorCount
+			end
+			g_ClassCount[i] = g_AccumulatorCount
 		end
 	end
 
@@ -3488,68 +3332,36 @@ function CensusPlus_UpdateView()
 	for i = 1, MAX_CHARACTER_LEVEL, 1 do
 		CensusPlus_ResetAccumulator()
 		if ((levelKey == nil) or (levelKey == i) or (levelKey < 0 and levelKey + i ~= 0)) then
-			if (CPp.ConnectedRealmsButton == 0) then
-				for j = 1, conmemcount, 1 do
-					if ((CPp.VRealms[j] ~= nil) and (CPp.VRealms[j] ~= "")) then
-						realmName = CPp.VRealms[j]
-					else
-						break
-					end
-					CensusPlus_ForAllCharacters(
-						realmName,
-						factionGroup,
-						raceKey,
-						classKey,
-						nil,
-						i,
-						nil,
-						CensusPlus_Accumulator
-					)
-				end
+			if (CPp.GuildSelected ~= nil) then
+				CensusPlus_ForAllCharacters(
+					realmName,
+					factionGroup,
+					raceKey,
+					classKey,
+					guildKey,
+					i,
+					guildRealmKey,
+					CensusPlus_Accumulator
+				)
 				if (g_AccumulatorCount > maxCount) then
 					maxCount = g_AccumulatorCount
 				end
-				g_LevelCount[i] = g_AccumulatorCount
 			else
-				if (CPp.GuildSelected ~= nil) then
-					local conmemcount = #CPp.VRealms
-					for j = 1, conmemcount, 1 do
-						if ((CPp.VRealms[j] ~= nil) and (CPp.VRealms[j] ~= "")) then
-							realmName = CPp.VRealms[j]
-						else
-							break
-						end
-						CensusPlus_ForAllCharacters(
-							realmName,
-							factionGroup,
-							raceKey,
-							classKey,
-							guildKey,
-							i,
-							guildRealmKey,
-							CensusPlus_Accumulator
-						)
-						if (g_AccumulatorCount > maxCount) then
-							maxCount = g_AccumulatorCount
-						end
-					end
-				else
-					CensusPlus_ForAllCharacters(
-						realmKey,
-						factionGroup,
-						raceKey,
-						classKey,
-						nil,
-						i,
-						nil,
-						CensusPlus_Accumulator
-					)
-				end
-				if (g_AccumulatorCount > maxCount) then
-					maxCount = g_AccumulatorCount
-				end
-				g_LevelCount[i] = g_AccumulatorCount
+				CensusPlus_ForAllCharacters(
+					realmKey,
+					factionGroup,
+					raceKey,
+					classKey,
+					nil,
+					i,
+					nil,
+					CensusPlus_Accumulator
+				)
 			end
+			if (g_AccumulatorCount > maxCount) then
+				maxCount = g_AccumulatorCount
+			end
+			g_LevelCount[i] = g_AccumulatorCount
 		else
 			g_LevelCount[i] = 0
 		end
@@ -3921,7 +3733,7 @@ function CensusPlus_SelectLocale(locale, auto)
 
 	textLine = _G["CensusPlusText"]
 	textLine:SetText(
-		"Census+ v" .. CensusPlus_VERSION_FULL .. " " .. CPp.CensusPlusLocale
+		"CensusPlusClassic v" .. CensusPlus_VERSION_FULL .. " " .. CPp.CensusPlusLocale
 	)
 
 	if ((CENSUSPLUS_DWARF == "Nain" or CENSUSPLUS_DWARF == "Zwerg" or CENSUSPLUS_DWARF == "Nano") and GetLocale() == "usEN") then
@@ -4467,7 +4279,7 @@ function CensusPlusBlizzardOptions()
 	CensusPlusOptionsHeader:ClearAllPoints()
 	CensusPlusOptionsHeader:SetPoint("TOPLEFT", 16, -16)
 	CensusPlusOptionsHeader:SetText(
-		"Census+ v" .. CensusPlus_VERSION_FULL .. " " .. CPp.CensusPlusLocale
+		"CensusClassic v" .. CensusPlus_VERSION_FULL .. " " .. CPp.CensusPlusLocale
 	)
 
 	-- Create Top Text frame (section 1 header)
