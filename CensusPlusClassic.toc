@@ -1,6 +1,5 @@
 ## Interface: 11302
 ## Version: 1.13.2
-## X-SubVersion: >=WoWL7.3.5
 ## Title: CensusPlusClassic
 ## Notes: This AddOn is licenced under the GNU GPL, see GPL.txt for details.
 ## Notes: Collects and displays census information. 
@@ -8,7 +7,8 @@
 ## Modified By: Cooper Sellers - www.warcraftrealms.com 
 ## Modified By: sylvanaar - LibWho integration
 ## Modified By: Bringoutyourdead with support from Balgair both at www.warcraftrealms.com 
-## Modified By: Bringoutyourdead with support from Padanfain both at www.warcraftrealms.com 
+## Modified By: Bringoutyourdead with support from Padanfain both at www.warcraftrealms.com
+#ä Modified By: Christophrus - WoWClassicPopulation.com
 ## OptionalDeps: LibWho-2.0, LibStub, CallbackHandler-1.0
 ## SavedVariables: CensusPlus_Database, CensusPlus_CRealms, CensusPlus_Guilds, CensusPlus_JobQueue
 ## SavedVariablesPerCharacter: CensusPlus_PerCharInfo
