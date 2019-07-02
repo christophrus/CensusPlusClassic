@@ -205,7 +205,7 @@ CENSUSPLUS_MAXXED = "最大值！"
 
 CENSUSPLUS_MONK = "武僧"
 
-CENSUSPLUS_MSG1 = "加载完成——输入 /censusplus 或者 /census+ 或者 /census获取更多有效的命令"
+CENSUSPLUS_MSG1 = "加载完成——输入 /censusplus 或者 /CensusPlusClassic 或者 /census获取更多有效的命令"
 
 CENSUSPLUS_NIGHTELF = "暗夜精灵"
 
@@ -221,7 +221,7 @@ CENSUSPLUS_OPTIONS_CHATTYCONFIRM = "聊天框选项确认信息 - 勾选以启�
 
 CENSUSPLUS_OPTIONS_CHATTY_TOOLTIP = "启用在聊天框显示当前选项设置 - 当选项窗口打开时或者设置改变时显示"
 
-CENSUSPLUS_OPTIONS_HEADER = "Census+ 选项"
+CENSUSPLUS_OPTIONS_HEADER = "CensusPlusClassic 选项"
 
 CENSUSPLUS_OPTIONS_OVERRIDE = "覆盖"
 
@@ -303,7 +303,7 @@ CENSUSPLUS_TAKINGONLINE = "进行当前在线角色的人口普查"
 
 CENSUSPLUS_TAUREN = "牛头人"
 
-CENSUSPLUS_TEXT = "Census+"
+CENSUSPLUS_TEXT = "CensusPlusClassic"
 
 CENSUSPLUS_TOOMANY = "警告: 相匹配的角色太多: %s"
 

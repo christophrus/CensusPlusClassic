@@ -113,7 +113,7 @@ CENSUSPLUS_CONNECTED = "Verknüpfte:"
 
 CENSUSPLUS_CONNECTED2 = "Zusätzlich Verknüpfte:"
 
-CENSUSPLUS_CONNECTEDREALMSFOUND = "Census+ hat die folgenden Verknüpften Realms gefunden"
+CENSUSPLUS_CONNECTEDREALMSFOUND = "CensusPlusClassic hat die folgenden Verknüpften Realms gefunden"
 
 CENSUSPLUS_CONSECUTIVE = "Aufeinanderfolgende Zählung:"
 
@@ -151,7 +151,7 @@ CENSUSPLUS_HELP_0 = "ergänze eines der hier gelisteten Kommandos"
 
 CENSUSPLUS_HELP_1 = "Schalte den ausführlichen Modus an/aus"
 
-CENSUSPLUS_HELP_10 = "_ Census+ aktualisiert den Spieler nach einer erfolgreichen Zählung. Dies erfolgt automatisch im Anschluß."
+CENSUSPLUS_HELP_10 = "_ CensusPlusClassic aktualisiert den Spieler nach einer erfolgreichen Zählung. Dies erfolgt automatisch im Anschluß."
 
 CENSUSPLUS_HELP_11 = "_ Schalte Ruhemodus aus/an - Deaktiviert den ausführlichen Modus und alle CensusPlusClassic Chat Nachrichten."
 
@@ -181,7 +181,7 @@ CENSUSPLUS_HUNTER = "Jäger"
 
 CENSUSPLUS_ISINBG = "Du befindest dich zur Zeit auf einem Schlachtfeld, daher kann keine Zählung durchgeführt werden"
 
-CENSUSPLUS_ISINPROGRESS = "Eine Census+-Zählung wird gerade durchgeführt, versuche es später noch einmal"
+CENSUSPLUS_ISINPROGRESS = "Eine CensusPlusClassic-Zählung wird gerade durchgeführt, versuche es später noch einmal"
 
 CENSUSPLUS_LANGUAGECHANGED = "Client Sprache wurde geändert, Datenbank wird gelöscht."
 
@@ -205,7 +205,7 @@ CENSUSPLUS_MAXXED = "MAXXED!"
 
 CENSUSPLUS_MONK = "Mönch"
 
-CENSUSPLUS_MSG1 = "Geladen - Mit /census, /census+ oder /censusplus werden mögliche Befehle angezeigt"
+CENSUSPLUS_MSG1 = "Geladen - Mit /census, /CensusPlusClassic oder /censusplus werden mögliche Befehle angezeigt"
 
 CENSUSPLUS_NIGHTBORNE = "Nachtgeborener"
 
@@ -223,7 +223,7 @@ CENSUSPLUS_OPTIONS_CHATTYCONFIRM = "Chatty Optionen Bestätigungen - Auswählen 
 
 CENSUSPLUS_OPTIONS_CHATTY_TOOLTIP = "Aktivieren um die aktuellen gesetzten Optionen im Chat zu sehen - Wird angezeigt wenn das Optionen Fenster geöffnet wird und bei vielen CensusPlusClassic Optionen Änderungen."
 
-CENSUSPLUS_OPTIONS_HEADER = "Census+ Optionen"
+CENSUSPLUS_OPTIONS_HEADER = "CensusPlusClassic Optionen"
 
 CENSUSPLUS_OPTIONS_OVERRIDE = "Überschreiben"
 
@@ -307,7 +307,7 @@ CENSUSPLUS_TAKINGONLINE = "Eine Zählung der gerade aktiven Charaktere wird ausg
 
 CENSUSPLUS_TAUREN = "Tauren"
 
-CENSUSPLUS_TEXT = "Census+"
+CENSUSPLUS_TEXT = "CensusPlusClassic"
 
 CENSUSPLUS_TOOMANY = "WARNUNG: Zu viele passende Charaktere gefunden: %s"
 
@@ -339,7 +339,7 @@ CENSUSPLUS_UNPAUSE = "Zusammenfassung"
 
 CENSUSPLUS_UNPAUSECENSUS = "Fahre mit der aktuellen Zählung fort."
 
-CENSUSPLUS_UPLOAD = "Vergiss nicht deine Census+ Daten bei www.WoWClassicPopulation.com hochzuladen!"
+CENSUSPLUS_UPLOAD = "Vergiss nicht deine CensusPlusClassic Daten bei www.WoWClassicPopulation.com hochzuladen!"
 
 CENSUSPLUS_USAGE = "Benutzung:"
 

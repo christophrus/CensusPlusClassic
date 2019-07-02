@@ -247,7 +247,7 @@ CENSUSPLUS_MAXXED = "MAXXED!"
 
 CENSUSPLUS_MONK = "수도사"
 
-CENSUSPLUS_MSG1 = "센서스+ 로드됨 - /censusplus 나 /census+ 를 입력해 메인 창을 띄울 수 있습니다."
+CENSUSPLUS_MSG1 = "센서스+ 로드됨 - /censusplus 나 /CensusPlusClassic 를 입력해 메인 창을 띄울 수 있습니다."
 
 CENSUSPLUS_NIGHTELF = "나이트 엘프"
 

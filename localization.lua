@@ -24,9 +24,9 @@ CENSUSPlusFemale = { };
 
 	-- Translations start below
 
-CENSUSPLUS_TEXT     			 = "Census+";
+CENSUSPLUS_TEXT     			 = "CensusPlusClassic";
 
-CENSUSPLUS_MSG1             = " Loaded - type /censusplus or /census+  or /census for valid commands";
+CENSUSPLUS_MSG1             = " Loaded - type /censusplus or /CensusPlusClassic  or /census for valid commands";
 CENSUSPLUS_UPLOAD           = "Be sure to upload your CensusPlusClassic data to WoWClassicPopulation.com!";
 CENSUSPLUS_PAUSE            = "Pause";
 CENSUSPLUS_UNPAUSE          = "Resume";
@@ -420,7 +420,7 @@ CENSUSPLUS_EU_LOCALE		= "Select if you play on EURO Servers";
 CENSUSPLUS_LOCALE_SELECT	= "Select if you play on US or EURO servers";
 CENSUSPLUS_OPTIONS_OVERRIDE	= "Override"
 CENSUSPLUS_BUTTON_OPTIONS	= "Options";
-CENSUSPLUS_OPTIONS_HEADER	= "Census+ Options";
+CENSUSPLUS_OPTIONS_HEADER	= "CensusPlusClassic Options";
 CENSUSPLUS_ACCOUNT_WIDE		= "Account wide"
 CENSUSPLUS_ACCOUNT_WIDE_ONLY_OPTIONS		= "Account Wide Only options"
 CENSUSPLUS_CCO_OPTIONOVERRIDES = "Option overrides for this character only"
@@ -441,7 +441,7 @@ CENSUS_OPTIONS_LOG_BARS		= "Logarithmic Level Bars";
 CENSUS_OPTIONS_LOG_BARSTEXT		= "Enables Logarithmic scaling on display bars"
 CENSUS_OPTIONS_BACKGROUND_TRANSPARENCY_TOOLTIP = "Background transparency - ten steps"
 CENSUSPLUS_VERBOSE_TOOLTIP  = "Deselect to stop the spam!";
-CENSUSPlus_AUTOCENSUS_TOOLTIP = "Enable Census+ to run automatically while playing";
+CENSUSPlus_AUTOCENSUS_TOOLTIP = "Enable CensusPlusClassic to run automatically while playing";
 CENSUSPLUS_OPTIONS_CHATTYCONFIRM = "Chatty Option confirmation - check to enable"
 CENSUSPLUS_OPTIONS_CHATTY_TOOLTIP = "Enable chat to show current options settings - displays on interface options window opening and many CensusPlusClassic option changes"
 
@@ -517,9 +517,9 @@ i.f ( GetLocale() == "frFR" ) th.en
 if ( GetLocale() == "esES" ) then
 	--  Thanks to NeKRoMaNT  EU-Zul'jin   < contacto@nekromant.com> for the Spanish Translation
 
-	CENSUSPLUS_TEXT      = "Census+";
+	CENSUSPLUS_TEXT      = "CensusPlusClassic";
 
-	CENSUSPLUS_MSG1             = " operativo - Escribe /censusplus o /census+ para abrir la ventana principal";
+	CENSUSPLUS_MSG1             = " operativo - Escribe /censusplus o /CensusPlusClassic para abrir la ventana principal";
 	CENSUSPLUS_UPLOAD           = "¡Asegúrate de enviar tus datos a WoWClassicPopulation.com!";
 	CENSUSPLUS_PAUSE            = "Pausa";
 	CENSUSPLUS_UNPAUSE          = "Continuar";
@@ -611,7 +611,7 @@ CensusPlus_FOUND					= "found"
 
 	
 	CENSUSPLUS_BUTTON_OPTIONS   = "Opciones";
-	CENSUSPLUS_OPTIONS_HEADER   = "Opciones Census+";
+	CENSUSPLUS_OPTIONS_HEADER   = "Opciones CensusPlusClassic";
 --CENSUSPLUS_ISINBG			= "You are currently in a Battleground so a Census cannot be taken";
 	CENSUS_OPTIONS_BUTSHOW      = "Mostrar botón";
 --CENSUS_OPTIONS_AUTOCENSUS   = "Auto-Census";
@@ -621,7 +621,7 @@ CensusPlus_FOUND					= "found"
 --CENSUS_OPTIONS_LOG_BARS		= "Logarithmic Level Bars";
 
 --CENSUSPLUS_VERBOSE_TOOLTIP  = "Deselect to stop the spam!";
---CENSUSPlus_AUTOCENSUS_TOOLTIP = "Enable Census+ to run automatically while playing";
+--CENSUSPlus_AUTOCENSUS_TOOLTIP = "Enable CensusPlusClassic to run automatically while playing";
 
 	CENSUSPLUS_BUTTON_CHARACTERS = "Mostrar personajes";
 	CENSUSPLUS_CHARACTERS      = "Personajes";
@@ -695,7 +695,7 @@ CENSUSPlusFemale["Pandarena"] = "Pandaren";
 
 
 CENSUSPLUS_BUTTON_OPTIONS = "Opções";
-CENSUSPLUS_OPTIONS_HEADER = "Opções Census+";
+CENSUSPLUS_OPTIONS_HEADER = "Opções CensusPlusClassic";
 --CENSUSPLUS_ISINBG			= "You are currently in a Battleground so a Census cannot be taken";
 CENSUS_OPTIONS_BUTSHOW = "Mostrar botão";
 
@@ -707,7 +707,7 @@ CENSUS_OPTIONS_BUTSHOW = "Mostrar botão";
 --CENSUS_OPTIONS_LOG_BARS		= "Logarithmic Level Bars";
 
 CENSUSPLUS_VERBOSE_TOOLTIP  = "Deselect to stop the spam!";
-CENSUSPlus_AUTOCENSUS_TOOLTIP = "Enable Census+ to run automatically while playing";
+CENSUSPlus_AUTOCENSUS_TOOLTIP = "Enable CensusPlusClassic to run automatically while playing";
 
 CENSUSPLUS_BUTTON_CHARACTERS = "Mostrar personagens";
 CENSUSPLUS_CHARACTERS = "Personagens";
@@ -717,8 +717,8 @@ CENSUS_BUTTON_TOOLTIP = "Abrir CensusPlusClassic";
 -- -- -- Não utilizado
 
 -- CENSUSPlus_BUTTON_SUBTEXT = "Estatísticas do Servidor";
--- CENSUSPlus_BUTTON_TIP = "Clique aqui para mostrar ou ocultar o Census+.";
--- CENSUSPLUS_HELP = " Usar /censusplus para abrir e fechar a interface do Census+.";
+-- CENSUSPlus_BUTTON_TIP = "Clique aqui para mostrar ou ocultar o CensusPlusClassic.";
+-- CENSUSPLUS_HELP = " Usar /censusplus para abrir e fechar a interface do CensusPlusClassic.";
 -- CENSUSPlus_SHOWMINI = "Iniciar Minimizado";
 -- CENSUSPlus_MAXIMIZE = "Maximizar a janela do CensusPlusClassic";
 -- CENSUSPlus_MINIMIZE = "Minimizar a janela do CensusPlusClassic";
@@ -730,9 +730,9 @@ CENSUS_BUTTON_TOOLTIP = "Abrir CensusPlusClassic";
 --[[
 if ( GetLocale() == "itIT" ) then
 
-CENSUSPLUS_TEXT      = "Census+";
+CENSUSPLUS_TEXT      = "CensusPlusClassic";
 
-CENSUSPLUS_MSG1             = " Loaded - - tipo /censusplus o /census+ o /census per aprire la finestra principale";
+CENSUSPLUS_MSG1             = " Loaded - - tipo /censusplus o /CensusPlusClassic o /census per aprire la finestra principale";
 CENSUSPLUS_UPLOAD           = "Assicurarsi di caricare i dati CensusPlusClassic a WoWClassicPopulation.com!";
 CENSUSPLUS_PAUSE            = "Sospendi";
 CENSUSPLUS_UNPAUSE          = "Riattiva";
@@ -834,7 +834,7 @@ CENSUSPLUS_EU_LOCALE		= "Select if you play on EURO Servers";
 CENSUSPLUS_LOCALE_SELECT	= "Select if you play on US or EURO servers";
 
 CENSUSPLUS_BUTTON_OPTIONS	= "Options";
-CENSUSPLUS_OPTIONS_HEADER	= "Census+ Options";
+CENSUSPLUS_OPTIONS_HEADER	= "CensusPlusClassic Options";
 CENSUSPLUS_ISINBG			= "You are currently in a Battleground so a Census cannot be taken";
 CENSUS_OPTIONS_BUTSHOW      = "Show Minimap Button";
 CENSUS_OPTIONS_AUTOCENSUS   = "Auto-Census";
@@ -843,9 +843,9 @@ CENSUS_OPTIONS_VERBOSE      = "Verbose";
 CENSUS_OPTIONS_SOUND_ON_COMPLETE = "Play Sound When Done";
 CENSUS_OPTIONS_LOG_BARS		= "Logarithmic Level Bars";
 
-CENSUSPlus_AUTOSTART_TOOLTIP = "Enable Census+ to start automatically";
+CENSUSPlus_AUTOSTART_TOOLTIP = "Enable CensusPlusClassic to start automatically";
 CENSUSPLUS_VERBOSE_TOOLTIP  = "Deselect to stop the spam!";
-CENSUSPlus_AUTOCENSUS_TOOLTIP = "Enable Census+ to run automatically while playing";
+CENSUSPlus_AUTOCENSUS_TOOLTIP = "Enable CensusPlusClassic to run automatically while playing";
 
 CENSUSPLUS_BUTTON_CHARACTERS = "Show Chars";
 CENSUSPLUS_CHARACTERS		= "Characters";
@@ -868,7 +868,7 @@ CENSUSPLUS_TEXT      = "센서스+";
 -- CENSUSPlus_BUTTON_TIP       = "센서스+ 를 보이거나 숨기려면 클릭하십시오.";
 -- CENSUSPLUS_HELP             = " /censusplus 를 사용해 센서스+ UI 를 열거나 닫을 수 있습니다.";
 
-CENSUSPLUS_MSG1             = "센서스+ 로드됨 - /censusplus 나 /census+ 를 입력해 메인 창을 띄울 수 있습니다.";
+CENSUSPLUS_MSG1             = "센서스+ 로드됨 - /censusplus 나 /CensusPlusClassic 를 입력해 메인 창을 띄울 수 있습니다.";
 -- CENSUSPlus_MSG2             = "/censusdate 를 사용해 오늘의 날짜를 설정하세요.(형식: MM-DD-YYYY, 예. 12-25-2004)";
 
 CENSUSPLUS_UPLOAD           = "WoWClassicPopulation.com 에서 센서스+ 업데이트를 확인하세요!";

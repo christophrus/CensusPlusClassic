@@ -98,7 +98,7 @@ CENSUSPLUS_AUTOCENSUSON = "Режим автопереписи : ВКЛ"
 CENSUSPLUS_AUTOCENSUSTEXT = "Запустить Census с задержкой"
 
 -- Needs review
-CENSUSPLUS_AUTOCENSUS_TOOLTIP = "Разрешить автозапуск Census+ во время игры"
+CENSUSPLUS_AUTOCENSUS_TOOLTIP = "Разрешить автозапуск CensusPlusClassic во время игры"
 
 -- Needs review
 CENSUSPLUS_AUTOCLOSEWHO = "Автоматически закрывать Кто"
@@ -292,7 +292,7 @@ CENSUSPLUS_MAXXED = "МАКСИМАЛЬНО!"
 CENSUSPLUS_MONK = "Монах"
 
 -- Needs review
-CENSUSPLUS_MSG1 = "Загружено - введите /censusplus, /census+ или /census для списка команд"
+CENSUSPLUS_MSG1 = "Загружено - введите /censusplus, /CensusPlusClassic или /census для списка команд"
 
 -- Needs review
 CENSUSPLUS_NIGHTELF = "Ночной эльф"
@@ -438,7 +438,7 @@ CENSUSPLUS_TAKINGONLINE = "Производится перепись онлай�
 CENSUSPLUS_TAUREN = "Таурен"
 
 -- Needs review
-CENSUSPLUS_TEXT = "Census+"
+CENSUSPLUS_TEXT = "CensusPlusClassic"
 
 -- Needs review
 CENSUSPLUS_TOOMANY = "ВНИМАНИЕ: Слишком много соответствующих персонажей: %s"

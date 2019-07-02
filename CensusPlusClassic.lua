@@ -52,7 +52,7 @@ local CensusPlus_Version_Maint = "0";
 local CensusPlus_SubVersion = "";
 --local CensusPlus_VERSION = "WoD"
 local CensusPlus_VERSION = CensusPlus_Version_Major.."."..CensusPlus_Version_Minor .."."..CensusPlus_Version_Maint; 
-local CensusPlus_VERSION_FULL = CensusPlus_VERSION.."."..CensusPlus_SubVersion ;
+local CensusPlus_VERSION_FULL = CensusPlus_VERSION --.."."..CensusPlus_SubVersion ;
 local CensusPlus_PTR = GetCVar("portal") == "public-test" and "PTR";	-- enable true for PTR testing  enable false for live use
 local CensusPlus_MAXBARHEIGHT = 128;			-- Length of blue bars
 local CensusPlus_NUMGUILDBUTTONS = 10;			-- How many guild buttons are on the UI?
@@ -312,6 +312,16 @@ local function HortonChannelSetup()
 	says("Horton turned on the chatlog")
 end
 
+local function getUniqueRealmName()
+	
+	local realmname = GetRealmName()
+	local guid = UnitGUID("player")
+    local realmid = string.match(guid, "^Player%-(%d+)")
+	
+	return realmid .. "_" .. realmname
+
+end
+
 -- Set up confirmation boxes
 StaticPopupDialogs["CP_PURGE_CONFIRM"] = {
 	text = CENSUSPLUS_PURGE_LOCAL_CONFIRM,
@@ -546,6 +556,8 @@ function CP_ProcessWhoEvent(query, result, complete)
 			whoquery_active = false
 			whoquery_answered = false
 		end
+		-- remove job from the queue
+		table.remove(CensusPlus_JobQueue)
 		return
 	end
 
@@ -1059,11 +1071,7 @@ function CensusPlus_InternalWho(search, level)
 	g_InternalSearchName = search
 	g_InternalSearchLevel = level
 	g_InternalSearchCount = 0
-	local realmName = CPp.CensusPlusLocale .. GetRealmName()
-	local stsrt, _, _ = string.find(realmName, "%(")
-	if stsrt ~= nil then
-		realmName = string.sub(realmName, 1, stsrt - 2)
-	end
+	local realmName = getUniqueRealmName()
 
 	CensusPlus_ForAllCharacters(
 		realmName,
@@ -1269,15 +1277,11 @@ function CensusPlus_StartCensus()
 	local g_factionGroup = UnitFactionGroup("player")
 	local realm = ""
 	local lastjobtimediff = 1
-	realm = GetRealmName()
-	realm = PTR_Color_ProblemRealmGuilds_check(realm)
-	local realmName = CPp.CensusPlusLocale .. realm
+	local realmName = getUniqueRealmName()
 	--print( "Prep for start");
 	if (CensusPlus_JobQueue.CensusPlus_last_time and CensusPlus_JobQueue.CensusPlus_last_time > 1) then
 		lastjobtimediff = time() - CensusPlus_JobQueue.CensusPlus_last_time
 		--print( "got time");
-		--print( lastjobtimediff);
-		--print( "fake time");
 		--print( lastjobtimediff);
 	else
 		CensusPlus_JobQueue.CensusPlus_last_time = 1000
@@ -1344,27 +1348,17 @@ function CensusPlus_StartCensus()
 		--
 		CensusPlus_Msg(CENSUSPLUS_TAKINGONLINE)
 
-		local realm = ""
-		realm = GetRealmName()
-		--debug
-		if (HortonBug == true) then
-			says("local realm = " .. realm)
-			says("LE_REALM_RELATION_SAME = " .. LE_REALM_RELATION_SAME)
-			says(
-				"LE_REALM_RELATION_COALESCED = " .. LE_REALM_RELATION_COALESCED
-			)
-			says("LE_REALM_RELATION_VIRTUAL = " .. LE_REALM_RELATION_VIRTUAL)
-		end
-
-		realm = PTR_Color_ProblemRealmGuilds_check(realm)
-		local realmName = CPp.CensusPlusLocale .. realm
+		local realmName = getUniqueRealmName()
 		CensusPlus_JobQueue.CensusPlus_LoginRealm = realmName
 		CensusPlus_JobQueue.CensusPlus_LoginFaction = g_factionGroup
 		if (HortonBug == true) then
 			says("after check local realm = " .. realmName)
 		end
 
-		table.insert(CPp.VRealms, realmName)
+		-- workaround to view charts at start
+		if (CPp.VRealms[1] == nil) then	
+			table.insert(CPp.VRealms, realmName)
+		end
 
 		if CensusPlayerOnly then
 			if (UnitLevel("player") >= MIN_CHARACTER_LEVEL) then
@@ -1522,10 +1516,14 @@ function CensusPlus_DisplayResults()
 			local avg_Time_per_que = total_time / CP_g_queue_count
 			--print( avg_Time_per_que);
 		end
+		
+		--[[
 		ChatFrame1:AddMessage(CENSUSPLUS_CONNECTEDREALMSFOUND, 1.0, 0.3, 0.1)
 		for k, v in pairs(CPp.VRealms) do
 			realmslisttext = realmslisttext .. ", " .. v
 		end
+		--]]
+		
 		realmslisttext = string.sub(realmslisttext, 3)
 		ChatFrame1:AddMessage(realmslisttext, 1.0, 0.3, 0.1)
 		ChatFrame1:AddMessage(CENSUSPLUS_UPLOAD, 0.1, 1.0, 1.0)
@@ -1774,30 +1772,7 @@ function CensusPlus_ProcessTarget(unit)
 		--
 		local realmName = nil
 		if (sightingData.realm == nil) then
-			realmName = CPp.CensusPlusLocale .. GetRealmName()
-
-			realmName = PTR_Color_ProblemRealmGuilds_check(realmName) -- sightingData.realm is not nil
-			
-			--[[
-			-- work around for Blizzards oddball name for EU-Portugese server
-			if(	CensusPlus_Database["Info"]["Locale"] == "EU" )then		
-				local stsrt,_,_ = string.find(sightingData.realm,'%(')
-				if stsrt ~= nil then 
-					sightingData.realm = string.sub(sightingData.realm,1,stsrt-1)
-				end
-				local shortrealm = string.gsub(string.lower(sightingData.realm),"%W","")
-				for k,v in pairs(CompactRealmsEU) do
-					if shortrealm == k then sightingData.realm = v end
-				end
-				realmName = CPp.CensusPlusLocale .. sightingData.realm
-			else  -- US region
-				local shortrealm = string.gsub(string.lower(sightingData.realm),"%W","")
-				for k,v in pairs(CompactRealmsUS) do
-					if shortrealm == k then sightingData.realm = v end
-				end
-			end
-			--]]
-			
+			realmName = getUniqueRealmName()	
 		else
 			sightingData.realm =
 				PTR_Color_ProblemRealmGuilds_check(sightingData.realm)
@@ -1807,7 +1782,7 @@ function CensusPlus_ProcessTarget(unit)
 			if (CPp.VRealms == nil) then
 				CPp.VRealms = {}
 			end
-			VRealmMembership_verifier(realmName)
+			--VRealmMembership_verifier(realmName)
 		end
 		local realmDatabase = CensusPlus_Database["Servers"][realmName]
 		if (realmDatabase == nil) then
@@ -1911,7 +1886,7 @@ function CensusPlus_CollectSightingData(unit)
 		ret.name, ret.realm = UnitName(unit) -- returns realm also Y +?
 		ret.relationship = UnitRealmRelationship(unit) -- compares against self returns LE_REALM_RELATION_VIRTUAL|LE_REALM_RELATION_COALESCED|LE_REALM_RELATION_SAME
 		if ((ret.realm == nil) or ret.relationship == 1) then
-			ret.realm = GetRealmName()
+			ret.realm = getUniqueRealmName()
 		end
 		ret.level = UnitLevel(unit) -- a number  YNum
 		ret.sex = UnitSex(unit) -- a number 2=male 3=female  YNum
@@ -1927,7 +1902,7 @@ function CensusPlus_CollectSightingData(unit)
 			if (ret.guild == "") then
 				ret.guildrealm = ""
 			else
-				ret.guildrealm = GetRealmName()
+				ret.guildrealm = getUniqueRealmName()
 			end
 		end
 		ret.faction, _ = UnitFactionGroup(unit)
@@ -2059,6 +2034,18 @@ function CensusPlus_InitializeVariables()
 	if (CensusPlus_Database["Info"]["AutoCensusTimer"] == nil) then
 		CensusPlus_Database["Info"]["AutoCensusTimer"] = 1800
 	end
+	
+	if (CensusPlus_JobQueue["CensusPlus_last_time"] == nil) then
+		CensusPlus_JobQueue["CensusPlus_last_time"] = time() - (CPp.AutoStartTimer *60)
+	end
+	
+	if (CensusPlus_JobQueue["CensusPlus_LoginRealm_last"] == nil) then
+		CensusPlus_JobQueue["CensusPlus_LoginRealm_last"] = ""
+	end
+	
+	if (CensusPlus_JobQueue["CensusPlus_LoginFaction_last"] == nil) then
+		CensusPlus_JobQueue["CensusPlus_LoginFaction_last"] = ""
+	end
 
 	if (CensusPlus_Database["Info"]["CPWindow_Transparency"] == nil) then
 		CensusPlus_Database["Info"]["CPWindow_Transparency"] = 0.5
@@ -2115,13 +2102,32 @@ function CensusPlus_InitializeVariables()
 	CensusPlusBlizzardOptions()
 	CensusPlusSetCheckButtonState()
 	CPp.FirstLoad = false -- main table initialized and options initialized
-	CENSUSPLUS_TAKE_OnClick()
+
+	CensusPlus_AutoStart()
+	
+end
+
+
+function CensusPlus_AutoStart()
+	
+	local currentRealm = getUniqueRealmName()
+	local currentFaction = UnitFactionGroup("player")
+	local lastRealm = CensusPlus_JobQueue["CensusPlus_LoginRealm_last"]
+	local lastFaction = CensusPlus_JobQueue["CensusPlus_LoginFaction_last"]
+	local lastRun = CensusPlus_JobQueue["CensusPlus_last_time"]
+
+	if (currentRealm ~= lastRealm or currentFaction ~= lastFaction or (lastRun < time() - (CPp.AutoStartTimer * 60))) then
+		CensusPlus_StartCensus()
+	end
+
 end
 
   
 -- referenced by CensusPlusClassic.xml
 function CensusPlus_OnUpdate()
+	--print(CPp.LastCensusRun)
 	if g_FirstRun then
+		CensusButton:SetText("C+")
 		if (CPp.AutoStartTrigger > CPp.AutoStartTimer) then
 			if (g_VariablesLoaded and not CPp.IsCensusPlusInProgress and CPp.AutoCensus == true) then
 				CENSUSPLUS_TAKE_OnClick()
@@ -2155,9 +2161,8 @@ function CensusPlus_OnUpdate()
 
 			-- Determine if there is any more work to 
 			if (numJobs > 0) then
-				-- Remove the top job from the queue and send it
+				-- Send the job and remove it later after it is processed in CP_ProcessWhoEvent (Lib-Who callback)
 				local job = CensusPlus_JobQueue[numJobs]
-				table.remove(CensusPlus_JobQueue)
 				local whoText = CensusPlus_CreateWhoText(job)
 				g_FirstRun = false
 				
@@ -2209,6 +2214,8 @@ function CensusPlus_OnUpdate()
 					CensusPlus_ProcessConnectedRealms()
 				end
 				CensusPlayerOnly = false
+				CensusPlus_JobQueue.CensusPlus_LoginRealm_last = CensusPlus_JobQueue.CensusPlus_LoginRealm
+				CensusPlus_JobQueue.CensusPlus_LoginFaction_last = CensusPlus_JobQueue.CensusPlus_LoginFaction
 				CensusPlus_JobQueue.CensusPlus_LoginRealm = ""
 				CensusPlus_JobQueue.CensusPlus_LoginFaction = ""
 				CensusPlus_JobQueue.g_TempCount = {}
@@ -2323,23 +2330,29 @@ function CensusPlus_DoTimeCounts()
 			end
 
 			if CensusPLus_DEBUGWRITES then
-				local total_time = time() - g_CensusPlus_StartTime
-				local hour, minute = GetGameTime()
-				--CensusPlus_Database["TimesPlus"][realmData][factionData]["" .. hour .. ""] = CensusPlus_JobQueue.g_TimeDatabase;
 				CensusPlus_Database["TimesPlus"][MemberRealm][factionGroup] =
 					CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_DRUID] .. "&" .. CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_HUNTER] .. "&" .. CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_MAGE] .. "&" .. CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_PRIEST] .. "&" .. CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_ROGUE] .. "&" .. CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_WARLOCK] .. "&" .. CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_WARRIOR] .. "&" .. CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_SHAMAN] .. "&" .. CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_PALADIN] .. "&" .. CensusPlus_WHOPROCESSOR .. ":" .. CensusPlus_JobQueue.g_NumNewCharacters .. "," .. CensusPlus_JobQueue.g_NumUpdatedCharacters .. "," .. total_time
 			else
-				local hour, minute = GetGameTime()
 				local TimeDataTime = date("!%Y-%m-%d&%H:%M:%S", GetServerTime())
 
-				CensusPlus_Database["TimesPlus"][MemberRealm][factionGroup][TimeDataTime]
-				=
-					CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_DRUID] .. "&" .. CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_HUNTER] .. "&" .. CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_MAGE] .. "&" .. CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_PRIEST] .. "&" .. CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_ROGUE] .. "&" .. CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_WARLOCK] .. "&" .. CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_WARRIOR] .. "&" .. CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_SHAMAN] .. "&" .. CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_PALADIN]
+				CensusPlus_Database["TimesPlus"][MemberRealm][factionGroup][TimeDataTime] =
+					CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_DRUID] .. "&" ..
+					CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_HUNTER] .. "&" ..
+					CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_MAGE] .. "&" ..
+					CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_PRIEST] .. "&" ..
+					CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_ROGUE] .. "&" ..
+					CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_WARLOCK] .. "&" ..
+					CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_WARRIOR] .. "&" ..
+					CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_SHAMAN] .. "&" ..
+					CensusPlus_JobQueue.g_TimeDatabase[CENSUSPLUS_PALADIN]
 
-				CensusPlus_Database["TimesPlus"][MemberRealm][factionGroup][TimeDataTime]
-				=
-					CensusPlus_Database["TimesPlus"][MemberRealm][factionGroup][TimeDataTime] .. ":" .. StringHash(
-						CensusPlus_Database["TimesPlus"][MemberRealm][factionGroup][TimeDataTime] .. MemberRealm .. factionGroup .. TimeDataTime
+				CensusPlus_Database["TimesPlus"][MemberRealm][factionGroup][TimeDataTime] =
+					CensusPlus_Database["TimesPlus"][MemberRealm][factionGroup][TimeDataTime] .. ":" ..
+					StringHash(
+						CensusPlus_Database["TimesPlus"][MemberRealm][factionGroup][TimeDataTime] ..
+						MemberRealm ..
+						factionGroup ..
+						TimeDataTime
 					)
 			end
 		end
@@ -2388,7 +2401,7 @@ local function CensusPlus_ProcessGuildResults()
 	end
 	--	CensusPlus_Msg("Processing "..numOnline.." online of "..numGuildMembers.." total guild members.");
 
-	local realmName = CPp.CensusPlusLocale .. GetRealmName()
+	local realmName = getUniqueRealmName()
 	CensusPlus_Database["Guilds"] = nil
 	if (CensusPlus_Database["Guilds"] == nil) then
 		CensusPlus_Database["Guilds"] = {}
@@ -2549,32 +2562,9 @@ function CensusPlus_ProcessWhoResults(result, numWhoResults)
 		local relationship = nil
 		if (CensusPlus_WHOPROCESSOR == CP_libwho) then
 			name = result[i].Name
-			--[[ 
-					Note:  name and realm
-					if character tracked is on same realm as player character then name is returned as Name only
-					if character tracked is on a non-local connected realm then name is returned as Name-Realm
-			--]]
-
-			--[[
-					if (relationship == LE_REALM_RELATION_SAME) then
-					realm = GetRealmName();
-					relate = "same server";
-			--]]
-			
-			tmpNmst, tmpNmend = string.find(result[i].Name, "-")
-			if tmpNmst then
-				realm = string.sub(result[i].Name, tmpNmst + 1)
-				name = string.sub(result[i].Name, 1, tmpNmst - 1) -- this shouldn't happen except where Blizzard doesn't encode relationships  {sigh and they didn't}
-			else
-				realm = GetRealmName()
-			end
-			-- 5.4
+			realm = getUniqueRealmName()
 			guild = result[i].Guild
-			--[[
-					Note:  guild and realm
-					if character's guild tracked is on same realm as player character then guild is returned as guild only
-					if character's guild tracked is on a non-local connected realm then guild is returned as guild-Realm
-			--]]
+			
 			if (HortonBug == true) then
 				says(
 					"Who returned " .. result[i].Name .. "  Guild = " .. result[i].Guild
@@ -2583,27 +2573,11 @@ function CensusPlus_ProcessWhoResults(result, numWhoResults)
 			if ((guild ~= nil) and (guild ~= "")) then
 				local guildName = "" -- defined if valid guild returned from who call otherwise nil.. am I sure about this?
 				
-				--[[
-						invalid coding.. GetGuildInfo only works with (unit) not ("name") as indicated at www.wowprogramming.com sigh
-						guildName,guildRankName, guildRankIndex, guildRealm = GetGuildInfo(result[i].Name)
-						I'm assuming this will be  guild, guildrealm  and not guild-realm, guildrealm
-				--]]
-				--if (guildName == nil) then
-				tmpGldst, tmpGldend = string.find(result[i].Guild, "-")
-				if (tmpGldst ~= nil) then
-					guildRealm = string.sub(result[i].Guild, tmpGldst + 1)
-					guild = string.sub(result[i].Guild, 1, tmpGldst - 1)
-				else
-					guildRealm = GetRealmName()
-				end
+				guildRealm = getUniqueRealmName()
+				
 				if (HortonBug == true) then
 					says("guild realm =  " .. guildRealm)
 				end
-				--else
-				--	if (guildRealm == nil) then
-				--	guildRealm = GetRealmName();
-				--	end
-				--end
 			else
 				guild = ""
 				guildRealm = ""
@@ -2648,7 +2622,7 @@ function CensusPlus_ProcessWhoResults(result, numWhoResults)
 				realm = string.sub(name, tmpNmst + 1)
 				name = string.sub(name, 1, tmpNmst - 1)
 			else
-				realm = GetRealmName()
+				realm = getUniqueRealmName()
 			end
 
 			if ((guild ~= nil) and (guild ~= "")) then
@@ -2660,11 +2634,11 @@ function CensusPlus_ProcessWhoResults(result, numWhoResults)
 						guildRealm = string.sub(orig_guild, tmpGldst + 1)
 						guild = string.sub(orig_guild, 1, tmpGldst - 1)
 					else
-						guildRealm = GetRealmName()
+						guildRealm = getUniqueRealmName()
 					end
 				else
 					if (guildRealm == nil) then
-						guildRealm = GetRealmName()
+						guildRealm = getUniqueRealmName()
 					end
 				end
 			else
@@ -2690,12 +2664,10 @@ function CensusPlus_ProcessWhoResults(result, numWhoResults)
 			guildRealm = CPp.CensusPlusLocale .. guildRealm
 		end	
 
-		-- Get the portion of the database for this server
-		--5.3 local realmName = CPp.CensusPlusLocale .. GetRealmName();
-		local realmName = CPp.CensusPlusLocale .. realm
-		VRealmMembership_verifier(realmName)
+		local realmName = getUniqueRealmName()
+		--VRealmMembership_verifier(realmName)
+		
 		-- coalesced realms should not show up here via /who queries.
-
 		local realmDatabase = CensusPlus_Database["Servers"][realmName]
 		if (realmDatabase == nil) then
 			CensusPlus_Database["Servers"][realmName] = {}
@@ -2778,6 +2750,8 @@ function CensusPlus_ProcessWhoResults(result, numWhoResults)
 		gct_name[1] = class
 	end
 
+	-- remove the job
+	table.remove(CensusPlus_JobQueue)
 	whoquery_active = false
 	--CensusPlus_UpdateView();
 end
@@ -2798,7 +2772,7 @@ local function WR_ProcessSingleEntry(name, level, race, class, guild, zone)
 	end
 
 	-- Get the portion of the database for this server
-	local realmName = CPp.CensusPlusLocale .. GetRealmName()
+	local realmName = getUniqueRealmName()
 	local realmDatabase = CensusPlus_Database["Servers"][realmName]
 	if (realmDatabase == nil) then
 		CensusPlus_Database["Servers"][realmName] = {}
@@ -3019,7 +2993,13 @@ function CensusPlus_UpdateView()
 
 	-- Get realm and faction
 	-- if connected member set use that member else use the default login realm
-	local realmName = CPp.CensusPlusLocale .. GetRealmName()
+	local realmName = getUniqueRealmName()
+	
+	-- workaround to view charts at start
+	if (CPp.VRealms[1] == nil) then	
+		table.insert(CPp.VRealms, realmName)
+	end
+
 	CensusPlusRealmName:SetText(CENSUSPLUS_REALMNAME)
 
 	if (CPp.ConnectedRealmsButton == 0) then
@@ -3056,9 +3036,9 @@ function CensusPlus_UpdateView()
 			_G[textField]:SetText(CENSUSPlus_BUTTON_REALMUNKNOWN)
 		else
 			if (i == CPp.ConnectedRealmsButton) then
-				_G[textField]:SetText("|cffffd200" .. CPp.VRealms[i] .. "|r")
+				_G[textField]:SetText("|cffffd200" .. string.match(CPp.VRealms[i], "_(.*)") .. "|r")
 			else
-				_G[textField]:SetText(CPp.VRealms[i])
+				_G[textField]:SetText(string.match(CPp.VRealms[i], "_(.*)"))
 			end
 		end
 		--connected_members = connected_members.."    "..CPp.VRealms[i]
@@ -5299,10 +5279,7 @@ function CensusPlusBlizzardOptions()
 			CensusPlus_Database["Info"]["AutoCensus"] = false
 			CensusPlus_Database["Info"]["AutoCensusTimer"] = 1800
 			if not CensusPlusOptionsRadioButton_C5a:GetChecked() then
-				CensusPlusSlider1:SetValue(30)
-				CPp.AutoStartText =
-					CPp.AutoStartTimer .. " " .. CENSUS_OPTIONS_AUTOSTART .. " " .. ADDON_DISABLED
-				CensusPlusAutoStartButton:Disable()
+				CensusPlusSlider1:SetValue(15)
 			end
 		end
 		CensusPlus_SetAutoCensus(self)
@@ -5351,9 +5328,6 @@ function CensusPlusBlizzardOptions()
 			CensusPlus_PerCharInfo["AutoCensus"] = true
 			CensusPlus_PerCharInfo["AutoCensusTimer"] = 1800
 			CensusPlusSlider1:SetValue(30)
-			CPp.AutoStartText =
-				CPp.AutoStartTimer .. " " .. CENSUS_OPTIONS_AUTOSTART .. " " .. ADDON_DISABLED
-			CensusPlusAutoStartButton:Disable()
 			-- enable new override.. reset timer to 30 and disabled
 			--print(CPp.AutoStartTimer) -- revert to AW settings
 		elseif not CensusPlusOptionsRadioButton_C5b:GetChecked() then
@@ -5361,26 +5335,15 @@ function CensusPlusBlizzardOptions()
 			CensusPlus_PerCharInfo["AutoCensus"] = nil
 			CensusPlus_PerCharInfo["AutoCensusTimer"] = 1800
 			CensusPlusSlider1:SetValue(30)
-			CPp.AutoStartText =
-				CPp.AutoStartTimer .. " " .. CENSUS_OPTIONS_AUTOSTART .. " " .. ADDON_DISABLED
-			CensusPlusAutoStartButton:Disable()
 			if CensusPlusCheckButton5:GetChecked() then
 				if ((CensusPlus_Database["Info"]["AutoCensusTimer"] / 60) < (CPp.AutoStartTrigger + 1)) then
 					CensusPlusSlider1:SetValue(
 						CensusPlus_Database["Info"]["AutoCensusTimer"] / 60
 					)
-					CPp.AutoStartText =
-						CPp.AutoStartTimer .. " " .. CENSUS_OPTIONS_AUTOSTART .. " " .. VIDEO_OPTIONS_ENABLED
-					CensusPlusAutoStartButton:SetText(CPp.AutoStartText)
-					CensusPlusAutoStartButton:Enable()
 				elseif ((CensusPlus_Database["Info"]["AutoCensusTimer"] / 60) < 30) then
 					CensusPlusSlider1:SetValue(
 						CensusPlus_Database["Info"]["AutoCensusTimer"] / 60
 					)
-					CPp.AutoStartText =
-						CPp.AutoStartTimer .. " " .. CENSUS_OPTIONS_AUTOCENSUS .. " " .. VIDEO_OPTIONS_ENABLED
-					CensusPlusAutoStartButton:SetText(CPp.AutoStartText)
-					CensusPlusAutoStartButton:Enable()
 				else
 				end
 			else
@@ -5434,7 +5397,6 @@ function CensusPlusBlizzardOptions()
 			CensusPlusSlider1:SetValue(30)
 			CPp.AutoStartText =
 				CPp.AutoStartTimer .. " " .. CENSUS_OPTIONS_AUTOSTART .. " " .. ADDON_DISABLED
-			CensusPlusAutoStartButton:Disable() -- revert to AW settings
 		elseif not CensusPlusOptionsRadioButton_C5a:GetChecked() then
 			CensusPlusOptionsRadioButton_C5c:SetChecked(true)
 			CensusPlus_PerCharInfo["AutoCensus"] = nil
@@ -5443,18 +5405,10 @@ function CensusPlusBlizzardOptions()
 					CensusPlusSlider1:SetValue(
 						CensusPlus_Database["Info"]["AutoCensusTimer"] / 60
 					)
-					CPp.AutoStartText =
-						CPp.AutoStartTimer .. " " .. CENSUS_OPTIONS_AUTOSTART .. " " .. VIDEO_OPTIONS_ENABLED
-					CensusPlusAutoStartButton:SetText(CPp.AutoStartText)
-					CensusPlusAutoStartButton:Enable()
 				elseif ((CensusPlus_Database["Info"]["AutoCensusTimer"] / 60) < 30) then
 					CensusPlusSlider1:SetValue(
 						CensusPlus_Database["Info"]["AutoCensusTimer"] / 60
 					)
-					CPp.AutoStartText =
-						CPp.AutoStartTimer .. " " .. CENSUS_OPTIONS_AUTOCENSUS .. " " .. VIDEO_OPTIONS_ENABLED
-					CensusPlusAutoStartButton:SetText(CPp.AutoStartText)
-					CensusPlusAutoStartButton:Enable()
 				else
 				end
 			end
@@ -5512,25 +5466,14 @@ function CensusPlusBlizzardOptions()
 					CensusPlusSlider1:SetValue(
 						CensusPlus_Database["Info"]["AutoCensusTimer"] / 60
 					)
-					CPp.AutoStartText =
-						CPp.AutoStartTimer .. " " .. CENSUS_OPTIONS_AUTOSTART .. " " .. VIDEO_OPTIONS_ENABLED
-					CensusPlusAutoStartButton:SetText(CPp.AutoStartText)
-					CensusPlusAutoStartButton:Enable()
 				elseif ((CensusPlus_Database["Info"]["AutoCensusTimer"] / 60) < 30) then
 					CensusPlusSlider1:SetValue(
 						CensusPlus_Database["Info"]["AutoCensusTimer"] / 60
 					)
-					CPp.AutoStartText =
-						CPp.AutoStartTimer .. " " .. CENSUS_OPTIONS_AUTOCENSUS .. " " .. VIDEO_OPTIONS_ENABLED
-					CensusPlusAutoStartButton:SetText(CPp.AutoStartText)
-					CensusPlusAutoStartButton:Enable()
 				else
 				end
 			else
 				CensusPlusSlider1:SetValue(30)
-				CPp.AutoStartText =
-					CPp.AutoStartTimer .. " " .. CENSUS_OPTIONS_AUTOSTART .. " " .. ADDON_DISABLED
-				CensusPlusAutoStartButton:Disable()
 			end
 			CensusPlus_SetAutoCensus(self)
 		end
@@ -5565,17 +5508,6 @@ function CensusPlusBlizzardOptions()
 	)
 	CensusPlusSlider1:SetScript("OnValueChanged", function(self, value)
 		CPp.AutoStartTimer = CensusPlusSlider1:GetValue()
-		if ((CPp.AutoStartTimer > CPp.AutoStartTrigger) or CensusPlusOptionsRadioButton_C5b:GetChecked() or (not CensusPlusCheckButton5:GetChecked() and not CensusPlusOptionsRadioButton_C5a:GetChecked())) then
-			CPp.AutoStartText =
-				CPp.AutoStartTimer .. " " .. CENSUS_OPTIONS_AUTOSTART .. " " .. ADDON_DISABLED
-			CensusPlusAutoStartButton:Disable()
-		else
-			CPp.AutoStartText =
-				CPp.AutoStartTimer .. " " .. CENSUS_OPTIONS_AUTOSTART .. " " .. VIDEO_OPTIONS_ENABLED
-			CensusPlusAutoStartButton:Enable()
-		end
-		CensusPlusAutoStartButton:SetText(CPp.AutoStartText)
-		CensusPlusAutoStartButton:Show()
 	end)
 	CensusPlusSlider1:SetScript("OnMouseUp", function(self, value)
 		local value = CensusPlusSlider1:GetValue()
@@ -5594,41 +5526,6 @@ function CensusPlusBlizzardOptions()
 		CENSUSPLUS_AUTOCENSUS_DELAYTIME
 	) --Sets the "title" text (top-centre of slider).
 	CensusPlusSlider1:Enable()
-
-	--Create Frame AutoStart Display Button
-	CensusPlusAutoStartButton =
-		CreateFrame(
-			"Button",
-			"CensusPlusAutoStartButton",
-			CensusPlusOptions,
-			"UIPanelButtonTemplate"
-		)
-	local AutoStart_Text =
-		CPp.AutoStartTimer .. " " .. CENSUS_OPTIONS_AUTOSTART .. " " .. VIDEO_OPTIONS_ENABLED
-	CensusPlusAutoStartButton:SetWidth(150)
-	CensusPlusAutoStartButton:SetHeight(25)
-	CensusPlusAutoStartButton:SetPoint("TOPLEFT", CensusPlusSlider1, 140, 0)
-	CensusPlusAutoStartButton:Enable()
-	CensusPlusAutoStartButton:SetScript("OnMouseDown", function(self)
-		if (CPp.AutoStartTimer == 30) then
-			CensusPlusAutoStartButton:SetText(SOR_INACTIVE)
-		elseif (CensusPlus_PerCharInfo["AutoCensus"] == true) then
-			local autostartbuttontag =
-				"CCO Timer " .. CPp.AutoStartTimer .. ACTIVE_PETS
-			CensusPlusAutoStartButton:SetText(autostartbuttontag)
-		else
-			local autostartbuttontag =
-				"AW Timer " .. CPp.AutoStartTimer .. ACTIVE_PETS
-			CensusPlusAutoStartButton:SetText(autostartbuttontag)
-		end
-	end)
-	CensusPlusAutoStartButton:SetScript("OnMouseUp", function(self)
-		CensusPlusAutoStartButton:SetText(CPp.AutoStartText)
-	end)
-	--local CPp.AutoStartTimer = CPp.AutoStartTimer.." AutoStart".." ".."Enabled"
-	CensusPlusAutoStartButton:SetText(CPp.AutoStartText)
-	CensusPlusAutoStartButton.tooltipText =
-		CENSUSPLUS_AUTOSTARTTEXT .. CPp.AutoStartTrigger + 1
 
 	--Create Frame Enable FinishSound
 	CensusPlusCheckButton6 =

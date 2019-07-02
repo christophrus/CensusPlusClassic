@@ -69,7 +69,7 @@ CENSUSPLUS_AUTOCENSUSON = "Modo AutoCensus: LIGADO"
 
 CENSUSPLUS_AUTOCENSUSTEXT = "Inicia Census após atraso inicial"
 
-CENSUSPLUS_AUTOCENSUS_TOOLTIP = "Habilite Census+ para executar automaticamente ao jogar"
+CENSUSPLUS_AUTOCENSUS_TOOLTIP = "Habilite CensusPlusClassic para executar automaticamente ao jogar"
 
 CENSUSPLUS_AUTOCLOSEWHO = "Fechar Quem Automaticamente"
 
@@ -201,7 +201,7 @@ CENSUSPLUS_MAXXED = "MAXIMIZADO!"
 
 CENSUSPLUS_MONK = "Monge"
 
-CENSUSPLUS_MSG1 = "Carregado - digite /censusplus ou /census+ ou /census para comandos válidos"
+CENSUSPLUS_MSG1 = "Carregado - digite /censusplus ou /CensusPlusClassic ou /census para comandos válidos"
 
 CENSUSPLUS_NIGHTBORNE = "Filho da Noite"
 
@@ -219,7 +219,7 @@ CENSUSPLUS_OPTIONS_CHATTYCONFIRM = "Confirmação Opção Tagarela - marque para
 
 CENSUSPLUS_OPTIONS_CHATTY_TOOLTIP = "Ativar bate-papo para mostrar configurações de opções atuais - exibido na abertura da janela opções de interface e muitas mudanças de opção CensusPlusClassic"
 
-CENSUSPLUS_OPTIONS_HEADER = "Opções Census+"
+CENSUSPLUS_OPTIONS_HEADER = "Opções CensusPlusClassic"
 
 CENSUSPLUS_OPTIONS_OVERRIDE = "Anular"
 
@@ -301,7 +301,7 @@ CENSUSPLUS_TAKINGONLINE = "Tomando censo de personagens online..."
 
 CENSUSPLUS_TAUREN = "Tauren"
 
-CENSUSPLUS_TEXT = "Census+"
+CENSUSPLUS_TEXT = "CensusPlusClassic"
 
 CENSUSPLUS_TOOMANY = "AVISO: Muitos personagens correspondendo: %s"
 

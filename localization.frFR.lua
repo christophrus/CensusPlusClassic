@@ -207,7 +207,7 @@ CENSUSPLUS_MAXXED = "AU MAXIMUM !"
 
 CENSUSPLUS_MONK = "Moine"
 
-CENSUSPLUS_MSG1 = " Chargé - Tapez /censusplus ou /census+ ou /census pour afficher les commandes valides"
+CENSUSPLUS_MSG1 = " Chargé - Tapez /censusplus ou /CensusPlusClassic ou /census pour afficher les commandes valides"
 
 CENSUSPLUS_NIGHTBORNE = "Sacrenuit"
 
@@ -225,7 +225,7 @@ CENSUSPLUS_OPTIONS_CHATTYCONFIRM = "Confirmation d'option de bavardage - cocher 
 
 CENSUSPLUS_OPTIONS_CHATTY_TOOLTIP = "Activer le chat pour afficher les paramètres actuels des options - apparaît lors de l'ouverture de la fenêtre des options d'interface et des nombreux changements d'options CensusPlusClassic"
 
-CENSUSPLUS_OPTIONS_HEADER = "Options Census+"
+CENSUSPLUS_OPTIONS_HEADER = "Options CensusPlusClassic"
 
 CENSUSPLUS_OPTIONS_OVERRIDE = "Remplacer"
 
@@ -307,7 +307,7 @@ CENSUSPLUS_TAKINGONLINE = "Recensement des personnages en ligne..."
 
 CENSUSPLUS_TAUREN = "Tauren"
 
-CENSUSPLUS_TEXT = "Census+"
+CENSUSPLUS_TEXT = "CensusPlusClassic"
 
 CENSUSPLUS_TOOMANY = "ATTENTION : Trop de joueurs correspondent à : %s"
 
