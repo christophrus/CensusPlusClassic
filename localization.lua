@@ -296,7 +296,70 @@ CENSUSPlusFemale["Filha da Noite"] = "Filho da Noite";
 -- CENSUSPLUS_HIGHMOUNTAIN = "Tauren Altamontês"
 CENSUSPlusFemale["Taurena Altamontesa"] = "Tauren Altamontês"; 
 
-end	
+end
+
+
+
+--
+--zhTW
+--
+if ( GetLocale() == "zhTW" ) then
+	CENSUSPLUS_DRUID            = "德魯伊";
+	CENSUSPLUS_HUNTER           = "獵人";
+	CENSUSPLUS_MAGE             = "法師";
+	CENSUSPLUS_PRIEST           = "牧師";
+	CENSUSPLUS_ROGUE            = "盜賊";
+	CENSUSPLUS_WARLOCK          = "術士";
+	CENSUSPLUS_WARRIOR          = "戰士";
+	CENSUSPLUS_SHAMAN           = "薩滿";
+	CENSUSPLUS_PALADIN          = "聖騎士";
+
+	CENSUSPLUS_DWARF            = "矮人";
+	CENSUSPLUS_GNOME            = "地精";
+	CENSUSPLUS_HUMAN            = "人類";
+	CENSUSPLUS_NIGHTELF         = "夜精靈";
+
+	CENSUSPLUS_ORC              = "獸人";
+	CENSUSPLUS_TAUREN           = "牛頭人";
+	CENSUSPLUS_TROLL            = "食人妖";
+	CENSUSPLUS_UNDEAD           = "不死族";
+end
+
+--
+--ruRU
+--
+if ( GetLocale() == "ruRU" ) then
+	CENSUSPLUS_DRUID            = "Друид";
+	CENSUSPlusFemale["Druida"] = "Друид";
+	CENSUSPLUS_HUNTER           = "Охотник";
+	CENSUSPlusFemale["Охотница"] = "Охотник";
+	CENSUSPLUS_MAGE             = "Маг";
+	CENSUSPLUS_PRIEST           = "Жрец";
+	CENSUSPlusFemale["Жрица"] = "Жрец";
+	CENSUSPLUS_ROGUE            = "Разбойник";
+	CENSUSPlusFemale["Разбойница"] = "Разбойник";
+	CENSUSPLUS_WARLOCK          = "Чернокнижник";
+	CENSUSPlusFemale["Чернокнижница"] = "Чернокнижник";
+	CENSUSPLUS_WARRIOR          = "Воин";
+	CENSUSPLUS_SHAMAN           = "Шаман";
+	CENSUSPlusFemale["Шаманка"] = "Шаман";
+	CENSUSPLUS_PALADIN          = "Паладин";
+
+	CENSUSPLUS_DWARF            = "Дворф";
+	CENSUSPlusFemale["Дворфийка"] = "Дворф";
+	CENSUSPLUS_GNOME            = "Гном";
+	CENSUSPlusFemale["Гномка"] = "Гном";
+	CENSUSPLUS_HUMAN            = "Человек";
+	CENSUSPLUS_NIGHTELF         = "Ночной эльф";
+	CENSUSPlusFemale["Ночная эльфийка"] = "Ночной эльф";
+
+	CENSUSPLUS_ORC              = "Орк";
+	CENSUSPlusFemale["Орчиха"] = "Орк";
+	CENSUSPLUS_TAUREN           = "Таурен";
+	CENSUSPlusFemale["Тауренка"] = "Таурен";
+	CENSUSPLUS_TROLL            = "Тролль";
+	CENSUSPLUS_UNDEAD           = "Нежить";
+end
 	
 --
 --itIT

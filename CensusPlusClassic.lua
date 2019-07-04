@@ -60,7 +60,7 @@ local CensusPlus_NUMGUILDBUTTONS = 10;			-- How many guild buttons are on the UI
 
 local MAX_CHARACTER_LEVEL = 60;					-- Maximum level a PC can attain  testing only comment out for live
 local MIN_CHARACTER_LEVEL = 1;					-- Minimum observed level returned by /who command (undocumented and barely acknowledged.)
-local MAX_WHO_RESULTS = 49;						-- Maximum number of who results the server will return
+local MAX_WHO_RESULTS = 50;						-- Maximum number of who results the server will return
 CensusPlus_GUILDBUTTONSIZEY = 16;				-- pixil height of guild name lines
 local CensusPlus_UPDATEDELAY = 5;				-- Delay time between /who messages
 local CensusPlus_UPDATEDELAY2 = 10				-- Delay time from who request to database updated
@@ -1235,6 +1235,7 @@ end
 
 -- CensusPlus_DoPurge
 function CensusPlus_DoPurge()
+	print("purge")
 	if (CensusPlus_Database["Servers"] ~= nil) then
 		CensusPlus_Database["Servers"] = nil
 	end
@@ -1539,18 +1540,31 @@ end
 function CensusPlus_CreateWhoText(job)
 	local whoText = ""
 	local race = job.m_Race
+	local locale = GetLocale()
 	if (race ~= nil) then
-		whoText = whoText .. ' r-"' .. race .. '"'
+		if (locale == "ruRU") then
+			whoText = whoText .. race
+		else
+			whoText = whoText .. ' r-"' .. race .. '"'
+		end
 	end
 
 	local class = job.m_Class
 	if (class ~= nil) then
-		whoText = whoText .. ' c-"' .. class .. '"'
+		if (locale == "ruRU") then
+			whoText = whoText .. class
+		else
+			whoText = whoText .. ' c-"' .. class .. '"'
+		end
 	end
 
 	local letter = job.m_Letter
 	if (letter ~= nil) then
-		whoText = whoText .. " n-" .. letter
+		if (locale == "ruRU") then
+			whoText = whoText .. letter
+		else
+			whoText = whoText .. " n-" .. letter
+		end
 	end
 
 	local minLevel = tostring(job.m_MinLevel)
@@ -1565,7 +1579,11 @@ function CensusPlus_CreateWhoText(job)
 
 	local zoneLetter = job.m_zoneLetter
 	if (zoneLetter ~= nil) then
-		whoText = whoText .. " z-" .. zoneLetter
+		if (locale == "ruRU") then
+			whoText = whoText .. zoneLetter
+		else
+			whoText = whoText .. " z-" .. zoneLetter
+		end
 	end
 
 	return whoText
@@ -1954,6 +1972,7 @@ function CensusPlus_InitializeVariables()
 			CensusPlus_PerCharInfo = nil
 			CensusPlus_PerCharInfo = {}
 			CensusPlus_PerCharInfo["Version"] = CensusPlus_VERSION
+			print("purge 1")
 			CensusPlus_DoPurge()
 			purged = true
 			CensusPlus_Msg(CENSUSPLUS_OBSOLETEDATAFORMATTEXT)
@@ -1972,6 +1991,7 @@ function CensusPlus_InitializeVariables()
 	end
 	if (CensusPlus_Database["Info"]["ClientLocale"] ~= g_templang) then
 		-- Client language has been changed must purge
+		print("purge 2")
 		CensusPlus_DoPurge()
 		purged = true
 		if not (CPp.FirstLoad == true) then
@@ -1990,6 +2010,7 @@ function CensusPlus_InitializeVariables()
 		--  already present, make sure it equals, and if not, force a purge
 		if (CensusPlus_Database["Info"]["LoginServer"] ~= regionKey) then
 			--	We have to nuke the data in the case that someone is playing on both US and EU servers
+			print("purge 3")
 			CensusPlus_DoPurge()
 			purged = true
 		end
@@ -1999,6 +2020,7 @@ function CensusPlus_InitializeVariables()
 	local localeSetting = CensusPlus_Database["Info"]["Locale"]
 	if (localeSetting == "??") then
 		--  We had problems previously.. we must purge =(
+		print("purge 4")
 		CensusPlus_DoPurge()
 		purged = true
 		localeSetting = nil
@@ -2008,9 +2030,12 @@ function CensusPlus_InitializeVariables()
 	if (CensusPlus_Database["Info"]["ClientLocale"] == "enUS" or CensusPlus_Database["Info"]["ClientLocale"] == "esMX" or CensusPlus_Database["Info"]["ClientLocale"] == "ptBR") then
 		CensusPlus_VerifyLocale("US")
 		CensusPlus_Database["Info"]["Locale"] = "US"
-	elseif (CensusPlus_Database["Info"]["ClientLocale"] == "enGB" or CensusPlus_Database["Info"]["ClientLocale"] == "frFR" or CensusPlus_Database["Info"]["ClientLocale"] == "deDE" or CensusPlus_Database["Info"]["ClientLocale"] == "esES" or CensusPlus_Database["Info"]["ClientLocale"] == "ptPT" or CensusPlus_Database["Info"]["ClientLocale"] == "itIT") then
+	elseif (CensusPlus_Database["Info"]["ClientLocale"] == "enGB" or CensusPlus_Database["Info"]["ClientLocale"] == "frFR" or CensusPlus_Database["Info"]["ClientLocale"] == "deDE" or CensusPlus_Database["Info"]["ClientLocale"] == "esES" or CensusPlus_Database["Info"]["ClientLocale"] == "ptPT" or CensusPlus_Database["Info"]["ClientLocale"] == "itIT" or CensusPlus_Database["Info"]["ClientLocale"] == "ruRU") then
 		CensusPlus_VerifyLocale("EU")
 		CensusPlus_Database["Info"]["Locale"] = "EU"
+	elseif (CensusPlus_Database["Info"]["ClientLocale"] == "koKR" or CensusPlus_Database["Info"]["ClientLocale"] == "zhTW" or CensusPlus_Database["Info"]["ClientLocale"] == "zhCN") then
+		CensusPlus_VerifyLocale("AS")
+		CensusPlus_Database["Info"]["Locale"] = "AS"
 	else
 		CensusPlus_VerifyLocale("??")
 		CensusPlus_Database["Info"]["Locale"] = "??"
@@ -2320,7 +2345,9 @@ function CensusPlus_DoTimeCounts()
 				end
 
 				if (CENSUSPlusFemale[charClass] ~= nil) then
+					print(charClass)
 					charClass = CENSUSPlusFemale[class]
+					print(charClass)
 				end
 				CensusPlus_JobQueue.g_TimeDatabase[charClass] =
 					CensusPlus_JobQueue.g_TimeDatabase[charClass] + classCount
@@ -2666,7 +2693,6 @@ function CensusPlus_ProcessWhoResults(result, numWhoResults)
 		end
 		if ((guildRealm ~= nil) and (guildRealm ~= "")) then
 			guildRealm = PTR_Color_ProblemRealmGuilds_check(guildRealm)
-			guildRealm = CPp.CensusPlusLocale .. guildRealm
 		end	
 
 		local realmName = getUniqueRealmName()
@@ -3702,6 +3728,7 @@ function CensusPlus_VerifyLocale(locale)
 		--
 		--  Purge
 		--
+		print("purge 5")
 		CensusPlus_DoPurge()
 	end
 end
@@ -3725,6 +3752,7 @@ function CensusPlus_SelectLocale(locale, auto)
 	if (CensusPlus_Database["Info"]["Locale"] ~= locale) then
 		if not (CensusPlus_Database["Info"]["Locale"] == nil and locale == "US") then
 			CensusPlus_Msg(CENSUSPLUS_WRONGLOCAL_PURGE)
+			print("purge 6")
 			CensusPlus_DoPurge()
 			CensusPlus_Database["Info"]["Locale"] = locale
 		end
@@ -3748,6 +3776,7 @@ end
 -- Walk the character database prune all characters entries that are older than X days
 -- referenced by CensusPlusClassic.xml
 function CENSUSPLUS_PRUNEData(nDays, sServer)
+	print("prune")
 	local conmemcount = #CPp.VRealms
 	local superset = nil
 
