@@ -22,5 +22,5 @@ libs\LibRealmID\LibRealmID.lua
 #@end-no-lib-strip@
 
 CensusPlusClassic.xml
-CensusButton.xml
-CensusPlayerList.xml
+modules\CensusButton.xml
+modules\CensusPlayerList.xml

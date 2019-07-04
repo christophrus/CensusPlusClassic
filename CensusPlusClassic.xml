@@ -1,19 +1,17 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\..\FrameXML\UI.xsd">
-    <Script file="localization.lua" />
-	<Script file="localization.ptBR.lua" />
- 	<Script file="localization.frFR.lua" />
-	<Script file="localization.deDE.lua" />
-	<Script file="localization.koKR.lua" />
-	<Script file="localization.zhCN.lua" />
-	<Script file="localization.ruRU.lua" />
-   <Script file="realmlist_US.lua" />
-    <Script file="realmlist_EU.lua" />
+    <Script file="locales/localization.lua" />
+	<Script file="locales/localization.ptBR.lua" />
+ 	<Script file="locales/localization.frFR.lua" />
+	<Script file="locales/localization.deDE.lua" />
+	<Script file="locales/localization.koKR.lua" />
+	<Script file="locales/localization.zhCN.lua" />
+	<Script file="locales/localization.ruRU.lua" />
     <Script file="CensusPlusClassic.lua" />
     <Button name="CensusPlusLegendTemplate" virtual="true">
         <Size>
             <AbsDimension x="32" y="32" />
         </Size>
-        <NormalTexture file="Interface\AddOns\CensusPlusClassic\Skin\CensusPlus_Unknown" />
+        <NormalTexture file="Interface\AddOns\CensusPlusClassic\skins\CensusPlus_Unknown" />
         <HighlightTexture file="Interface\QuestFrame\UI-QuestTitleHighlight" alphaMode="ADD">
             <Size>
                 <AbsDimension x="32" y="32" />
@@ -48,7 +46,7 @@
         <Size>
             <AbsDimension x="32" y="128" />
         </Size>
-        <NormalTexture file="Interface\AddOns\CensusPlusClassic\Skin\CensusPlus_Bar" />
+        <NormalTexture file="Interface\AddOns\CensusPlusClassic\skins\CensusPlus_Bar" />
         <Scripts>
             <OnLeave>
 				 				GameTooltip:Hide();
@@ -69,7 +67,7 @@
         <Size>
             <AbsDimension x="10" y="128" />
         </Size>
-        <NormalTexture file="Interface\AddOns\CensusPlusClassic\Skin\CENSUSPLUS_LEVELBar" />
+        <NormalTexture file="Interface\AddOns\CensusPlusClassic\skins\CENSUSPLUS_LEVELBar" />
         <Scripts>
     		<OnClick function="CensusPlus_OnClickLevel" />
     		<OnLoad function="CensusPlus_OnLoadLevel"/>    
@@ -122,43 +120,6 @@
         </HighlightTexture>
         <Scripts>
             <OnClick function="CensusPlus_GuildButton_OnClick" />
-        </Scripts>
-    </Button>
-    <Button name="CensusPlusConnectedRealmsTemplate" virtual="true">
-        <Size>
-            <AbsDimension x="160" y="16" />
-        </Size>
-        <Layers>
-            <Layer level="BORDER">
-                <FontString name="$parentText" inherits="GameFontHighlight" justifyH="LEFT">
-                    <Size>
-                        <AbsDimension x="160" y="14" />
-                    </Size>
-                    <Anchors>
-                        <Anchor point="LEFT">
-                            <Offset>
-                                <AbsDimension x="2" y="2" />
-                            </Offset>
-                        </Anchor>
-                    </Anchors>
-                </FontString>
-            </Layer>
-        </Layers>
-        <HighlightTexture file="Interface\QuestFrame\UI-QuestTitleHighlight" alphaMode="ADD">
-            <Size>
-                <AbsDimension x="160" y="16" />
-            </Size>
-            <Anchors>
-                <Anchor point="TOP">
-                    <Offset>
-                        <AbsDimension x="0" y="0" />
-                    </Offset>
-                </Anchor>
-            </Anchors>
-        </HighlightTexture>
-        <Scripts>
-			<OnLoad function="CENSUSPLUS_CONNECTEDRealmsButton_OnLoad" />
-            <OnClick function="CENSUSPLUS_CONNECTEDRealmsButton_OnClick" />
         </Scripts>
     </Button>
     <Frame name="MiniCensusPlus" parent="UIParent" hidden="true" enableMouse="true" movable="true" toplevel="true">
@@ -359,7 +320,7 @@
                         </Anchor>
                     </Anchors>
                 </Texture>
-				<Texture file = "Interface\AddOns\CensusPlusClassic\Skin\CensusPlus_Window_Top_Shader" >  <!-- Top Shader -->
+				<Texture file = "Interface\AddOns\CensusPlusClassic\skins\CensusPlus_Window_Top_Shader" >  <!-- Top Shader -->
                     <Size>
 <!--                        <AbsDimension x="1044" y="64" /> -->
                         <AbsDimension x="727" y="64" />

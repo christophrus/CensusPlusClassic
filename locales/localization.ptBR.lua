@@ -333,7 +333,7 @@ CENSUSPLUS_UNPAUSE = "Continuar"
 
 CENSUSPLUS_UNPAUSECENSUS = "Continuar o censo atual"
 
-CENSUSPLUS_UPLOAD = "Certifique-se de enviar seus dados para CensusPlusClassic em WoWClassicPopulation.com!"
+CENSUSPLUS_UPLOAD = "Não se esqueça de enviar os dados do seu censo para WoWClassicPopulation.com!"
 
 CENSUSPLUS_USAGE = "Uso"
 

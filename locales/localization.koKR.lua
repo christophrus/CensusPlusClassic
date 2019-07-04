@@ -396,7 +396,7 @@ CENSUSPLUS_UNPAUSE = "계속"
 
 CENSUSPLUS_UNPAUSECENSUS = "일시중지된 센서스를 계속 진행합니다."
 
-CENSUSPLUS_UPLOAD = " " -- sorry WarcraftRealms.com can not handle multi-byte Korean character set at this time.  "WoWClassicPopulation.com 에서 센서스+ 업데이트를 확인하세요!"
+CENSUSPLUS_UPLOAD = "WoWClassicPopulation.com 에서 센서스+ 업데이트를 확인하세요!"
 
 -- Missing translation
 -- CENSUSPLUS_USAGE = "Usage:"

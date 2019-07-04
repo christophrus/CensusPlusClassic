@@ -156,7 +156,7 @@
                         </Anchor>
                     </Anchors>
                 </FontString>
-                 <FontString name="CensusPlayerListCol3" inherits="GameFontHighlight" text="GuildRealm">
+                 <FontString name="CensusPlayerListCol3" inherits="GameFontHighlight" text="Guild">
                     <Anchors>
                         <Anchor point="LEFT" relativeTo="CensusPlayerListCol2">
                             <Offset>

@@ -339,7 +339,7 @@ CENSUSPLUS_UNPAUSE = "Zusammenfassung"
 
 CENSUSPLUS_UNPAUSECENSUS = "Fahre mit der aktuellen Zählung fort."
 
-CENSUSPLUS_UPLOAD = "Vergiss nicht deine CensusPlusClassic Daten bei www.WoWClassicPopulation.com hochzuladen!"
+CENSUSPLUS_UPLOAD = "Vergiss nicht deine Census Daten bei WoWClassicPopulation.com hochzuladen!"
 
 CENSUSPLUS_USAGE = "Benutzung:"
 

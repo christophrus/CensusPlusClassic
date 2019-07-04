@@ -486,7 +486,7 @@ CENSUSPLUS_UNPAUSE = "Продолжить"
 CENSUSPLUS_UNPAUSECENSUS = "Продолжить текущую перепись"
 
 -- Needs review
-CENSUSPLUS_UPLOAD = " " --- sorry WoWClassicPopulation.com can not handle Cyrillic alphabet. "Загрузите свои данные CensusPlusClassic на WoWClassicPopulation.com!"
+CENSUSPLUS_UPLOAD = "Загрузите данные своей переписи на WoWClassicPopulation.com!"
 
 -- Needs review
 CENSUSPLUS_USAGE = "Использование:"
