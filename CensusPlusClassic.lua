@@ -93,13 +93,6 @@ CPp.Options_Holder["AccountWide"] = {}
 CPp.Options_Holder["CCOverrides"] = {}
 	
 -- File scope variables
-local g_WoW_regions = {
-	[1] = "US",
-	[2] = "KR",
-	[3] = "EU",
-	[4] = "TW",
-	[5] = "CN"
-	}
 local g_addon_loaded = false
 local g_player_loaded = false
 
@@ -109,7 +102,6 @@ local g_Options_confirm_txt = true;			-- enable chatty confirm of options until 
 CPp.AutoCensus = false;						-- AutoCensus mode switch
 local g_Options_Scope = "AW"				-- options are AW or CO
 CPp.AutoStartTimer = 30						-- default Slider value in Options 
-CPp.AutoStartTrigger = 15					-- time limiter in minutes if Slider less then this value auto start enabled
 local g_FinishSoundNumber = 1				-- default finish sound.. 
 local g_PlayFinishSound = false				-- mode switch
 local g_CensusPlusInitialized = false;		-- Is CensusPlusClassic initialized?
@@ -160,6 +152,7 @@ local g_ResetHour = true;                       -- Rest hour
 local g_VariablesLoaded = false;                -- flag to tell us if vars are loaded
 CPp.FirstLoad = false						-- Flag to handle (hide) various database rebuild messages on initial database creation 
 local g_FirstRun = true;
+local g_wasPurged = false
 local whoquery_answered = false;
 local whoquery_active = false
 CPp.LastCensusRun = time() -- (CPp.AutoStartTrigger * 60)	--  timer used if auto census is turned on
@@ -1226,7 +1219,6 @@ end
 
 -- CensusPlus_DoPurge
 function CensusPlus_DoPurge()
-	print("purge")
 	if (CensusPlus_Database["Servers"] ~= nil) then
 		CensusPlus_Database["Servers"] = nil
 	end
@@ -1881,8 +1873,6 @@ function CensusPlus_InitializeVariables()
 		CensusPlus_PerCharInfo["Version"] = {}
 	end
 
-	local purged = false
-
 	-- V 6.0.1 to 6.1.0 database purge
 	if (CensusPlus_Database["Info"]["Version"] ~= nil) then
 		g_InterfaceVersion = CensusPlus_Database["Info"]["Version"]
@@ -1901,9 +1891,8 @@ function CensusPlus_InitializeVariables()
 			CensusPlus_PerCharInfo = nil
 			CensusPlus_PerCharInfo = {}
 			CensusPlus_PerCharInfo["Version"] = CensusPlus_VERSION
-			print("purge 1")
 			CensusPlus_DoPurge()
-			purged = true
+			g_wasPurged = true
 			CensusPlus_Msg(CENSUSPLUS_OBSOLETEDATAFORMATTEXT)
 		end
 	end
@@ -1915,10 +1904,8 @@ function CensusPlus_InitializeVariables()
 	if (CensusPlus_Database["Info"]["ClientLocale"] ~= g_templang) then
 		-- Client language has been changed must purge
 		CensusPlus_DoPurge()
-		purged = true
-		if not (CPp.FirstLoad == true) then
-			CensusPlus_Msg(CENSUSPLUS_LANGUAGECHANGED)
-		end
+		g_wasPurged = true
+		CensusPlus_Msg(CENSUSPLUS_LANGUAGECHANGED)
 	end
 	CensusPlus_Database["Info"]["ClientLocale"] = GetLocale()
 	CensusPlusLocaleName:SetText( format(CENSUSPLUS_LOCALE, CensusPlus_Database["Info"]["ClientLocale"]) )
@@ -2005,13 +1992,11 @@ function CensusPlus_InitializeVariables()
 	CensusPlusBlizzardOptions()
 	CensusPlusSetCheckButtonState()
 	CPp.FirstLoad = false -- main table initialized and options initialized
-
-	CensusPlus_AutoStart(purged)
 	
 end
 
 
-function CensusPlus_AutoStart(purged)
+function CensusPlus_AutoStart()
 	
 	local currentRealm = CensusPlus_GetUniqueRealmName()
 	local currentFaction = UnitFactionGroup("player")
@@ -2019,8 +2004,8 @@ function CensusPlus_AutoStart(purged)
 	local lastFaction = CensusPlus_JobQueue["CensusPlus_LoginFaction_last"]
 	local lastRun = CensusPlus_JobQueue["CensusPlus_last_time"]
 	
-	if (purged or currentRealm ~= lastRealm or currentFaction ~= lastFaction or (lastRun < time() - (CPp.AutoStartTimer * 60))) then
-		CensusPlus_StartCensus()
+	if (g_wasPurged or currentRealm ~= lastRealm or currentFaction ~= lastFaction or (lastRun < time() - (CPp.AutoStartTimer * 60))) then
+		CENSUSPLUS_TAKE_OnClick()
 	end
 
 end
@@ -2028,18 +2013,10 @@ end
   
 -- referenced by CensusPlusClassic.xml
 function CensusPlus_OnUpdate()
-	--print(CPp.LastCensusRun)
 	if g_FirstRun then
 		CensusButton:SetText("C+")
-		if (CPp.AutoStartTrigger > CPp.AutoStartTimer) then
-			if (g_VariablesLoaded and not CPp.IsCensusPlusInProgress and CPp.AutoCensus == true) then
-				CENSUSPLUS_TAKE_OnClick()
-			end
-		elseif (CPp.AutoStartTimer < 30) then
-			if (g_VariablesLoaded and not CPp.IsCensusPlusInProgress and CPp.AutoCensus == true and (CPp.LastCensusRun < time() - (CPp.AutoStartTimer * 60))) then -- note - processed before <
-				CENSUSPLUS_TAKE_OnClick()
-			end
-		else
+		if (g_VariablesLoaded and not CPp.IsCensusPlusInProgress and CPp.AutoCensus == true) then
+			CensusPlus_AutoStart()
 		end
 	elseif (g_VariablesLoaded and not CPp.IsCensusPlusInProgress and CPp.AutoCensus == true and (CPp.LastCensusRun < time() - (CPp.AutoStartTimer * 60))) then
 		CENSUSPLUS_TAKE_OnClick()
@@ -4642,16 +4619,7 @@ function CensusPlusBlizzardOptions()
 			CensusPlus_PerCharInfo["AutoCensusTimer"] = 1800
 			CensusPlusSlider1:SetValue(30)
 			if CensusPlusCheckButton5:GetChecked() then
-				if ((CensusPlus_Database["Info"]["AutoCensusTimer"] / 60) < (CPp.AutoStartTrigger + 1)) then
-					CensusPlusSlider1:SetValue(
-						CensusPlus_Database["Info"]["AutoCensusTimer"] / 60
-					)
-				elseif ((CensusPlus_Database["Info"]["AutoCensusTimer"] / 60) < 30) then
-					CensusPlusSlider1:SetValue(
-						CensusPlus_Database["Info"]["AutoCensusTimer"] / 60
-					)
-				else
-				end
+				CensusPlusSlider1:SetValue(CensusPlus_Database["Info"]["AutoCensusTimer"] / 60)
 			else
 			end
 		end
@@ -4707,16 +4675,7 @@ function CensusPlusBlizzardOptions()
 			CensusPlusOptionsRadioButton_C5c:SetChecked(true)
 			CensusPlus_PerCharInfo["AutoCensus"] = nil
 			if CensusPlusCheckButton5:GetChecked() then
-				if ((CensusPlus_Database["Info"]["AutoCensusTimer"] / 60) < (CPp.AutoStartTrigger + 1)) then
-					CensusPlusSlider1:SetValue(
-						CensusPlus_Database["Info"]["AutoCensusTimer"] / 60
-					)
-				elseif ((CensusPlus_Database["Info"]["AutoCensusTimer"] / 60) < 30) then
-					CensusPlusSlider1:SetValue(
-						CensusPlus_Database["Info"]["AutoCensusTimer"] / 60
-					)
-				else
-				end
+				CensusPlusSlider1:SetValue(CensusPlus_Database["Info"]["AutoCensusTimer"] / 60)
 			end
 		end
 		CensusPlus_SetAutoCensus(self)
@@ -4768,16 +4727,7 @@ function CensusPlusBlizzardOptions()
 			-- enable new override.. reset timer to 30 and disabled
 			CensusPlus_PerCharInfo["AutoCensusTimer"] = 1800
 			if CensusPlusCheckButton5:GetChecked() then
-				if ((CensusPlus_Database["Info"]["AutoCensusTimer"] / 60) < (CPp.AutoStartTrigger + 1)) then
-					CensusPlusSlider1:SetValue(
-						CensusPlus_Database["Info"]["AutoCensusTimer"] / 60
-					)
-				elseif ((CensusPlus_Database["Info"]["AutoCensusTimer"] / 60) < 30) then
-					CensusPlusSlider1:SetValue(
-						CensusPlus_Database["Info"]["AutoCensusTimer"] / 60
-					)
-				else
-				end
+				CensusPlusSlider1:SetValue(CensusPlus_Database["Info"]["AutoCensusTimer"] / 60)
 			else
 				CensusPlusSlider1:SetValue(30)
 			end

@@ -1,11 +1,14 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\..\FrameXML\UI.xsd">
     <Script file="locales/localization.lua" />
-	<Script file="locales/localization.ptBR.lua" />
- 	<Script file="locales/localization.frFR.lua" />
-	<Script file="locales/localization.deDE.lua" />
-	<Script file="locales/localization.koKR.lua" />
-	<Script file="locales/localization.zhCN.lua" />
-	<Script file="locales/localization.ruRU.lua" />
+	<Script file="locales/deDE.lua" />
+	<Script file="locales/esES_esMX.lua" />
+	<Script file="locales/frFR.lua" />
+	<Script file="locales/itIT.lua" />
+	<Script file="locales/koKR.lua" />
+	<Script file="locales/ptBR.lua" />
+	<Script file="locales/ruRU.lua" />
+	<Script file="locales/zhCN.lua" />
+	<Script file="locales/zhTW.lua" />
     <Script file="CensusPlusClassic.lua" />
     <Button name="CensusPlusLegendTemplate" virtual="true">
         <Size>
@@ -2433,7 +2436,7 @@
             </Button>
      </Frames>
         <Scripts>
-    				<OnLoad function="CensusPlus_OnLoad" />   
+    		<OnLoad function="CensusPlus_OnLoad" />   
             <OnShow function="CensusPlus_OnShow" />
             <OnUpdate function="CensusPlus_OnUpdate" />
             <OnEvent function="CensusPlus_OnEvent" />			
@@ -2451,93 +2454,6 @@
                 end
             </OnHide>
         </Scripts>
-    </Frame>
-    <Frame name="CP_EU_US_Version" toplevel="true" enableMouse="true" movable="true" parent="UIParent" hidden="true">
-        <Size>
-            <AbsDimension x="300" y="100" />
-        </Size>
-        <Anchors>
-            <Anchor point="CENTER" />
-        </Anchors>
-        <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
-            <BackgroundInsets>
-                <AbsInset left="11" right="12" top="12" bottom="11" />
-            </BackgroundInsets>
-            <TileSize>
-                <AbsValue val="32" />
-            </TileSize>
-            <EdgeSize>
-                <AbsValue val="32" />
-            </EdgeSize>
-        </Backdrop>
-        <Layers>
-            <Layer level="ARTWORK">
-                <FontString name="CP_Title" inherits="GameFontHighlight" text="CENSUSPLUS_LOCALE_SELECT">
-                    <Size>
-                        <AbsDimension x="300" y="15" />
-                    </Size>
-                    <Anchors>
-                        <Anchor point="TOP" relativeTo="CP_EU_US_Version">
-                            <Offset>
-                                <AbsDimension x="0" y="-15" />
-                            </Offset>
-                        </Anchor>
-                    </Anchors>
-                </FontString>
-            </Layer>
-        </Layers>
-        <Frames>
-            <Button name="CP_US" inherits="UIPanelButtonTemplate" text="US SERVERS">
-                <Size>
-                    <AbsDimension x="125" y="21" />
-                </Size>
-                <Anchors>
-                    <Anchor point="TOP" relativeTo="CP_EU_US_Version">
-                        <Offset>
-                            <AbsDimension x="-75" y="-45" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-                <Scripts>
-                    <OnClick>
-												CensusPlus_SelectLocale("US");
-										</OnClick>
-                    <OnEnter>
-												GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
-												GameTooltip:SetText(CENSUSPLUS_US_LOCALE, 1.0, 1.0, 1.0);
-												GameTooltip:Show();
-										</OnEnter>
-                    <OnLeave>
-												GameTooltip:Hide();
-										</OnLeave>
-                </Scripts>
-            </Button>
-            <Button name="CP_EU" inherits="UIPanelButtonTemplate" text="EURO SERVERS">
-                <Size>
-                    <AbsDimension x="125" y="21" />
-                </Size>
-                <Anchors>
-                    <Anchor point="TOP" relativeTo="CP_EU_US_Version">
-                        <Offset>
-                            <AbsDimension x="75" y="-45" />
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-                <Scripts>
-                    <OnClick>
-												CensusPlus_SelectLocale("EU");
-										</OnClick>
-                    <OnEnter>
-												GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
-												GameTooltip:SetText(CENSUSPLUS_EU_LOCALE, 1.0, 1.0, 1.0);
-												GameTooltip:Show();
-										</OnEnter>
-                    <OnLeave>
-												GameTooltip:Hide();
-										</OnLeave>
-                </Scripts>
-            </Button>
-        </Frames>
     </Frame>
 
 </Ui>
