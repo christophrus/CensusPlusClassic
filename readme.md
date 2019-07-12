@@ -3,7 +3,7 @@
 
 ![Last release](https://img.shields.io/github/release-date/christophrus/CensusPlusClassic.svg) ![Current Version](https://img.shields.io/github/tag/christophrus/CensusPlusClassic.svg) [![Total Downloads](https://img.shields.io/github/downloads/christophrus/CensusPlusClassic/total.svg)]((https://github.com/christophrus/CensusPlusClassic/releases/latest/download/CensusPlusClassic.zip))  ![Code Size](https://img.shields.io/github/languages/code-size/christophrus/CensusPlusClassic.svg) ![License](https://img.shields.io/github/license/christophrus/CensusPlusClassic.svg?label=license) [![Discord](https://img.shields.io/discord/591950767640936500.svg)](https://discordapp.com/invite/MYPWGkv)
 
-This is an interface addon for World of Warcraft: Classic which records details about characters currently online in your faction at the time of the polling. This is done with liberal use of the in-game /who command via the Wholib. The information is then stored in the CensusPlusClassic.lua in your account's SavedVariables folder, which you can be uploaded to the aggregator website [Wow Classic Population](https://wowclassicpopulation). This site sorts all uploaded information and then display it in chart and graph form.
+This is an interface addon for World of Warcraft: Classic which records details about characters currently online in your realms faction at the time of the polling. This is done with liberal use of the in-game /who command. The information is then stored in the CensusPlusClassic.lua in your account's SavedVariables folder, which can be uploaded to the aggregator website [Wow Classic Population](https://wowclassicpopulation). This site sorts all uploaded information and displays it in chart and graph form.
 
 ## Contribute 
 
