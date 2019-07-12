@@ -39,6 +39,8 @@ local	addon_name, addon_tableID = ...   		-- Addon_name contains the Addon name 
 
 local CPp = addon_tableID  						--short cut name for private shared table.
 
+local checksum = LibStub:GetLibrary("LibChecksum-1.0", true)
+
 CPp.InterfaceVersion = "Captain Placeholder";   -- random value.. must not match CensusPlus_VERSION string.
 local g_CensusPlusTZOffset = -999;
 CPp.LocaleSet = false;  -- not used?
@@ -46,7 +48,7 @@ CPp.TZWarningSent = false;  -- not used?
 
 -- Constants
 local CensusPlus_Version_Major = "0"; -- changing this number will force a saved data purge
-local CensusPlus_Version_Minor = "4"; -- changing this number will force a saved data purge
+local CensusPlus_Version_Minor = "5"; -- changing this number will force a saved data purge
 local CensusPlus_Version_Maint = "0";
 local CensusPlus_SubVersion = "";
 --local CensusPlus_VERSION = "WoD"
@@ -1604,42 +1606,6 @@ function CensusPlus_DumpJob(job)
 	---CensusPlus_Msg( "JOB DUMP: " .. whoText );
 end
 
-local function utf8split(str)
-	local utf8table = {}
-	str:gsub("([^\128-\191][\128-\191]*)", function(char)
-		local leadbyte = strbyte(char, 1)
-		local length = -1
-
-		if leadbyte < 248 then
-			if leadbyte >= 240 then
-				length = 4
-			elseif leadbyte >= 224 then
-				length = 3
-			elseif leadbyte >= 192 then
-				length = 2
-			elseif leadbyte < 128 then
-				length = 1
-			end
-		end
-
-		tinsert(utf8table, (length == #char) and char)
-	end)
-	return utf8table
-end
-
-local function StringHash(text)
-	local counter = 1
-	local utf8table = utf8split(text);
-	local len = getn(utf8table);
-	for i = 1, len, 3 do 
-		counter = math.fmod(counter*8161, 4294967279) +  -- 2^32 - 17: Prime!
-		(string.byte(utf8table[i] or "")*16776193) +
-		((string.byte(utf8table[i+1] or "") or (len-i+256))*8372226) +
-		((string.byte(utf8table[i+2] or "") or (len-i+256))*3932164)
-	end
-	return math.fmod(counter, 4294967291) -- 2^32 - 5: Prime (and different from the prime in the loop)
-end
-
 -- Called on events
 -- referenced by CensusPlusClassic.xml
 function CensusPlus_OnEvent(self, event, ...)
@@ -1793,13 +1759,12 @@ function CensusPlus_ProcessTarget(unit)
 		--
 		entry[1] = sightingData.level
 		entry[2] = sightingData.guild
-		entry[3] = ""
-		entry[4] = sightingData.lastSeen
-		entry[5] =
-			StringHash(
+		entry[3] = sightingData.lastSeen
+		entry[4] =
+			checksum:generate(
 				realmName .. sightingData.faction .. sightingData.race .. sightingData.class .. sightingData.name .. sightingData.level .. sightingData.guild .. sightingData.lastSeen .. sightingData.sex
 			)
-		entry[6] = sightingData.sex
+		entry[5] = sightingData.sex
 	end
 end
 
@@ -1912,6 +1877,12 @@ function CensusPlus_InitializeVariables()
 	
 	CensusPlus_Database["Info"]["LoginServer"] = GetCVar("portal")
 	CensusPlus_Database["Info"]["LogVer"] = CensusPlus_VERSION_FULL
+	
+	local wowVersion, wowBuild = GetBuildInfo()
+	wowVersion = format("%s (%s)", wowVersion, wowBuild)
+	
+	CensusPlus_Database["Info"]["wowVersion"] = wowVersion
+	CensusPlus_Database["Info"]['versionChecksum'] = checksum:generate(CensusPlus_VERSION_FULL..wowVersion)
 
 	if (CensusPlus_Database["Info"]["AutoCensus"] == nil) then
 		CensusPlus_Database["Info"]["AutoCensus"] = true
@@ -2211,7 +2182,7 @@ function CensusPlus_DoTimeCounts()
 
 		CensusPlus_Database["TimesPlus"][realmName][factionGroup][TimeDataTime] =
 			CensusPlus_Database["TimesPlus"][realmName][factionGroup][TimeDataTime] .. ":" ..
-			StringHash(
+			checksum:generate(
 				CensusPlus_Database["TimesPlus"][realmName][factionGroup][TimeDataTime] ..
 				realmName ..
 				factionGroup ..
@@ -2539,15 +2510,13 @@ function CensusPlus_ProcessWhoResults(result, numWhoResults)
 		-- Update the information
 		entry[1] = level
 		entry[2] = guild
-		-- 5.4 added
-		entry[3] = ""
 		--local hour, minute = GetGameTime();
-		entry[4] = lastSeen
-		entry[5] =
-			StringHash(
+		entry[3] = lastSeen
+		entry[4] =
+			checksum:generate(
 				realmName .. factionGroup .. race .. class .. name .. level .. guild .. lastSeen .. sex
 			)
-		entry[6] = sex
+		entry[5] = sex
 
 		-- 5.3 g_TempCount[name] = class;
 		-- 5.4 g_TempCount[realm][name] = class;
