@@ -3123,7 +3123,7 @@ function CensusPlus_OnEnterRace(self, motion)
 		local raceName = thisFactionRaces[id]
 		local count = g_RaceCount[id]
 		if (count ~= nil) and (g_TotalCount > 0) then
-			local percent = floor((count / g_TotalCount) * 100)
+			local percent = string.format("%.2f", (count / g_TotalCount) * 100)
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 			GameTooltip:SetText(
 				raceName .. "\n" .. count .. "\n" .. percent .. "%",
@@ -3151,7 +3151,7 @@ function CensusPlus_OnEnterClass(self, motion)
 		local className = thisFactionClasses[id]
 		local count = g_ClassCount[id]
 		if (count ~= nil) and (g_TotalCount > 0) then
-			local percent = floor((count / g_TotalCount) * 100)
+			local percent = string.format("%.2f", (count / g_TotalCount) * 100)
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 			GameTooltip:SetText(
 				className .. "\n" .. count .. "\n" .. percent .. "%",
@@ -3176,7 +3176,7 @@ function CensusPlus_OnEnterLevel(self, motion )
 		local id = self:GetID()
 		local count = g_LevelCount[id]
 		if (count ~= nil) and (g_TotalCount > 0) then
-			local percent = floor((count / g_TotalCount) * 100)
+			local percent = string.format("%.2f", (count / g_TotalCount) * 100)
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 			GameTooltip:SetText(
 				LEVEL .. " " .. id .. "\n" .. count .. "\n" .. percent .. "%",
