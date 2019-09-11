@@ -562,7 +562,7 @@ function CP_ProcessWhoEvent(query, result, complete)
 		local zoneLetter = g_CurrentJob.m_zoneLetter
 		local letter = g_CurrentJob.m_Letter
 
-		if (minLevel ~= maxLevel and minLevel ~= 0) then
+		if (minLevel < maxLevel) then
 			-- The level range is greater than a single level, so split it in half and submit the two jobs
 			local pivot = floor((minLevel + maxLevel) / 2)
 			local jobLower =
