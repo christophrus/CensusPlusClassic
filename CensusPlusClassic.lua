@@ -1510,7 +1510,7 @@ function CensusPlus_CreateWhoText(job)
 	local locale = GetLocale()
 	if (race ~= nil) then
 		if (locale == "ruRU") then
-			whoText = whoText .. race
+			whoText = whoText .. ' р-"' .. race .. '"'
 		else
 			whoText = whoText .. ' r-"' .. race .. '"'
 		end
@@ -1519,7 +1519,7 @@ function CensusPlus_CreateWhoText(job)
 	local class = job.m_Class
 	if (class ~= nil) then
 		if (locale == "ruRU") then
-			whoText = whoText .. class
+			whoText = whoText .. ' к-"' .. class .. '"'
 		else
 			whoText = whoText .. ' c-"' .. class .. '"'
 		end
@@ -1528,7 +1528,7 @@ function CensusPlus_CreateWhoText(job)
 	local letter = job.m_Letter
 	if (letter ~= nil) then
 		if (locale == "ruRU") then
-			whoText = whoText .. letter
+			whoText = whoText .. " и-" .. letter
 		else
 			whoText = whoText .. " n-" .. letter
 		end
@@ -1547,7 +1547,7 @@ function CensusPlus_CreateWhoText(job)
 	local zoneLetter = job.m_zoneLetter
 	if (zoneLetter ~= nil) then
 		if (locale == "ruRU") then
-			whoText = whoText .. zoneLetter
+			whoText = whoText .. " з-" .. zoneLetter
 		else
 			whoText = whoText .. " z-" .. zoneLetter
 		end
