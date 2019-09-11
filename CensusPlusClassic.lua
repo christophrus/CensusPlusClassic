@@ -1589,12 +1589,12 @@ function CensusPlus_DumpJob(job)
 	end
 
 	local minLevel = job.m_MinLevel
-	if (minLevel ~= nil) then
+	if (minLevel ~= nil and minLevel ~= 0) then
 		whoText = whoText .. " min: " .. minLevel
 	end
 
 	local maxLevel = job.m_MaxLevel
-	if (maxLevel ~= nil) then
+	if (maxLevel ~= nil and maxLevel ~= 0) then
 		whoText = whoText .. " max: " .. maxLevel
 	end
 
