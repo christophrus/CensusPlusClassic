@@ -509,6 +509,13 @@ function CensusPlus_OnLoad(self)
 	--  Set up an empty frame for updates
 	local updateFrame = CreateFrame("Frame")
 	updateFrame:SetScript("OnUpdate", CensusPlus_OnUpdate)
+	
+	SetBindingClick("SHIFT-T", CensusPlusWhoButton:GetName())
+	CensusPlusWhoButton:SetScript("OnClick", function(self, button, down)
+	-- As we have not specified the button argument to SetBindingClick,
+	-- the binding will be mapped to a LeftButton click.
+		ManualWho()
+	end)
 end
 
 
@@ -1176,6 +1183,17 @@ function CENSUSPLUS_STOP_OnEnter(self, motion)
 	end
 end
 
+-- referenced by CensusPlusClassic.xml
+function CENSUSPLUS_MANUALWHO_OnEnter(self, motion)
+	if (motion == true) then
+		GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+		GameTooltip:SetText("Issues manual who request.", 1.0, 1.0, 1.0)
+		GameTooltip:Show()
+	-- frame created underneath cursor.. not cursor movement to frame
+	else
+	end
+end
+
 
 function CensusPlus_TimerSet(self, minutes, ovrride)
 	if minutes == nil then
@@ -1458,6 +1476,11 @@ function CENSUSPLUS_STOPCENSUS()
 	-- Add revert CensusButton back to defauit
 	CensusButton:SetNormalFontObject(GameFontNormal)
 	CensusButton:SetText("C+")
+end
+
+function CENSUSPLUS_MANUALWHO()
+	print("istsecure() = ", issecure())
+	ManualWho()
 end
 
 -- Display Census results
@@ -3528,6 +3551,23 @@ function CensusPlus_CheckTZ()
 	g_CensusPlusTZOffset = servDiff
 end
 
+local whoMsg
+
+function ManualWho()
+	if (g_Verbose == true) then
+		print("ManualWho:", whoMsg)
+	end
+	if (whoquery_active) then
+		wholib:Who(whoMsg, {
+			queue = wholib.WHOLIB_QUEUE_QUIET,
+			flags = 0,
+			callback = CP_ProcessWhoEvent
+		})
+		WhoFrameEditBox:SetText(whoMsg)
+		WhoFrameWhoButton:Click()
+	end
+end
+
 function CensusPlus_SendWho(msg)
 	if (g_Verbose == true) then
 		CensusPlus_Msg(format(CENSUSPLUS_SENDING, msg))
@@ -3549,14 +3589,17 @@ function CensusPlus_SendWho(msg)
 	end
 
 	if wholib then
-		wholib:Who(msg, {
-			queue = wholib.WHOLIB_QUEUE_QUIET,
-			flags = 0,
-			callback = CP_ProcessWhoEvent
-		})
+		whoMsg = msg
+		--wholib:Who(msg, {
+		--	queue = wholib.WHOLIB_QUEUE_QUIET,
+		--	flags = 0,
+		--	callback = CP_ProcessWhoEvent
+		--})
 		--wholib:AskWho({query = msg, queue = wholib.WHOLIB_QUEUE_QUIET, callback = CP_ProcessWhoEvent })
 	else
-		SendWho(msg)
+		--SendWho(msg)
+		--ManualWho(msg)
+		whoMsg = msg
 	end
 	whoquery_active = true
 	CP_g_queue_count = CP_g_queue_count + 1

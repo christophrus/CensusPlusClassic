@@ -477,7 +477,7 @@ function lib:AskWhoNext()
 		end
 
 		dbg("QUERY: "..args.query)
-		self.hooked.SendWho(args.query)
+		--self.hooked.SendWho(args.query)
 	else
 		self.Args = nil
 		self.WhoInProgress = false
@@ -785,7 +785,7 @@ SLASH_WHOLIB_DEBUG1 = '/wholibdebug'
 
 -- functions to hook
 local hooks = {
-	'WhoFrameEditBox_OnEnterPressed',
+--	'WhoFrameEditBox_OnEnterPressed',
 --	'FriendsFrame_OnEvent',
 }
 
@@ -802,7 +802,7 @@ end -- for
 
 -- C_FriendList functions to hook
 local CFL_hooks = {
-	'SendWho',
+--	'SendWho',
 	'SetWhoToUi',
 }
 
