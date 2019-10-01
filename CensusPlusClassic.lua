@@ -48,7 +48,7 @@ CPp.TZWarningSent = false;  -- not used?
 
 -- Constants
 local CensusPlus_Version_Major = "0"; -- changing this number will force a saved data purge
-local CensusPlus_Version_Minor = "5"; -- changing this number will force a saved data purge
+local CensusPlus_Version_Minor = "7"; -- changing this number will force a saved data purge
 local CensusPlus_Version_Maint = "0";
 local CensusPlus_SubVersion = "";
 --local CensusPlus_VERSION = "WoD"
