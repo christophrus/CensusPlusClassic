@@ -3555,8 +3555,8 @@ local whoMsg
 local lastManual = GetTime()
 
 function ManualWho()
-	local now = GetTime();
-	local deltaManual = now - lastManual;
+	local now = GetTime()
+	local deltaManual = now - lastManual
 	if  (deltaManual > CensusPlus_UPDATEDELAY2) then
 		if (g_Verbose == true) then
 			print("ManualWho:", whoMsg)
@@ -3570,6 +3570,7 @@ function ManualWho()
 			WhoFrameEditBox:SetText(whoMsg)
 			WhoFrameWhoButton:Click()
 		end
+		lastManual = GetTime()
 	end
 end
 
