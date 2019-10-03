@@ -2860,7 +2860,7 @@ function CensusPlus_UpdateView()
 		
 		if( CensusPlus_EnableProfiling ) then
 			CensusPlus_Msg( "PROFILE: Time to do calcs 1 " .. debugprofilestop() / 1000000000 );
-			debugprofilestart();
+			--debugprofilestart();
 		end
 		
 	else
@@ -2871,7 +2871,7 @@ function CensusPlus_UpdateView()
 		
 		if( CensusPlus_EnableProfiling ) then
 			CensusPlus_Msg( "PROFILE: Time to do calcs 1 " .. debugprofilestop() / 1000000000 );
-			debugprofilestart();
+			--debugprofilestart();
 		end
 		
 		local size = table.getn(CensusPlus_Guilds);
@@ -2881,7 +2881,7 @@ function CensusPlus_UpdateView()
 		
 		if( CensusPlus_EnableProfiling ) then
 			CensusPlus_Msg( "PROFILE: Time to sort guilds " .. debugprofilestop() / 1000000000 );
-			debugprofilestart();
+			--debugprofilestart();
 		end			
 	end
 	
@@ -2908,7 +2908,7 @@ function CensusPlus_UpdateView()
 	
 	if( CensusPlus_EnableProfiling ) then
 		CensusPlus_Msg( "PROFILE: Update Guilds " .. debugprofilestop() / 1000000000 );
-		debugprofilestart();
+		--debugprofilestart();
 	end
 
 	-- Accumulate totals for each race
@@ -2954,7 +2954,7 @@ function CensusPlus_UpdateView()
 
 	if( CensusPlus_EnableProfiling ) then
 		CensusPlus_Msg( "PROFILE: Update Races " .. debugprofilestop() / 1000000000 );
-		debugprofilestart();
+		--debugprofilestart();
 	end
 
 	-- Accumulate totals for each class
@@ -3002,7 +3002,7 @@ function CensusPlus_UpdateView()
 
 	if( CensusPlus_EnableProfiling ) then
 		CensusPlus_Msg( "PROFILE: Update Classes " .. debugprofilestop() / 1000000000 );
-		debugprofilestart();
+		--debugprofilestart();
 	end
 
 	-- Accumulate totals for each level
@@ -3046,7 +3046,7 @@ function CensusPlus_UpdateView()
 	
 	if( CensusPlus_EnableProfiling ) then
 		CensusPlus_Msg( "PROFILE: Update Levels " .. debugprofilestop() / 1000000000 );
-		debugprofilestart();	
+		--debugprofilestart();	
 	end
 	
 	if( CP_PlayerListWindow:IsVisible() ) then
