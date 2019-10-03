@@ -3552,19 +3552,24 @@ function CensusPlus_CheckTZ()
 end
 
 local whoMsg
+local lastManual = GetTime()
 
 function ManualWho()
-	if (g_Verbose == true) then
-		print("ManualWho:", whoMsg)
-	end
-	if (whoquery_active) then
-		wholib:Who(whoMsg, {
-			queue = wholib.WHOLIB_QUEUE_QUIET,
-			flags = 0,
-			callback = CP_ProcessWhoEvent
-		})
-		WhoFrameEditBox:SetText(whoMsg)
-		WhoFrameWhoButton:Click()
+	local now = GetTime();
+	local deltaManual = now - lastManual;
+	if  (deltaManual > CensusPlus_UPDATEDELAY2) then
+		if (g_Verbose == true) then
+			print("ManualWho:", whoMsg)
+		end
+		if (whoquery_active) then
+			wholib:Who(whoMsg, {
+				queue = wholib.WHOLIB_QUEUE_QUIET,
+				flags = 0,
+				callback = CP_ProcessWhoEvent
+			})
+			WhoFrameEditBox:SetText(whoMsg)
+			WhoFrameWhoButton:Click()
+		end
 	end
 end
 
