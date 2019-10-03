@@ -1424,7 +1424,7 @@ function CensusPlus_StartCensus()
 			wholib = wholib or LibStub:GetLibrary("LibWho-2.0", true)
 			if wholib then
 				CensusPlus_Msg(CENSUSPLUS_USING_WHOLIB)
-				CensusPlus_UPDATEDELAY = 60
+				--CensusPlus_UPDATEDELAY = 60
 			end
 		end
 	end
@@ -3585,22 +3585,23 @@ end
 local whoMsg
 
 function ManualWho()
-	now = time()
-	if now - CPp.LastManualWho > 5 then
-		if (g_Verbose == true) then
-			print("ManualWho:", whoMsg)
-		end
-		CPp.LastManualWho = time()
-		if (whoquery_active) then
-			wholib:Who(whoMsg, {
-				queue = wholib.WHOLIB_QUEUE_QUIET,
-				flags = 0,
-				callback = CP_ProcessWhoEvent
-			})
-			WhoFrameEditBox:SetText(whoMsg)
-			WhoFrameWhoButton:Click()
-		end
-	end
+  now = time()
+  local deltaManual = now - CPp.LastManualWho
+  if deltaManual > CensusPlus_UPDATEDELAY then
+    if (g_Verbose == true) then
+      print("ManualWho:", whoMsg)
+    end
+    CPp.LastManualWho = time()
+    if (whoquery_active) then
+      wholib:Who(whoMsg, {
+        queue = wholib.WHOLIB_QUEUE_QUIET,
+        flags = 0,
+        callback = CP_ProcessWhoEvent
+      })
+      WhoFrameEditBox:SetText(whoMsg)
+      WhoFrameWhoButton:Click()
+    end
+  end
 end
 
 function CensusPlus_SendWho(msg)
