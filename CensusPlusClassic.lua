@@ -158,6 +158,7 @@ local g_wasPurged = false
 local whoquery_answered = false;
 local whoquery_active = false
 CPp.LastCensusRun = time() -- (CPp.AutoStartTrigger * 60)	--  timer used if auto census is turned on
+CPp.LastManualWho = time()
 
 local g_Pre_FriendsFrameOnHideOverride = nil;		--  override for friend's frame to stop the close window sound
 local g_Pre_FriendsFrameOnShowOverride = nil;		--  override for friend's frame to stop the close window sound
@@ -516,6 +517,26 @@ function CensusPlus_OnLoad(self)
 	-- the binding will be mapped to a LeftButton click.
 		ManualWho()
 	end)
+end
+
+function InitializeExperimental()
+	hookClickables = CensusPlus_Database["Info"]["UseInterfaceClicks"]
+	hookWorldClicks = CensusPlus_Database["Info"]["UseWorldFrameClicks"]
+
+	if hookClickables then
+		for i,v in pairs(_G) do
+			if type(v) == "table" and v["Click"] ~= nil and v["HookScript"] ~= nil then
+				v:HookScript("OnClick", function (self,button)
+					ManualWho()
+				end)
+			end
+		end
+	end
+	if hookWorldClicks then
+		WorldFrame:HookScript("OnMouseDown", function(self,button)
+			ManualWho()
+		end)
+	end
 end
 
 
@@ -1661,6 +1682,7 @@ function CensusPlus_OnEvent(self, event, ...)
 			self:UnregisterEvent("PLAYER_ENTERING_WORLD")
 			if g_addon_loaded and g_player_loaded then
 				CensusPlus_InitializeVariables()
+				InitializeExperimental()
 			end
 		end
 	end
@@ -1959,6 +1981,14 @@ function CensusPlus_InitializeVariables()
 
 	if (CensusPlus_Database["Info"]["UseLogBars"] == nil) then
 		CensusPlus_Database["Info"]["UseLogBars"] = true
+	end
+
+	if (CensusPlus_Database["Info"]["UseWorldFrameClicks"] == nil) then
+		CensusPlus_Database["Info"]["UseWorldFrameClicks"] = false
+	end
+
+	if (CensusPlus_Database["Info"]["UseInterfaceClicks"] == nil) then
+		CensusPlus_Database["Info"]["UseInterfaceClicks"] = false
 	end
 
 	--CensusPlusSetCheckButtonState()
@@ -3554,17 +3584,22 @@ end
 local whoMsg
 
 function ManualWho()
-	if (g_Verbose == true) then
-		print("ManualWho:", whoMsg)
-	end
-	if (whoquery_active) then
-		wholib:Who(whoMsg, {
-			queue = wholib.WHOLIB_QUEUE_QUIET,
-			flags = 0,
-			callback = CP_ProcessWhoEvent
-		})
-		WhoFrameEditBox:SetText(whoMsg)
-		WhoFrameWhoButton:Click()
+	now = time()
+	if now - CPp.LastManualWho > 5 then
+		if (g_Verbose == true) then
+			print("ManualWho:", whoMsg)
+		end
+		CPp.LastManualWho = time()
+		if (whoquery_active) then
+			wholib:Who(whoMsg, {
+				queue = wholib.WHOLIB_QUEUE_QUIET,
+				flags = 0,
+				callback = CP_ProcessWhoEvent
+			})
+			WhoFrameEditBox:SetText(whoMsg)
+			WhoFrameWhoButton:Click()
+			WhoFrame:GetParent():Hide()
+		end
 	end
 end
 
@@ -5196,6 +5231,74 @@ function CensusPlusBlizzardOptions()
 	_G[CensusPlusSlider2:GetName() .. "Text"]:SetText(CENSUSPLUS_TRANSPARENCY) --Sets the "title" text (top-centre of slider).
 	CensusPlusSlider2:Enable()
 
+
+	--Create another frame..
+	CensusPlusOptionsExperimental = CensusPlusOptions:CreateFontString(nil, "ARTWORK")
+	CensusPlusOptionsExperimental:SetFontObject(GameFontWhite)
+	CensusPlusOptionsExperimental:SetJustifyH("LEFT")
+	CensusPlusOptionsExperimental:SetJustifyV("TOP")
+	CensusPlusOptionsExperimental:ClearAllPoints()
+	CensusPlusOptionsExperimental:SetPoint(
+		"TOPLEFT",
+		CensusPlusSlider2,
+		"BOTTOMLEFT",
+		-50,
+		-20
+	)
+	CensusPlusOptionsExperimental:SetText("Experimental settings (requires UI reload)")
+
+	CensusPlusCheckButton8 =
+		CreateFrame(
+			"CheckButton",
+			"CensusPlusCheckButton8",
+			CensusPlusOptions,
+			"OptionsCheckButtonTemplate"
+		)
+	CensusPlusCheckButton8:SetPoint(
+		"TOPLEFT",
+		CensusPlusOptionsExperimental,
+		"BOTTOMLEFT",
+		0,
+		-6
+	)
+	CensusPlusCheckButton8:SetChecked(true)
+	CensusPlusCheckButton8:SetScript("OnClick", function(self)
+		currentOption = CensusPlus_Database["Info"]["UseWorldFrameClicks"]
+		if currentOption then
+			CensusPlus_Database["Info"]["UseWorldFrameClicks"] = false
+		else
+			CensusPlus_Database["Info"]["UseWorldFrameClicks"] = true
+		end
+	end)
+	CensusPlusCheckButton8Text:SetText("Send who request on mouse clicks in world") --
+	CensusPlusCheckButton8.tooltipText = "Sends a who request each time the user clicks into the 3D world. At minimum every 5 seconds."
+
+	CensusPlusCheckButton9 =
+		CreateFrame(
+			"CheckButton",
+			"CensusPlusCheckButton9",
+			CensusPlusOptions,
+			"OptionsCheckButtonTemplate"
+		)
+	CensusPlusCheckButton9:SetPoint(
+		"TOPLEFT",
+		CensusPlusCheckButton8,
+		"BOTTOMLEFT",
+		0,
+		0
+	)
+	CensusPlusCheckButton9:SetChecked(true)
+	CensusPlusCheckButton9:SetScript("OnClick", function(self)
+		currentOption = CensusPlus_Database["Info"]["UseInterfaceClicks"]
+		if currentOption then
+			CensusPlus_Database["Info"]["UseInterfaceClicks"] = false
+		else
+			CensusPlus_Database["Info"]["UseInterfaceClicks"] = true
+		end
+	end)
+	CensusPlusCheckButton9Text:SetText("Send who request on mouse clicks in interface") --
+	CensusPlusCheckButton9.tooltipText = "Sends a who request each time the user clicks on interface buttons. At minimum every 5 seconds."
+
 end
 
 function CensusPlus_ResetConfig() -- reset to defaults
@@ -5217,6 +5320,8 @@ function CensusPlus_ResetConfig() -- reset to defaults
 	CensusPlus_PerCharInfo["CensusButtonAnimi"] = nil
 	CensusPlus_Database["Info"]["CPWindow_Transparency"] = 0.5
 	CensusPlus_Database["Info"]["UseLogBars"] = true
+	CensusPlus_Database["Info"]["UseWorldFrameClicks"] = false
+	CensusPlus_Database["Info"]["UseInterfaceClicks"] = false
 	print("ResetConfig")
 	CensusPlusSetCheckButtonState()
 end
@@ -5388,6 +5493,9 @@ function CensusPlusSetCheckButtonState() -- set option check buttons and radio b
 		CensusPlus_Database["Info"]["UseLogBars"]
 	CensusPlusCheckButton7:SetChecked(CensusPlus_Database["Info"]["UseLogBars"])
 	g_AW_LogBars = CensusPlus_Database["Info"]["UseLogBars"]
+
+	CensusPlusCheckButton8:SetChecked(CensusPlus_Database["Info"]["UseWorldFrameClicks"])
+	CensusPlusCheckButton9:SetChecked(CensusPlus_Database["Info"]["UseInterfaceClicks"])
 	
 	--	CensusPlusCheckButton8:SetChecked(CensusPlus2["WMZ party4"])
 	--	CensusPlusCheckButton9:SetChecked(CensusPlus2["show decimals"])
