@@ -755,19 +755,19 @@ end
 --- slash commands
 ---
 
-SlashCmdList['WHO'] = function(msg)
-	dbg("console /who: "..msg)
-	-- new /who function
-	--local self = lib
-	
-	if(msg == '')then
-		lib:GuiWho(WhoFrame_GetDefaultWhoCommand())
-	elseif(WhoFrame:IsVisible())then
-		lib:GuiWho(msg)
-	else
-		lib:ConsoleWho(msg)
-	end
-end
+--SlashCmdList['WHO'] = function(msg)
+--	dbg("console /who: "..msg)
+--	-- new /who function
+--	--local self = lib
+--	
+--	if(msg == '')then
+--		lib:GuiWho(WhoFrame_GetDefaultWhoCommand())
+--	elseif(WhoFrame:IsVisible())then
+--		lib:GuiWho(msg)
+--	else
+--		lib:ConsoleWho(msg)
+--	end
+--end
 	
 SlashCmdList['WHOLIB_DEBUG'] = function()
 	-- /wholibdebug: toggle debug on/off
@@ -918,8 +918,8 @@ FriendsFrame:UnregisterEvent("WHO_LIST_UPDATE")
 
 function lib:WHO_LIST_UPDATE()
     if not lib.Quiet then
-		WhoList_Update()		
-        FriendsFrame_Update()
+      WhoList_Update()
+      FriendsFrame_Update()
     end
 
     lib:ProcessWhoResults()

@@ -2414,6 +2414,7 @@ function CensusPlus_ProcessWhoResults(result, numWhoResults)
 		local tmpGldend = nil
 		local relationship = nil
 		if (CensusPlus_WHOPROCESSOR == CP_libwho) then
+			if (result[i] == nil) then return end
 			name = result[i].Name
 			realm = CensusPlus_GetUniqueRealmName()
 			guild = result[i].Guild
@@ -3598,7 +3599,6 @@ function ManualWho()
 			})
 			WhoFrameEditBox:SetText(whoMsg)
 			WhoFrameWhoButton:Click()
-			WhoFrame:GetParent():Hide()
 		end
 	end
 end
