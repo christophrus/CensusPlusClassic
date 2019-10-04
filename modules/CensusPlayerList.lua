@@ -45,7 +45,7 @@ end
 
 function CensusPlus_PlayerListOnShow()
 
-	debugprofilestart();
+	--debugprofilestart();
 	
 	local guildKey = nil;
 	local raceKey = nil;
@@ -90,13 +90,13 @@ function CensusPlus_PlayerListOnShow()
 		levelKey = g_LevelSelected;
 	end
 
-	debugprofilestart();
+	--debugprofilestart();
 
 	CensusPlus_ForAllCharacters( realmName, factionGroup, raceKey, classKey, guildKey, levelKey, CensusPlus_AddPlayerToList);
 		
 	if( CensusPlus_EnableProfiling ) then
 		CensusPlus_Msg( "PROFILE: Time to do calcs 1 " .. debugprofilestop() / 1000000000 );
-		debugprofilestart();
+		--debugprofilestart();
 	end
 		
 
@@ -107,7 +107,7 @@ function CensusPlus_PlayerListOnShow()
 	
 	local totalCharactersText = format(CENSUSPLUS_TOTALCHAR, table.getn( g_PlayerList ) );
 	if( table.getn( g_PlayerList ) == g_MaxNumListed ) then
-		totalCharactersText = totalCharactersText .. " -- " .. CENSUSPlus_MAXXED;
+		totalCharactersText = totalCharactersText .. " -- " .. CENSUSPLUS_MAXXED;
 	end
 	
 	CensusPlayerListCount:SetText(totalCharactersText);
