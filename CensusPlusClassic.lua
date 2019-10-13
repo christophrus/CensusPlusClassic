@@ -49,7 +49,7 @@ CPp.TZWarningSent = false;  -- not used?
 -- Constants
 local CensusPlus_Version_Major = "0"; -- changing this number will force a saved data purge
 local CensusPlus_Version_Minor = "8"; -- changing this number will force a saved data purge
-local CensusPlus_Version_Maint = "0";
+local CensusPlus_Version_Maint = "1";
 local CensusPlus_SubVersion = "";
 --local CensusPlus_VERSION = "WoD"
 local CensusPlus_VERSION = CensusPlus_Version_Major.."."..CensusPlus_Version_Minor .."."..CensusPlus_Version_Maint; 
@@ -5246,7 +5246,7 @@ function CensusPlusBlizzardOptions()
 		-50,
 		-20
 	)
-	CensusPlusOptionsExperimental:SetText("Experimental settings (requires UI reload)")
+	CensusPlusOptionsExperimental:SetText("Semi automatic requests (requires UI reload)")
 
 	CensusPlusCheckButton8 =
 		CreateFrame(
