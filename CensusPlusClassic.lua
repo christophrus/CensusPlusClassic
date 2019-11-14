@@ -44,12 +44,16 @@ local checksum = LibStub:GetLibrary("LibChecksum-1.0", true)
 CPp.InterfaceVersion = "Captain Placeholder";   -- random value.. must not match CensusPlus_VERSION string.
 local g_CensusPlusTZOffset = -999;
 CPp.LocaleSet = false;  -- not used?
-CPp.TZWarningSent = false;  -- not used? 
+CPp.TZWarningSent = false;  -- not used?
+
+-- Bindings
+BINDING_NAME_CENSUSPLUSCLASSIC_MANUALWHO = 'Issue a manual /who request'
+BINDING_HEADER_CENSUSPLUSCLASSIC = 'CensusPlusClassic'
 
 -- Constants
 local CensusPlus_Version_Major = "0"; -- changing this number will force a saved data purge
 local CensusPlus_Version_Minor = "8"; -- changing this number will force a saved data purge
-local CensusPlus_Version_Maint = "1";
+local CensusPlus_Version_Maint = "2";
 local CensusPlus_SubVersion = "";
 --local CensusPlus_VERSION = "WoD"
 local CensusPlus_VERSION = CensusPlus_Version_Major.."."..CensusPlus_Version_Minor .."."..CensusPlus_Version_Maint; 
@@ -511,7 +515,6 @@ function CensusPlus_OnLoad(self)
 	local updateFrame = CreateFrame("Frame")
 	updateFrame:SetScript("OnUpdate", CensusPlus_OnUpdate)
 	
-	SetBindingClick("SHIFT-T", CensusPlusWhoButton:GetName())
 	CensusPlusWhoButton:SetScript("OnClick", function(self, button, down)
 	-- As we have not specified the button argument to SetBindingClick,
 	-- the binding will be mapped to a LeftButton click.
@@ -1984,7 +1987,7 @@ function CensusPlus_InitializeVariables()
 	end
 
 	if (CensusPlus_Database["Info"]["UseWorldFrameClicks"] == nil) then
-		CensusPlus_Database["Info"]["UseWorldFrameClicks"] = false
+		CensusPlus_Database["Info"]["UseWorldFrameClicks"] = true
 	end
 
 	if (CensusPlus_Database["Info"]["UseInterfaceClicks"] == nil) then
