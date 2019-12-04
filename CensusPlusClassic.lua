@@ -53,7 +53,7 @@ BINDING_HEADER_CENSUSPLUSCLASSIC = 'CensusPlusClassic'
 -- Constants
 local CensusPlus_Version_Major = "0"; -- changing this number will force a saved data purge
 local CensusPlus_Version_Minor = "8"; -- changing this number will force a saved data purge
-local CensusPlus_Version_Maint = "2";
+local CensusPlus_Version_Maint = "3";
 local CensusPlus_SubVersion = "";
 --local CensusPlus_VERSION = "WoD"
 local CensusPlus_VERSION = CensusPlus_Version_Major.."."..CensusPlus_Version_Minor .."."..CensusPlus_Version_Maint; 
@@ -523,18 +523,8 @@ function CensusPlus_OnLoad(self)
 end
 
 function InitializeExperimental()
-	hookClickables = CensusPlus_Database["Info"]["UseInterfaceClicks"]
 	hookWorldClicks = CensusPlus_Database["Info"]["UseWorldFrameClicks"]
 
-	if hookClickables then
-		for i,v in pairs(_G) do
-			if type(v) == "table" and v["Click"] ~= nil and v["HookScript"] ~= nil then
-				v:HookScript("OnClick", function (self,button)
-					ManualWho()
-				end)
-			end
-		end
-	end
 	if hookWorldClicks then
 		WorldFrame:HookScript("OnMouseDown", function(self,button)
 			ManualWho()
@@ -1990,10 +1980,6 @@ function CensusPlus_InitializeVariables()
 		CensusPlus_Database["Info"]["UseWorldFrameClicks"] = true
 	end
 
-	if (CensusPlus_Database["Info"]["UseInterfaceClicks"] == nil) then
-		CensusPlus_Database["Info"]["UseInterfaceClicks"] = false
-	end
-
 	--CensusPlusSetCheckButtonState()
 	CensusPlus_Msg(" v" .. CensusPlus_VERSION .. CENSUSPLUS_MSG1)
 
@@ -3341,7 +3327,7 @@ function CENSUSPLUS_PRUNEData(nDays, sServer)
 											else
 												if( realmName == thisRealmName ) then
 										--]]
-										local lastSeen = character[4] --  2005-05-02
+										local lastSeen = character[3] --  2005-05-02
 										local tYear, tMonth, tDay
 										tYear = string.sub(lastSeen, 1, 4)
 										tMonth = string.sub(lastSeen, 6, 7)
@@ -5277,32 +5263,6 @@ function CensusPlusBlizzardOptions()
 	CensusPlusCheckButton8Text:SetText("Send who request on mouse clicks in world") --
 	CensusPlusCheckButton8.tooltipText = "Sends a who request each time the user clicks into the 3D world. At minimum every 5 seconds."
 
-	CensusPlusCheckButton9 =
-		CreateFrame(
-			"CheckButton",
-			"CensusPlusCheckButton9",
-			CensusPlusOptions,
-			"OptionsCheckButtonTemplate"
-		)
-	CensusPlusCheckButton9:SetPoint(
-		"TOPLEFT",
-		CensusPlusCheckButton8,
-		"BOTTOMLEFT",
-		0,
-		0
-	)
-	CensusPlusCheckButton9:SetChecked(true)
-	CensusPlusCheckButton9:SetScript("OnClick", function(self)
-		currentOption = CensusPlus_Database["Info"]["UseInterfaceClicks"]
-		if currentOption then
-			CensusPlus_Database["Info"]["UseInterfaceClicks"] = false
-		else
-			CensusPlus_Database["Info"]["UseInterfaceClicks"] = true
-		end
-	end)
-	CensusPlusCheckButton9Text:SetText("Send who request on mouse clicks in interface") --
-	CensusPlusCheckButton9.tooltipText = "Sends a who request each time the user clicks on interface buttons. At minimum every 5 seconds."
-
 end
 
 function CensusPlus_ResetConfig() -- reset to defaults
@@ -5325,7 +5285,6 @@ function CensusPlus_ResetConfig() -- reset to defaults
 	CensusPlus_Database["Info"]["CPWindow_Transparency"] = 0.5
 	CensusPlus_Database["Info"]["UseLogBars"] = true
 	CensusPlus_Database["Info"]["UseWorldFrameClicks"] = false
-	CensusPlus_Database["Info"]["UseInterfaceClicks"] = false
 	print("ResetConfig")
 	CensusPlusSetCheckButtonState()
 end
@@ -5499,7 +5458,6 @@ function CensusPlusSetCheckButtonState() -- set option check buttons and radio b
 	g_AW_LogBars = CensusPlus_Database["Info"]["UseLogBars"]
 
 	CensusPlusCheckButton8:SetChecked(CensusPlus_Database["Info"]["UseWorldFrameClicks"])
-	CensusPlusCheckButton9:SetChecked(CensusPlus_Database["Info"]["UseInterfaceClicks"])
 	
 	--	CensusPlusCheckButton8:SetChecked(CensusPlus2["WMZ party4"])
 	--	CensusPlusCheckButton9:SetChecked(CensusPlus2["show decimals"])
