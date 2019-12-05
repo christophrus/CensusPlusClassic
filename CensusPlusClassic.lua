@@ -3095,7 +3095,7 @@ function CensusPlus_ForAllCharacters(realmKey, factionKey, raceKey, classKey, gu
 												characterLevel = 0;
 											end
 											if ((levelKey == nil) or (levelKey == characterLevel) or (levelKey < 0 and levelKey + characterLevel ~= 0)) then
-												callback(characterName, characterLevel, characterGuild, raceName, className, character[4] );
+												callback(characterName, characterLevel, characterGuild, raceName, className, character[3] );
 											end
 										end
 									end
