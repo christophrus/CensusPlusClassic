@@ -1645,9 +1645,6 @@ function CensusPlus_OnEvent(self, event, ...)
 		if WhoFrame:IsShown() then
 		  FriendsFrameCloseButton:Click()
 		end
-		if (g_Pre_SFX == "1") then
-			SetCVar("Sound_EnableSFX", 1)
-		end
 		CP_ProcessWhoEvent(whoMsg)
 	end
 	
@@ -3511,12 +3508,8 @@ function ManualWho()
       end
       CPp.LastManualWho = time()
       if (whoquery_active) then
-      C_FriendList.SetWhoToUi(true)
-      CensusPlusClassic:RegisterEvent("WHO_LIST_UPDATE")
-      g_Pre_SFX = GetCVar("Sound_EnableSFX")
-      if (g_Pre_SFX == "1") then
-      SetCVar("Sound_EnableSFX", 0)
-      end
+        C_FriendList.SetWhoToUi(true)
+        CensusPlusClassic:RegisterEvent("WHO_LIST_UPDATE")
         C_FriendList.SendWho(whoMsg)
       end
     end
