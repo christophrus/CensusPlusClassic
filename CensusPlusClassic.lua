@@ -53,7 +53,7 @@ BINDING_HEADER_CENSUSPLUSCLASSIC = 'CensusPlusClassic'
 -- Constants
 local CensusPlus_Version_Major = "0"; -- changing this number will force a saved data purge
 local CensusPlus_Version_Minor = "8"; -- changing this number will force a saved data purge
-local CensusPlus_Version_Maint = "3";
+local CensusPlus_Version_Maint = "4";
 local CensusPlus_SubVersion = "";
 --local CensusPlus_VERSION = "WoD"
 local CensusPlus_VERSION = CensusPlus_Version_Major.."."..CensusPlus_Version_Minor .."."..CensusPlus_Version_Maint; 
@@ -65,7 +65,7 @@ local CensusPlus_NUMGUILDBUTTONS = 10;			-- How many guild buttons are on the UI
 
 local MAX_CHARACTER_LEVEL = 60;					-- Maximum level a PC can attain  testing only comment out for live
 local MIN_CHARACTER_LEVEL = 1;					-- Minimum observed level returned by /who command (undocumented and barely acknowledged.)
-local MAX_WHO_RESULTS = 50;						-- Maximum number of who results the server will return
+local MAX_WHO_RESULTS = 49;						-- Maximum number of who results the server will return
 CensusPlus_GUILDBUTTONSIZEY = 16;				-- pixil height of guild name lines
 local CensusPlus_UPDATEDELAY = 5;				-- Delay time between /who messages
 local CensusPlus_UPDATEDELAY2 = 10				-- Delay time from who request to database updated
@@ -75,13 +75,11 @@ local CP_MAX_TIMES = 50;
 --local g_ServerPrefix = "EU-";					--  EU VERSION!!
 
 -- debug flags for remote QA testing of version upgrades.
-local CP_libwho = "libwho"
 local CP_api = "api"
 local CP_letterselect = 0					-- default letter selector pattern... valid options 1 and 2.. testing only
-local CensusPlus_WHOPROCESSOR = CP_libwho   -- default processing of who request to full wholib  CP_api --
+local CensusPlus_WHOPROCESSOR = CP_api      -- default processing of who request to full wholib  CP_api --
 local CensusPLus_DEBUGWRITES = false    	-- don't add debug into to censusplus.lua output.
 local CP_g_queue_count = 0 					-- process speed checking avg time to process 1 queue
-local wholib
 
 
 
@@ -164,12 +162,7 @@ local whoquery_active = false
 CPp.LastCensusRun = time() -- (CPp.AutoStartTrigger * 60)	--  timer used if auto census is turned on
 CPp.LastManualWho = time()
 
-local g_Pre_FriendsFrameOnHideOverride = nil;		--  override for friend's frame to stop the close window sound
-local g_Pre_FriendsFrameOnShowOverride = nil;		--  override for friend's frame to stop the close window sound
-local g_Pre_WhoList_UpdateOverride = nil;			--  override for friend's frame to stop the close window sound
-local g_Pre_WhoHandler = nil;						--  override for submiting a who
-local CP_Pre_OnEvent = nil;
-local g_Pre_FriendsFrame_Update = nil;
+local g_Pre_SFX = nil;
 local CP_updatingGuild  = nil;
 local g_CurrentlyInBG = false;
 local g_CurrentlyInBG_Msg = false;
@@ -183,13 +176,7 @@ local g_CensusPlus_StartTime = 0;
 local g_CensusWhoOverrideMsg = nil;
 local g_WaitingForOverrideUpdate = false;
 local g_ProblematicMessageShown = false;
-local g_WhoLibLoaded = false;
 local g_PratLoaded = false;
-local g_WhoLibSubvert = nil;
-local g_WhoLibSendWhoSubvert = nil;
-local g_whoLibResultSubvert = nil;
-local g_WhoLibChatSubvert = nil;
-local g_WhoLibAskWhoSubvert = nil;
 
 --  Battleground info
 CENSUSPLUS_CURRENT_BATTLEFIELD_QUEUES = {};
@@ -498,7 +485,6 @@ function CensusPlus_OnLoad(self)
 	-- Register for events
 	self:RegisterEvent("ADDON_LOADED")
 	self:RegisterEvent("PLAYER_ENTERING_WORLD")
-
 	self:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 
 	-- Called once on load
@@ -539,17 +525,8 @@ function CP_ProcessWhoEvent(query, result, complete)
 	local numWhoResults = 0
 	local cpdb_complete_flag = ""
 	whoquery_answered = true
-	if (CensusPlus_WHOPROCESSOR == CP_libwho) then
-		if complete then
-			cpdb_complete_flag = "" -- :complete"
-			numWhoResults = #result -- :too many"
-		else
-			cpdb_complete_flag = ""
-			numWhoResults = MAX_WHO_RESULTS
-		end
-	else
-		numWhoResults = C_FriendList.GetNumWhoResults()
-	end
+
+	numWhoResults = C_FriendList.GetNumWhoResults()
 
 	if (g_Verbose == true) then
 		CensusPlus_Msg(
@@ -573,8 +550,7 @@ function CP_ProcessWhoEvent(query, result, complete)
 
 	CensusPlus_ProcessWhoResults(result, numWhoResults)
 
-	
-	if ((CensusPlus_WHOPROCESSOR == CP_libwho) and not complete) or ((CensusPlus_WHOPROCESSOR == CP_api) and (numWhoResults > MAX_WHO_RESULTS)) then
+	if (numWhoResults > MAX_WHO_RESULTS) then
 		-- Who list is overflowed, split the query to make the return smaller
 		local minLevel = g_CurrentJob.m_MinLevel
 		local maxLevel = g_CurrentJob.m_MaxLevel
@@ -677,15 +653,6 @@ function CP_ProcessWhoEvent(query, result, complete)
 	end
 end
   
--- CensusPlusClassic Friends Frame override to stop the window close sound
-local function CensusPlus_FriendsFrame_OnHide()
-	g_Pre_FriendsFrameOnHideOverride()
-end
-
--- CensusPlusClassic Friends Frame override to stop the window close sound
-local function CensusPlus_FriendsFrame_OnShow()
-	g_Pre_FriendsFrameOnShowOverride()
-end
 
 -- CensusPlusClassic command
 function CensusPlus_Command(param)
@@ -767,10 +734,6 @@ function CensusPlus_Command(param)
 			else
 				CensusPlus_Msg(CENSUSPLUS_CMDERR_WHO2)
 			end
-		elseif (command == "wholibdebug") then
-			_, jvalend, value = string.find(param, "(%w+)", jcmdend + 1) -- alphanumeric selector used to warn of bad input
-			wholib = wholib or LibStub:GetLibrary("LibWho-2.0", true)
-			wholib:SetWhoLibDebug(value)
 		elseif (param == "debug") then
 			if (HortonBug == false) then
 				chat("Horton puts trunk in Rabbit hole and blows real hard")
@@ -1387,7 +1350,6 @@ function CensusPlus_StartCensus()
 				g_TakeHour = hour
 				g_ResetHour = true
 
-				wholib = wholib or LibStub:GetLibrary("LibWho-2.0", true)
 			-- queue who for player into job que
 			elseif (UnitLevel("player") < MIN_CHARACTER_LEVEL) then
 				CensusPlus_Msg("Player is below level 20")
@@ -1413,12 +1375,6 @@ function CensusPlus_StartCensus()
 			local hour, minute = GetGameTime()
 			g_TakeHour = hour
 			g_ResetHour = true
-
-			wholib = wholib or LibStub:GetLibrary("LibWho-2.0", true)
-			if wholib then
-				CensusPlus_Msg(CENSUSPLUS_USING_WHOLIB)
-				--CensusPlus_UPDATEDELAY = 60
-			end
 		end
 	end
 end
@@ -1643,6 +1599,8 @@ function CensusPlus_DumpJob(job)
 	---CensusPlus_Msg( "JOB DUMP: " .. whoText );
 end
 
+local whoMsg
+
 -- Called on events
 -- referenced by CensusPlusClassic.xml
 function CensusPlus_OnEvent(self, event, ...)
@@ -1681,6 +1639,18 @@ function CensusPlus_OnEvent(self, event, ...)
 	end
 
 	-- WHO_LIST_UPDATE
+	if (event == "WHO_LIST_UPDATE") then
+		CensusPlusClassic:UnregisterEvent("WHO_LIST_UPDATE")
+		C_FriendList.SetWhoToUi(false)
+		if WhoFrame:IsShown() then
+		  FriendsFrameCloseButton:Click()
+		end
+		if (g_Pre_SFX == "1") then
+			SetCVar("Sound_EnableSFX", 1)
+		end
+		CP_ProcessWhoEvent(whoMsg)
+	end
+	
 	if (event == "TRAINER_SHOW" or event == "MERCHANT_SHOW" or event == "TRADE_SHOW" or event == "GUILD_REGISTRAR_SHOW" or event == "AUCTION_HOUSE_SHOW" or event == "BANKFRAME_OPENED" or event == "QUEST_DETAIL") then
 		print(" Event triggered = " .. event)
 		if CPp.IsCensusPlusInProgress then
@@ -2372,11 +2342,10 @@ function CensusPlus_ProcessWhoResults(result, numWhoResults)
 
 	--]]
 	--5.4
-	if (CensusPlus_WHOPROCESSOR == CP_libwho) then
-		local numWhoResults = numWhoResults
-	else
-		local numWhoResults = C_FriendList.GetNumWhoResults()
-	end
+
+	local numWhoResults = C_FriendList.GetNumWhoResults()
+	
+
 
 	if (g_Verbose == true) then
 		CensusPlus_Msg(format(CENSUSPLUS_PROCESSING, numWhoResults))
@@ -2402,92 +2371,53 @@ function CensusPlus_ProcessWhoResults(result, numWhoResults)
 		local tmpGldst = nil
 		local tmpGldend = nil
 		local relationship = nil
-		if (CensusPlus_WHOPROCESSOR == CP_libwho) then
-			if (result[i] == nil) then return end
-			name = result[i].Name
-			realm = CensusPlus_GetUniqueRealmName()
-			guild = result[i].Guild
-			
-			if (HortonBug == true) then
-				says(
-					"Who returned " .. result[i].Name .. "  Guild = " .. result[i].Guild
-				)
-			end
-			if ((guild ~= nil) and (guild ~= "")) then
-				local guildName = "" -- defined if valid guild returned from who call otherwise nil.. am I sure about this?
-				
-				guildRealm = CensusPlus_GetUniqueRealmName()
-				
-				if (HortonBug == true) then
-					says("guild realm =  " .. guildRealm)
-				end
-			else
-				guild = ""
-				guildRealm = ""
-			end
-
-			level = result[i].Level
-			race = result[i].Race
-			if (CENSUSPlusFemale[race] ~= nil) then
-				race = CENSUSPlusFemale[race]
-			end
-			class = result[i].Class
-			if (CENSUSPlusFemale[class] ~= nil) then
-				class = CENSUSPlusFemale[class]
-			end
-			zone = result[i].Zone
-			sex = result[i].Sex
-			-- debug testing
-			--says("parsed name = " .. name);
-			--says("parsed realm = " .. realm); -- this shouldn't happen except where Blizzard doesn't encode relationships
+		
+		local p = C_FriendList.GetWhoInfo(i)
+		name = p.fullName
+		guild = p.fullGuildName
+		level = p.level
+		race = p.raceStr
+		class = p.classStr
+		zone = p.area
+		sex = p.gender
+		if (CENSUSPlusFemale[race] ~= nil) then
+			race = CENSUSPlusFemale[race]
+		end
+		if (CENSUSPlusFemale[class] ~= nil) then
+			class = CENSUSPlusFemale[class]
+		end
+		if (HortonBug == true) then
+			says("who API returned " .. name)
+		end
+		local orig_name = name
+		local orig_guild = guild
+		tmpNmst, tmpNmend = string.find(name, "-")
+		if tmpNmst then
+			realm = string.sub(name, tmpNmst + 1)
+			name = string.sub(name, 1, tmpNmst - 1)
 		else
-			local p = C_FriendList.GetWhoInfo(i)
-			name = p.fullName
-			guild = p.fullGuildName
-			level = p.level
-			race = p.raceStr
-			class = p.classStr
-			zone = p.area
-			sex = p.gender
-			if (CENSUSPlusFemale[race] ~= nil) then
-				race = CENSUSPlusFemale[race]
-			end
-			if (CENSUSPlusFemale[class] ~= nil) then
-				class = CENSUSPlusFemale[class]
-			end
-			if (HortonBug == true) then
-				says("who API returned " .. name)
-			end
-			local orig_name = name
-			local orig_guild = guild
-			tmpNmst, tmpNmend = string.find(name, "-")
-			if tmpNmst then
-				realm = string.sub(name, tmpNmst + 1)
-				name = string.sub(name, 1, tmpNmst - 1)
-			else
-				realm = CensusPlus_GetUniqueRealmName()
-			end
+			realm = CensusPlus_GetUniqueRealmName()
+		end
 
-			if ((guild ~= nil) and (guild ~= "")) then
-				local guildName = ""
-				guildName, _, _ = GetGuildInfo(orig_name)
-				if (guildName == nil) then
-					tmpGldst, tmpGldend = string.find(orig_guild, "-")
-					if tmpGldst then
-						guildRealm = string.sub(orig_guild, tmpGldst + 1)
-						guild = string.sub(orig_guild, 1, tmpGldst - 1)
-					else
-						guildRealm = CensusPlus_GetUniqueRealmName()
-					end
+		if ((guild ~= nil) and (guild ~= "")) then
+			local guildName = ""
+			guildName, _, _ = GetGuildInfo(orig_name)
+			if (guildName == nil) then
+				tmpGldst, tmpGldend = string.find(orig_guild, "-")
+				if tmpGldst then
+					guildRealm = string.sub(orig_guild, tmpGldst + 1)
+					guild = string.sub(orig_guild, 1, tmpGldst - 1)
 				else
-					if (guildRealm == nil) then
-						guildRealm = CensusPlus_GetUniqueRealmName()
-					end
+					guildRealm = CensusPlus_GetUniqueRealmName()
 				end
 			else
-				guild = ""
-				guildRealm = ""
+				if (guildRealm == nil) then
+					guildRealm = CensusPlus_GetUniqueRealmName()
+				end
 			end
+		else
+			guild = ""
+			guildRealm = ""
 		end
 
 		--[[ 
@@ -3095,7 +3025,7 @@ function CensusPlus_ForAllCharacters(realmKey, factionKey, raceKey, classKey, gu
 												characterLevel = 0;
 											end
 											if ((levelKey == nil) or (levelKey == characterLevel) or (levelKey < 0 and levelKey + characterLevel ~= 0)) then
-												callback(characterName, characterLevel, characterGuild, raceName, className, character[3] );
+												callback(characterName, characterLevel, characterGuild, raceName, className, character[4] );
 											end
 										end
 									end
@@ -3571,24 +3501,24 @@ function CensusPlus_CheckTZ()
 	g_CensusPlusTZOffset = servDiff
 end
 
-local whoMsg
-
 function ManualWho()
-  now = time()
-  local deltaManual = now - CPp.LastManualWho
-  if deltaManual > CensusPlus_UPDATEDELAY then
-    if (g_Verbose == true) then
-      print("ManualWho:", whoMsg)
-    end
-    CPp.LastManualWho = time()
-    if (whoquery_active) then
-      wholib:Who(whoMsg, {
-        queue = wholib.WHOLIB_QUEUE_QUIET,
-        flags = 0,
-        callback = CP_ProcessWhoEvent
-      })
-      WhoFrameEditBox:SetText(whoMsg)
-      WhoFrameWhoButton:Click()
+  if (CPp.IsCensusPlusInProgress) then
+    now = time()
+    local deltaManual = now - CPp.LastManualWho
+    if deltaManual > CensusPlus_UPDATEDELAY then
+      if (g_Verbose == true) then
+        print("ManualWho:", whoMsg)
+      end
+      CPp.LastManualWho = time()
+      if (whoquery_active) then
+      C_FriendList.SetWhoToUi(true)
+      CensusPlusClassic:RegisterEvent("WHO_LIST_UPDATE")
+      g_Pre_SFX = GetCVar("Sound_EnableSFX")
+      if (g_Pre_SFX == "1") then
+      SetCVar("Sound_EnableSFX", 0)
+      end
+        C_FriendList.SendWho(whoMsg)
+      end
     end
   end
 end
@@ -3613,19 +3543,8 @@ function CensusPlus_SendWho(msg)
 		CensusButton:SetText(topwho)
 	end
 
-	if wholib then
-		whoMsg = msg
-		--wholib:Who(msg, {
-		--	queue = wholib.WHOLIB_QUEUE_QUIET,
-		--	flags = 0,
-		--	callback = CP_ProcessWhoEvent
-		--})
-		--wholib:AskWho({query = msg, queue = wholib.WHOLIB_QUEUE_QUIET, callback = CP_ProcessWhoEvent })
-	else
-		--SendWho(msg)
-		--ManualWho(msg)
-		whoMsg = msg
-	end
+	whoMsg = msg
+	
 	whoquery_active = true
 	CP_g_queue_count = CP_g_queue_count + 1
 end

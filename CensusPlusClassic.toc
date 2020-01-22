@@ -1,5 +1,5 @@
 ## Interface: 11303
-## Version: 1.13.2
+## Version: v0.8.4
 ## Title: CensusPlusClassic
 ## Notes: This AddOn is licenced under the GNU GPL, see GPL.txt for details.
 ## Notes: Collects and displays census information. 
@@ -18,7 +18,6 @@
 libs\LibStub\LibStub.lua
 libs\LibChecksum-1.0\LibChecksum.lua
 libs\CallbackHandler-1.0\CallbackHandler-1.0.lua
-libs\LibWho-2.0\LibWho-2.0.lua
 libs\LibRealmID\LibRealmID.lua
 #@end-no-lib-strip@
 
