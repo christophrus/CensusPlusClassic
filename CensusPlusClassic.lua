@@ -3502,7 +3502,7 @@ function CensusPlus_CheckTZ()
 end
 
 function ManualWho()
-  if (CPp.IsCensusPlusInProgress) then
+  if (CPp.IsCensusPlusInProgress and not g_CurrentlyInBG) then
     now = time()
     local deltaManual = now - CPp.LastManualWho
     if deltaManual > CensusPlus_UPDATEDELAY then
