@@ -1645,6 +1645,7 @@ function CensusPlus_OnEvent(self, event, ...)
 		if WhoFrame:IsShown() then
 		  FriendsFrameCloseButton:Click()
 		end
+    FriendsFrame:RegisterEvent("WHO_LIST_UPDATE")
 		CP_ProcessWhoEvent(whoMsg)
 	end
 	
@@ -3508,6 +3509,7 @@ function ManualWho()
       end
       CPp.LastManualWho = time()
       if (whoquery_active) then
+        FriendsFrame:UnregisterEvent("WHO_LIST_UPDATE")
         C_FriendList.SetWhoToUi(true)
         CensusPlusClassic:RegisterEvent("WHO_LIST_UPDATE")
         C_FriendList.SendWho(whoMsg)
