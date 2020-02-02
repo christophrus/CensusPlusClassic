@@ -87,7 +87,7 @@ function CensusPlus_PlayerListOnShow()
 		classKey = thisFactionClasses[CPp.ClassSelected];
 	end
 	if (CPp.LevelSelected > 0 or CPp.LevelSelected < 0) then
-		levelKey = g_LevelSelected;
+		levelKey = CPp.LevelSelected;
 	end
 
 	--debugprofilestart();
