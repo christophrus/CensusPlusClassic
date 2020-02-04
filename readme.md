@@ -16,13 +16,14 @@ Donwload the latest version of the addon: [CensusPlusClassic.zip](https://github
 ### Installing the addon
 
 - Use an unzipping propram like 7zip and extract the CensusPlusClassic folder to your addons directory
-- The beta addon directory is usually located here:
--- `C:\Program Files\World of Warcraft\_classic_beta_\Interface\AddOns`
+- The addon directory is usually located here:
+-- `C:\Program Files\World of Warcraft\_classic_\Interface\AddOns`
 - When you log into the game the CensusPlusClassic addon automatically starts collecting data. You can watch the progress through the minimap icon.
 - After the census is taken you get a message in chat how many characters were recorded
 - Logout or do a /reload to force the addon to write its data into the *.lua file
-- Navigate to `C:\Program Files\World of Warcraft\_classic_beta_\WTF\Account\1234567#1\SavedVariables\` and find the CensusPlusClassic.lua (1234567#1 is a different number for you or your account name)
+- Navigate to `C:\Program Files\World of Warcraft\_classic_\WTF\Account\ACCOUNT_NAME\SavedVariables\` and find the CensusPlusClassic.lua
 - Upload the `CensusPlusClassic.lua` on [WowClassicpopulation.com](https://wowclassicpopulation.com/contribute)
+- Alternatively you can use the [CensusUploader](https://github.com/christophrus/CensusUploader) tool that runs in background and automatically uploads the lua file for you
 
 <p align="center">
   <a href="https://wowclassicpopulation.com/"><img src="https://i.ibb.co/wrsLC9L/wow-classic-population-census-project.jpg" alt="Wow Classic Population census project"/></a>
