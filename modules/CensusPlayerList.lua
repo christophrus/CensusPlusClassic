@@ -257,8 +257,8 @@ end
 -- Find a characters in the g_PlayerList array by name
 --
 ---------------------------------------------------------------------------------
-function CensusPlus_PlayerButton_OnClick()
-	local id = this:GetID();
+function CensusPlus_PlayerButton_OnClick(self,button,down)
+	local id = self:GetID();
 	local offset = FauxScrollFrame_GetOffset( CensusPlusPlayerListScrollFrame );
 	local newSelection = id + offset;
 
