@@ -2967,7 +2967,14 @@ function CensusPlus_UpdateView()
 			g_LevelCount[i] = 0;
 		end
 	end
-
+	
+	local logMaxCount = 0   -- 
+	if maxCount < 1.1 then  -- danger!! log(1) = 0   log(<1) = negative number
+	   logMaxCount = log(2)
+	else
+	   logMaxCount = log( maxCount )
+	end
+	
 	-- Update level bars
 	for i = 1, MAX_CHARACTER_LEVEL, 1 do
 		local buttonName = "CensusPlusLevelBar"..i;
@@ -2976,7 +2983,10 @@ function CensusPlus_UpdateView()
 		local emptyButton = getglobal(buttonEmptyName);
 		local thisCount = g_LevelCount[i];
 		if ((thisCount ~= nil) and (thisCount > 0) and (maxCount > 0)) then
-			local height = floor((thisCount / maxCount) * CensusPlus_MAXBARHEIGHT);
+			local height = floor(( log(thisCount) / logMaxCount) * CensusPlus_MAXBARHEIGHT);
+			if( CensusPlus_Database["Info"]["UseLogBars"] == false ) then
+				height = floor(( (thisCount) / maxCount) * CensusPlus_MAXBARHEIGHT);
+			end
 			if (height < 1 or height == nil ) then height = 1; end
 			button:SetHeight(height);
 			button:Show();
