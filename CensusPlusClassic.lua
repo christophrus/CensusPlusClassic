@@ -415,7 +415,7 @@ end
 -- Return common letters found in zone names
 -- only used for census splitting by zone.. not used
 local function GetZoneLetters()
-	return {"t", "d", "g", "f", "h", "b", "x", "gulch", "valley", "basin" };
+	return {"t", "d", "g", "f", "h", "b", "x", "gulch", "valley", "basin","а", "б", "в", "г", "д", "e", "ё", "ж", "з", "и", "й", "к", "л", "м", "н", "о", "п", "р", "с", "т", "у", "ф", "х", "ц", "ч", "ш", "щ", "э", "ю", "я" };
 end
 
 -- Return common letters found in names, may override this for other languages
@@ -431,15 +431,15 @@ end
 	shortened alternate will generate duplicate name hit of 3.47 duplicates /unique name
 ]]
 local function GetNameLetters()
-	return { "a", "b", "c", "d", "e", "f", "g", "i", "o", "p", "r", "s", "t", "u", "y" }
+	return { "a", "b", "c", "d", "e", "f", "g", "i", "o", "p", "r", "s", "t", "u", "y","а", "б", "в", "г", "д", "e", "ё", "ж", "з", "и", "й", "к", "л", "м", "н", "о", "п", "р", "с", "т", "у", "ф", "х", "ц", "ч", "ш", "щ", "э", "ю", "я" }
 end
 
 local function GetNameLetters1()
-	return {"a", "e", "r", "i", "n", "o", "l", "s", "t", "h", "d", "u", "m", "k", "c" }
+	return {"a", "e", "r", "i", "n", "o", "l", "s", "t", "h", "d", "u", "m", "k", "c","а", "б", "в", "г", "д", "e", "ё", "ж", "з", "и", "й", "к", "л", "м", "н", "о", "п", "р", "с", "т", "у", "ф", "х", "ц", "ч", "ш", "щ", "э", "ю", "я" }
 end
 
 local function GetNameLetters2()
-	return {"a", "e", "r", "i", "n", "o", "l", "s", "t", "h", "d", "u"}
+	return {"a", "e", "r", "i", "n", "o", "l", "s", "t", "h", "d", "u","а", "б", "в", "г", "д", "e", "ё", "ж", "з", "и", "й", "к", "л", "м", "н", "о", "п", "р", "с", "т", "у", "ф", "х", "ц", "ч", "ш", "щ", "э", "ю", "я"}
 end
 
 -- Called when the main window is shown
