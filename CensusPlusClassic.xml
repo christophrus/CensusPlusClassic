@@ -1228,6 +1228,24 @@
                     </Anchor>
                 </Anchors>
             </Button>
+            <Button name="CensusPlusRaceLegend5" inherits="CensusPlusRaceLegendTemplate" id="5">
+                <Anchors>
+                    <Anchor point="LEFT" relativeTo="CensusPlusRaceLegend4" relativePoint="RIGHT">
+                        <Offset>
+                            <AbsDimension x="6" y="0" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="CensusPlusRaceBar5" inherits="CensusPlusRaceBarTemplate" id="5">
+                <Anchors>
+                    <Anchor point="BOTTOM" relativeTo="CensusPlusRaceLegend5" relativePoint="TOP">
+                        <Offset>
+                            <AbsDimension x="0" y="8" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
             <Button name="CensusPlusClassLegend1" inherits="CensusPlusClassLegendTemplate" id="1">
                 <Anchors>
                     <Anchor point="LEFT" relativeTo="CensusPlusRaceLegend4" relativePoint="RIGHT">
@@ -1354,6 +1372,7 @@
                     </Anchor>
                 </Anchors>
             </Button>
+			
             <Button name="CensusPlusClassLegend8" inherits="CensusPlusClassLegendTemplate" id="8">
                 <Anchors>
                     <Anchor point="LEFT" relativeTo="CensusPlusClassLegend7" relativePoint="RIGHT">
@@ -1366,6 +1385,25 @@
             <Button name="CensusPlusClassBar8" inherits="CensusPlusClassBarTemplate" id="8">
                 <Anchors>
                     <Anchor point="BOTTOM" relativeTo="CensusPlusClassLegend8" relativePoint="TOP">
+                        <Offset>
+                            <AbsDimension x="0" y="8" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+			
+            <Button name="CensusPlusClassLegend9" inherits="CensusPlusClassLegendTemplate" id="9">
+                <Anchors>
+                    <Anchor point="LEFT" relativeTo="CensusPlusClassLegend8" relativePoint="RIGHT">
+                        <Offset>
+                            <AbsDimension x="6" y="0" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="CensusPlusClassBar9" inherits="CensusPlusClassBarTemplate" id="9">
+                <Anchors>
+                    <Anchor point="BOTTOM" relativeTo="CensusPlusClassLegend9" relativePoint="TOP">
                         <Offset>
                             <AbsDimension x="0" y="8" />
                         </Offset>

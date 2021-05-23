@@ -202,6 +202,8 @@ g_RaceClassList[CENSUSPLUS_ORC]		    = 24;
 g_RaceClassList[CENSUSPLUS_TAUREN]		= 25;
 g_RaceClassList[CENSUSPLUS_TROLL]		= 26;
 g_RaceClassList[CENSUSPLUS_UNDEAD]		= 27;
+g_RaceClassList[CENSUSPLUS_DRAENEI]		= 28;
+g_RaceClassList[CENSUSPLUS_BLOODELF]	= 29;
 
 CensusPlus_JobQueue.g_TimeDatabase = {};                      -- Time database
 local function CensusPlus_Zero_g_TimeDatabase()
@@ -229,10 +231,13 @@ g_FactionCheck[CENSUSPLUS_ORC]		= CENSUSPlus_HORDE;
 g_FactionCheck[CENSUSPLUS_TAUREN]	= CENSUSPlus_HORDE;
 g_FactionCheck[CENSUSPLUS_TROLL]	= CENSUSPlus_HORDE;
 g_FactionCheck[CENSUSPLUS_UNDEAD]	= CENSUSPlus_HORDE;
+g_FactionCheck[CENSUSPLUS_BLOODELF]	= CENSUSPlus_HORDE;
 g_FactionCheck[CENSUSPLUS_DWARF]	= CENSUSPlus_ALLIANCE;
 g_FactionCheck[CENSUSPLUS_GNOME]	= CENSUSPlus_ALLIANCE;
 g_FactionCheck[CENSUSPLUS_HUMAN]	= CENSUSPlus_ALLIANCE;
 g_FactionCheck[CENSUSPLUS_NIGHTELF]	= CENSUSPlus_ALLIANCE;
+g_FactionCheck[CENSUSPLUS_DRAENEI]	= CENSUSPlus_ALLIANCE;
+
 
 -- Print a string to the chat frame
 local function CensusPlus_Msg(msg)
@@ -366,9 +371,9 @@ end
 function CensusPlus_GetFactionRaces(faction)
 	local ret = {};
 	if (faction == CENSUSPlus_HORDE) then
-		ret = {CENSUSPLUS_ORC, CENSUSPLUS_TAUREN, CENSUSPLUS_TROLL, CENSUSPLUS_UNDEAD};
+		ret = {CENSUSPLUS_ORC, CENSUSPLUS_TAUREN, CENSUSPLUS_TROLL, CENSUSPLUS_UNDEAD, CENSUSPLUS_BLOODELF};
 	elseif (faction == CENSUSPlus_ALLIANCE) then
-		ret = {CENSUSPLUS_DWARF, CENSUSPLUS_GNOME, CENSUSPLUS_HUMAN, CENSUSPLUS_NIGHTELF};
+		ret = {CENSUSPLUS_DWARF, CENSUSPLUS_GNOME, CENSUSPLUS_HUMAN, CENSUSPLUS_NIGHTELF, CENSUSPLUS_DRAENEI};
 	end
 	return ret;
 end
@@ -380,11 +385,11 @@ function CensusPlus_GetFactionClasses(faction)
 	-- this is last in first out list... add new classes to front of list.
 	local ret = {};
 	if (faction == CENSUSPlus_HORDE) then
-		ret = {CENSUSPLUS_WARRIOR, CENSUSPLUS_HUNTER, CENSUSPLUS_ROGUE, CENSUSPLUS_PRIEST, CENSUSPLUS_SHAMAN, 
+		ret = {CENSUSPLUS_WARRIOR, CENSUSPLUS_PALADIN, CENSUSPLUS_HUNTER, CENSUSPLUS_ROGUE, CENSUSPLUS_PRIEST, CENSUSPLUS_SHAMAN, 
 		CENSUSPLUS_MAGE, CENSUSPLUS_WARLOCK, CENSUSPLUS_DRUID};
 	elseif (faction == CENSUSPlus_ALLIANCE) then
 		ret = {CENSUSPLUS_WARRIOR, CENSUSPLUS_PALADIN, CENSUSPLUS_HUNTER, CENSUSPLUS_ROGUE, CENSUSPLUS_PRIEST, 
-		CENSUSPLUS_MAGE, CENSUSPLUS_WARLOCK, CENSUSPLUS_DRUID};
+		CENSUSPLUS_SHAMAN, CENSUSPLUS_MAGE, CENSUSPLUS_WARLOCK, CENSUSPLUS_DRUID};
 	end
 	return ret;
 end
@@ -408,6 +413,10 @@ local function GetRaceClasses(race)
 		ret = {CENSUSPLUS_WARRIOR, CENSUSPLUS_PALADIN, CENSUSPLUS_ROGUE, CENSUSPLUS_PRIEST, CENSUSPLUS_MAGE, CENSUSPLUS_WARLOCK}
 	elseif (race == CENSUSPLUS_NIGHTELF) then
 		ret = {CENSUSPLUS_WARRIOR, CENSUSPLUS_HUNTER, CENSUSPLUS_ROGUE, CENSUSPLUS_PRIEST, CENSUSPLUS_DRUID}
+	elseif (race == CENSUSPLUS_DRAENEI) then
+		ret = {CENSUSPLUS_WARRIOR, CENSUSPLUS_PALADIN, CENSUSPLUS_HUNTER, CENSUSPLUS_PRIEST, CENSUSPLUS_SHAMAN, CENSUSPLUS_MAGE}
+	elseif (race == CENSUSPLUS_BLOODELF) then
+		ret = {CENSUSPLUS_WARRIOR, CENSUSPLUS_PALADIN, CENSUSPLUS_HUNTER, CENSUSPLUS_ROGUE, CENSUSPLUS_PRIEST, CENSUSPLUS_MAGE, CENSUSPLUS_WARLOCK}
 	end
 	return ret
 end
@@ -431,12 +440,7 @@ end
 	shortened alternate will generate duplicate name hit of 3.47 duplicates /unique name
 ]]
 local function GetNameLetters()
-  local locale = GetLocale()
-  if (locale == "ruRU") then
-    return { "а", "б", "в", "г", "д", "e", "ё", "ж", "з", "и", "й", "к", "л", "м", "н", "о", "п", "р", "с", "т", "у", "ф", "х", "ц", "ч", "ш", "щ", "э", "ю", "я" }
-  else
-    return { "a", "b", "c", "d", "e", "f", "g", "i", "o", "p", "r", "s", "t", "u", "y" }
-  end
+	return { "a", "b", "c", "d", "e", "f", "g", "i", "o", "p", "r", "s", "t", "u", "y" }
 end
 
 local function GetNameLetters1()
@@ -2972,14 +2976,7 @@ function CensusPlus_UpdateView()
 			g_LevelCount[i] = 0;
 		end
 	end
-	
-	local logMaxCount = 0   -- 
-	if maxCount < 1.1 then  -- danger!! log(1) = 0   log(<1) = negative number
-	   logMaxCount = log(2)
-	else
-	   logMaxCount = log( maxCount )
-	end
-	
+
 	-- Update level bars
 	for i = 1, MAX_CHARACTER_LEVEL, 1 do
 		local buttonName = "CensusPlusLevelBar"..i;
@@ -2988,10 +2985,7 @@ function CensusPlus_UpdateView()
 		local emptyButton = getglobal(buttonEmptyName);
 		local thisCount = g_LevelCount[i];
 		if ((thisCount ~= nil) and (thisCount > 0) and (maxCount > 0)) then
-			local height = floor(( log(thisCount) / logMaxCount) * CensusPlus_MAXBARHEIGHT);
-			if( CensusPlus_Database["Info"]["UseLogBars"] == false ) then
-				height = floor(( (thisCount) / maxCount) * CensusPlus_MAXBARHEIGHT);
-			end
+			local height = floor((thisCount / maxCount) * CensusPlus_MAXBARHEIGHT);
 			if (height < 1 or height == nil ) then height = 1; end
 			button:SetHeight(height);
 			button:Show();
