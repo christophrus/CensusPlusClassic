@@ -1,5 +1,5 @@
 --[[ CensusPlusClassic for World of Warcraft(tm).
-	
+
 	Copyright 2005 - 2016 Cooper Sellers
 
 	License:
@@ -16,13 +16,13 @@
 		You should have received a copy of the GNU General Public License
 		along with this program(see GLP.txt); if not, write to the Free Software
 		Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
-		
-  Debugging/profiling note:  
+
+  Debugging/profiling note:
   Global  CPp.EnableProfiling must be set to True
-  the appropriate profiling point must be set in code with 
+  the appropriate profiling point must be set in code with
   --CP_profiling_timerstart =	debugprofilestop()
-  don't use debugprofilestart() this does a reset of the timer... 
-  if multiple code (addons) have profiling turned on.. then debugprofilestart() 
+  don't use debugprofilestart() this does a reset of the timer...
+  if multiple code (addons) have profiling turned on.. then debugprofilestart()
   will impact timing of the all the code profiles.
 ]]
 --local regionKey = GetCVar("portal") == "public-test" and "PTR" or GetCVar("portal")
@@ -56,7 +56,7 @@ local CensusPlus_Version_Minor = "8"; -- changing this number will force a saved
 local CensusPlus_Version_Maint = "4";
 local CensusPlus_SubVersion = "";
 --local CensusPlus_VERSION = "WoD"
-local CensusPlus_VERSION = CensusPlus_Version_Major.."."..CensusPlus_Version_Minor .."."..CensusPlus_Version_Maint; 
+local CensusPlus_VERSION = CensusPlus_Version_Major.."."..CensusPlus_Version_Minor .."."..CensusPlus_Version_Maint;
 local CensusPlus_VERSION_FULL = CensusPlus_VERSION --.."."..CensusPlus_SubVersion ;
 local CensusPlus_PTR = GetCVar("portal") == "public-test" and "PTR";	-- enable true for PTR testing  enable false for live use
 local CensusPlus_MAXBARHEIGHT = 128;			-- Length of blue bars
@@ -95,7 +95,7 @@ local g_TrackUnhandled = false;
 CPp.Options_Holder = {}							-- table is populated with existing option settings when Options panel is opened.. cancel resets live options to these settings.
 CPp.Options_Holder["AccountWide"] = {}
 CPp.Options_Holder["CCOverrides"] = {}
-	
+
 -- File scope variables
 local g_addon_loaded = false
 local g_player_loaded = false
@@ -105,8 +105,8 @@ local g_Verbose = false;					-- Verbose mode switch
 local g_Options_confirm_txt = true;			-- enable chatty confirm of options until user no longer desires
 CPp.AutoCensus = false;						-- AutoCensus mode switch
 local g_Options_Scope = "AW"				-- options are AW or CO
-CPp.AutoStartTimer = 30						-- default Slider value in Options 
-local g_FinishSoundNumber = 1				-- default finish sound.. 
+CPp.AutoStartTimer = 30						-- default Slider value in Options
+local g_FinishSoundNumber = 1				-- default finish sound..
 local g_PlayFinishSound = false				-- mode switch
 local g_CensusPlusInitialized = false;		-- Is CensusPlusClassic initialized?
 local g_CurrentJob = {};					-- Current job being executed
@@ -134,7 +134,7 @@ local g_AccumulatorCount = 0;
 local g_AccumulatorXPTotal = 0;
 local g_AccumulateGuildTotals = true;			-- switch for guild work when scanning characters
 
-CensusPlus_JobQueue.g_TempCount  = {};	
+CensusPlus_JobQueue.g_TempCount  = {};
 
 CPp.GuildSelected = 0;						-- Search criteria: Currently selected guild, 0 indicates none
 CPp.RaceSelected = 0;						-- Search criteria: Currently selected race, 0 indicates none
@@ -154,7 +154,7 @@ local g_CompleteCensusStarted = false;          -- Flag for counter
 local g_TakeHour = 0;                           -- Our timing hour
 local g_ResetHour = true;                       -- Rest hour
 local g_VariablesLoaded = false;                -- flag to tell us if vars are loaded
-CPp.FirstLoad = false						-- Flag to handle (hide) various database rebuild messages on initial database creation 
+CPp.FirstLoad = false						-- Flag to handle (hide) various database rebuild messages on initial database creation
 local g_FirstRun = true;
 local g_wasPurged = false
 local whoquery_answered = false;
@@ -171,7 +171,7 @@ local g_InternalSearchLevel = nil;
 local g_InternalSearchCount = 0;
 CPp.EnableProfiling = false;
 local CP_profiling_timerstart = 0
-local CP_profiling_timediff = 0	
+local CP_profiling_timediff = 0
 local g_CensusPlus_StartTime = 0;
 local g_CensusWhoOverrideMsg = nil;
 local g_WaitingForOverrideUpdate = false;
@@ -299,11 +299,11 @@ local function HortonChannelSetup()
 end
 
 function CensusPlus_GetUniqueRealmName()
-	
+
 	local realmname = GetRealmName()
 	local guid = UnitGUID("player")
     local realmid = string.match(guid, "^Player%-(%d+)")
-	
+
 	return realmid .. "_" .. realmname
 
 end
@@ -340,7 +340,7 @@ StaticPopupDialogs["CP_CONTINUE_CENSUS"] = {
 
 
 -- Insert a job at the end of the job queue
-local function InsertJobIntoQueue(job) 
+local function InsertJobIntoQueue(job)
 	--CensusPlus_DumpJob( job )
 	table.insert(CensusPlus_JobQueue, job)
 end
@@ -381,14 +381,14 @@ end
 -- Return a table of classes for the input faction
 -- the following function hasn't really been needed since Burning Crusade xPac v2.03..
 -- but might (not likely) be needed in the future.
-function CensusPlus_GetFactionClasses(faction)  
+function CensusPlus_GetFactionClasses(faction)
 	-- this is last in first out list... add new classes to front of list.
 	local ret = {};
 	if (faction == CENSUSPlus_HORDE) then
-		ret = {CENSUSPLUS_WARRIOR, CENSUSPLUS_PALADIN, CENSUSPLUS_HUNTER, CENSUSPLUS_ROGUE, CENSUSPLUS_PRIEST, CENSUSPLUS_SHAMAN, 
+		ret = {CENSUSPLUS_WARRIOR, CENSUSPLUS_PALADIN, CENSUSPLUS_HUNTER, CENSUSPLUS_ROGUE, CENSUSPLUS_PRIEST, CENSUSPLUS_SHAMAN,
 		CENSUSPLUS_MAGE, CENSUSPLUS_WARLOCK, CENSUSPLUS_DRUID};
 	elseif (faction == CENSUSPlus_ALLIANCE) then
-		ret = {CENSUSPLUS_WARRIOR, CENSUSPLUS_PALADIN, CENSUSPLUS_HUNTER, CENSUSPLUS_ROGUE, CENSUSPLUS_PRIEST, 
+		ret = {CENSUSPLUS_WARRIOR, CENSUSPLUS_PALADIN, CENSUSPLUS_HUNTER, CENSUSPLUS_ROGUE, CENSUSPLUS_PRIEST,
 		CENSUSPLUS_SHAMAN, CENSUSPLUS_MAGE, CENSUSPLUS_WARLOCK, CENSUSPLUS_DRUID};
 	end
 	return ret;
@@ -432,7 +432,7 @@ end
 --[[
 	see http://www.warcraftrealms.com/forum/viewtopic.php?t=4819&start=40
 	Advantage: as seen from data sample
-	removing the last 3 selectors "mkc" returned about same counts as current set.. 
+	removing the last 3 selectors "mkc" returned about same counts as current set..
 	adding the "mkc" making the selector count the same increased found unique names by %0.17
 	disavantage: as seen from data sample
 	current selector will generates a duplicate name hit of 3.27 duplicates /unique name
@@ -509,7 +509,7 @@ function CensusPlus_OnLoad(self)
 	--  Set up an empty frame for updates
 	local updateFrame = CreateFrame("Frame")
 	updateFrame:SetScript("OnUpdate", CensusPlus_OnUpdate)
-	
+
 	CensusPlusWhoButton:SetScript("OnClick", function(self, button, down)
 	-- As we have not specified the button argument to SetBindingClick,
 	-- the binding will be mapped to a LeftButton click.
@@ -661,7 +661,7 @@ function CP_ProcessWhoEvent(query, result, complete)
 		g_WaitingForWhoUpdate = false
 	end
 end
-  
+
 
 -- CensusPlusClassic command
 function CensusPlus_Command(param)
@@ -1107,7 +1107,7 @@ end
 
 -- Minimize the window
 -- referenced by CensusPlusClassic.xml
-function CensusPlus_OnClickMinimize(self)  
+function CensusPlus_OnClickMinimize(self)
     if( CensusPlusClassic:IsVisible() ) then
 	    --MiniCensusPlus:Show();
         CensusPlusClassic:Hide();
@@ -1198,7 +1198,7 @@ end
 local function CensusPlus_BackgroundAlpha(self,steps)
 	CensusPlus_Database["Info"]["CPWindow_Transparency"] = steps
 end
-	
+
 -- Pause the current census
 function CensusPlus_TogglePause()
 	if (CPp.IsCensusPlusInProgress == true) then
@@ -1258,7 +1258,7 @@ function CensusPlus_StartCensus()
 
 	--[[ work in progress - continue census run from last state on DC or valid Character stop restart.
          Determine if pre-existing jobqueue exists from running job that was DCed or paused and logged out.
-         if exists that determine delay since last queue completion.. 
+         if exists that determine delay since last queue completion..
          if more then x time then dump queues and restart as new start else set below states to active run status and process existing queues.
      --]]
 
@@ -1451,7 +1451,7 @@ function CENSUSPLUS_STOPCENSUS()
 	else
 		CensusPlus_Msg(CENSUSPLUS_NOCENSUS)
 	end
-	
+
 	-- Add revert CensusButton back to defauit
 	CensusButton:SetNormalFontObject(GameFontNormal)
 	CensusButton:SetText("C+")
@@ -1493,7 +1493,7 @@ function CensusPlus_DisplayResults()
 			local avg_Time_per_que = total_time / CP_g_queue_count
 			--print( avg_Time_per_que);
 		end
-		
+
 		realmslisttext = string.sub(realmslisttext, 3)
 		ChatFrame1:AddMessage(realmslisttext, 1.0, 0.3, 0.1)
 		ChatFrame1:AddMessage(CENSUSPLUS_UPLOAD, 0.1, 1.0, 1.0)
@@ -1657,7 +1657,7 @@ function CensusPlus_OnEvent(self, event, ...)
     FriendsFrame:RegisterEvent("WHO_LIST_UPDATE")
 		CP_ProcessWhoEvent(whoMsg)
 	end
-	
+
 	if (event == "TRAINER_SHOW" or event == "MERCHANT_SHOW" or event == "TRADE_SHOW" or event == "GUILD_REGISTRAR_SHOW" or event == "AUCTION_HOUSE_SHOW" or event == "BANKFRAME_OPENED" or event == "QUEST_DETAIL") then
 		print(" Event triggered = " .. event)
 		if CPp.IsCensusPlusInProgress then
@@ -1668,11 +1668,11 @@ function CensusPlus_OnEvent(self, event, ...)
 		if CPp.IsCensusPlusInProgress then
 			g_CensusPlusPaused = false
 		end
-		
+
 	--[[
 	-- Guild roster info not ready for release
 	elseif (event == "GUILD_ROSTER_UPDATE") th.en
-	
+
 		--  Process Guild info
 		--CensusPlus_Msg( " UPDATE GUILD " );
 		if(not CP_updatingGuild ) th.en
@@ -1680,10 +1680,10 @@ function CensusPlus_OnEvent(self, event, ...)
 			CensusPlus_ProcessGuildResults();
 			CP_updatingGuild  = nil;
 		end
-	
+
 	elseif (( event == "ADDON_LOADED") and (arg1 == "CensusPlusClassic")) then
 		self:UnregisterEvent("ADDON_LOADED")   -- need this or we get hit on all preceeding addon loaded.. including the LOD's
-		
+
 		--  Initialize our variables
 		CensusPlus_InitializeVariables()
 	--]]
@@ -1729,8 +1729,8 @@ function CensusPlus_ProcessTarget(unit)
 		--
 		-- Get the portion of the database for this server
 		--
-		realmName = CensusPlus_GetUniqueRealmName()	
-		
+		realmName = CensusPlus_GetUniqueRealmName()
+
 		local realmDatabase = CensusPlus_Database["Servers"][realmName]
 		if (realmDatabase == nil) then
 			CensusPlus_Database["Servers"][realmName] = {}
@@ -1879,7 +1879,7 @@ function CensusPlus_InitializeVariables()
 	CPp.FirstLoad = true
 
 	CensusPlus_Database["Info"]["Version"] = CensusPlus_VERSION
-	
+
 	local g_templang = GetLocale()
 	if (CensusPlus_Database["Info"]["ClientLocale"] ~= g_templang) then
 		-- Client language has been changed must purge
@@ -1889,13 +1889,13 @@ function CensusPlus_InitializeVariables()
 	end
 	CensusPlus_Database["Info"]["ClientLocale"] = GetLocale()
 	CensusPlusLocaleName:SetText( format(CENSUSPLUS_LOCALE, CensusPlus_Database["Info"]["ClientLocale"]) )
-	
+
 	CensusPlus_Database["Info"]["LoginServer"] = GetCVar("portal")
 	CensusPlus_Database["Info"]["LogVer"] = CensusPlus_VERSION_FULL
-	
+
 	local wowVersion, wowBuild = GetBuildInfo()
 	wowVersion = format("%s (%s)", wowVersion, wowBuild)
-	
+
 	CensusPlus_Database["Info"]["wowVersion"] = wowVersion
 	CensusPlus_Database["Info"]['versionChecksum'] = checksum:generate(CensusPlus_VERSION_FULL..wowVersion)
 
@@ -1918,15 +1918,15 @@ function CensusPlus_InitializeVariables()
 	if (CensusPlus_Database["Info"]["AutoCensusTimer"] == nil) then
 		CensusPlus_Database["Info"]["AutoCensusTimer"] = 1800
 	end
-	
+
 	if (CensusPlus_JobQueue["CensusPlus_last_time"] == nil) then
 		CensusPlus_JobQueue["CensusPlus_last_time"] = time() - (CPp.AutoStartTimer *60)
 	end
-	
+
 	if (CensusPlus_JobQueue["CensusPlus_LoginRealm_last"] == nil) then
 		CensusPlus_JobQueue["CensusPlus_LoginRealm_last"] = ""
 	end
-	
+
 	if (CensusPlus_JobQueue["CensusPlus_LoginFaction_last"] == nil) then
 		CensusPlus_JobQueue["CensusPlus_LoginFaction_last"] = ""
 	end
@@ -1982,25 +1982,25 @@ function CensusPlus_InitializeVariables()
 	CensusPlusBlizzardOptions()
 	CensusPlusSetCheckButtonState()
 	CPp.FirstLoad = false -- main table initialized and options initialized
-	
+
 end
 
 
 function CensusPlus_AutoStart()
-	
+
 	local currentRealm = CensusPlus_GetUniqueRealmName()
 	local currentFaction = UnitFactionGroup("player")
 	local lastRealm = CensusPlus_JobQueue["CensusPlus_LoginRealm_last"]
 	local lastFaction = CensusPlus_JobQueue["CensusPlus_LoginFaction_last"]
 	local lastRun = CensusPlus_JobQueue["CensusPlus_last_time"]
-	
+
 	if (g_wasPurged or currentRealm ~= lastRealm or currentFaction ~= lastFaction or (lastRun < time() - (CPp.AutoStartTimer * 60))) then
 		CENSUSPLUS_TAKE_OnClick()
 	end
 
 end
 
-  
+
 -- referenced by CensusPlusClassic.xml
 function CensusPlus_OnUpdate()
 	if g_FirstRun then
@@ -2012,7 +2012,7 @@ function CensusPlus_OnUpdate()
 		CENSUSPLUS_TAKE_OnClick()
 	end
 	if (CPp.IsCensusPlusInProgress and not g_CensusPlusPaused and not CPp.CensusPlusManuallyPaused) then
-	
+
 		--  update our progress
 		local numJobs = #CensusPlus_JobQueue
 		if (numJobs > 0) then
@@ -2029,13 +2029,13 @@ function CensusPlus_OnUpdate()
 			--ok to request next query
 			whoquery_answered = false
 
-			-- Determine if there is any more work to 
+			-- Determine if there is any more work to
 			if (numJobs > 0) then
 				-- Send the job and remove it later after it is processed in CP_ProcessWhoEvent (Lib-Who callback)
 				local job = CensusPlus_JobQueue[numJobs]
 				local whoText = CensusPlus_CreateWhoText(job)
 				g_FirstRun = false
-				
+
 				--  Zap our current job
 				g_CurrentJob = nil
 
@@ -2089,7 +2089,7 @@ function CensusPlus_OnUpdate()
 				CensusPlus_JobQueue.CensusPlus_LoginFaction = ""
 				CensusPlus_JobQueue.g_TempCount = {}
 				CensusPlus_DisplayResults()
-				
+
 				-- Add CensusButton reset
 				CensusButton:SetText("C+")
 			end
@@ -2133,7 +2133,7 @@ function CensusPlus_DoTimeCounts()
 	local factionGroup = UnitFactionGroup("player")
 
 	local realmName = CensusPlus_GetUniqueRealmName()
-	
+
 
 	CensusPlus_Zero_g_TimeDatabase()
 	local thisFactionClasss = CensusPlus_GetFactionClasses(factionGroup)
@@ -2342,7 +2342,7 @@ function CensusPlus_ProcessWhoResults(result, numWhoResults)
 		Old process, assume single realm.. process realm,faction,level,race,class,
 		new process no assumption. process realm, then faction, level, race,class
 		need to build dotimes for each realm found in Virtual realm set.
-	   
+
 		name comes in as name-realm
 		split to name, realm
 		process
@@ -2351,7 +2351,7 @@ function CensusPlus_ProcessWhoResults(result, numWhoResults)
 	--5.4
 
 	local numWhoResults = C_FriendList.GetNumWhoResults()
-	
+
 
 
 	if (g_Verbose == true) then
@@ -2378,7 +2378,7 @@ function CensusPlus_ProcessWhoResults(result, numWhoResults)
 		local tmpGldst = nil
 		local tmpGldend = nil
 		local relationship = nil
-		
+
 		local p = C_FriendList.GetWhoInfo(i)
 		name = p.fullName
 		guild = p.fullGuildName
@@ -2427,13 +2427,13 @@ function CensusPlus_ProcessWhoResults(result, numWhoResults)
 			guildRealm = ""
 		end
 
-		--[[ 
+		--[[
 				PTR testing modifications
 				Blizzard has odd naming allowances in PTR realms
 				name (US) or name (EU)  ditto for guild names
 
 		--]]
-		
+
 		realm = PTR_Color_ProblemRealmGuilds_check(realm)
 		name = PTR_Color_ProblemNames_check(name)
 		if ((guild ~= nil) and (guild ~= "")) then
@@ -2441,10 +2441,10 @@ function CensusPlus_ProcessWhoResults(result, numWhoResults)
 		end
 		if ((guildRealm ~= nil) and (guildRealm ~= "")) then
 			guildRealm = PTR_Color_ProblemRealmGuilds_check(guildRealm)
-		end	
+		end
 
 		local realmName = CensusPlus_GetUniqueRealmName()
-		
+
 		-- coalesced realms should not show up here via /who queries.
 		local realmDatabase = CensusPlus_Database["Servers"][realmName]
 		if (realmDatabase == nil) then
@@ -2706,12 +2706,12 @@ local function GuildPredicate(lhs, rhs)
 	elseif (rhs == nil) then
 		return false
 	end
-	
+
 	-- unguilded always first
 	if (lhs.m_Name == "") then
 		return true
 	end
-	
+
 	if (rhs.m_Name == "") then
 		return false
 	end
@@ -2781,7 +2781,7 @@ function CensusPlus_UpdateView()
 	if not g_VariablesLoaded then
 		return -- if variables aren't loaded show partial window data and escape
 	end
-	
+
 	local guildKey = nil
 	local raceKey = nil
 	local classKey = nil
@@ -2814,34 +2814,34 @@ function CensusPlus_UpdateView()
 		-- Get totals for this criteria
 		g_AccumulateGuildTotals = false;
 		CensusPlus_ForAllCharacters(realmName, factionGroup, raceKey, classKey, guildKey, levelKey, TotalsAccumulator);
-		
+
 		if( CensusPlus_EnableProfiling ) then
 			CensusPlus_Msg( "PROFILE: Time to do calcs 1 " .. debugprofilestop() / 1000000000 );
 			--debugprofilestart();
 		end
-		
+
 	else
 		-- Get the overall totals and find guild information
 		CensusPlus_Guilds = {};
 		g_AccumulateGuildTotals = true;
 		CensusPlus_ForAllCharacters(realmName, factionGroup, nil, nil, nil, nil, TotalsAccumulator);
-		
+
 		if( CensusPlus_EnableProfiling ) then
 			CensusPlus_Msg( "PROFILE: Time to do calcs 1 " .. debugprofilestop() / 1000000000 );
 			--debugprofilestart();
 		end
-		
+
 		local size = table.getn(CensusPlus_Guilds);
 		if (size) then
 			table.sort(CensusPlus_Guilds, GuildPredicate);
 		end
-		
+
 		if( CensusPlus_EnableProfiling ) then
 			CensusPlus_Msg( "PROFILE: Time to sort guilds " .. debugprofilestop() / 1000000000 );
 			--debugprofilestart();
-		end			
+		end
 	end
-	
+
 	local levelSearch = nil;
 	if (levelKey ~= nil) then
 		levelSearch = "  ("..CENSUSPLUS_LEVEL..": ";
@@ -2862,7 +2862,7 @@ function CensusPlus_UpdateView()
 	CensusPlusTotalCharacters:SetText(totalCharactersText);
 	--CensusPlusTotalCharacterXP:SetText(format(CENSUSPlus_TOTALCHARXP, g_TotalCharacterXP));
 	CensusPlus_UpdateGuildButtons();
-	
+
 	if( CensusPlus_EnableProfiling ) then
 		CensusPlus_Msg( "PROFILE: Update Guilds " .. debugprofilestop() / 1000000000 );
 		--debugprofilestart();
@@ -3000,16 +3000,16 @@ function CensusPlus_UpdateView()
 			end
 		end
 	end
-	
+
 	if( CensusPlus_EnableProfiling ) then
 		CensusPlus_Msg( "PROFILE: Update Levels " .. debugprofilestop() / 1000000000 );
-		--debugprofilestart();	
+		--debugprofilestart();
 	end
-	
+
 	if( CP_PlayerListWindow:IsVisible() ) then
 		CensusPlus_PlayerListOnShow();
 	end
-	
+
 
 	debugprofilestop();
 end
@@ -3227,7 +3227,7 @@ function CensusPlus_UpdateGuildButtons()
 		--
 		i = i + 1
 	end
-	
+
 	-- Update the scroll bar
 	FauxScrollFrame_Update(
 		CensusPlusGuildScrollFrame,
@@ -3548,7 +3548,7 @@ function CensusPlus_SendWho(msg)
 	end
 
 	whoMsg = msg
-	
+
 	whoquery_active = true
 	CP_g_queue_count = CP_g_queue_count + 1
 end
@@ -3596,7 +3596,7 @@ function PTR_Color_ProblemNames_check(name)
 	if (karma_check ~= nil) then
 		name = string.sub(name, 11, -3)
 	end
-	
+
 	--  Further check for problematic chars
 	local pattern = "[%d| ]"
 	if (string.find(name, pattern) ~= nil) then
@@ -3612,7 +3612,7 @@ function PTR_Color_ProblemNames_check(name)
 end
 
 function PTR_Color_ProblemRealmGuilds_check(name)
-	--[[ 
+	--[[
 			PTR testing modifications
 			Blizzard has odd naming allowances in PTR realms
 			name (US) or name (EU)  ditto for guild names
@@ -4140,7 +4140,7 @@ function CensusPlusBlizzardOptions()
 		2,
 		-4
 	)
-	
+
 	--CensusPlusOptionsWMZ
 	CensusPlusCheckButton3:SetScript("OnClick", function(self)
 		local g_AW_CensusButtonShown = CensusPlusCheckButton3:GetChecked()
@@ -5381,7 +5381,7 @@ function CensusPlusSetCheckButtonState() -- set option check buttons and radio b
 	g_AW_LogBars = CensusPlus_Database["Info"]["UseLogBars"]
 
 	CensusPlusCheckButton8:SetChecked(CensusPlus_Database["Info"]["UseWorldFrameClicks"])
-	
+
 	--	CensusPlusCheckButton8:SetChecked(CensusPlus2["WMZ party4"])
 	--	CensusPlusCheckButton9:SetChecked(CensusPlus2["show decimals"])
 end

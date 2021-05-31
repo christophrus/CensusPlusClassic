@@ -73,7 +73,7 @@
         <NormalTexture file="Interface\AddOns\CensusPlusClassic\skins\CENSUSPLUS_LEVELBar" />
         <Scripts>
     		<OnClick function="CensusPlus_OnClickLevel" />
-    		<OnLoad function="CensusPlus_OnLoadLevel"/>    
+    		<OnLoad function="CensusPlus_OnLoadLevel"/>
             <OnLeave>
 				 				GameTooltip:Hide();
 						</OnLeave>
@@ -86,7 +86,7 @@
         </Size>
         <Scripts>
     		<OnClick function="CensusPlus_OnClickLevel" />
-    		<OnLoad function="CensusPlus_OnLoadLevel"/>    
+    		<OnLoad function="CensusPlus_OnLoadLevel"/>
         </Scripts>
     </Button>
     <Button name="CensusPlusGuildButtonTemplate" virtual="true">
@@ -186,7 +186,7 @@
             </OnHide>
         </Scripts>
     </Frame>
-    
+
     <Frame name="CensusPlusClassic" parent="UIParent" hidden="true" enableMouse="true" toplevel="true" movable="true">
         <Size>
             <AbsDimension x="759" y="512" />
@@ -337,7 +337,7 @@
                     </Anchors>
 <!-- 					<TexCoords  top = "0" left = "0" bottom = ".25" right = "1" />  -->
                </Texture>
-	
+
 				<Texture file = "Interface\Dialogframe\Dialogframe-Corners">  <!-- Top Left Levels Box Corner -->
 					<TexCoords  top = "0" left = "0" bottom = ".5" right = ".5" />
 					<Size>
@@ -443,7 +443,7 @@
                         </Anchor>
                     </Anchors>
                 </Texture>
-	
+
 				<Texture file = "Interface\Dialogframe\Dialogframe-Corners">  <!-- Top Left Race Box Corner -->
 					<TexCoords  top = "0" left = "0" bottom = ".5" right = ".5" />
 					<Size>
@@ -549,7 +549,7 @@
                         </Anchor>
                     </Anchors>
                 </Texture>
-	
+
 				<Texture file = "Interface\Dialogframe\Dialogframe-Corners">  <!-- Top Left Class Box Corner -->
 					<TexCoords  top = "0" left = "0" bottom = ".5" right = ".5" />
 					<Size>
@@ -658,7 +658,7 @@
                         </Anchor>
                     </Anchors>
                 </Texture>
-			
+
 				<Texture file = "Interface\Dialogframe\Dialogframe-Corners">  <!-- Top Left GuildData Box Corner -->
 					<TexCoords  top = "0" left = "0" bottom = ".5" right = ".5" />
 					<Size>
@@ -995,7 +995,7 @@
                     <OnEnter>
 												GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
 												GameTooltip:SetText(CENSUSPLUS_PRUNECENSUS, 1.0, 1.0, 1.0);
-												GameTooltip:Show();					
+												GameTooltip:Show();
 										</OnEnter>
                     <OnLeave>
 												GameTooltip:Hide();
@@ -1018,7 +1018,7 @@
                     <OnEnter>
 												GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
 												GameTooltip:SetText(CENSUSPLUS_PURGEDATABASE, 1.0, 1.0, 1.0);
-												GameTooltip:Show();					
+												GameTooltip:Show();
 										</OnEnter>
                     <OnLeave>
 												GameTooltip:Hide();
@@ -1372,7 +1372,7 @@
                     </Anchor>
                 </Anchors>
             </Button>
-			
+
             <Button name="CensusPlusClassLegend8" inherits="CensusPlusClassLegendTemplate" id="8">
                 <Anchors>
                     <Anchor point="LEFT" relativeTo="CensusPlusClassLegend7" relativePoint="RIGHT">
@@ -1391,7 +1391,7 @@
                     </Anchor>
                 </Anchors>
             </Button>
-			
+
             <Button name="CensusPlusClassLegend9" inherits="CensusPlusClassLegendTemplate" id="9">
                 <Anchors>
                     <Anchor point="LEFT" relativeTo="CensusPlusClassLegend8" relativePoint="RIGHT">
@@ -1425,7 +1425,7 @@
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar1" relativePoint="BOTTOMRIGHT">
                        <Offset>
                            <AbsDimension x="2" y="0" />
-                        </Offset> 
+                        </Offset>
                     </Anchor>
                 </Anchors>
             </Button>
@@ -1434,7 +1434,7 @@
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar2" relativePoint="BOTTOMRIGHT">
                        <Offset>
                             <AbsDimension x="2" y="0" />
-                        </Offset> 
+                        </Offset>
                     </Anchor>
                 </Anchors>
             </Button>
@@ -1443,7 +1443,7 @@
 					<Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar3" relativePoint="BOTTOMRIGHT">
                        <Offset>
                             <AbsDimension x="2" y="0" />
-                        </Offset> 
+                        </Offset>
                     </Anchor>
                 </Anchors>
             </Button>
@@ -1452,7 +1452,7 @@
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar4" relativePoint="BOTTOMRIGHT">
                        <Offset>
                            <AbsDimension x="2" y="0" />
-                        </Offset> 
+                        </Offset>
                     </Anchor>
                 </Anchors>
             </Button>
@@ -1461,7 +1461,7 @@
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar5" relativePoint="BOTTOMRIGHT">
                        <Offset>
                            <AbsDimension x="2" y="0" />
-                        </Offset> 
+                        </Offset>
                     </Anchor>
                 </Anchors>
             </Button>
@@ -1479,7 +1479,7 @@
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar7" relativePoint="BOTTOMRIGHT">
                        <Offset>
                             <AbsDimension x="2" y="0" />
-                        </Offset> 
+                        </Offset>
                     </Anchor>
                 </Anchors>
             </Button>
@@ -1487,8 +1487,8 @@
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar8" relativePoint="BOTTOMRIGHT">
                        <Offset>
-                            <AbsDimension x="2" y="0" /> 
-                        </Offset> 
+                            <AbsDimension x="2" y="0" />
+                        </Offset>
                     </Anchor>
                 </Anchors>
             </Button>
@@ -1497,7 +1497,7 @@
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar9" relativePoint="BOTTOMRIGHT">
                        <Offset>
                             <AbsDimension x="2" y="0" />
-                        </Offset> 
+                        </Offset>
                     </Anchor>
                 </Anchors>
             </Button>
@@ -1506,7 +1506,7 @@
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar10" relativePoint="BOTTOMRIGHT">
                        <Offset>
                            <AbsDimension x="2" y="0" />
-                        </Offset> 
+                        </Offset>
                     </Anchor>
                 </Anchors>
             </Button>
@@ -2040,7 +2040,7 @@
                         </Offset>
                     </Anchor>
                 </Anchors>
-            </Button>			
+            </Button>
             <Button name="CensusPlusLevelBarEmpty1" inherits="CensusPlusLevelBarEmptyTemplate" id="1">
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusClassic" relativePoint="TOPLEFT">
@@ -2583,10 +2583,10 @@
             </Button>
      </Frames>
         <Scripts>
-    		<OnLoad function="CensusPlus_OnLoad" />   
+    		<OnLoad function="CensusPlus_OnLoad" />
             <OnShow function="CensusPlus_OnShow" />
             <OnUpdate function="CensusPlus_OnUpdate" />
-            <OnEvent function="CensusPlus_OnEvent" />			
+            <OnEvent function="CensusPlus_OnEvent" />
             <OnMouseUp>
                 if ( self.isMoving ) then
                     self:StopMovingOrSizing();
