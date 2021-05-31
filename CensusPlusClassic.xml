@@ -111,7 +111,7 @@
         </Layers>
         <HighlightTexture file="Interface\QuestFrame\UI-QuestTitleHighlight" alphaMode="ADD">
             <Size>
-                <AbsDimension x="196" y="16" />
+                <AbsDimension x="296" y="16" />
             </Size>
             <Anchors>
                 <Anchor point="TOP">
@@ -204,7 +204,7 @@
 				<Texture name="CensusPlusBackground" file="Interface\Dialogframe\UI-DialogBox-Background-Dark">
 					<Size>
 <!--						<AbsDimension x="1056" y="512" />  -->
-						<AbsDimension x="759" y="512" />
+						<AbsDimension x="959" y="512" />
 					</Size>
 					<Anchors>
 						<Anchor point="TOPLEFT">
@@ -238,7 +238,7 @@
 						<Anchor point = "TOPLEFT">
 							<Offset>
 <!--                                <AbsDimension x="1030" y="7" /> -->
-                                <AbsDimension x="733" y="7" />
+                                <AbsDimension x="933" y="7" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -265,7 +265,7 @@
 						<Anchor point = "TOPLEFT">
 							<Offset>
 <!--                                <AbsDimension x="1030" y="-488" /> -->
-                                <AbsDimension x="733" y="-488" />
+                                <AbsDimension x="933" y="-488" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -291,7 +291,7 @@
                         <Anchor point="TOPLEFT">
                             <Offset>
 <!--                                <AbsDimension x="1046" y="-18" /> -->
-                                <AbsDimension x="749" y="-18" />
+                                <AbsDimension x="949" y="-18" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -299,7 +299,7 @@
 				<Texture file = "Interface\Dialogframe\Dialogframe-Top">  <!-- Top Outer Border -->
                     <Size>
 <!--                        <AbsDimension x="1028" y="16" /> -->
-                        <AbsDimension x="731" y="16" />
+                        <AbsDimension x="931" y="16" />
                     </Size>
                     <Anchors>
                         <Anchor point="TOPLEFT">
@@ -313,7 +313,7 @@
 <!--                <Texture file="Interface\AddOns\CensusPlusClassic\Skin\CensusPlus_Window_UltraLeft" alphaMode="ADD"> -->
                     <Size>
 <!--                        <AbsDimension x="1028" y="16" /> -->
-                        <AbsDimension x="731" y="16" />
+                        <AbsDimension x="931" y="16" />
                     </Size>
                     <Anchors>
                         <Anchor point="TOPLEFT">
@@ -360,7 +360,7 @@
 						<Anchor point = "TOPLEFT">
 							<Offset>
 <!--                                <AbsDimension x="1018" y="-309" /> -->
-                                <AbsDimension x="721" y="-309" />
+                                <AbsDimension x="921" y="-309" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -387,7 +387,7 @@
 						<Anchor point = "TOPLEFT">
 							<Offset>
 <!--                                <AbsDimension x="1018" y="-432" /> -->
-                                <AbsDimension x="721" y="-432" />
+                                <AbsDimension x="921" y="-432" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -412,7 +412,7 @@
                         <Anchor point="TOPLEFT">
                             <Offset>
 <!--                                <AbsDimension x="1034" y="-322" /> -->
-                                <AbsDimension x="737" y="-322" />
+                                <AbsDimension x="937" y="-322" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -420,7 +420,7 @@
 				<Texture file = "Interface\Dialogframe\Dialogframe-Top">  <!-- Top Levels Box -->
                     <Size>
 <!--                        <AbsDimension x="1020" y="16" /> -->
-                        <AbsDimension x="703" y="16" />
+                        <AbsDimension x="903" y="16" />
                     </Size>
                     <Anchors>
                         <Anchor point="TOPLEFT">
@@ -433,7 +433,7 @@
 				<Texture file = "Interface\Dialogframe\Dialogframe-Bot">  <!-- Bottom Levels Box -->
                     <Size>
 <!--                        <AbsDimension x="1020" y="16" /> -->
-                        <AbsDimension x="703" y="16" />
+                        <AbsDimension x="903" y="16" />
                     </Size>
                     <Anchors>
                         <Anchor point="TOPLEFT">
@@ -466,7 +466,7 @@
 						<Anchor point = "TOPLEFT">
 							<Offset>
 <!--                                <AbsDimension x="258" y="-107" /> -->
-                                <AbsDimension x="150" y="-107" />
+                                <AbsDimension x="185" y="-107" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -493,7 +493,7 @@
 						<Anchor point = "TOPLEFT">
 							<Offset>
 <!--                                <AbsDimension x="258" y="-228" /> -->
-                                <AbsDimension x="150" y="-228" />
+                                <AbsDimension x="185" y="-228" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -518,7 +518,7 @@
                         <Anchor point="TOPLEFT">
                             <Offset>
 <!--                                <AbsDimension x="274" y="-122" /> -->
-                                <AbsDimension x="166" y="-122" />
+                                <AbsDimension x="201" y="-122" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -526,12 +526,12 @@
 				<Texture file = "Interface\Dialogframe\Dialogframe-Top">  <!-- Top Race Box -->
                     <Size>
 <!--                        <AbsDimension x="258" y="16" /> -->
-                        <AbsDimension x="132" y="16" />
+                        <AbsDimension x="155" y="16" />
                     </Size>
                     <Anchors>
                         <Anchor point="TOPLEFT">
                             <Offset>
-                                <AbsDimension x="20" y="-108" />
+                                <AbsDimension x="40" y="-108" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -539,12 +539,12 @@
 				<Texture file = "Interface\Dialogframe\Dialogframe-Bot">  <!-- Bottom Race Box -->
                     <Size>
 <!--                        <AbsDimension x="258" y="16" /> -->
-                        <AbsDimension x="132" y="16" />
+                        <AbsDimension x="155" y="16" />
                     </Size>
                     <Anchors>
                         <Anchor point="TOPLEFT">
                             <Offset>
-                                <AbsDimension x="20" y="-244" />
+                                <AbsDimension x="40" y="-244" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -559,7 +559,7 @@
 						<Anchor point = "TOPLEFT">
 							<Offset>
 <!--                                <AbsDimension x="292" y="-107" /> -->
-                                <AbsDimension x="184" y="-107" />
+                                <AbsDimension x="210" y="-107" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -573,7 +573,7 @@
 						<Anchor point = "TOPLEFT">
 							<Offset>
 <!--                                <AbsDimension x="732" y="-107" /> -->
-                                <AbsDimension x="479" y="-107" />
+                                <AbsDimension x="550" y="-107" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -587,7 +587,7 @@
 						<Anchor point = "TOPLEFT">
 							<Offset>
 <!--                                <AbsDimension x="292" y="-228" /> -->
-                                <AbsDimension x="184" y="-228" />
+                                <AbsDimension x="210" y="-228" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -601,7 +601,7 @@
 						<Anchor point = "TOPLEFT">
 							<Offset>
 <!--                                <AbsDimension x="732" y="-228" /> -->
-                                <AbsDimension x="479" y="-228" />
+                                <AbsDimension x="550" y="-228" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -614,7 +614,7 @@
                         <Anchor point="TOPLEFT">
                             <Offset>
 <!--                                <AbsDimension x="293" y="-122" /> -->
-                                <AbsDimension x="185" y="-122" />
+                                <AbsDimension x="210" y="-122" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -627,7 +627,7 @@
                         <Anchor point="TOPLEFT">
                             <Offset>
 <!--                                <AbsDimension x="748" y="-122" /> -->
-                                <AbsDimension x="495" y="-122" />
+                                <AbsDimension x="566" y="-122" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -635,25 +635,25 @@
 				<Texture file = "Interface\Dialogframe\Dialogframe-Top">  <!-- Top Class Box -->
                     <Size>
 <!--                        <AbsDimension x="442" y="16" /> -->
-                        <AbsDimension x="297" y="16" />
+                        <AbsDimension x="310" y="16" />
                     </Size>
                     <Anchors>
                         <Anchor point="TOPLEFT">
                             <Offset>
 <!--                                <AbsDimension x="306" y="-108" /> -->
-                                <AbsDimension x="190" y="-108" />
+                                <AbsDimension x="240" y="-108" />
                             </Offset>
                         </Anchor>
                     </Anchors>
                 </Texture>
 				<Texture file = "Interface\Dialogframe\Dialogframe-Bot">  <!-- Bottom Class Box -->
                     <Size>
-                        <AbsDimension x="297" y="16" />
+                        <AbsDimension x="310" y="16" />
                     </Size>
                     <Anchors>
                         <Anchor point="TOPLEFT">
                             <Offset>
-                                <AbsDimension x="190" y="-244" />
+                                <AbsDimension x="240" y="-244" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -667,7 +667,7 @@
 					<Anchors>
 						<Anchor point = "TOPLEFT">
 							<Offset>
-                                <AbsDimension x="516" y="-107" />
+                                <AbsDimension x="616" y="-107" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -680,7 +680,7 @@
 					<Anchors>
 						<Anchor point = "TOPLEFT">
 							<Offset>
-                                <AbsDimension x="721" y="-107" />
+                                <AbsDimension x="821" y="-107" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -693,7 +693,7 @@
 					<Anchors>
 						<Anchor point = "TOPLEFT">
 							<Offset>
-                                <AbsDimension x="516" y="-260" />
+                                <AbsDimension x="616" y="-260" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -706,7 +706,7 @@
 					<Anchors>
 						<Anchor point = "TOPLEFT">
 							<Offset>
-                                <AbsDimension x="721" y="-260" />
+                                <AbsDimension x="821" y="-260" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -718,7 +718,7 @@
                     <Anchors>
                         <Anchor point="TOPLEFT">
                             <Offset>
-                                <AbsDimension x="517" y="-122" />
+                                <AbsDimension x="617" y="-122" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -730,7 +730,7 @@
                     <Anchors>
                         <Anchor point="TOPLEFT">
                             <Offset>
-                                <AbsDimension x="737" y="-122" />
+                                <AbsDimension x="837" y="-122" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -742,7 +742,7 @@
                     <Anchors>
                         <Anchor point="TOPLEFT">
                             <Offset>
-                                <AbsDimension x="535" y="-108" />
+                                <AbsDimension x="635" y="-108" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -754,7 +754,7 @@
                     <Anchors>
                         <Anchor point="TOPLEFT">
                             <Offset>
-                                <AbsDimension x="525" y="-276" />
+                                <AbsDimension x="625" y="-276" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -838,7 +838,7 @@
                     <Anchors>
                         <Anchor point="TOPLEFT" relativeTo="CensusPlusClassic">
                             <Offset>
-                                <AbsDimension x="583" y="-90" />
+                                <AbsDimension x="683" y="-90" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -1029,7 +1029,7 @@
                 <Anchors>
                     <Anchor point="TOPLEFT" relativeTo="CensusPlusClassic">
                         <Offset>
-                            <AbsDimension x="529" y="-120" />
+                            <AbsDimension x="629" y="-120" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1250,7 +1250,7 @@
                 <Anchors>
                     <Anchor point="LEFT" relativeTo="CensusPlusRaceLegend4" relativePoint="RIGHT">
                         <Offset>
-                            <AbsDimension x="32" y="0" />
+                            <AbsDimension x="57" y="0" />
                         </Offset>
                     </Anchor>
                 </Anchors>
@@ -1950,7 +1950,97 @@
                         </Offset>
                     </Anchor>
                 </Anchors>
-            </Button>		
+            </Button>
+            <Button name="CensusPlusLevelBar61" inherits="CensusPlusLevelBarTemplate" id="61">
+                <Anchors>
+                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar60" relativePoint="BOTTOMRIGHT">
+                        <Offset>
+                            <AbsDimension x="2" y="0" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="CensusPlusLevelBar62" inherits="CensusPlusLevelBarTemplate" id="62">
+                <Anchors>
+                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar61" relativePoint="BOTTOMRIGHT">
+                        <Offset>
+                            <AbsDimension x="2" y="0" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="CensusPlusLevelBar63" inherits="CensusPlusLevelBarTemplate" id="63">
+                <Anchors>
+                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar62" relativePoint="BOTTOMRIGHT">
+                        <Offset>
+                            <AbsDimension x="2" y="0" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="CensusPlusLevelBar64" inherits="CensusPlusLevelBarTemplate" id="64">
+                <Anchors>
+                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar63" relativePoint="BOTTOMRIGHT">
+                        <Offset>
+                            <AbsDimension x="2" y="0" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="CensusPlusLevelBar65" inherits="CensusPlusLevelBarTemplate" id="65">
+                <Anchors>
+                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar64" relativePoint="BOTTOMRIGHT">
+                        <Offset>
+                            <AbsDimension x="2" y="0" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="CensusPlusLevelBar66" inherits="CensusPlusLevelBarTemplate" id="66">
+                <Anchors>
+                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar65" relativePoint="BOTTOMRIGHT">
+                        <Offset>
+                            <AbsDimension x="2" y="0" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="CensusPlusLevelBar67" inherits="CensusPlusLevelBarTemplate" id="67">
+                <Anchors>
+                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar66" relativePoint="BOTTOMRIGHT">
+                        <Offset>
+                            <AbsDimension x="2" y="0" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="CensusPlusLevelBar68" inherits="CensusPlusLevelBarTemplate" id="68">
+                <Anchors>
+                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar67" relativePoint="BOTTOMRIGHT">
+                        <Offset>
+                            <AbsDimension x="2" y="0" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="CensusPlusLevelBar69" inherits="CensusPlusLevelBarTemplate" id="69">
+                <Anchors>
+                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar68" relativePoint="BOTTOMRIGHT">
+                        <Offset>
+                            <AbsDimension x="2" y="0" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="CensusPlusLevelBar70" inherits="CensusPlusLevelBarTemplate" id="70">
+                <Anchors>
+                    <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusLevelBar60" relativePoint="BOTTOMRIGHT">
+                        <Offset>
+                            <AbsDimension x="2" y="0" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>			
             <Button name="CensusPlusLevelBarEmpty1" inherits="CensusPlusLevelBarEmptyTemplate" id="1">
                 <Anchors>
                     <Anchor point="BOTTOMLEFT" relativeTo="CensusPlusClassic" relativePoint="TOPLEFT">
