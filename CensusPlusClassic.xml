@@ -189,7 +189,7 @@
 
     <Frame name="CensusPlusClassic" parent="UIParent" hidden="true" enableMouse="true" toplevel="true" movable="true">
         <Size>
-            <AbsDimension x="850" y="512" />
+            <AbsDimension x="880" y="512" />
         </Size>
         <Anchors>
 			<Anchor point="CENTER">
