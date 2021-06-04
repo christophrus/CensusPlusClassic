@@ -189,7 +189,7 @@
 
     <Frame name="CensusPlusClassic" parent="UIParent" hidden="true" enableMouse="true" toplevel="true" movable="true">
         <Size>
-            <AbsDimension x="759" y="512" />
+            <AbsDimension x="850" y="512" />
         </Size>
         <Anchors>
 			<Anchor point="CENTER">
@@ -204,7 +204,7 @@
 				<Texture name="CensusPlusBackground" file="Interface\Dialogframe\UI-DialogBox-Background-Dark">
 					<Size>
 <!--						<AbsDimension x="1056" y="512" />  -->
-						<AbsDimension x="959" y="512" />
+						<AbsDimension x="876" y="512" />
 					</Size>
 					<Anchors>
 						<Anchor point="TOPLEFT">
@@ -238,7 +238,7 @@
 						<Anchor point = "TOPLEFT">
 							<Offset>
 <!--                                <AbsDimension x="1030" y="7" /> -->
-                                <AbsDimension x="933" y="7" />
+                                <AbsDimension x="854" y="7" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -265,7 +265,7 @@
 						<Anchor point = "TOPLEFT">
 							<Offset>
 <!--                                <AbsDimension x="1030" y="-488" /> -->
-                                <AbsDimension x="933" y="-488" />
+                                <AbsDimension x="854" y="-488" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -291,7 +291,7 @@
                         <Anchor point="TOPLEFT">
                             <Offset>
 <!--                                <AbsDimension x="1046" y="-18" /> -->
-                                <AbsDimension x="949" y="-18" />
+                                <AbsDimension x="870" y="-18" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -299,7 +299,7 @@
 				<Texture file = "Interface\Dialogframe\Dialogframe-Top">  <!-- Top Outer Border -->
                     <Size>
 <!--                        <AbsDimension x="1028" y="16" /> -->
-                        <AbsDimension x="931" y="16" />
+                        <AbsDimension x="850" y="16" />
                     </Size>
                     <Anchors>
                         <Anchor point="TOPLEFT">
@@ -313,7 +313,7 @@
 <!--                <Texture file="Interface\AddOns\CensusPlusClassic\Skin\CensusPlus_Window_UltraLeft" alphaMode="ADD"> -->
                     <Size>
 <!--                        <AbsDimension x="1028" y="16" /> -->
-                        <AbsDimension x="931" y="16" />
+                        <AbsDimension x="850" y="16" />
                     </Size>
                     <Anchors>
                         <Anchor point="TOPLEFT">
@@ -360,7 +360,7 @@
 						<Anchor point = "TOPLEFT">
 							<Offset>
 <!--                                <AbsDimension x="1018" y="-309" /> -->
-                                <AbsDimension x="921" y="-309" />
+                                <AbsDimension x="840" y="-309" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -387,7 +387,7 @@
 						<Anchor point = "TOPLEFT">
 							<Offset>
 <!--                                <AbsDimension x="1018" y="-432" /> -->
-                                <AbsDimension x="921" y="-432" />
+                                <AbsDimension x="840" y="-432" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -412,7 +412,7 @@
                         <Anchor point="TOPLEFT">
                             <Offset>
 <!--                                <AbsDimension x="1034" y="-322" /> -->
-                                <AbsDimension x="937" y="-322" />
+                                <AbsDimension x="856" y="-322" />
                             </Offset>
                         </Anchor>
                     </Anchors>
@@ -420,7 +420,7 @@
 				<Texture file = "Interface\Dialogframe\Dialogframe-Top">  <!-- Top Levels Box -->
                     <Size>
 <!--                        <AbsDimension x="1020" y="16" /> -->
-                        <AbsDimension x="903" y="16" />
+                        <AbsDimension x="840" y="16" />
                     </Size>
                     <Anchors>
                         <Anchor point="TOPLEFT">
@@ -433,7 +433,7 @@
 				<Texture file = "Interface\Dialogframe\Dialogframe-Bot">  <!-- Bottom Levels Box -->
                     <Size>
 <!--                        <AbsDimension x="1020" y="16" /> -->
-                        <AbsDimension x="903" y="16" />
+                        <AbsDimension x="840" y="16" />
                     </Size>
                     <Anchors>
                         <Anchor point="TOPLEFT">
