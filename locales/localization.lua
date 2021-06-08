@@ -38,11 +38,14 @@ CENSUSPLUS_DWARF = "Dwarf";
 CENSUSPLUS_GNOME = "Gnome";
 CENSUSPLUS_HUMAN = "Human";
 CENSUSPLUS_NIGHTELF = "Night Elf";
+CENSUSPLUS_DRAENEI = "Draenei";
 
 CENSUSPLUS_ORC = "Orc";
 CENSUSPLUS_TAUREN = "Tauren";
 CENSUSPLUS_TROLL = "Troll";
 CENSUSPLUS_UNDEAD = "Undead";
+CENSUSPLUS_BLOODELF = "Blood Elf";
+
 
 -- Blizzard provided translations THESE MUST BE AFTER THE ENGLISH DEFINITIONS
 --.. right or wrong it must match what Blizzard provides
@@ -80,6 +83,8 @@ if ( GetLocale() == "deDE" ) then
 	CENSUSPLUS_TROLL = "Troll";
 	CENSUSPLUS_UNDEAD = "Untoter";
   CENSUSPlusFemale["Untote"] = "Untoter";
+  CENSUSPLUS_DRAENEI          = "Draenei";
+  CENSUSPlusFemale["Untote"] = "Draenei";
 end
 
 -- esES + esMX
@@ -114,6 +119,8 @@ if ( GetLocale() == "esES" or GetLocale() == "esMX" ) then
 	CENSUSPLUS_TROLL = "Trol";
 	CENSUSPLUS_UNDEAD = "No-muerto";
 	CENSUSPlusFemale["No-muerta"] = "No-muerto";
+	CENSUSPLUS_DRAENEI          = "Draenei";
+    CENSUSPlusFemale["Untote"] = "Draenei";
 end
 
 -- frFR
