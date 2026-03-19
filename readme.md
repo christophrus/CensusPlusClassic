@@ -3,7 +3,7 @@
 
 ![Last release](https://img.shields.io/github/release-date/christophrus/CensusPlusClassic.svg) ![Current Version](https://img.shields.io/github/tag/christophrus/CensusPlusClassic.svg) [![Total Downloads](https://img.shields.io/github/downloads/christophrus/CensusPlusClassic/total.svg)]((https://github.com/christophrus/CensusPlusClassic/releases/latest))  ![Code Size](https://img.shields.io/github/languages/code-size/christophrus/CensusPlusClassic.svg) ![License](https://img.shields.io/github/license/christophrus/CensusPlusClassic.svg?label=license) [![Discord](https://img.shields.io/discord/591950767640936500.svg)](https://discordapp.com/invite/MYPWGkv)
 
-This is an interface addon for World of Warcraft: Classic which records details about characters currently online in your realms faction at the time of the polling. This is done with liberal use of the in-game /who command. The information is then stored in the CensusPlusClassic.lua in your account's SavedVariables folder, which can be uploaded to the aggregator website [Wow Classic Population](https://wowclassicpopulation). This site sorts all uploaded information and displays it in chart and graph form.
+This is an interface addon for World of Warcraft: Classic which records details about characters currently online in your realms faction at the time of the polling. This is done with liberal use of the in-game /who command. The information is then stored in the CensusPlusClassic.lua in your account's SavedVariables folder, which can be uploaded to the aggregator website [Wow Classic Population](#). This site sorts all uploaded information and displays it in chart and graph form.
 
 ## Contribute 
 
@@ -22,9 +22,9 @@ Donwload the latest version of the addon: [CensusPlusClassic.zip](https://github
 - After the census is taken you get a message in chat how many characters were recorded
 - Logout or do a /reload to force the addon to write its data into the *.lua file
 - Navigate to `C:\Program Files\World of Warcraft\_classic_\WTF\Account\ACCOUNT_NAME\SavedVariables\` and find the CensusPlusClassic.lua
-- Upload the `CensusPlusClassic.lua` on [WowClassicpopulation.com](https://wowclassicpopulation.com/contribute)
+- Upload the `CensusPlusClassic.lua` on WowClassicpopulation
 - Alternatively you can use the [CensusUploader](https://github.com/christophrus/CensusUploader) tool that runs in background and automatically uploads the lua file for you
 
 <p align="center">
-  <a href="https://wowclassicpopulation.com/"><img src="https://i.ibb.co/wrsLC9L/wow-classic-population-census-project.jpg" alt="Wow Classic Population census project"/></a>
+  <a href=""><img src="https://i.ibb.co/wrsLC9L/wow-classic-population-census-project.jpg" alt="Wow Classic Population census project"/></a>
 </p>
